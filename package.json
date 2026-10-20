@@ -1,0 +1,20 @@
+{
+  "name": "gemen3d",
+  "version": "3.3.1",
+  "description": "Gemen 3D - Himmel & Hoelle (Horror-Look)",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.mjs",
+    "apk": "node build.mjs && node make_www.mjs && npx cap sync android"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.160.0",
+    "esbuild": "^0.21.5",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/android": "^6.1.2"
+  }
+}

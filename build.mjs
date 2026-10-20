@@ -1,0 +1,10 @@
+import { build } from 'esbuild';
+import fs from 'fs';
+const res = await build({ entryPoints: ['main.js'], bundle: true, minify: true, format: 'iife', write: false, target: 'es2020', legalComments: 'none' });
+const js = res.outputFiles[0].text.replace(/<\/script/gi, '<\\/script');
+const data = fs.readFileSync('gemen_data.json', 'utf8');
+let html = fs.readFileSync('template.html', 'utf8');
+html = html.replace('/*DATA*/', () => data).replace('/*BUNDLE*/', () => js);
+fs.mkdirSync('dist', { recursive: true });
+fs.writeFileSync('dist/index.html', html);
+console.log('built', (html.length / 1e6).toFixed(2), 'MB');

@@ -1,0 +1,13 @@
+{
+  "appId": "de.gemen.horror3d",
+  "appName": "Gemen 3D",
+  "webDir": "www",
+  "backgroundColor": "#05090c",
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#05090c"
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Gemen 3D Karte</title>
+<style>
+:root{--bg:#05090c;--ink:#dfeadf;--mut:#8aa092;--g:#59ff5a;--g2:#2fbf3a;--line:rgba(89,255,90,.28);--panel:rgba(6,14,12,.72)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
+#view{position:fixed;inset:0;width:100vw;height:100vh;display:block;touch-action:none}
+.vig{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 100%)}
+.panel{background:var(--panel);border:1px solid var(--line);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:12px}
+#top{position:fixed;left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));top:max(10px,env(safe-area-inset-top));display:flex;justify-content:space-between;align-items:flex-start;gap:8px;pointer-events:none}
+#title{padding:8px 12px;pointer-events:auto}
+#title b{display:block;font-size:13px;letter-spacing:.18em;color:var(--g);text-transform:uppercase}
+#title span{font-size:11px;color:var(--mut)}
+.tools{display:flex;gap:6px;pointer-events:auto}
+.btn{min-width:42px;height:42px;padding:0 10px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:600 13px/1 inherit;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px)}
+.btn:active,.btn.on{background:rgba(89,255,90,.22);border-color:var(--g);color:#fff}
+#right{position:fixed;right:max(12px,env(safe-area-inset-right));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px}
+#presets{position:fixed;left:50%;transform:translateX(-50%);top:max(62px,calc(env(safe-area-inset-top) + 54px));display:flex;gap:6px}
+#presets .btn{height:34px;font-size:12px}
+#joy{position:fixed;left:max(18px,env(safe-area-inset-left));bottom:calc(70px + env(safe-area-inset-bottom));width:128px;height:128px;border-radius:50%;border:1px solid var(--line);background:radial-gradient(circle,rgba(89,255,90,.10),rgba(6,14,12,.55));touch-action:none}
+#stick{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:rgba(89,255,90,.35);border:1px solid var(--g);box-shadow:0 0 14px rgba(89,255,90,.5)}
+#chips{position:fixed;left:0;right:0;bottom:0;padding:8px max(12px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));display:flex;gap:6px;overflow-x:auto;background:linear-gradient(transparent,rgba(0,0,0,.65));touch-action:pan-x;scrollbar-width:none}
+#chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;height:40px;padding:0 12px;border-radius:20px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:600 12px/1 inherit;letter-spacing:.06em;cursor:pointer;white-space:nowrap}
+.chip b{color:var(--g);margin-right:4px}
+.chip:active{background:rgba(89,255,90,.25)}
+#pins{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.pin{position:absolute;left:0;top:0;display:flex;align-items:center;gap:6px;pointer-events:auto;border:0;background:none;color:#fff;cursor:pointer;padding:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.8))}
+.pin .n{width:26px;height:26px;border-radius:50%;background:#0b1a0f;border:2px solid var(--g);color:var(--g);font:700 13px/22px inherit;text-align:center;box-shadow:0 0 12px rgba(89,255,90,.7)}
+.pin .t{font:700 12px/1 inherit;letter-spacing:.05em;padding:4px 7px;border-radius:6px;background:rgba(5,12,9,.8);border:1px solid var(--line);white-space:nowrap}
+.pin.small .t{display:none}
+#card{position:fixed;left:50%;bottom:calc(64px + env(safe-area-inset-bottom));transform:translate(-50%,20px);width:min(440px,calc(100vw - 24px));padding:14px;opacity:0;pointer-events:none;transition:.2s}
+#card.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#card h3{margin:0 0 4px;font-size:16px;color:var(--g);letter-spacing:.04em}
+#card p{margin:0 0 12px;font-size:13px;line-height:1.45;color:var(--ink)}
+#card .row{display:flex;gap:8px}
+#card .btn{flex:1}
+#card .go{background:rgba(89,255,90,.22);border-color:var(--g)}
+#loading{position:fixed;inset:0;background:radial-gradient(circle at 50% 40%,#0c1a12,#04080a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:9;transition:opacity .5s}
+#loading.hide{opacity:0;pointer-events:none}
+#loading h1{margin:0;font-size:22px;letter-spacing:.3em;color:var(--g);text-transform:uppercase}
+#loading p{margin:0;color:var(--mut);font-size:13px}
+.spin{width:44px;height:44px;border-radius:50%;border:3px solid rgba(89,255,90,.2);border-top-color:var(--g);animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+#tapmark{position:fixed;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:2px solid var(--g);pointer-events:none;opacity:0}
+#tapmark.no{border-color:#ff5a4a}
+#tapmark.go{animation:tp .7s ease-out}
+@keyframes tp{0%{opacity:1;transform:scale(.3)}100%{opacity:0;transform:scale(1.6)}}
+#hud{position:fixed;left:max(12px,env(safe-area-inset-left));top:max(64px,calc(env(safe-area-inset-top) + 56px));width:150px;padding:8px 10px;pointer-events:none}
+#hud .row{display:flex;justify-content:space-between;align-items:center;font:700 11px/1 inherit;letter-spacing:.12em;color:var(--mut);margin-bottom:6px}
+#hp{height:9px;border-radius:5px;background:rgba(255,255,255,.12);overflow:hidden}
+#hp-fill{height:100%;width:100%;border-radius:5px;transition:width .15s}
+#zone{margin-top:7px;font:800 12px/1 inherit;letter-spacing:.16em}
+#zone.safe{color:#ffe27a;text-shadow:0 0 10px rgba(255,200,90,.8)}#zone.danger{color:#ff4a5a;text-shadow:0 0 10px rgba(255,40,70,.9)}#zone.hell{color:#d08aff}
+#fx-hurt{position:fixed;inset:0;pointer-events:none;opacity:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,0,40,0) 45%,rgba(255,10,50,.55) 100%)}
+#fx-safe{position:fixed;inset:0;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(ellipse at 50% 50%,rgba(255,230,150,0) 55%,rgba(255,214,120,.38) 100%)}
+#dead{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;background:rgba(120,0,20,.55);color:#fff;font:800 30px/1.1 inherit;letter-spacing:.2em;opacity:0;pointer-events:none;transition:opacity .3s}
+#dead small{font:600 13px/1 inherit;letter-spacing:.08em;opacity:.85}
+#dead.show{opacity:1}
+#hint{transition:opacity 1.5s;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(118px + env(safe-area-inset-bottom));font-size:12px;color:var(--mut);text-align:center;pointer-events:none;text-shadow:0 1px 4px #000;opacity:.9}
+#title b i{font-style:normal}.btn{white-space:nowrap}
+@media (max-width:520px){#hint{display:none}#presets .btn{padding:0 8px}#title span,#title b i{display:none}#title{padding:8px 10px}#hud{top:max(112px,calc(env(safe-area-inset-top) + 104px));width:128px}.tools .btn{min-width:38px;padding:0 7px;height:38px}}
+</style>
+</head>
+<body>
+<canvas id="view"></canvas>
+<div class="vig"></div>
+<div id="pins"></div>
+<div id="fx-hurt"></div><div id="fx-safe"></div>
+<div id="dead">ERWISCHT!<small>Du wachst im Safeplace wieder auf.</small></div>
+<div id="top">
+  <div id="title" class="panel"><b>Gemen<i> · Himmel &amp; Hölle</i></b><span>Safeplace: Das grüne Haus</span></div>
+  <div class="tools">
+    <button class="btn" id="btn-mon" title="Monster an/aus">☠</button>
+    <button class="btn" id="btn-q" title="Qualität">Q</button>
+    <button class="btn" id="btn-shot" title="2K-Bild speichern">2K</button>
+    <button class="btn" id="btn-full" title="Vollbild">⛶</button>
+  </div>
+</div>
+<div id="hud" class="panel"><div class="row"><span>LEBEN</span><span id="hp-txt">100</span></div><div id="hp"><div id="hp-fill"></div></div><div id="zone" class="safe">☀ SICHER</div></div>
+<div id="presets">
+  <button class="btn on" data-preset="nah">Nah</button>
+  <button class="btn" data-preset="mittel">Mittel</button>
+  <button class="btn" data-preset="weit">Weit</button>
+  <button class="btn" data-preset="karte">Ganze Karte</button>
+</div>
+<div id="right">
+  <button class="btn" id="btn-zin">＋</button>
+  <button class="btn" id="btn-zout">－</button>
+  <button class="btn" id="btn-rotl">↺</button>
+  <button class="btn" id="btn-rotr">↻</button>
+  <button class="btn" id="btn-north">N</button>
+  <button class="btn" id="btn-follow">◎</button>
+</div>
+<div id="joy"><div id="stick"></div></div>
+<div id="hint">Hinter dir entsteht ein sicherer Tunnel · Bleib darin, wenn Monster kommen · Tippen = hinlaufen · WASD/Joystick = laufen</div>
+<div id="card" class="panel"><h3 id="card-t"></h3><p id="card-d"></p><div class="row"><button class="btn go" id="card-go">Hingehen</button><button class="btn" id="card-x">Schließen</button></div></div>
+<div id="chips"></div>
+<div id="loading"><h1>Gemen</h1><div class="spin"></div><p id="loadmsg">Lade …</p></div>
+<script>window.GEMEN_DATA=/*DATA*/;</script>
+<script>/*BUNDLE*/</script>
+</body>
+</html>
