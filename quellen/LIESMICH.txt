@@ -1,0 +1,4 @@
+Quellen von index.html (Milos Lern-Welt Testversion 11 + Mehrspieler + feste Objekte + Ablenkung)
+base.js = Testversion 11 (entpackt). patch.py wendet 47 Aenderungen an (patch_world.py, patch_distract.py)
+und setzt index.html aus part_head.html + Spiel + part_tail.html zusammen.
+net.js (Realtime-Bibliothek) wird aus multinet.js + net_entry.js mit esbuild gebaut.
