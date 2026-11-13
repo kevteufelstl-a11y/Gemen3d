@@ -79,6 +79,7 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family
     <button class="btn" id="btn-q" title="Qualität">Q</button>
     <button class="btn" id="btn-shot" title="2K-Bild speichern">2K</button>
     <button class="btn" id="btn-full" title="Vollbild">⛶</button>
+    <button class="btn" id="btn-lern" title="Elternbereich">⚙</button>
   </div>
 </div>
 <div id="hud" class="panel"><div class="row"><span>LEBEN</span><span id="hp-txt">100</span></div><div id="hp"><div id="hp-fill"></div></div><div id="zone" class="safe">☀ SICHER</div></div>
@@ -98,9 +99,10 @@ html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family
 </div>
 <div id="joy"><div id="stick"></div></div>
 <div id="hint">Hinter dir entsteht ein sicherer Tunnel · Bleib darin, wenn Monster kommen · Tippen = hinlaufen · WASD/Joystick = laufen</div>
-<div id="card" class="panel"><h3 id="card-t"></h3><p id="card-d"></p><div class="row"><button class="btn go" id="card-go">Hingehen</button><button class="btn" id="card-x">Schließen</button></div></div>
+<div id="card" class="panel"><h3 id="card-t"></h3><p id="card-d"></p><div class="row"><button class="btn go" id="card-task">Aufgabe</button><button class="btn go" id="card-go">Hingehen</button><button class="btn" id="card-x">Schließen</button></div></div>
 <div id="chips"></div>
 <div id="loading"><h1>Gemen</h1><div class="spin"></div><p id="loadmsg">Lade …</p></div>
+<script>window.GEMEN_QUESTIONS=/*QUESTIONS*/;</script>
 <script>window.GEMEN_DATA=/*DATA*/;</script>
 <script>/*BUNDLE*/</script>
 </body>

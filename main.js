@@ -13,6 +13,7 @@ import { buildTrail } from './trail.js';
 import { buildCreatures } from './creatures.js';
 import { applyLook } from './look.js';
 import { mulberry32, clamp, lerp } from './util.js';
+import { initLernen } from './lernen.js';
 
 const DATA = window.GEMEN_DATA;
 const $ = (id) => document.getElementById(id);
@@ -127,7 +128,7 @@ async function main() {
     player.stop(); const sp = world.walk.nearest(2.6, 9.0) || [2.6, 9.0]; player.x = sp[0]; player.z = sp[1]; player.wx = sp[0] - 1; player.wz = sp[1] - 1;
     cam.follow = true; game.hp = 100; creatures.scatterNear(sp[0], sp[1], 70);
   }
-  function onHit(dmg) { if (game.safe || game.dead > 0) return; game.hp -= dmg; game.hurt = 1; if (game.hp <= 0) die(); }
+  function onHit(dmg) { if (game.safe || game.dead > 0 || game.quiz) return; game.hp -= dmg; game.hurt = 1; if (game.hp <= 0) die(); }
   $('btn-mon').addEventListener('click', () => { game.monsters = !game.monsters; creatures.setEnabled(game.monsters); $('btn-mon').textContent = game.monsters ? '☠ AN' : '☠ AUS'; $('btn-mon').classList.toggle('on', game.monsters); });
   $('btn-mon').textContent = game.monsters ? '☠ AN' : '☠ AUS'; $('btn-mon').classList.toggle('on', game.monsters);
 
@@ -272,6 +273,10 @@ async function main() {
   }
   $('card-go').addEventListener('click', () => { if (curSt) { const ok = player.goTo(curSt.wx, curSt.wz); cam.follow = true; goal.dist = Math.min(goal.dist, 45); card.classList.remove('show'); } });
   $('card-x').addEventListener('click', () => card.classList.remove('show'));
+  // ---------------- Lern-Modus (Aufgaben, Ablenkung, Auswertung) ----------------
+  const lern = initLernen({ onOpen: () => { game.quiz = true; }, onClose: () => { game.quiz = false; } });
+  $('card-task').addEventListener('click', () => { if (curSt) { card.classList.remove('show'); lern.startRound(curSt); } });
+  $('btn-lern').addEventListener('click', () => lern.openParent());
   const v3 = new THREE.Vector3();
   function updatePins() {
     world.stations.forEach((s, i) => {

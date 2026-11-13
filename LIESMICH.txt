@@ -1,3 +1,5 @@
 Alles flach in einem Ordner (keine Unterordner), damit es sich am Handy hochladen laesst.
 Einzige Ausnahme: .github/workflows/apk.yml muss in GitHub per "Create new file" angelegt werden (Inhalt: apk.yml.txt).
 Dann Actions -> APK bauen -> Run workflow -> unter Releases die app-debug.apk laden.
+
+Neu (Lern-Modus): lernen.js und fragen_klasse3.json gehoeren dazu und liegen ebenfalls flach im Hauptordner.
