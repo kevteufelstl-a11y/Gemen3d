@@ -377,7 +377,7 @@ export async function buildWorld(DATA, scene, Q) {
     const pop = () => { const top = heap[0], last = heap.pop(); if (heap.length) { heap[0] = last; let k = 0; for (; ;) { let l = 2 * k + 1, r = l + 1, m = k; if (l < heap.length && heap[l][0] < heap[m][0]) m = l; if (r < heap.length && heap[r][0] < heap[m][0]) m = r; if (m === k) break;[heap[m], heap[k]] = [heap[k], heap[m]]; k = m; } } return top; };
     const si = sz * GW + sx, ei = ez * GW + ex; gScore[si] = 0; push(0, si);
     const H = (x, z) => Math.hypot(x - ex, z - ez);
-    const roadCost = (gx, gz) => { const c = CLS[Math.min(DATA.h - 1, Math.floor((gz + 0.5) / S)) * DATA.w + Math.min(DATA.w - 1, Math.floor((gx + 0.5) / S))]; return c === 1 ? 0.8 : 1.0; };
+    const roadCost = (gx, gz) => { const c = CLS[Math.min(DATA.h - 1, Math.floor((gz + 0.5) / S)) * DATA.w + Math.min(DATA.w - 1, Math.floor((gx + 0.5) / S))]; return c === 1 ? 1.0 : 2.4; }; // Straßen stark bevorzugen
     let found = false, it = 0;
     while (heap.length && it++ < 400000) {
       const [, cur] = pop(); if (closed[cur]) continue; closed[cur] = 1;
@@ -394,8 +394,19 @@ export async function buildWorld(DATA, scene, Q) {
     if (!found) return null;
     const out = []; let c = ei; while (c !== -1) { out.push([g0x + (c % GW) + 0.5, g0z + ((c / GW) | 0) + 0.5]); c = came[c]; } out.reverse();
     // string pulling
+    // Abkürzungen nur, wenn sie nicht mehr Straße verlassen als der gefundene Weg selbst
+    const isRoad = (x, z) => world.clsAt(x, z) === 1;
+    const lineRoad = (x0, z0, x1, z1) => { const n = Math.max(1, Math.ceil(Math.hypot(x1 - x0, z1 - z0) / 0.5)); let r = 0; for (let i = 0; i <= n; i++) if (isRoad(lerp(x0, x1, i / n), lerp(z0, z1, i / n))) r++; return r / (n + 1); };
+    const pathRoad = (a0, b0) => { let r = 0; for (let i = a0; i <= b0; i++) if (isRoad(out[i][0], out[i][1])) r++; return r / (b0 - a0 + 1); };
     const sm = [out[0]]; let a = 0;
-    while (a < out.length - 1) { let b = out.length - 1; while (b > a + 1 && !walk.los(out[a][0], out[a][1], out[b][0], out[b][1])) b--; sm.push(out[b]); a = b; }
+    while (a < out.length - 1) {
+      let b = out.length - 1;
+      while (b > a + 1) {
+        if (walk.los(out[a][0], out[a][1], out[b][0], out[b][1]) && (Math.hypot(out[b][0] - out[a][0], out[b][1] - out[a][1]) <= 4 || lineRoad(out[a][0], out[a][1], out[b][0], out[b][1]) >= pathRoad(a, b) - 0.1)) break;
+        b--;
+      }
+      sm.push(out[b]); a = b;
+    }
     return sm;
   };
   walk.computeReach = (sx, sz) => {

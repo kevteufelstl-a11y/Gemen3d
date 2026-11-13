@@ -79,6 +79,7 @@ export function addTrees(world, DATA, Q) {
     const s = 0.85 + R() * 0.7;
     items.push({ x: jx, z: jz, rot: R() * 6.28, sx: s, sy: s * (0.9 + R() * 0.35), color: palette[(R() * palette.length) | 0] });
   }
+  world.treeItems = items;
   const hiCh = chunked(world.root, hi, mat, items, 100, { shadow: Q.shadows, receive: false });
   const loCh = chunked(world.root, lo, mat, items, 100);
   // pair chunks by centre (same grouping => same order)
@@ -171,7 +172,7 @@ export function addCars(world, DATA, Q) {
           const rot = Math.atan2(dx, dz) - Math.PI / 2 + (R() < 0.15 ? Math.PI / 2 : 0) + (R() - 0.5) * 0.3 + (R() < 0.5 ? Math.PI : 0);
           const burnt = R() < 0.3;
           items.push({ x, z, y: 0.02, rot, sx: 1, color: burnt ? 0x2a2624 : cols[(R() * cols.length) | 0] });
-          world.carItems = world.carItems || []; world.carItems.push({ x, z, burnt });
+          world.carItems = world.carItems || []; world.carItems.push({ x, z, burnt, rot });
           break;
         }
         acc += L;

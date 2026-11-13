@@ -105,6 +105,25 @@ async function main() {
         }
       }
     }
+    // feste Objekte: Baumstämme, Laternen, Autos
+    const blockDisc = (cx, cz, r) => {
+      for (let gz = Math.floor(cz - r - w.g0z); gz <= Math.ceil(cz + r - w.g0z); gz++) for (let gx = Math.floor(cx - r - w.g0x); gx <= Math.ceil(cx + r - w.g0x); gx++) {
+        if (gx < 0 || gz < 0 || gx >= w.GW || gz >= w.GH) continue;
+        if (Math.hypot(w.g0x + gx + 0.5 - cx, w.g0z + gz + 0.5 - cz) <= r + 0.5) w.blocked[gz * w.GW + gx] = 1;
+      }
+    };
+    const blockRect = (cx, cz, bw, bd, rot) => {
+      const c = Math.cos(rot), s = Math.sin(rot), rad = Math.hypot(bw, bd) / 2 + 1;
+      for (let gz = Math.floor(cz - rad - w.g0z); gz <= Math.ceil(cz + rad - w.g0z); gz++) for (let gx = Math.floor(cx - rad - w.g0x); gx <= Math.ceil(cx + rad - w.g0x); gx++) {
+        if (gx < 0 || gz < 0 || gx >= w.GW || gz >= w.GH) continue;
+        const x = w.g0x + gx + 0.5 - cx, z = w.g0z + gz + 0.5 - cz;
+        const u = x * c - z * s, v = x * s + z * c;
+        if (Math.abs(u) < bw / 2 + 0.3 && Math.abs(v) < bd / 2 + 0.3) w.blocked[gz * w.GW + gx] = 1;
+      }
+    };
+    for (const t of (world.treeItems || [])) blockDisc(t.x, t.z, 0.45 * (t.sx || 1));
+    for (const l of (world.lampItems || [])) blockDisc(l.x, l.z, 0.3);
+    for (const c of (world.carItems || [])) blockRect(c.x, c.z, 4.3, 1.8, c.rot || 0);
     // clear path from gate inwards
     for (let gz = 0; gz < w.GH; gz++) for (let gx = 0; gx < w.GW; gx++) {
       const x = w.g0x + gx + 0.5, z = w.g0z + gz + 0.5; if (Math.hypot(x - HOME_C.x, z - HOME_C.z) > HOME_C.fenceR + 3) continue;
