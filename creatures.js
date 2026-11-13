@@ -136,7 +136,10 @@ export function buildCreatures(world, scene, trail, Q, enabled = true) {
   const COUNTS = { spider: 14, blob: 9, stilt: 5, eye: 9, bat: 10 };
   for (const k in COUNTS) for (let i = 0; i < COUNTS[k]; i++) spawnOne(k);
 
-  const C = { list, enabled, threat: 0, chasers: 0, root };
+  const C = { list, enabled, threat: 0, chasers: 0, root, remotes: [], puppet: false, onRemoteHit: null };
+  // Mehrspieler: Host schickt Momentaufnahme, die anderen setzen Ziele
+  C.snapshot = () => { const a = []; for (const c of list) a.push(+c.x.toFixed(1), +c.z.toFixed(1), +c.yaw.toFixed(2), c.state === 'chase' ? 1 : 0); return a; };
+  C.applySnapshot = (a) => { for (let i = 0; i < list.length && i * 4 + 3 < a.length; i++) { const c = list[i]; c.nx = a[i * 4]; c.nz = a[i * 4 + 1]; c.nyaw = a[i * 4 + 2]; c.nstate = a[i * 4 + 3]; } };
   C.setEnabled = (on) => { C.enabled = on; root.visible = on; };
   root.visible = enabled;
   C.scatterNear = (x, z, r) => { for (const c of list) if (Math.hypot(c.x - x, c.z - z) < r) { place(c); c.state = 'wander'; } };
@@ -163,29 +166,47 @@ export function buildCreatures(world, scene, trail, Q, enabled = true) {
     let threat = 0, chasers = 0;
     const camFar = Math.max(170, camDist * 1.25);
     for (const c of list) {
-      const T = c.T; const dx = P.x - c.x, dz = P.z - c.z; const d = Math.hypot(dx, dz);
+      const T = c.T;
+      // Ziel wählen: nächster Spieler (ich oder Mitspieler), der nicht in Sicherheit ist; sonst der nächste überhaupt
+      let tx = P.x, tz = P.z, tSafe = playerSafe, tId = null, d = Math.hypot(P.x - c.x, P.z - c.z);
+      for (const r of C.remotes) { const dr = Math.hypot(r.x - c.x, r.z - c.z); if ((tSafe && !r.safe) || (tSafe === r.safe && dr < d)) { tx = r.x; tz = r.z; tSafe = r.safe; tId = r.id; d = dr; } }
+      const dx = tx - c.x, dz = tz - c.z;
       const nearCam = Math.hypot(c.x - camX, c.z - camZ) < camFar;
-      // ---- state
-      const sees = !playerSafe && d < T.sense; const wasChase = c.state === 'chase';
-      c.state = sees ? 'chase' : 'wander';
       let spd = 0;
       const dTr = trail.pts.length ? trail.distTo(c.x, c.z) : 99;
       const inAura = dTr < SAFE_R + AURA_W;
       const slow = inAura ? 0.45 : 1;
-      if (c.state === 'chase') {
-        const reach = T.reach;
-        if (d > reach * 0.7) { spd = T.speed * slow; if (!step(c, P.x, P.z, spd, dt)) spd = 0.3; }
-        else { c.yawT = Math.atan2(dx, dz); }
-        c.cd -= dt;
-        if (d < reach + (T.fly ? 0.6 : 0.4) && c.cd <= 0 && !playerSafe) { c.cd = 1.15; c.lunge = 0.35; onHit && onHit(T.dmg, c); }
-        chasers++; threat = Math.max(threat, 1 - clamp((d - 3) / (T.sense - 3), 0, 1));
+      if (C.puppet) {
+        // Mitspieler-Modus: Positionen kommen vom Host, hier wird nur weich nachgezogen
+        const ox = c.x, oz = c.z;
+        if (c.nx !== undefined) {
+          const k = Math.min(1, dt * 8); c.x += (c.nx - c.x) * k; c.z += (c.nz - c.z) * k;
+          if (Math.hypot(c.nx - c.x, c.nz - c.z) > 30) { c.x = c.nx; c.z = c.nz; }
+          c.yawT = c.nyaw;
+        }
+        c.state = c.nstate ? 'chase' : 'wander';
+        spd = Math.hypot(c.x - ox, c.z - oz) / Math.max(dt, 1e-3);
+        if (c.state === 'chase') { chasers++; threat = Math.max(threat, (playerSafe ? 0 : 1) * (1 - clamp((Math.hypot(P.x - c.x, P.z - c.z) - 3) / (T.sense - 3), 0, 1))); }
+        c.snarl = 0;
       } else {
-        c.wanderT -= dt;
-        if (c.wanderT <= 0) { const a = R() * 6.28, r = 5 + R() * 14; c.wx = c.x + Math.cos(a) * r; c.wz = c.z + Math.sin(a) * r; c.wanderT = 3 + R() * 5; c.idle = R() < 0.3; }
-        const dd = Math.hypot(c.wx - c.x, c.wz - c.z);
-        if (!c.idle && dd > 1.0) { spd = T.wander * slow; step(c, c.wx, c.wz, spd, dt); } else c.wanderT -= dt;
-        // gnash at the safe boundary
-        if (playerSafe && d < 12) { c.yawT = Math.atan2(dx, dz); c.snarl = 1; } else c.snarl = 0;
+        // ---- state
+        const sees = !tSafe && d < T.sense;
+        c.state = sees ? 'chase' : 'wander';
+        if (c.state === 'chase') {
+          const reach = T.reach;
+          if (d > reach * 0.7) { spd = T.speed * slow; if (!step(c, tx, tz, spd, dt)) spd = 0.3; }
+          else { c.yawT = Math.atan2(dx, dz); }
+          c.cd -= dt;
+          if (d < reach + (T.fly ? 0.6 : 0.4) && c.cd <= 0 && !tSafe) { c.cd = 1.15; c.lunge = 0.35; if (tId === null) onHit && onHit(T.dmg, c); else C.onRemoteHit && C.onRemoteHit(tId, T.dmg); }
+          chasers++; if (tId === null) threat = Math.max(threat, 1 - clamp((d - 3) / (T.sense - 3), 0, 1));
+        } else {
+          c.wanderT -= dt;
+          if (c.wanderT <= 0) { const a = R() * 6.28, r = 5 + R() * 14; c.wx = c.x + Math.cos(a) * r; c.wz = c.z + Math.sin(a) * r; c.wanderT = 3 + R() * 5; c.idle = R() < 0.3; }
+          const dd = Math.hypot(c.wx - c.x, c.wz - c.z);
+          if (!c.idle && dd > 1.0) { spd = T.wander * slow; step(c, c.wx, c.wz, spd, dt); } else c.wanderT -= dt;
+          // gnash at the safe boundary
+          if (tSafe && d < 12) { c.yawT = Math.atan2(dx, dz); c.snarl = 1; } else c.snarl = 0;
+        }
       }
       c.spd = spd;
       // ---- animation

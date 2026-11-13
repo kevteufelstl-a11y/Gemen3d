@@ -13,7 +13,7 @@ export const SAFE_R = 2.05;       // Monster dürfen nicht näher als das
 const MAXR = 4200, NV = 11, STEP = 1.45;
 const hash = (x, z) => ((Math.floor(x / 4) + 5000) * 10007 + (Math.floor(z / 4) + 5000));
 
-export function buildTrail(world, scene) {
+export function buildTrail(world, scene, opts = {}) {
   const root = new THREE.Group(); world.root.add(root);
   const T = { pts: [], rings: 0, hash: new Map(), lastBreak: true, sparkNear: [], tNear: 0, lights: [] };
   const R = mulberry32(4242);
@@ -33,7 +33,7 @@ export function buildTrail(world, scene) {
   const floorGeo = mkRibbon(), auraGeo = mkRibbon();
 
   // ---------------- materials
-  const U = { uTime: { value: 0 } };
+  const U = { uTime: { value: 0 }, uTint: { value: new THREE.Vector3(1, 1, 1) }, uAmt: { value: 0 } };
   const hexGLSL = `
     float hash21(vec2 p){ p=fract(p*vec2(123.34,456.21)); p+=dot(p,p+45.32); return fract(p.x*p.y); }
     float vnoise(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f); return mix(mix(hash21(i),hash21(i+vec2(1,0)),f.x),mix(hash21(i+vec2(0,1)),hash21(i+vec2(1,1)),f.x),f.y); }
@@ -42,7 +42,7 @@ export function buildTrail(world, scene) {
     transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, uniforms: U,
     vertexShader: 'varying vec2 vUv; varying vec3 vN; varying vec3 vV; void main(){ vUv=uv; vN=normalize(normalMatrix*normal); vec4 mv=modelViewMatrix*vec4(position,1.0); vV=normalize(-mv.xyz); gl_Position=projectionMatrix*mv; }',
     fragmentShader: hexGLSL + `
-      varying vec2 vUv; varying vec3 vN; varying vec3 vV; uniform float uTime;
+      varying vec2 vUv; varying vec3 vN; varying vec3 vV; uniform float uTime; uniform vec3 uTint; uniform float uAmt;
       float hexD(vec2 p){ p=abs(p); float c=dot(p,normalize(vec2(1.0,1.7320508))); return max(c,p.x); }
       void main(){
         vec2 uv=vec2(vUv.x*0.55, vUv.y*3.4);
@@ -54,6 +54,7 @@ export function buildTrail(world, scene) {
         vec3 c1=vec3(1.0,0.72,0.18), c2=vec3(1.0,0.28,0.7), c3=vec3(0.25,0.8,1.0);
         vec3 col=mix(mix(c1,c2,0.5+0.5*sin(hue*6.28)),c3,0.5+0.5*sin(hue*6.28*0.7+1.3));
         float a2=0.02+line*(0.22+0.14*flow)+fres*0.2;
+        col=mix(col,vec3(dot(col,vec3(0.333))*1.6)*uTint,uAmt);
         gl_FragColor=vec4(col,a2);
       }`
   });
@@ -61,7 +62,7 @@ export function buildTrail(world, scene) {
     transparent: true, depthWrite: false, side: THREE.DoubleSide, uniforms: U, polygonOffset: true, polygonOffsetFactor: -12, polygonOffsetUnits: -12,
     vertexShader: 'varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
     fragmentShader: hexGLSL + `
-      varying vec2 vUv; uniform float uTime;
+      varying vec2 vUv; uniform float uTime; uniform vec3 uTint; uniform float uAmt;
       void main(){
         float x=vUv.y; // -1..1 across, uv.x metres along
         float ax=abs(x);
@@ -79,6 +80,7 @@ export function buildTrail(world, scene) {
         float glow=0.35+0.12*sin(uTime*1.3+vUv.x*0.8);
         col+=vec3(1.0,0.85,0.5)*glow*0.04;
         float alpha=smoothstep(1.0,0.78,ax)*0.96;
+        col=mix(col,col*uTint*1.5,uAmt*0.7);
         gl_FragColor=vec4(col,alpha);
       }`
   });
@@ -86,7 +88,7 @@ export function buildTrail(world, scene) {
     transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, uniforms: Object.assign({ uCore: { value: TUNNEL_R / (TUNNEL_R + AURA_W) } }, U), polygonOffset: true, polygonOffsetFactor: -11, polygonOffsetUnits: -11,
     vertexShader: 'varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
     fragmentShader: hexGLSL + `
-      varying vec2 vUv; uniform float uTime; uniform float uCore;
+      varying vec2 vUv; uniform float uTime; uniform float uCore; uniform vec3 uTint; uniform float uAmt;
       void main(){
         float ax=abs(vUv.y);
         float e=clamp((ax-uCore)/(1.0-uCore),0.0,1.0);   // 0 at tunnel wall .. 1 at aura edge
@@ -107,6 +109,7 @@ export function buildTrail(world, scene) {
         a+=inside*0.035;
         a*=smoothstep(1.0,0.86,ax);
         col=mix(col,vec3(1.0),arc*0.25);
+        col=mix(col,vec3(dot(col,vec3(0.333))*1.6)*uTint,uAmt);
         gl_FragColor=vec4(col,clamp(a,0.0,1.0));
       }`
   });
@@ -205,15 +208,16 @@ export function buildTrail(world, scene) {
   };
 
   // ---------------- lights along the trail near the camera
-  for (let i = 0; i < 5; i++) { const l = new THREE.PointLight(i % 2 ? 0xffd9a0 : 0xffb6e0, 0, 16, 1.8); l.position.set(0, 1.6, 0); root.add(l); T.lights.push(l); }
+  for (let i = 0; i < (opts.simple ? 0 : 5); i++) { const l = new THREE.PointLight(i % 2 ? 0xffd9a0 : 0xffb6e0, 0, 16, 1.8); l.position.set(0, 1.6, 0); root.add(l); T.lights.push(l); }
 
   // ---------------- sparkles (heaven) + fight sparks (frontier)
   const mkP = (N, size) => { const g = new THREE.BufferGeometry(); const pos = new Float32Array(N * 3), col = new Float32Array(N * 3); g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('color', new THREE.BufferAttribute(col, 3)); const p = new THREE.Points(g, new THREE.PointsMaterial({ size, map: DOT, alphaTest: 0.01, vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true, toneMapped: false })); p.frustumCulled = false; root.add(p); return { p, pos, col, N, life: new Float32Array(N), max: new Float32Array(N).fill(1), base: new Float32Array(N * 3), vel: new Float32Array(N * 3) }; };
-  const SP = mkP(520, 0.34), FP = mkP(260, 0.3);
+  const SP = opts.simple ? null : mkP(520, 0.34), FP = opts.simple ? null : mkP(260, 0.3);
   const HC = [[1, 0.9, 0.5], [1, 0.65, 0.85], [1, 1, 1], [0.6, 0.95, 1], [1, 0.95, 0.7]];
   const FCOL = [[1, 0.15, 0.2], [1, 0.1, 0.6], [0.1, 0.95, 1], [0.7, 1, 0.1], [1, 0.5, 0.1]];
   T.update = (t, dt, camX, camZ, camDist) => {
     U.uTime.value = t;
+    if (opts.simple) return;
     const vis = camDist < 420; root.visible = true; SP.p.visible = FP.p.visible = camDist < 150;
     T.tNear -= dt;
     if (T.tNear <= 0) { // collect points near camera focus
@@ -246,6 +250,7 @@ export function buildTrail(world, scene) {
     };
     upd(SP, true); upd(FP, false);
   };
+  T.setTint = (rgb, amt) => { U.uTint.value.set(rgb[0], rgb[1], rgb[2]); U.uAmt.value = amt; };
   T.root = root; T.gate = gate; T.shellMat = shellMat;
   return T;
 }

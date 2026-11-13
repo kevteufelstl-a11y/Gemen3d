@@ -4,7 +4,8 @@ import { makeGlow } from './textures.js';
 
 function part(geo, color, mat) { const m = new THREE.Mesh(geo.toGeometry(), mat); m.castShadow = true; return m; }
 
-export function buildPlayer(world, scene) {
+export function buildPlayer(world, scene, opts = {}) {
+  const JK = opts.jacket || [0.22, 0.3, 0.2];
   const std = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.8 });
   const root = new THREE.Group(); scene.add(root);
   const fig = new THREE.Group(); root.add(fig);
@@ -12,9 +13,9 @@ export function buildPlayer(world, scene) {
   const mkLeg = (x) => { const g = new Geo(); g.box(0, -0.45, 0, 0.22, 0.9, 0.24, 0, [0.16, 0.2, 0.3]); g.box(0, -0.93, 0.07, 0.24, 0.14, 0.38, 0, [0.07, 0.06, 0.05]); const m = part(g, 0, std); const piv = new THREE.Group(); piv.position.set(x, 0.95, 0); piv.add(m); fig.add(piv); return piv; };
   const legL = mkLeg(-0.16), legR = mkLeg(0.16);
   // torso (jacket)
-  { const g = new Geo(); g.box(0, 1.28, 0, 0.62, 0.72, 0.34, 0, [0.22, 0.3, 0.2]); g.box(0, 0.98, 0, 0.64, 0.12, 0.36, 0, [0.12, 0.12, 0.12]); fig.add(part(g, 0, std)); }
+  { const g = new Geo(); g.box(0, 1.28, 0, 0.62, 0.72, 0.34, 0, JK); g.box(0, 0.98, 0, 0.64, 0.12, 0.36, 0, [0.12, 0.12, 0.12]); fig.add(part(g, 0, std)); }
   // arms
-  const mkArm = (x) => { const g = new Geo(); g.box(0, -0.3, 0, 0.17, 0.62, 0.19, 0, [0.22, 0.3, 0.2]); g.box(0, -0.66, 0, 0.17, 0.14, 0.18, 0, [0.76, 0.58, 0.46]); const m = part(g, 0, std); const piv = new THREE.Group(); piv.position.set(x, 1.55, 0); piv.add(m); fig.add(piv); return piv; };
+  const mkArm = (x) => { const g = new Geo(); g.box(0, -0.3, 0, 0.17, 0.62, 0.19, 0, JK); g.box(0, -0.66, 0, 0.17, 0.14, 0.18, 0, [0.76, 0.58, 0.46]); const m = part(g, 0, std); const piv = new THREE.Group(); piv.position.set(x, 1.55, 0); piv.add(m); fig.add(piv); return piv; };
   const armL = mkArm(-0.4), armR = mkArm(0.4);
   // head, hat, beard
   { const g = new Geo(); g.box(0, 1.8, 0, 0.3, 0.34, 0.3, 0, [0.78, 0.6, 0.48]);
@@ -40,13 +41,13 @@ export function buildPlayer(world, scene) {
   }
   const handle = new Geo(); handle.box(0, 0.5, 1.2, 0.05, 0.05, 1.2, 0, [0.4, 0.4, 0.4]); wagon.add(part(handle, 0, std));
   // light on head
-  const torch = new THREE.PointLight(0xfff0d0, 9, 14, 1.8); torch.position.set(0, 2.4, 0.5); root.add(torch);
+  if (!opts.remote) { const torch = new THREE.PointLight(0xfff0d0, 9, 14, 1.8); torch.position.set(0, 2.4, 0.5); root.add(torch); }
   // marker ring
   const ringTex = makeGlow([[0, 'rgba(120,255,120,0)'], [0.6, 'rgba(120,255,120,0)'], [0.76, 'rgba(120,255,120,0.95)'], [0.86, 'rgba(120,255,120,0.9)'], [0.92, 'rgba(120,255,120,0.15)'], [1, 'rgba(120,255,120,0)']]);
   const ring = new THREE.Mesh(new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: ringTex, transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending }));
-  ring.renderOrder = 20; scene.add(ring);
+  ring.renderOrder = 20; if (!opts.remote) scene.add(ring);
   // arrow marker (visible when zoomed out)
-  const arrow = new THREE.Mesh(new THREE.ConeGeometry(1, 2.4, 4).rotateX(Math.PI), new THREE.MeshBasicMaterial({ color: 0x66ff66, transparent: true, opacity: 0.95, depthTest: false }));
+  const arrow = new THREE.Mesh(new THREE.ConeGeometry(1, 2.4, 4).rotateX(Math.PI), new THREE.MeshBasicMaterial({ color: opts.arrowColor || 0x66ff66, transparent: true, opacity: 0.95, depthTest: false }));
   arrow.renderOrder = 21; scene.add(arrow);
 
   const P = { x: 4.6, z: 10.5, yaw: Math.PI * 0.75, vx: 0, vz: 0, phase: 0, speed: 0, path: null, target: null, wx: 0, wz: 0, wyaw: 0 };
@@ -89,6 +90,11 @@ export function buildPlayer(world, scene) {
       if (!moved && P.path) { P.path = null; }
       P.phase += sp * dt * 2.3; P.speed = sp;
     } else { P.speed *= 0.8; }
+    P.animate(dt, camDist);
+  };
+  // Pose von außen setzen (für Mitspieler im Mehrspielermodus)
+  P.pose = (x, z, yaw, speed, dt, camDist) => { P.x = x; P.z = z; P.yaw = yaw; P.speed = speed; P.phase += speed * dt * 2.3; P.animate(dt, camDist); };
+  P.animate = (dt, camDist) => {
     const sw = Math.sin(P.phase) * Math.min(1, P.speed / 3) * 0.7;
     legL.rotation.x = sw; legR.rotation.x = -sw; armL.rotation.x = -sw * 0.8; armR.rotation.x = sw * 0.8;
     fig.position.y = Math.abs(Math.sin(P.phase)) * 0.05 * Math.min(1, P.speed / 3);
@@ -107,5 +113,6 @@ export function buildPlayer(world, scene) {
     arrow.visible = camDist > 70; ring.visible = true;
   };
   P.root = root;
+  P.dispose = () => { scene.remove(root); scene.remove(wagon); scene.remove(arrow); scene.remove(ring); };
   return P;
 }

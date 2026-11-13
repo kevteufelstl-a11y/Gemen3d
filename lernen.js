@@ -30,6 +30,7 @@ export function taskScore(t, cfg, ctx) {
   return Math.max(0, Math.round(w));
 }
 export const starsFor = (avg) => (avg >= 80 ? 3 : avg >= 55 ? 2 : 1);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 export const median = (a) => { if (!a.length) return 0; const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
 export const avg = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : 0);
 export function nextLevel(cfg, roundAvg) {
@@ -39,8 +40,17 @@ export function nextLevel(cfg, roundAvg) {
   if (badStreak >= 2) { level = Math.max(1, level - 1); badStreak = 0; }
   return { level, goodStreak, badStreak };
 }
-const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
-const rnd = (lo, hi) => lo + Math.random() * (hi - lo);
+export function mulberry32(a) { return function () { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+const shuffle = (a, rng = Math.random) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = (rng() * (i + 1)) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const rnd = (lo, hi, rng = Math.random) => lo + rng() * (hi - lo);
+// Wettbewerb: alle bekommen mit demselben Startwert dieselben Fragen in derselben Reihenfolge
+export function pickSeeded(Qs, fach, n, seed) {
+  let pool = fach === 'Gemischt' ? Object.values(Qs).flat() : (Qs[fach] || []);
+  if (!pool.length) pool = Object.values(Qs).flat();
+  pool = pool.slice().sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+  return shuffle(pool, mulberry32(seed)).slice(0, n);
+}
+export function rankResults(list) { return list.slice().sort((a, b) => (b.richtig - a.richtig) || (a.ms - b.ms)); }
 const dayKey = (t) => { const d = new Date(t); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
 
 function load() {
@@ -113,6 +123,7 @@ export function initLernen(hooks = {}) {
   const ep = elt.querySelector('#lern-ep');
 
   let R = null; // aktuelle Runde
+  let CMP = null; // laufender Wettbewerb: { cid, me, parts: Map(id -> {name, res}), view }
   const curLevel = () => (st.cfg.stufe === 'auto' ? st.cfg.level : Number(st.cfg.stufe) || 1);
 
   // ---- Fragen holen ----
@@ -125,22 +136,28 @@ export function initLernen(hooks = {}) {
   }
 
   // ---- Runde starten ----
-  function startRound(station) {
+  function startRound(station, opts = {}) {
+    const comp = opts.comp || null; // { cid, seed, n, lvl }
     const fach = STATION_FACH[station.id] || 'Gemischt';
-    const qs = pickQuestions(fach, st.cfg.rundenGroesse);
+    const qs = comp ? pickSeeded(Qs, fach, comp.n, comp.seed) : pickQuestions(fach, st.cfg.rundenGroesse);
     if (!qs.length) { hooks.toast && hooks.toast('Keine Fragen gefunden'); return; }
     let abIdx = new Set();
-    if (st.cfg.ablenkung && qs.length > 1) {
-      const k = Math.max(1, Math.round(qs.length * st.cfg.chance));
-      shuffle([...Array(qs.length - 1).keys()].map(i => i + 1)).slice(0, k).forEach(i => abIdx.add(i)); // erste Aufgabe immer ohne
+    if ((comp || st.cfg.ablenkung) && qs.length > 1) {
+      const k = Math.max(1, Math.round(qs.length * (comp ? 0.4 : st.cfg.chance)));
+      shuffle([...Array(qs.length - 1).keys()].map(i => i + 1), comp ? mulberry32(comp.seed + 99) : Math.random).slice(0, k).forEach(i => abIdx.add(i)); // erste Aufgabe immer ohne
     }
-    R = { station, fach, qs, i: 0, abIdx, tasks: [], correct: 0, timers: [] };
-    tEl.textContent = (station.id === 0 ? '★ ' : '') + station.name + ' · ' + fach;
+    R = { station, fach, qs, i: 0, abIdx, tasks: [], correct: 0, timers: [], comp, level: comp ? comp.lvl : curLevel() };
+    if (comp) {
+      CMP = { cid: comp.cid, me: opts.me, parts: new Map(), view: false };
+      CMP.parts.set(opts.me.id, { name: opts.me.name, res: null });
+      if (opts.from && opts.from.id !== opts.me.id) CMP.parts.set(opts.from.id, { name: opts.from.name, res: null });
+    }
+    tEl.textContent = (comp ? '🏆 ' : '') + (station.id === 0 ? '★ ' : '') + station.name + ' · ' + fach;
     root.classList.add('show'); hooks.onOpen && hooks.onOpen();
     showQuestion();
   }
   function closeRound() {
-    clearAll(); root.classList.remove('show'); R = null; hooks.onClose && hooks.onClose();
+    clearAll(); root.classList.remove('show'); R = null; if (CMP) CMP.view = false; hooks.onClose && hooks.onClose();
   }
   function clearAll() {
     if (!R) return; R.timers.forEach(clearTimeout); R.timers = []; if (R.idle) clearInterval(R.idle); R.idle = null; abLayer.innerHTML = '';
@@ -151,12 +168,13 @@ export function initLernen(hooks = {}) {
     clearAll();
     const q = R.qs[R.i];
     nEl.textContent = (R.i + 1) + ' / ' + R.qs.length;
-    const order = shuffle([0, 1, 2, 3].slice(0, q.optionen.length));
+    const qr = R.comp ? mulberry32(R.comp.seed * 31 + R.i * 7919 + 1) : Math.random;
+    const order = shuffle([0, 1, 2, 3].slice(0, q.optionen.length), qr);
     body.innerHTML = '';
     const qEl = document.createElement('div'); qEl.className = 'q'; qEl.textContent = q.frage; body.appendChild(qEl);
     const opts = document.createElement('div'); opts.className = 'opts'; body.appendChild(opts);
     const fb = document.createElement('div'); fb.className = 'fb'; body.appendChild(fb);
-    const cur = R.cur = { q, start: performance.now(), lastAct: performance.now(), idleSeen: false, pausen: 0, getippt: 0, abStart: 0, rueck: 0, abTyp: null, abStufe: 0, done: false };
+    const cur = R.cur = { q, qr, start: performance.now(), lastAct: performance.now(), idleSeen: false, pausen: 0, getippt: 0, abStart: 0, rueck: 0, abTyp: null, abStufe: 0, done: false };
     order.forEach(oi => {
       const b = document.createElement('button'); b.className = 'opt'; b.textContent = q.optionen[oi];
       b.addEventListener('click', () => answer(oi, b, opts, fb));
@@ -164,7 +182,7 @@ export function initLernen(hooks = {}) {
     });
     cur.idleTimer = R.idle = setInterval(() => { if (!cur.done && !cur.idleSeen && performance.now() - cur.lastAct > 10000) { cur.pausen++; cur.idleSeen = true; } }, 1000);
     if (R.abIdx.has(R.i)) {
-      const delay = rnd(2000, 8000);
+      const delay = rnd(2000, 8000, qr);
       R.timers.push(setTimeout(() => spawn(cur), delay));
     }
   }
@@ -178,9 +196,9 @@ export function initLernen(hooks = {}) {
 
   function spawn(cur) {
     if (!R || R.cur !== cur || cur.done) return;
-    const lvl = curLevel(), cfg = AB[lvl];
-    const [emo, name] = cfg.items[(Math.random() * cfg.items.length) | 0];
-    const dur = rnd(3000, 6000);
+    const lvl = R.level, cfg = AB[lvl], qr = cur.qr;
+    const [emo, name] = cfg.items[(qr() * cfg.items.length) | 0];
+    const dur = rnd(3000, 6000, qr);
     const it = document.createElement('div'); it.className = 'ab-item'; it.textContent = emo; it.style.fontSize = cfg.size + 'px';
     const W = panel.clientWidth, H = panel.clientHeight;
     abLayer.appendChild(it);
@@ -189,11 +207,11 @@ export function initLernen(hooks = {}) {
       const y = H * 0.05;
       anim = it.animate([{ transform: `translate(${-cfg.size}px,${y}px)` }, { transform: `translate(${W * 0.3}px,${y + 14}px)` }, { transform: `translate(${W * 0.6}px,${y - 6}px)` }, { transform: `translate(${W}px,${y + 10}px)` }], { duration: dur, easing: 'linear' });
     } else if (lvl === 2) { // mittel, quer durch die Mitte, mit Ton
-      const y = H * rnd(0.3, 0.5), ltr = Math.random() < 0.5, a = ltr ? -cfg.size : W, b = ltr ? W : -cfg.size;
+      const y = H * rnd(0.3, 0.5, qr), ltr = qr() < 0.5, a = ltr ? -cfg.size : W, b = ltr ? W : -cfg.size;
       anim = it.animate([{ transform: `translate(${a}px,${y}px)` }, { transform: `translate(${(a + b) / 2}px,${y - 20}px)` }, { transform: `translate(${b}px,${y}px)` }], { duration: dur, easing: 'ease-in-out' });
       beep(660, 0.18, 0.05); R.timers.push(setTimeout(() => beep(880, 0.18, 0.05), 400));
     } else { // stark, groß, wackelt und blinkt, mit Ton
-      const x = W * rnd(0.55, 0.8), y = H * rnd(0.3, 0.5);
+      const x = W * rnd(0.55, 0.8, qr), y = H * rnd(0.3, 0.5, qr);
       anim = it.animate([{ transform: `translate(${x}px,${y}px) rotate(-12deg) scale(1)`, opacity: 1 }, { transform: `translate(${x - 40}px,${y - 50}px) rotate(12deg) scale(1.15)`, opacity: .55 }, { transform: `translate(${x}px,${y}px) rotate(-12deg) scale(1)`, opacity: 1 }, { transform: `translate(${x - 30}px,${y + 40}px) rotate(10deg) scale(1.15)`, opacity: .55 }, { transform: `translate(${x}px,${y}px) rotate(-12deg) scale(1)`, opacity: 1 }], { duration: dur, easing: 'ease-in-out' });
       beep(520, 0.15, 0.07); R.timers.push(setTimeout(() => beep(780, 0.15, 0.07), 300), setTimeout(() => beep(520, 0.15, 0.07), 700));
     }
@@ -219,7 +237,7 @@ export function initLernen(hooks = {}) {
     if (!isRight) btn.classList.add('no');
     const zeit = now - cur.start;
     const shown = !!cur.abStart;
-    const rec = { t: Date.now(), fach: R.fach, thema: q.thema || '', station: R.station.id, qid: q.id, richtig: isRight, zeit_ms: Math.round(zeit), getippt: cur.getippt, pausen: cur.pausen, ab: shown ? { typ: cur.abTyp, stufe: cur.abStufe } : null, rueck_ms: shown ? Math.round(cur.rueck || zeit - (cur.abStart - cur.start)) : null, wert: null };
+    const rec = { t: Date.now(), fach: R.fach, thema: q.thema || '', station: R.station.id, qid: q.id, richtig: isRight, zeit_ms: Math.round(zeit), getippt: cur.getippt, pausen: cur.pausen, ab: shown ? { typ: cur.abTyp, stufe: cur.abStufe } : null, rueck_ms: shown ? Math.round(cur.rueck || zeit - (cur.abStart - cur.start)) : null, wert: null, comp: R.comp ? R.comp.cid : 0 };
     if (shown) {
       const same = st.log.filter(l => l.fach === R.fach && !l.ab).slice(-30);
       const thisRound = R.tasks.filter(t => !t.ab);
@@ -241,6 +259,14 @@ export function initLernen(hooks = {}) {
     clearAll();
     st.log.push(...R.tasks);
     const scored = R.tasks.filter(t => t.wert !== null).map(t => t.wert);
+    if (R.comp) {
+      const a = scored.length ? avg(scored) : null;
+      const res = { cid: R.comp.cid, richtig: R.correct, n: R.qs.length, ms: Math.round(R.tasks.reduce((s, t) => s + t.zeit_ms, 0)), konz: a === null ? null : Math.round(a), sterne: a === null ? 0 : starsFor(a) };
+      save(st);
+      const me = CMP.parts.get(CMP.me.id); me.res = res;
+      hooks.compDone && hooks.compDone(res);
+      CMP.view = true; renderComp(); return;
+    }
     let html = '<div class="center"><div class="q">Geschafft!</div><p>Richtig: <b>' + R.correct + ' von ' + R.qs.length + '</b></p>';
     if (scored.length) {
       const a = avg(scored), s = starsFor(a);
@@ -252,6 +278,28 @@ export function initLernen(hooks = {}) {
     save(st);
     body.innerHTML = html; nEl.textContent = '';
     const bt = document.createElement('button'); bt.className = 'btn2'; bt.textContent = 'Fertig'; bt.addEventListener('click', closeRound); body.appendChild(bt);
+  }
+  function renderComp() {
+    if (!CMP || !CMP.view) return;
+    const rows = [...CMP.parts.entries()].map(([id, e]) => ({ id, name: e.name, ...(e.res || {}), done: !!e.res }));
+    const done = rankResults(rows.filter(r => r.done)), wait = rows.filter(r => !r.done);
+    const medal = ['🥇', '🥈', '🥉'];
+    let html = '<div class="center"><div class="q">🏆 Wettbewerb</div></div><div class="opts">';
+    done.forEach((r, i) => {
+      html += '<div class="opt" style="' + (r.id === CMP.me.id ? 'border-color:#59ff5a;background:rgba(89,255,90,.15)' : '') + '"><b>' + (medal[i] || (i + 1) + '.') + ' ' + esc(r.id === CMP.me.id ? r.name + ' (du)' : r.name) + '</b><br><small>Richtig: ' + r.richtig + ' von ' + r.n + ' · Zeit: ' + (r.ms / 1000).toFixed(0) + ' s · Dranbleiben: ' + (r.sterne ? '★'.repeat(r.sterne) : '–') + '</small></div>';
+    });
+    wait.forEach(r => { html += '<div class="opt" style="opacity:.6"><b>' + esc(r.name) + '</b><br><small>spielt noch …</small></div>'; });
+    html += '</div><p class="fb">' + (wait.length ? 'Die Wertung aktualisiert sich, sobald alle fertig sind.' : (done.length > 1 && done[0].id === CMP.me.id ? 'Du hast gewonnen! 🎉' : done.length > 1 ? 'Gut gespielt! Beim nächsten Mal schaffst du es.' : '')) + '</p><small style="color:var(--mut)">Wer mehr richtig hat, liegt vorn. Bei gleich vielen zählt die Zeit.</small>';
+    body.innerHTML = html; nEl.textContent = '';
+    const bt = document.createElement('button'); bt.className = 'btn2'; bt.textContent = 'Fertig'; bt.addEventListener('click', closeRound); body.appendChild(bt);
+  }
+  function compUpdate(msg) {
+    if (!CMP || CMP.cid !== msg.cid) return;
+    const e = CMP.parts.get(msg.id) || { name: msg.name, res: null };
+    e.name = msg.name || e.name;
+    if (msg.kind === 'done') e.res = { richtig: msg.richtig, n: msg.n, ms: msg.ms, konz: msg.konz, sterne: msg.sterne };
+    CMP.parts.set(msg.id, e);
+    renderComp();
   }
   root.querySelector('#lern-x').addEventListener('click', () => { if (R) { st.log.push(...R.tasks); save(st); } closeRound(); });
 
@@ -305,5 +353,5 @@ export function initLernen(hooks = {}) {
     ep.querySelector('#ep-close').onclick = closeParent;
   }
 
-  return { startRound, openParent, state: st };
+  return { startRound, openParent, compUpdate, busy: () => !!R, level: () => curLevel(), state: st };
 }

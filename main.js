@@ -14,6 +14,7 @@ import { buildCreatures } from './creatures.js';
 import { applyLook } from './look.js';
 import { mulberry32, clamp, lerp } from './util.js';
 import { initLernen } from './lernen.js';
+import { createMultiplayer, makeTrailAll } from './multi.js';
 
 const DATA = window.GEMEN_DATA;
 const $ = (id) => document.getElementById(id);
@@ -139,7 +140,8 @@ async function main() {
   // ---------------- Spur-Tunnel + Monster ----------------
   log('Tunnel & Monster …'); await nextFrame();
   const trail = buildTrail(world, scene);
-  const creatures = buildCreatures(world, scene, trail, Q, params.get('monsters') !== '0');
+  const trailAll = makeTrailAll(trail); // Monster meiden alle Tunnel (auch die der Mitspieler)
+  const creatures = buildCreatures(world, scene, trailAll, Q, params.get('monsters') !== '0');
   const game = { hp: 100, hurt: 0, dead: 0, safe: true, monsters: params.get('monsters') !== '0' };
   const hpFill = $('hp-fill'), hpTxt = $('hp-txt'), zoneEl = $('zone'), fxHurt = $('fx-hurt'), fxSafe = $('fx-safe'), deadEl = $('dead');
   function die() {
@@ -147,7 +149,7 @@ async function main() {
     player.stop(); const sp = world.walk.nearest(2.6, 9.0) || [2.6, 9.0]; player.x = sp[0]; player.z = sp[1]; player.wx = sp[0] - 1; player.wz = sp[1] - 1;
     cam.follow = true; game.hp = 100; creatures.scatterNear(sp[0], sp[1], 70);
   }
-  function onHit(dmg) { if (game.safe || game.dead > 0 || game.quiz) return; game.hp -= dmg; game.hurt = 1; if (game.hp <= 0) die(); }
+  function onHit(dmg) { if (game.safe || game.dead > 0 || game.quiz || game.mp) return; game.hp -= dmg; game.hurt = 1; if (game.hp <= 0) die(); }
   $('btn-mon').addEventListener('click', () => { game.monsters = !game.monsters; creatures.setEnabled(game.monsters); $('btn-mon').textContent = game.monsters ? '☠ AN' : '☠ AUS'; $('btn-mon').classList.toggle('on', game.monsters); });
   $('btn-mon').textContent = game.monsters ? '☠ AN' : '☠ AUS'; $('btn-mon').classList.toggle('on', game.monsters);
 
@@ -293,7 +295,10 @@ async function main() {
   $('card-go').addEventListener('click', () => { if (curSt) { const ok = player.goTo(curSt.wx, curSt.wz); cam.follow = true; goal.dist = Math.min(goal.dist, 45); card.classList.remove('show'); } });
   $('card-x').addEventListener('click', () => card.classList.remove('show'));
   // ---------------- Lern-Modus (Aufgaben, Ablenkung, Auswertung) ----------------
-  const lern = initLernen({ onOpen: () => { game.quiz = true; }, onClose: () => { game.quiz = false; } });
+  let mp = null;
+  const lern = initLernen({ onOpen: () => { game.quiz = true; }, onClose: () => { game.quiz = false; }, toast: (msg) => mp && mp.toast(msg), compDone: (res) => mp && mp.net.sendCompDone(res) });
+  mp = createMultiplayer({ world, scene, trail, trailAll, player, creatures, game, lern, onHit, $ });
+  $('card-comp').addEventListener('click', () => { if (curSt) { card.classList.remove('show'); mp.startCompetition(curSt); } });
   $('card-task').addEventListener('click', () => { if (curSt) { card.classList.remove('show'); lern.startRound(curSt); } });
   $('btn-lern').addEventListener('click', () => lern.openParent());
   const v3 = new THREE.Vector3();
@@ -330,6 +335,7 @@ async function main() {
     if (game.dead > 0) game.dead -= dt; else deadEl.classList.remove('show');
     if (game.safe) game.hp = Math.min(100, game.hp + 22 * dt); else game.hp = Math.min(100, game.hp + 1.2 * dt);
     game.hurt = Math.max(0, game.hurt - dt * 1.6);
+    mp.update(dt, t, cam.dist);
     creatures.update(dt, t, player, cam.tx, cam.tz, cam.dist, game.safe, onHit);
     trail.update(t, dt, cam.tx, cam.tz, cam.dist);
     hpFill.style.width = clamp(game.hp, 0, 100) + '%'; hpFill.style.background = game.hp > 55 ? 'linear-gradient(90deg,#7dff7a,#e8ff6a)' : game.hp > 28 ? 'linear-gradient(90deg,#ffd24a,#ff9a3a)' : 'linear-gradient(90deg,#ff3b4a,#ff7a3a)';
