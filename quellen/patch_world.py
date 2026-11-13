@@ -41,9 +41,6 @@ BLK = """    {
           if (Math.abs(uu) < bw / 2 + 0.3 && Math.abs(vv) < bd / 2 + 0.3) wk.blocked[gz * wk.GW + gx] = 1;
         }
       };
-      for (const tr of o.treeItems || []) bdDisc(tr.x, tr.z, 0.45 * (tr.sx || 1));
-      for (const lp of o.lampItems || []) bdDisc(lp.x, lp.z, 0.3);
-      for (const cr of o.carItems || []) bdRect(cr.x, cr.z, 4.3, 1.8, cr.rot || 0);
     }
 """
 ANCH = '    {\n      let k = o.walk.nearest(2.6, 9) || [2.6, 9];\n      o.walk.reach = null;'
