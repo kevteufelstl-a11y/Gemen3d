@@ -260,7 +260,8 @@
 
       window.__updRow = (body) => {
         if (body.querySelector("#upd-row")) return;
-        const SITE = "https://milos-lern-app.netlify.app/";
+        // Neue Versionen kommen direkt aus GitHub (jeder Push), Netlify bleibt Ersatz
+        const SOURCES = ["https://raw.githubusercontent.com/kevteufelstl-a11y/gemen3d/main/index.html", "https://milos-lern-app.netlify.app/"];
         const row = document.createElement("div");
         row.id = "upd-row";
         row.style.cssText = "margin:12px 0;padding:10px;border:1px solid rgba(125,255,122,.4);border-radius:10px;text-align:center";
@@ -273,13 +274,21 @@
           if (!native) { say("Lade neu \u2026"); setTimeout(() => location.reload(), 300); return; }
           btn.disabled = true; say("Suche \u2026");
           try {
-            let txt = "";
-            const url = SITE + "?nocache=" + Date.now();
             const http = cap.Plugins && cap.Plugins.CapacitorHttp;
-            if (http && http.get) { const r = await http.get({ url, responseType: "text", headers: { "Cache-Control": "no-cache" } }); txt = typeof r.data === "string" ? r.data : ""; if (r.status && r.status !== 200) throw new Error("Status " + r.status); }
-            else { const r = await fetch(url, { cache: "no-store" }); txt = await r.text(); }
-            const m = /window\.__BUILD="([^"]+)"/.exec(txt.slice(0, 2000));
-            if (!m || txt.length < 500000) throw new Error("Keine g\u00FCltige Version gefunden");
+            const load = async (base) => {
+              const url = base + "?nocache=" + Date.now();
+              let t3 = "";
+              if (http && http.get) { const r = await http.get({ url, responseType: "text", headers: { "Cache-Control": "no-cache" } }); t3 = typeof r.data === "string" ? r.data : ""; if (r.status && r.status !== 200) throw new Error("Status " + r.status); }
+              else { const r = await fetch(url, { cache: "no-store" }); t3 = await r.text(); }
+              const m3 = /window\.__BUILD="([^"]+)"/.exec(t3.slice(0, 2000));
+              if (!m3 || t3.length < 500000) throw new Error("Keine g\u00FCltige Version gefunden");
+              return [t3, m3];
+            };
+            let txt = "", m = null, err = null;
+            for (const base of SOURCES) {
+              try { const [t3, m3] = await load(base); if (!m || m3[1] > m[1]) { txt = t3; m = m3; } } catch (e4) { err = e4; }
+            }
+            if (!m) throw err || new Error("keine Verbindung");
             const cur = localStorage.getItem("milo_upd_build") > window.__BUILD ? localStorage.getItem("milo_upd_build") : window.__BUILD;
             if (m[1] <= cur) { say("\u2705 Du hast schon die neueste Version."); btn.disabled = false; return; }
             try { localStorage.setItem("milo_upd_html", txt); localStorage.setItem("milo_upd_build", m[1]); }

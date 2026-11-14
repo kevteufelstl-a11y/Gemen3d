@@ -118,6 +118,9 @@ game = s
 if mini:
     subprocess.run(['/home/claude/gemen3d/node_modules/.bin/esbuild', D + '/game_mp.js', '--minify', '--outfile=' + D + '/game_mp.min.js', '--log-level=error'], check=True)
     game = open(D + '/game_mp.min.js', encoding='utf8').read()
-out = head + '<script>' + net + '</script>\n<script>' + game + '\n</script>\n' + tail
+# Schutz fuer den Update-Knopf: wird diese Datei als Update in eine laufende alte Version
+# geschrieben, darf der Rest der alten Datei nicht mehr starten (sonst laeuft das Spiel doppelt)
+UPD_GUARD = '<script>if(window.__upd&&document.readyState==="loading"){document.write(\'<plaintext style="display:none">\');}</script>\n'
+out = head + '<script>' + net + '</script>\n<script>' + game + '\n</script>\n' + UPD_GUARD + tail
 open(D + '/index.html', 'w', encoding='utf8').write(out)
 print('OK', n_ok, 'Patches,', len(out), 'Bytes')
