@@ -7,11 +7,11 @@ r'''  function dStyle() {
     st.textContent = "@keyframes dfly{0%{transform:translateX(-20vw)}100%{transform:translateX(120vw)}}@keyframes dwob{0%,100%{transform:rotate(-12deg) scale(1)}50%{transform:rotate(12deg) scale(1.15)}}.dist{position:fixed;z-index:99999;cursor:pointer;user-select:none;-webkit-user-select:none;line-height:1}";
     document.head.append(st);
   }
-  function dStart(box) {
-    let day = Li();
+  function dStart(box, cp) {
+    let day = cp || Li();
     day.nq = (day.nq || 0) + 1;
-    if (Math.random() >= 0.4) return;
-    let lvl = day.dl || 1, set = lvl === 1 ? ["\u{1F98B}", "\u{1F41D}"] : lvl === 2 ? ["\u{1F426}", "\u{1F415}", "\u{1F514}"] : ["\u{1F381}", "\u{1F388}", "\u{1F47B}"], size = lvl === 1 ? 34 : lvl === 2 ? 56 : 88;
+    if (Math.random() >= (cp ? 0.5 : 0.4)) return;
+    let lvl = cp ? 2 : day.dl || 1, set = lvl === 1 ? ["\u{1F98B}", "\u{1F41D}"] : lvl === 2 ? ["\u{1F426}", "\u{1F415}", "\u{1F514}"] : ["\u{1F381}", "\u{1F388}", "\u{1F47B}"], size = lvl === 1 ? 34 : lvl === 2 ? 56 : 88;
     setTimeout(() => {
       if (!box.isConnected) return;
       dStyle();
@@ -29,8 +29,7 @@ r'''  function dStyle() {
       day.dn = (day.dn || 0) + 1;
       el.onclick = () => {
         day.dt = (day.dt || 0) + 1;
-        is = true;
-        Pi();
+        cp || (is = true, Pi());
         el.remove();
       };
       el.addEventListener("animationend", (ev) => { ev.animationName === "dfly" && el.remove(); });
@@ -53,3 +52,4 @@ rep('K("div", { class: "qopts" }, l), o, c));\n    };\n    e();',
     'K("div", { class: "qopts" }, l), o, c)), dStart(s);\n    };\n    e();', 'Ablenkung-Start')
 rep('    l && u.append(K("button", { class: "qbtn go", onclick: () => Pr(Ri) }',
     '    dText(t) && u.append(K("p", { class: "qmsg" }, dText(t))), l && u.append(K("button", { class: "qbtn go", onclick: () => Pr(Ri) }', 'Ablenkung-Lernbuch')
+rep('K("div", { class: "qrow" }, U, x))), ia = setInterval(() => {', 'K("div", { class: "qrow" }, U, x))), CP && dStart(u, CP), ia = setInterval(() => {', 'Ablenkung-Wettbewerb')

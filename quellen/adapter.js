@@ -232,6 +232,10 @@
       let CP = null;
       const compBusy = () => !!window.__quizOpen || !!CP;
       function showInvite(p) {
+        if (CP && !CP.finished && !CP.n && CP.st && CP.st.id === p.station && p.cid < CP.cid && Date.now() - CP.t0 < 25000) {
+          const st3 = o.stations.find((s2) => s2.id === p.station);
+          if (st3) { CP = null; Ys(); net.sendCompJoin(p.cid); toast("Ihr spielt dieselben Fragen."); beginComp(st3, p.ids, p.cid, { id: p.from, name: p.fromName }); return; }
+        }
         if (compBusy()) return;
         const st = o.stations.find((s2) => s2.id === p.station);
         if (!st || !xn[st.id]) return;
@@ -258,14 +262,17 @@
         net.sendCompStart({ cid, station: st.id, ids });
         beginComp(st, ids, cid, null);
       }
+      // Punkte: richtig 100 + bis 40 Zeitbonus (nur bei richtigen Antworten), Ablenkung ignoriert +15, angetippt -25
+      function compScore(pts, dn, dt) { return Math.max(0, Math.round((pts || 0) + 15 * ((dn || 0) - (dt || 0)) - 25 * (dt || 0))); }
       function beginComp(st, ids, cid, from) {
-        CP = { cid, ids, st, tt: 0, players: new Map(), finished: false, myR: 0, myT: 0 };
+        CP = { cid, ids, st, tt: 0, n: 0, pts: 0, dn: 0, dt: 0, t0: Date.now(), players: new Map(), finished: false, myR: 0, myT: 0 };
         CP.players.set(net.id, { id: net.id, name: net.name, done: false });
         if (from) CP.players.set(from.id, { id: from.id, name: from.name, done: false });
         CP.finish = (r2, tt) => {
           CP.finished = true; CP.myR = r2; CP.myT = tt;
-          const me = CP.players.get(net.id); me.done = true; me.r = r2; me.t = tt;
-          net.sendCompDone({ cid, r: r2, t: Math.round(tt * 10) / 10, n: ids.length });
+          const sc = compScore(CP.pts, CP.dn, CP.dt);
+          const me = CP.players.get(net.id); me.done = true; me.r = r2; me.t = tt; me.p = sc; me.dn = CP.dn; me.dt = CP.dt;
+          net.sendCompDone({ cid, r: r2, t: Math.round(tt * 10) / 10, n: ids.length, p: sc, dn: CP.dn, dt: CP.dt });
           renderRank();
         };
         CP.cancel = () => { net.sendCompDone({ cid, r: 0, t: 999, n: ids.length, quit: 1 }); CP = null; Ys(); };
@@ -275,24 +282,24 @@
         if (!CP || CP.cid !== cid || id === net.id) return;
         const e2 = CP.players.get(id) || { id, name, done: false };
         e2.name = name || e2.name;
-        if (res) { e2.done = true; e2.r = res.r; e2.t = res.t; e2.quit = !!res.quit; }
+        if (res) { e2.done = true; e2.r = res.r; e2.t = res.t; e2.quit = !!res.quit; e2.p = res.p || 0; e2.dn = res.dn || 0; e2.dt = res.dt || 0; }
         CP.players.set(id, e2);
         if (CP.finished) renderRank();
       }
       function renderRank() {
         if (!CP || !CP.finished) return;
         const list = [...CP.players.values()];
-        list.sort((a2, b2) => (a2.done ? 0 : 1) - (b2.done ? 0 : 1) || (b2.r || 0) - (a2.r || 0) || (a2.t || 0) - (b2.t || 0));
+        list.sort((a2, b2) => (a2.done ? 0 : 1) - (b2.done ? 0 : 1) || (b2.p || 0) - (a2.p || 0) || (b2.r || 0) - (a2.r || 0) || (a2.t || 0) - (b2.t || 0));
         const medals = ["\u{1F947}", "\u{1F948}", "\u{1F949}", "\u{1F3C5}"];
         const allDone = list.every((p) => p.done);
         const rows = list.map((p, ix) => K("div", { class: "mprank" + (p.id === net.id ? " me" : "") },
           K("span", { class: "md" }, p.done ? medals[Math.min(ix, 3)] : "⏳"),
           K("b", {}, p.name + (p.id === net.id ? " (du)" : "")),
-          p.done ? K("span", {}, p.quit ? K("small", {}, "aufgegeben") : [p.r + " / " + CP.ids.length + " ", K("small", {}, "\xB7 " + Math.round(p.t) + " s")]) : K("small", {}, "spielt noch …")));
+          p.done ? K("span", {}, p.quit ? K("small", {}, "aufgegeben") : [(p.p || 0) + " Pkt ", K("small", {}, "\xB7 " + p.r + "/" + CP.ids.length + " richtig \xB7 " + Math.round(p.t) + " s" + (p.dn ? " \xB7 " + (p.dn - p.dt) + "/" + p.dn + " Ablenkungen ignoriert" : ""))]) : K("small", {}, "spielt noch …")));
         const top = list[0];
         const msg = !allDone ? "Warte auf die anderen …" : top && top.id === net.id ? "\u{1F389} Du hast gewonnen!" : "Gut gespielt! Beim n\xE4chsten Mal klappt es.";
         const root = ln();
-        root.append(K("div", { class: "qbox" }, K("h2", {}, "\u{1F3C6} Wettbewerb"), K("p", { class: "qtag" }, CP.st.name + " \xB7 mehr richtige Antworten gewinnen, bei Gleichstand die schnelleren"), rows, K("p", { class: "qmsg" }, msg), K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: () => { CP = null; Ys(); } }, "Zur\xFCck ins Spiel"))));
+        root.append(K("div", { class: "qbox" }, K("h2", {}, "\u{1F3C6} Wettbewerb"), K("p", { class: "qtag" }, CP.st.name + " \xB7 Punkte: richtige Antworten, Zeit nur bei richtigen, Ablenkung ignorieren"), rows, K("p", { class: "qmsg" }, msg), K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: () => { CP = null; Ys(); } }, "Zur\xFCck ins Spiel"))));
       }
       // Wettbewerb-Knopf an der Stationskarte
       const compBtn = te("card-comp");

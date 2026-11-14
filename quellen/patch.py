@@ -92,7 +92,7 @@ rep('  async function x_() {', open(D + '/pre.js', encoding='utf8').read() + '  
 # ---------------- Wettbewerb in der Prüfung (gf) ----------------
 rep('  function gf(i) {\n    Xs();', '  function gf(i, CP) {\n    Xs();', 'gf-Kopf')
 rep('n = rl(t.filter(e)).concat(rl(t.filter((l) => !e(l)))).slice(0, je.examCount)', 'n = CP ? CP.ids.map((id) => sl.get(id)).filter(Boolean) : rl(t.filter(e)).concat(rl(t.filter((l) => !e(l)))).slice(0, je.examCount)', 'gf-Fragen')
-rep('        f = true, Xs();\n        let S = M === l.a;', '        f = true, Xs(), CP && (CP.tt += je.examSeconds - Math.max(0, g));\n        let S = M === l.a;', 'gf-Zeit')
+rep('        f = true, Xs();\n        let S = M === l.a;', '        f = true, Xs(), CP && (CP.tt += je.examSeconds - Math.max(0, g), CP.n = (CP.n || 0) + 1, M === l.a && (CP.pts = (CP.pts || 0) + 100 + Math.round(40 * Math.max(0, g) / je.examSeconds)));\n        let S = M === l.a;', 'gf-Zeit')
 rep('confirm("Pr\\xFCfung abbrechen?") && Ar(i);', 'confirm(CP ? "Wettbewerb aufgeben?" : "Pr\\xFCfung abbrechen?") && (CP ? CP.cancel() : Ar(i));', 'gf-Abbruch')
 rep('    }, o = () => {\n      if (Xs(), r > ye.ex', '    }, o = () => {\n      if (CP) {\n        Xs(), CP.finish(r, CP.tt);\n        return;\n      }\n      if (Xs(), r > ye.ex', 'gf-Ende')
 
