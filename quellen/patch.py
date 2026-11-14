@@ -82,6 +82,7 @@ rep('f.safe || f.dead > 0 || f.peace || (f.hp -= k', 'f.safe || f.dead > 0 || f.
 exec(open(D + '/patch_world.py', encoding='utf8').read())
 exec(open(D + '/patch_distract.py', encoding='utf8').read())
 exec(open(D + '/patch_house.py', encoding='utf8').read())
+exec(open(D + '/patch_cart.py', encoding='utf8').read())
 # ---------------- Stationen / Schleife / Einbau ----------------
 rep('    function It(k) {\n      Pt = k,', '    function It(k) {\n      Pt = k, window.__selSt = k,', 'Station-merken')
 rep('h.update(Q, _t, l, V.tx, V.tz, V.dist, f.safe, E)', 'MP.update(Q, _t, V.dist), h.update(Q, _t, l, V.tx, V.tz, V.dist, f.safe, E)', 'Schleife')
