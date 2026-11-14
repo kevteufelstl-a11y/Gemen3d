@@ -24,8 +24,8 @@
 #mp .b.go{background:rgba(89,255,90,.22);border-color:var(--g)} #mp .b:active{background:rgba(89,255,90,.3)}
 #mp .code{font:800 40px/1 inherit;letter-spacing:.3em;text-align:center;color:#fff;margin:10px 0}
 #mp .pl{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:15px} #mp .dot{width:14px;height:14px;border-radius:50%}
-#mp-inv{left:50%;transform:translateX(-50%);top:max(70px,calc(env(safe-area-inset-top) + 64px));width:min(420px,calc(100vw - 24px));padding:12px;display:none;background:rgba(6,14,12,.96);border:1px solid var(--g);border-radius:12px;touch-action:auto}
-#mp-inv.show{display:block} #mp-inv .row{display:flex;gap:8px;margin-top:8px}
+#mp-inv{left:0;top:0;right:0;bottom:0;z-index:99990;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.62);touch-action:auto}#mp-inv .box{width:min(380px,calc(100vw - 28px));padding:18px;text-align:center;background:rgba(6,14,12,.98);border:2px solid var(--g);border-radius:16px;font-size:16px}#mp-inv .big{font-size:44px;line-height:1.1}#mp-inv small{opacity:.8}
+#mp-inv.show{display:flex} #mp-inv .row{display:flex;gap:8px;margin-top:8px}
 #mp-inv button{flex:1;min-height:42px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.07);color:var(--ink);font:700 14px inherit;cursor:pointer}
 #mp-inv button.go{background:rgba(89,255,90,.25);border-color:var(--g)}
 .mprank{display:flex;align-items:center;gap:10px;padding:10px 12px;margin:6px 0;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:16px}
@@ -180,7 +180,7 @@
       panel.id = "mp"; panel.innerHTML = '<div class="box"></div>'; document.body.appendChild(panel);
       const box = panel.querySelector(".box");
       const inv = document.createElement("div"); inv.id = "mp-inv"; document.body.appendChild(inv);
-      let statusEl = null, invT = 0;
+      let statusEl = null, invT = 0, invT2 = 0;
       const btn = te("btn-mp");
       function refreshUI() {
         if (btn) { btn.textContent = net.inRoom ? "\u{1F465} " + (net.order.length || 1) : "\u{1F465}"; btn.classList.toggle("on", net.inRoom); }
@@ -236,15 +236,23 @@
           const st3 = o.stations.find((s2) => s2.id === p.station);
           if (st3) { CP = null; Ys(); net.sendCompJoin(p.cid); toast("Ihr spielt dieselben Fragen."); beginComp(st3, p.ids, p.cid, { id: p.from, name: p.fromName }); return; }
         }
-        if (compBusy()) return;
+        if (CP && !CP.finished) return;
         const st = o.stations.find((s2) => s2.id === p.station);
-        if (!st || !xn[st.id]) return;
-        inv.innerHTML = "<b>\u{1F3C6} " + esc(p.fromName || "Ein Freund") + " startet einen Wettbewerb</b><br><small>" + esc(st.name) + " \xB7 alle bekommen dieselben " + (p.ids ? p.ids.length : "") + ' Fragen</small><div class="row"><button class="go" id="inv-yes">Mitmachen</button><button id="inv-no">Nein danke</button></div>';
-        inv.classList.add("show"); clearTimeout(invT); invT = setTimeout(() => inv.classList.remove("show"), 40000);
-        inv.querySelector("#inv-no").onclick = () => inv.classList.remove("show");
+        const cfg = (st && xn[st.id]) || xn[Object.keys(xn)[0]];
+        if (!st || !cfg) return;
+        inv.innerHTML = '<div class="box"><div class="big">\u{1F3C6}</div><b>' + esc(p.fromName || "Ein Freund") + ' fordert dich heraus!</b><br><small>' + esc(st.name) + ' \xB7 ' + (p.ids ? p.ids.length : "") + ' gleiche Fragen f\xFCr alle \xB7 Punkte f\xFCr richtig, Zeit und Konzentration</small><div class="row"><button class="go" id="inv-yes">\u2705 Annehmen</button><button id="inv-no">\u274C Ablehnen</button></div><small id="inv-cd"></small></div>';
+        inv.classList.add("show");
+        try { navigator.vibrate && navigator.vibrate([120, 80, 120]); } catch (e) {}
+        try { const ac = new (window.AudioContext || window.webkitAudioContext)(); [660, 880].forEach((fq, k) => { const os = ac.createOscillator(), gn = ac.createGain(); os.frequency.value = fq; gn.gain.value = 0.08; os.connect(gn); gn.connect(ac.destination); os.start(ac.currentTime + k * 0.15); os.stop(ac.currentTime + k * 0.15 + 0.12); }); } catch (e) {}
+        clearTimeout(invT); clearInterval(invT2);
+        let left = 45; const cd = inv.querySelector("#inv-cd");
+        invT2 = setInterval(() => { left--; if (cd) cd.textContent = "Noch " + left + " s"; if (left <= 0) { clearInterval(invT2); inv.classList.remove("show"); } }, 1000);
+        const closeInv = () => { clearInterval(invT2); inv.classList.remove("show"); };
+        inv.querySelector("#inv-no").onclick = () => { closeInv(); net.sendCompDone({ cid: p.cid, r: 0, t: 999, n: 0, quit: 1, declined: 1 }); };
         inv.querySelector("#inv-yes").onclick = () => {
-          inv.classList.remove("show");
-          if (compBusy()) return;
+          closeInv();
+          if (CP && !CP.finished) return;
+          if (window.__quizOpen) Ys();
           net.sendCompJoin(p.cid);
           beginComp(st, p.ids, p.cid, { id: p.from, name: p.fromName });
         };
@@ -276,10 +284,12 @@
           renderRank();
         };
         CP.cancel = () => { net.sendCompDone({ cid, r: 0, t: 999, n: ids.length, quit: 1 }); CP = null; Ys(); };
-        gf(xn[st.id], CP);
+        gf(xn[st.id] || xn[Object.keys(xn)[0]], CP);
       }
       function compSeen(cid, id, name, res) {
         if (!CP || CP.cid !== cid || id === net.id) return;
+        if (res && res.declined) { CP.players.delete(id); toast((name || "Ein Spieler") + " hat abgelehnt."); if (CP.finished) renderRank(); return; }
+        if (!res && !CP.players.has(id)) toast((name || "Ein Spieler") + " macht mit!");
         const e2 = CP.players.get(id) || { id, name, done: false };
         e2.name = name || e2.name;
         if (res) { e2.done = true; e2.r = res.r; e2.t = res.t; e2.quit = !!res.quit; e2.p = res.p || 0; e2.dn = res.dn || 0; e2.dt = res.dt || 0; }
