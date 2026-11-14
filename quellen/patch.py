@@ -83,6 +83,7 @@ exec(open(D + '/patch_world.py', encoding='utf8').read())
 exec(open(D + '/patch_distract.py', encoding='utf8').read())
 exec(open(D + '/patch_house.py', encoding='utf8').read())
 exec(open(D + '/patch_cart.py', encoding='utf8').read())
+exec(open(D + '/patch_update.py', encoding='utf8').read())
 # ---------------- Stationen / Schleife / Einbau ----------------
 rep('    function It(k) {\n      Pt = k,', '    function It(k) {\n      Pt = k, window.__selSt = k,', 'Station-merken')
 rep('h.update(Q, _t, l, V.tx, V.tz, V.dist, f.safe, E)', 'MP.update(Q, _t, V.dist), h.update(Q, _t, l, V.tx, V.tz, V.dist, f.safe, E)', 'Schleife')
@@ -102,6 +103,8 @@ open(D + '/game_mp.js', 'w', encoding='utf8').write(s)
 # ---------------- HTML zusammensetzen ----------------
 head = open(D + '/part_head.html', encoding='utf8').read()
 tail = open(D + '/part_tail.html', encoding='utf8').read()
+assert head.count('<head>\n') == 1
+head = head.replace('<head>\n', '<head>\n' + UPD_HEAD)
 a = '<button class="btn" id="btn-set" title="Einstellungen" style="font-size:20px">⚙</button>'
 assert head.count(a) == 1, 'HTML btn-set'
 head = head.replace(a, a + '\n    <button class="btn" id="btn-mp" title="Zusammen spielen">👥</button>')

@@ -257,6 +257,41 @@
           beginComp(st, p.ids, p.cid, { id: p.from, name: p.fromName });
         };
       }
+
+      window.__updRow = (body) => {
+        if (body.querySelector("#upd-row")) return;
+        const SITE = "https://milos-lern-app.netlify.app/";
+        const row = document.createElement("div");
+        row.id = "upd-row";
+        row.style.cssText = "margin:12px 0;padding:10px;border:1px solid rgba(125,255,122,.4);border-radius:10px;text-align:center";
+        row.innerHTML = '<div style="font-size:13px;opacity:.85">Version: ' + esc((window.__BUILD || "?").replace("T", " ")) + '</div><button id="upd-btn" class="btn" style="margin-top:8px;min-height:42px;width:100%">\u{1F504} Nach Update suchen</button><div id="upd-msg" style="margin-top:6px;font-size:13px"></div>';
+        body.appendChild(row);
+        const msg = row.querySelector("#upd-msg"), btn = row.querySelector("#upd-btn");
+        const say = (m) => { msg.textContent = m; };
+        btn.onclick = async () => {
+          const cap = window.Capacitor, native = !!(cap && ((cap.isNativePlatform && cap.isNativePlatform()) || location.hostname === "localhost"));
+          if (!native) { say("Lade neu \u2026"); setTimeout(() => location.reload(), 300); return; }
+          btn.disabled = true; say("Suche \u2026");
+          try {
+            let txt = "";
+            const url = SITE + "?nocache=" + Date.now();
+            const http = cap.Plugins && cap.Plugins.CapacitorHttp;
+            if (http && http.get) { const r = await http.get({ url, responseType: "text", headers: { "Cache-Control": "no-cache" } }); txt = typeof r.data === "string" ? r.data : ""; if (r.status && r.status !== 200) throw new Error("Status " + r.status); }
+            else { const r = await fetch(url, { cache: "no-store" }); txt = await r.text(); }
+            const m = /window\.__BUILD="([^"]+)"/.exec(txt.slice(0, 2000));
+            if (!m || txt.length < 500000) throw new Error("Keine g\u00FCltige Version gefunden");
+            const cur = localStorage.getItem("milo_upd_build") > window.__BUILD ? localStorage.getItem("milo_upd_build") : window.__BUILD;
+            if (m[1] <= cur) { say("\u2705 Du hast schon die neueste Version."); btn.disabled = false; return; }
+            try { localStorage.setItem("milo_upd_html", txt); localStorage.setItem("milo_upd_build", m[1]); }
+            catch (e3) { throw new Error("Zu wenig Speicher auf dem Handy"); }
+            say("\u2705 Neue Version geladen. Starte neu \u2026");
+            setTimeout(() => location.reload(), 900);
+          } catch (e2) {
+            say("\u274C Kein Update m\u00F6glich: " + (e2 && e2.message ? e2.message : "keine Verbindung"));
+            btn.disabled = false;
+          }
+        };
+      };
       function startCompetition(st) {
         if (!st || !xn[st.id]) { toast("Hier gibt es keinen Wettbewerb."); return; }
         if (!net.inRoom) { toast("Erst einen Raum erstellen: oben auf \u{1F465} tippen."); return; }
