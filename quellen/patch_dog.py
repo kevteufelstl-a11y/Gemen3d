@@ -77,9 +77,19 @@ DOG_MODEL = '''      const SHIBA = ''' + SHIBA + ''';
         }
         AN.rate = 1;
         D2.idle = (D2.idle || 0) + dt2;
-        if (AN.cur !== "Idle" && AN.cur !== "Eating" && AN.cur !== "Idle_2") { play("Idle"); D2.idle = 0; }
-        else if (AN.cur === "Idle" && D2.idle > 7) { play(Math.random() < 0.5 ? "Eating" : "Idle_2"); D2.idle = 0; }
-        else if (AN.cur !== "Idle" && D2.idle > ANI[AN.cur].dur * (AN.cur === "Eating" ? 2 : 1)) { play("Idle"); D2.idle = 0; }
+        if (!D2.idleWait) D2.idleWait = 3 + Math.random() * 2;
+        const VAR = AN.cur === "Eating" || AN.cur === "Idle_2" || AN.cur === "Idle_2_HeadLow";
+        if (!VAR && AN.cur !== "Idle") { play("Idle"); D2.idle = 0; }
+        else if (!VAR && D2.idle > D2.idleWait) {
+          const r3 = Math.random();
+          play(r3 < 0.5 ? "Eating" : r3 < 0.8 ? "Idle_2_HeadLow" : "Idle_2");
+          D2.idle = 0; D2.idleWait = 0;
+        } else if (VAR && D2.idle > ANI[AN.cur].dur * (AN.cur === "Idle_2" ? 1 : 1.5)) { play("Idle"); D2.idle = 0; }
+      }
+      const vp3 = new Y();
+      function inView(C2, m2) {
+        vp3.set(C2.x, 1, C2.z).project(s);
+        return vp3.z < 1 && Math.abs(vp3.x) < m2 && Math.abs(vp3.y) < m2;
       }
       animate(0);
       g2.scale.setScalar(1.12);
@@ -156,3 +166,29 @@ cut('          D2.ph += dt2 * (3 + D2.sp * 1.4);\n',
           pickAnim(dt2);
           animate(dt2);
 ''', 'Hund-Animation')
+
+# 8) Angriff nur auf Gegner im Sichtfeld (auf dem Bildschirm sichtbar), nicht auf der ganzen Karte
+rep("""          let best = null, bd2 = 40;
+          for (const C2 of h.list) {
+            if (C2.T.fly || !C2.g.visible) continue;
+            const d2 = Math.hypot(C2.x - l.x, C2.z - l.z);""",
+    """          let best = null, bd2 = 40;
+          for (const C2 of h.list) {
+            if (C2.T.fly || !C2.g.visible || !inView(C2, 0.95)) continue;
+            const d2 = Math.hypot(C2.x - l.x, C2.z - l.z);""", 'Hund-Sichtfeld-Start')
+rep("""          let px2, pz;
+          if (best) {""",
+    """          if (!best) {
+            say("\\u{1F415} Kein Gegner im Sichtfeld");
+            return;
+          }
+          let px2, pz;
+          if (best) {""", 'Hund-Kein-Gegner')
+rep("""            let best = null, bd2 = 35;
+            for (const C2 of h.list) {
+              if (C2.T.fly || !C2.g.visible) continue;
+              const d2 = Math.hypot(C2.x - D2.x, C2.z - D2.z);""",
+    """            let best = null, bd2 = 35;
+            for (const C2 of h.list) {
+              if (C2.T.fly || !C2.g.visible || !inView(C2, 1.12)) continue;
+              const d2 = Math.hypot(C2.x - D2.x, C2.z - D2.z);""", 'Hund-Sichtfeld-Jagd')
