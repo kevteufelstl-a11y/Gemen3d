@@ -13,3 +13,20 @@ if 'windowFullscreen' not in t:
     t = re.sub(r'(<style name="AppTheme.NoActionBar"[^>]*>)', r'\1\n        <item name="android:windowFullscreen">true</item>\n        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>', t, count=1)
 open(sty, 'w', encoding='utf-8').write(t)
 print('Android-Projekt angepasst (Querformat, Vollbild)')
+
+# Feste Signatur: damit neue APKs ueber die alte installiert werden koennen (ohne Deinstallieren)
+gr = os.path.join(root, 'app/build.gradle')
+g = open(gr, encoding='utf-8').read()
+if 'milo.keystore' not in g:
+    blk = """android {
+    signingConfigs {
+        debug {
+            storeFile file('../../milo.keystore')
+            storePassword 'milolern123'
+            keyAlias 'milo'
+            keyPassword 'milolern123'
+        }
+    }"""
+    g = g.replace('android {', blk, 1)
+    open(gr, 'w', encoding='utf-8').write(g)
+    print('Feste Signatur eingetragen')
