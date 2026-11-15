@@ -86,6 +86,7 @@ exec(open(D + '/patch_cart.py', encoding='utf8').read())
 exec(open(D + '/patch_update.py', encoding='utf8').read())
 exec(open(D + '/patch_dog.py', encoding='utf8').read())
 exec(open(D + '/patch_kit.py', encoding='utf8').read())
+exec(open(D + '/patch_monsters.py', encoding='utf8').read())
 exec(open(D + '/patch_walk_trail.py', encoding='utf8').read())
 exec(open(D + '/patch_quality.py', encoding='utf8').read())
 # ---------------- Stationen / Schleife / Einbau ----------------
