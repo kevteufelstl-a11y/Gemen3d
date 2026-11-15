@@ -62,10 +62,10 @@
       kids.push(K("p", { class: "ko-small" }, x.days + " von " + x.total + " Lerntagen geschafft" + (x.lost ? "" : x.reached ? "" : " – kein Tag darf fehlen!")), K("div", { class: "rwp" }, K("i", { style: "width:" + (x.total ? Math.min(100, x.days / x.total * 100) : 0) + "%" })), RW_days(x));
       x.lost && kids.push(K("p", { class: "qmsg", style: "color:#ff8a8a" }, "Leider verpasst: " + x.missed.map((d) => RW_fd(d, { day: "numeric", month: "numeric" })).join(", ") + ". Die Monatsbelohnung entfällt in diesem Monat – ein Nachholen gibt es nicht. Nächsten Monat klappt es!"));
     }
-    if (kind === "tag" && !x.reached) kids.push(K("p", { class: "ko-small" }, "Erreiche dein Tagesziel (" + je.dailyMinutes + " Minuten lernen und Tagesprüfung), dann darfst du wählen."));
-    if (pick) kids.push(K("p", { class: "qmsg", style: "margin:4px 0" }, RW_IC[kind] + " Deine Wahl: " + pick.choice), RW_status(pick));
+    if (kind === "tag" && !x.reached) kids.push(K("p", { class: "ko-small" }, "Erreiche dein Tagesziel (" + je.dailyMinutes + " Minuten lernen und Tagesprüfung), dann darfst du eine Belohnung ziehen."));
+    if (pick) kids.push(K("p", { class: "qmsg", style: "margin:4px 0" }, RW_IC[kind] + " Du hast gezogen: " + pick.choice), RW_status(pick));
     if (pick && (pick.status === "offen" || pick.status === "bestaetigt")) kids.push(K("button", { class: "qbtn", onclick: () => RW_parentSet(kind, x) }, "\u{1F468}‍\u{1F469} Eltern: Status ändern"));
-    if (un) kids.push(K("p", { class: "qmsg", style: "color:#ffd54a" }, "\u{1F513} Freigeschaltet! Such dir eine Belohnung aus:"), ...RW_cards(kind, x, false));
+    if (un) kids.push(K("p", { class: "qmsg", style: "color:#ffd54a" }, "\u{1F513} Freigeschaltet! Lass das Glück entscheiden:"), K("button", { class: "qbtn go", onclick: (e) => RW_draw(kind, x, e.target) }, "\u{1F3B2} Belohnung ziehen"));
     else if (!pick) kids.push(...RW_cards(kind, x, true));
     return K("div", { class: "rwsec" + (un ? " un" : "") }, K("h3", {}, (x.reached ? "✅ " : x.lost ? "❌ " : "\u{1F512} ") + RW_label(kind, x)), ...kids);
   }
@@ -88,20 +88,31 @@
     document.body.append(o), setTimeout(() => o.remove(), 8000);
   }
   function RW_ask(kind, x, ic, t) {
-    ln().append(KO_box("", K("h2", {}, "\u{1F381} Das wählst du:"), K("p", { class: "qbig" }, ic + " " + t), K("p", { class: "qmsg" }, "Die Eltern bekommen deine Auswahl und bestätigen sie."), K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: (e) => RW_pick(kind, x, t, e.target) }, "Ja, das nehme ich"), K("button", { class: "qbtn", onclick: () => RW_open() }, "Zurück"))));
+    ln().append(KO_box("", K("h2", {}, "\u{1F381} Das wählst du:"), K("p", { class: "qbig" }, ic + " " + t), K("p", { class: "qmsg" }, "Die Eltern bekommen deine Belohnung und bestätigen sie."), K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: (e) => RW_pick(kind, x, t, e.target) }, "Ja, das nehme ich"), K("button", { class: "qbtn", onclick: () => RW_open() }, "Zurück"))));
   }
-  async function RW_pick(kind, x, t, btn) {
+  function RW_draw(kind, x, btn) {
+    if (RW.busy) return;
+    let l = RW_list(kind), c = l[Math.floor(Math.random() * l.length)];
+    btn.disabled = true;
+    RW_pick(kind, x, c[1], btn, c[0]);
+  }
+  async function RW_pick(kind, x, t, btn, ic) {
     if (RW.busy) return;
     RW.busy = true, btn.disabled = true;
     try {
       Pi(), await KO_call("save", { game: "milo3d_days", state: { days: ye.days } });
       let r = await KO_call("rewardPick", { kind, period: x.period, choice: t });
       r.j.error === "not_reached" && (await new Promise((s) => setTimeout(s, 1500)), await KO_call("save", { game: "milo3d_days", state: { days: ye.days } }), r = await KO_call("rewardPick", { kind, period: x.period, choice: t }));
-      if (r.j.ok) Zs("\u{1F389} Gewählt! Die Eltern bekommen deine Auswahl."), RW_open(r.j.rewards);
-      else Zs(r.j.error === "already" ? "Du hast schon gewählt." : r.j.error === "not_reached" ? "Das Ziel ist noch nicht ganz erreicht." : KO_msg(r)), RW_open();
+      if (r.j.ok && ic) RW_result(ic, t, r.j.rewards);
+      else if (r.j.ok) Zs("\u{1F389} Gezogen! Die Eltern bekommen deine Belohnung."), RW_open(r.j.rewards);
+      else Zs(r.j.error === "already" ? "Du hast schon gezogen." : r.j.error === "not_reached" ? "Das Ziel ist noch nicht ganz erreicht." : KO_msg(r)), RW_open();
     } finally {
       RW.busy = false;
     }
+  }
+  function RW_result(ic, t, d) {
+    let o = K("div", { style: "position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#000a" }, K("div", { class: "qbox rwpop", style: "max-width:80vw" }, K("div", { class: "big" }, ic), K("h2", {}, "\u{1F389} Du hast gezogen:"), K("p", { class: "qbig" }, t), K("p", { class: "qmsg" }, "Die Eltern bestätigen deine Belohnung."), K("button", { class: "qbtn go", onclick: () => (o.remove(), RW_open(d)) }, "Super!")));
+    document.body.append(o);
   }
   // Eltern am Gerät des Kindes: Elternpasswort wird nur an den Server geschickt, nie gespeichert
   function RW_parentSet(kind, x) {
