@@ -12634,7 +12634,7 @@ void main() {
       };
       im.src = 'data:image/jpeg;base64,' + src;
       if (m === 'MI_RoundTiles') tx.repeat.set(0.5, 0.5);
-      return KMATS[m] = new ae({ map: tx, roughness: 0.9 });
+      return KMATS[m] = new ae({ map: tx, roughness: 0.9, side: m === 'MI_RoundTiles' ? Ue : 0 });
     };
     const KROOF = new Ot();
     function KITROOF(fn) {
@@ -12709,6 +12709,15 @@ void main() {
       const ridgeY = at.top;
       const p = at.P(Z.w * 0.18, 0.3, 0);
       KB.emit('Prop_Chimney', p[0], ridgeY - 1.3, p[2], Z.ang * -1, 0.7, 0.7);
+      {
+        const c0 = Math.cos(Z.ang), s0 = Math.sin(Z.ang), hw = Z.w / 2 + 0.03, hd = Z.d / 2, G0 = vt, T0 = at.top;
+        const W = (x, z, y) => [Z.cx + x * c0 - z * s0, y, Z.cz + x * s0 + z * c0];
+        const pl = KB.MI_Plaster || (KB.MI_Plaster = new Ot());
+        for (const sg of [-1, 1]) {
+          const nrm = [sg * c0, 0, sg * s0];
+          pl.triS(W(sg * hw, -hd, G0), W(sg * hw, hd, G0), W(sg * hw, 0, T0), [-hd / 2, 0], [hd / 2, 0], [0, (T0 - G0) / 2], [1, 1, 1], nrm, nrm, nrm);
+        }
+      }
       for (const m in KB) m !== 'emit' && m !== 'door' && S(KB[m].toGeometry(), kitMat(m), { shadow: true, receive: true });
       S(KROOF.toGeometry(), kitMat('MI_RoundTiles'), { shadow: true, receive: true });
       o.kitHouse = window.__kitHouse = { door: KB.door, x: Z.cx, z: Z.cz, ang: Z.ang, w: Z.w, d: Z.d, floors: Math.round(vt / 3) };
@@ -12725,7 +12734,7 @@ void main() {
       let I = b > 0 ? 1 : -1, A = me(D * 7919 + 13), B = Jc(y), it = [B[0] / n + s, B[1] / n + r], Z = Cu(y), st = N / Z.area > 0.78 && N > 22, lt = Math.hypot(it[0] - pt[0], it[1] - pt[1]), St = Math.hypot(it[0] - V[0], it[1] - V[1]), j = N < 40 ? 1 : N < 120 || A() < 0.65 ? 2 : 3, vt = j * 3 + (j === 1 ? 0.5 : 0), Mt = $[A() * $.length | 0].map((Ct) => Ct * (0.85 + A() * 0.2)), Nt = et[A() * et.length | 0].map((Ct) => Ct * (0.8 + A() * 0.35)), Pt = "house";
       lt < 62 ? (Pt = "castle", vt = 10 + A() * 2, j = 3, Mt = [0.62, 0.55, 0.48]) : St < 22 && N > 120 && (Pt = "church", vt = 9, j = 3, Mt = [0.78, 0.72, 0.62]);
       let It = bt.some((Ct) => Math.hypot(it[0] - Ct[0], it[1] - Ct[1]) < 14), kt = Pt === "house" && !It && A() < 0.14 && N > 25 && D !== KIT_IDX, $t = A() * 4 | 0, ee = A() * 4 | 0;
-      if (Pt !== "castle") {
+      if (Pt !== "castle" && D !== KIT_IDX) {
         let Ct = me(D * 131 + 977);
         o.graffitiWalls = o.graffitiWalls || [];
         for (let at = 0; at < y.length; at++) {
@@ -12764,7 +12773,7 @@ void main() {
         }
         C.push(y);
       } else if (st) {
-        let Ct = Le(Math.min(Z.d, 12) * 0.36, 1.3, 4.6), at = D === KIT_IDX ? KITROOF(() => yt(Z, vt, Ct, [0.66, 0.52, 0.42], [0.9, 0.86, 0.78], A)) : yt(Z, vt, Ct, Nt, Mt, A);
+        let Ct = Le(Math.min(Z.d, 12) * 0.36, 1.3, 4.6), at = D === KIT_IDX ? KITROOF(() => yt(Z, vt, Ct, [0.5, 0.37, 0.3], [0.9, 0.86, 0.78], A)) : yt(Z, vt, Ct, Nt, Mt, A);
         D === KIT_IDX && KIT_FIN(at, Z, vt, A);
         if (A() < 0.5 && D !== KIT_IDX && wt(at.P, at.top, at.L, A), Pt === "church") {
           let F = Math.cos(Z.ang), _t = Math.sin(Z.ang), Tt = Z.cx + F * (Z.w / 2 - 1.8), Rt = Z.cz + _t * (Z.w / 2 - 1.8);

@@ -44,7 +44,7 @@ KIT_CODE = '''    const KITD = ''' + KIT + ''';
       };
       im.src = 'data:image/jpeg;base64,' + src;
       if (m === 'MI_RoundTiles') tx.repeat.set(0.5, 0.5);
-      return KMATS[m] = new ae({ map: tx, roughness: 0.9 });
+      return KMATS[m] = new ae({ map: tx, roughness: 0.9, side: m === 'MI_RoundTiles' ? Ue : 0 });
     };
     const KROOF = new Ot();
     function KITROOF(fn) {
@@ -119,6 +119,15 @@ KIT_CODE = '''    const KITD = ''' + KIT + ''';
       const ridgeY = at.top;
       const p = at.P(Z.w * 0.18, 0.3, 0);
       KB.emit('Prop_Chimney', p[0], ridgeY - 1.3, p[2], Z.ang * -1, 0.7, 0.7);
+      {
+        const c0 = Math.cos(Z.ang), s0 = Math.sin(Z.ang), hw = Z.w / 2 + 0.03, hd = Z.d / 2, G0 = vt, T0 = at.top;
+        const W = (x, z, y) => [Z.cx + x * c0 - z * s0, y, Z.cz + x * s0 + z * c0];
+        const pl = KB.MI_Plaster || (KB.MI_Plaster = new Ot());
+        for (const sg of [-1, 1]) {
+          const nrm = [sg * c0, 0, sg * s0];
+          pl.triS(W(sg * hw, -hd, G0), W(sg * hw, hd, G0), W(sg * hw, 0, T0), [-hd / 2, 0], [hd / 2, 0], [0, (T0 - G0) / 2], [1, 1, 1], nrm, nrm, nrm);
+        }
+      }
       for (const m in KB) m !== 'emit' && m !== 'door' && S(KB[m].toGeometry(), kitMat(m), { shadow: true, receive: true });
       S(KROOF.toGeometry(), kitMat('MI_RoundTiles'), { shadow: true, receive: true });
       o.kitHouse = window.__kitHouse = { door: KB.door, x: Z.cx, z: Z.cz, ang: Z.ang, w: Z.w, d: Z.d, floors: Math.round(vt / 3) };
@@ -132,5 +141,6 @@ rep('kt = Pt === "house" && !It && A() < 0.14 && N > 25,', 'kt = Pt === "house" 
 rep('if (rt(y, I, vt, j, Mt, A, { uOff: $t, vOff: ee }), Pt === "castle") {',
     'if (D === KIT_IDX ? KITB(Z, y, vt, j, I, A) : rt(y, I, vt, j, Mt, A, { uOff: $t, vOff: ee }), Pt === "castle") {', 'Kit-Waende')
 rep('at = yt(Z, vt, Ct, Nt, Mt, A);',
-    'at = D === KIT_IDX ? KITROOF(() => yt(Z, vt, Ct, [0.66, 0.52, 0.42], [0.9, 0.86, 0.78], A)) : yt(Z, vt, Ct, Nt, Mt, A);\n        D === KIT_IDX && KIT_FIN(at, Z, vt, A);', 'Kit-Dach')
+    'at = D === KIT_IDX ? KITROOF(() => yt(Z, vt, Ct, [0.5, 0.37, 0.3], [0.9, 0.86, 0.78], A)) : yt(Z, vt, Ct, Nt, Mt, A);\n        D === KIT_IDX && KIT_FIN(at, Z, vt, A);', 'Kit-Dach')
 rep('if (A() < 0.5 && wt(at.P, at.top, at.L, A), Pt === "church") {', 'if (A() < 0.5 && D !== KIT_IDX && wt(at.P, at.top, at.L, A), Pt === "church") {', 'Kit-kein-alter-Schornstein')
+rep('if (Pt !== "castle") {\n        let Ct = me(D * 131 + 977);', 'if (Pt !== "castle" && D !== KIT_IDX) {\n        let Ct = me(D * 131 + 977);', 'Kit-kein-Graffiti')
