@@ -585,7 +585,7 @@
     let cfg = KO_cfg();
     cfg.ranks && cfg.ranks.length || (cfg.ranks = rf.map((r) => [r[0], r[1]]));
     let rows = K("div", {}), draw = () => rows.replaceChildren(...cfg.ranks.map((r, i) => K("div", { class: "qrow" }, KO_in("Tage", "number", { value: r[0], onchange: (e) => r[0] = +e.target.value || 0 }), KO_in("Rang", "text", { value: r[1], onchange: (e) => r[1] = e.target.value }), K("button", { class: "qbtn", onclick: () => (cfg.ranks.splice(i, 1), draw()) }, "\u{1F5D1}"))));
-    draw(), KO_admBox("\u{1F3C6} Ränge & Belohnungen", K("p", { class: "qmsg" }, "Ränge: ab wie vielen von Eltern bestätigten Lerntagen."), rows, K("button", { class: "qbtn", onclick: () => (cfg.ranks.push([cfg.ranks.length * 10, "Neuer Rang"]), draw()) }, "➕ Rang"), K("button", { class: "qbtn go", onclick: () => KO_save(cfg, "Ränge", Ci) }, "\u{1F4BE} Speichern"), K("button", { class: "qbtn big", onclick: g_ }, "\u{1F381} Belohnungen, Noten, Schule (bisheriges Menü)"));
+    draw(), KO_admBox("\u{1F3C6} Ränge & Belohnungen", K("p", { class: "qmsg" }, "Ränge: ab wie vielen von Eltern bestätigten Lerntagen."), rows, ...RW_adminLists(cfg), K("button", { class: "qbtn", onclick: () => (cfg.ranks.push([cfg.ranks.length * 10, "Neuer Rang"]), draw()) }, "➕ Rang"), K("button", { class: "qbtn go", onclick: () => KO_save(cfg, "Ränge", Ci) }, "\u{1F4BE} Speichern"), K("button", { class: "qbtn big", onclick: g_ }, "\u{1F381} Belohnungen, Noten, Schule (bisheriges Menü)"));
   }
   function KO_admRules() {
     let cfg = KO_cfg(), R = cfg.rules || (cfg.rules = {}), num = (k, lbl, def, min, max) => {

@@ -13,7 +13,7 @@
   // ---------- Lernzeit pro Fach und pro Aufgabe ----------
   function LZ_tick(e, t) {
     let f = window.__curFi;
-    f != null && ((e.ss || (e.ss = {}))[f] = (e.ss[f] || 0) + t);
+    f != null && ((e.ss || (e.ss = {}))[f] = (e.ss[f] || 0) + t), e.ex && !e.goal && e.sec >= Ai() && (e.goal = 1, is = true, RW_goal());
   }
   function LZ_ans(d, q, ok) {
     if (window.__qStart != null) {
@@ -32,7 +32,7 @@
     !s.ex && n.ex && (s.ex = n.ex, delete s.exRun);
     for (let x of n.wr || []) (s.wr || (s.wr = [])).includes(x) || s.wr.push(x);
     (n.qn || 0) > (s.qn || 0) && (s.qn = n.qn, s.qt = n.qt);
-    (n.dn || 0) > (s.dn || 0) && (s.dn = n.dn, s.dt = n.dt);
+    (n.dn || 0) > (s.dn || 0) && (s.dn = n.dn, s.dt = n.dt), n.goal && (s.goal = 1);
   }
 
   // ---------- Leiste oben ----------

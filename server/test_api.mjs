@@ -14,6 +14,7 @@ create table public.highscores (id bigint generated always as identity primary k
 insert into public.profiles (name) values ('Admin');`);
 await db.exec(fs.readFileSync('/home/claude/gemen3d/server/01_schema.sql', 'utf8'));
 await db.exec(fs.readFileSync('/home/claude/gemen3d/server/02_api.sql', 'utf8'));
+await db.exec(fs.readFileSync('/home/claude/gemen3d/server/03_rewards.sql', 'utf8'));
 const KEY = 'MILO-TEST-1234-ABCD';
 await db.query(`insert into system_settings (k, v) values ('setup', jsonb_build_object('keyHash', $1::text, 'done', false))`, [crypto.createHash('sha256').update(KEY).digest('hex')]);
 
