@@ -3,3 +3,6 @@ base.js = Testversion 11 (entpackt). patch.py wendet 47 Aenderungen an (patch_wo
 und setzt index.html aus part_head.html + Spiel + part_tail.html zusammen.
 net.js (Realtime-Bibliothek) wird aus multinet.js + net_entry.js mit esbuild gebaut.
 patch_dog.py ersetzt den Kugel-Hund durch den animierten Shiba (Quaternius, CC0); die Animationen liegen vorgebacken in shiba_dog.json.
+patch_lernspiel.py + lernspiel.js (15.11.): Spieler-Auswahl mit Profilbildern, Lernzeit-Leiste oben, Tagespruefung (max. 5 Min.,
+heute falsch beantwortete Fragen zuerst, Zeit getrennt von der Lernzeit), Diktat und Woerter abschreiben mit Elternkontrolle,
+neue Urkunde (Vorlage im Admin-Menue hochladbar), 5 neue Ablenkungen (in patch_distract.py). Mathe bleibt unveraendert.

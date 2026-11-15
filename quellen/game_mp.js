@@ -14720,13 +14720,13 @@ void main() {
     } catch {
     }
   }
-  function hf(i, t) {
+  function hf(i, t, nd) {
     let e = ye.p[i] || (ye.p[i] = { r: 0, w: 0, c: 0, s: 0 });
     t ? (e.r = 1, e.s++) : (e.w = 1, e.c++, e.s = 0), Ti.push({ question_id: i, correct: t });
     let n = sl.get(i);
-    if (n && Ae) {
+    if (n && Ae && !nd) {
       let s = Li(), r = s.s[n.fi] || (s.s[n.fi] = { n: 0, r: 0, a: {} });
-      r.n++, t && r.r++, r.a[n.bn] = (r.a[n.bn] || 0) + 1;
+      r.n++, t && r.r++, r.a[n.bn] = (r.a[n.bn] || 0) + 1, LZ_ans(s, n, t);
     }
     is = true, Pi(), qs();
   }
@@ -14794,7 +14794,7 @@ void main() {
           ye.days[e] = n;
           continue;
         }
-        n.sec > s.sec && (s.sec = n.sec, s.s = n.s), s.idle = Math.max(s.idle || 0, n.idle || 0), s.pauses = Math.max(s.pauses || 0, n.pauses || 0), s.ok = s.ok || n.ok, s.cert = Math.max(s.cert || 0, n.cert || 0), !s.reward && n.reward && (s.reward = n.reward);
+        n.sec > s.sec && (s.sec = n.sec, s.s = n.s), s.idle = Math.max(s.idle || 0, n.idle || 0), s.pauses = Math.max(s.pauses || 0, n.pauses || 0), s.ok = s.ok || n.ok, s.cert = Math.max(s.cert || 0, n.cert || 0), !s.reward && n.reward && (s.reward = n.reward), LZ_merge(s, n);
       }
       Pi(), qs();
     } catch {
@@ -14821,7 +14821,7 @@ void main() {
   function Ys() {
     wi && (wi.style.display = "none"), window.__quizOpen = false, Xs(), Cr(false);
   }
-  function cl(i, t) {
+  function cl_old(i, t) {
     let e = ln(), n = K("input", { class: "qin", value: Ae && Ae.name || "Milo", autocomplete: "off", maxlength: 20 }), s = K("input", { class: "qin", type: "password", inputmode: "numeric", autocomplete: "off", placeholder: "Passwort (4\u20138 Ziffern)", maxlength: 8 }), r = K("p", { class: "qmsg" }, i || "Beim ersten Mal w\xE4hlst du hier dein Passwort."), a = async () => {
       let c = n.value.trim(), l = s.value.trim();
       if (!c) {
@@ -14844,7 +14844,7 @@ void main() {
     }, o = K("button", { class: "qbtn", style: t ? "" : "display:none", onclick: () => {
       Ae = { name: n.value.trim() || "Milo", pin: "", offline: true }, ol(Ae.name), qs(), Ys(), Zs("Offline: Fortschritt bleibt nur auf diesem Handy.");
     } }, "Ohne Internet spielen");
-    e.append(K("div", { class: "qbox" }, K("h2", {}, "Milos Lern-Welt"), K("p", { class: "qsub" }, "Wer spielt?"), n, s, r, K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: a }, "Los geht's"), o))), s.addEventListener("keydown", (c) => {
+    e.append(K("div", { class: "qbox splogin" }, K("h2", {}, "Milos Lern-Welt"), K("p", { class: "qsub" }, "Wer spielt?"), n, s, r, K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: a }, "Los geht's"), o))), s.addEventListener("keydown", (c) => {
       c.key === "Enter" && a();
     });
   }
@@ -14859,7 +14859,7 @@ void main() {
       i = JSON.parse(localStorage.getItem("milo3d_cred") || "null");
     } catch {
     }
-    if (!i) {
+    {
       Ae = null, cl();
       return;
     }
@@ -14887,6 +14887,7 @@ void main() {
     df = i, i && (Js = Date.now());
   }
   function aa() {
+    LZ_bar();
     if (!Ae) return;
     let i = il("qtime");
     if (!i) {
@@ -14918,9 +14919,9 @@ void main() {
     let i = Date.now(), t = Math.min(1, (i - tf) / 1e3);
     if (tf = i, !Ae || !df || ll || document.hidden) return;
     let e = Li();
-    if ((i - Js) / 1e3 < je.idleSec) {
+    if ((i - Js) / 1e3 < (window.__idleSec || je.idleSec)) {
       let s = e.sec;
-      e.sec += t, s < Ai() && e.sec >= Ai() && (ra = true, Zs("\u{1F389} " + je.dailyMinutes + " Minuten geschafft! Gleich gibt es deine Urkunde."));
+      e.sec += t, LZ_tick(e, t), s < Ai() && e.sec >= Ai() && (ra = true, Zs("\u{1F389} " + je.dailyMinutes + " Minuten geschafft! Jetzt kommt die Tagespr\xFCfung."));
     } else hl || s_(), e.idle += t;
     is = true, Math.floor(i / 1e3) % 5 === 0 && Pi(), aa();
   }, 250);
@@ -15008,15 +15009,523 @@ startxref
     for (let d of s) h.set(d, f), f += d.length;
     return new Blob([h], { type: "application/pdf" });
   }
+  // ================= Lernspiel-Erweiterung (15.11.2026) =================
+  // Spieler-Auswahl, Lernzeit-Leiste, Tagesprüfung, Diktat/Abschreiben mit Elternkontrolle, neue Urkunde.
+  // Hängt sich an die bestehenden Funktionen von Testversion 11 (Login, Lernzeit, Noten, Urkunde) an.
+  var LZ_GN = ["", "Sehr gut", "Gut", "Befriedigend", "Ausreichend", "Mangelhaft", "Ungen\xFCgend"];
+  var LZ_pct = (r, n) => n ? Math.round(r / n * 100) : 0;
+  var UK_fach = (f) => (fl[f] && fl[f].f || "Fach").replace(" bis Klasse 6", "");
+  (function LZ_css() {
+    let st = document.createElement("style");
+    st.textContent = "#lzbar{position:fixed;left:max(12px,env(safe-area-inset-left));top:max(10px,env(safe-area-inset-top));z-index:60;width:min(340px,calc(100vw - 250px));min-width:150px;box-sizing:border-box;padding:6px 10px 7px;border-radius:12px;background:rgba(8,14,12,.9);border:1px solid var(--line,#3a5);font:700 12.5px/1.25 system-ui,sans-serif;color:#fff;text-align:left;cursor:pointer;pointer-events:auto;box-shadow:0 2px 10px #0008}#lzbar .lzb{height:10px;border-radius:6px;background:rgba(255,255,255,.14);overflow:hidden;margin:4px 0 3px}#lzbar .lzb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#3fd46b,#9dff5a);transition:width .5s}#lzbar.done .lzb i{background:linear-gradient(90deg,#ffd34d,#ff9f1a)}#lzbar .lze{font-weight:600;font-size:11.5px;opacity:.9}body.lzon #title{display:none}#quiz{padding-top:78px!important}#quiz>.qbox{position:relative;z-index:2}.spgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin:12px 0}.spcard{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:14px;border:1px solid var(--line,#3a5);background:rgba(255,255,255,.06);color:#fff;font-size:16px}.spav{font-size:46px;line-height:1}.spav.big{font-size:70px}.spavs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}.spavb{font-size:30px;width:52px;height:52px;border-radius:12px;border:2px solid transparent;background:rgba(255,255,255,.06)}.spavb.on{border-color:#9dff5a;background:rgba(89,255,90,.2)}.dkword{font:700 46px/1.2 Georgia,serif;color:#fff;margin:22px 0;word-break:break-word}.dktext{text-align:left;font-size:17px;line-height:1.5;background:rgba(255,255,255,.07);padding:10px 12px;border-radius:10px;user-select:text;-webkit-user-select:text}.dknum{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px 0}.dknum .qin{width:110px;font-size:26px}.dknum .qbtn{min-width:56px;font-size:24px}.dkstat{text-align:left;margin:8px auto;max-width:340px;font-size:15px;line-height:1.6}";
+    document.head.append(st);
+  })();
+
+  // ---------- Lernzeit pro Fach und pro Aufgabe ----------
+  function LZ_tick(e, t) {
+    let f = window.__curFi;
+    f != null && ((e.ss || (e.ss = {}))[f] = (e.ss[f] || 0) + t);
+  }
+  function LZ_ans(d, q, ok) {
+    if (window.__qStart != null) {
+      let dt = Math.max(0, d.sec - window.__qStart);
+      d.qt = (d.qt || 0) + Math.min(dt, 300), d.qn = (d.qn || 0) + 1, window.__qStart = null;
+    }
+    ok || ((d.wr || (d.wr = [])).includes(q.id) || d.wr.push(q.id));
+  }
+  function LZ_merge(s, n) {
+    for (let k in n) k in s || (s[k] = n[k]);
+    let ids = new Set((s.dk || []).map((x) => x.id));
+    for (let x of n.dk || []) ids.has(x.id) || ((s.dk || (s.dk = [])).push(x), ids.add(x.id));
+    let pids = new Set((s.pend || []).map((x) => x.id));
+    for (let x of n.pend || []) pids.has(x.id) || ids.has(x.id) || (s.pend || (s.pend = [])).push(x);
+    s.pend && (s.pend = s.pend.filter((x) => !ids.has(x.id)));
+    !s.ex && n.ex && (s.ex = n.ex, delete s.exRun);
+    for (let x of n.wr || []) (s.wr || (s.wr = [])).includes(x) || s.wr.push(x);
+    (n.qn || 0) > (s.qn || 0) && (s.qn = n.qn, s.qt = n.qt);
+    (n.dn || 0) > (s.dn || 0) && (s.dn = n.dn, s.dt = n.dt);
+  }
+
+  // ---------- Leiste oben ----------
+  function LZ_loginOpen() {
+    return !!(wi && wi.style.display !== "none" && wi.querySelector(".splogin"));
+  }
+  function LZ_bar() {
+    let b = document.getElementById("lzbar");
+    if (!Ae || LZ_loginOpen()) {
+      b && (b.style.display = "none"), document.body.classList.remove("lzon");
+      return;
+    }
+    b || (b = K("div", { id: "lzbar", onclick: LZ_barTap }, K("div", {}), K("div", { class: "lzb" }, K("i")), K("div", { class: "lze" })), document.body.append(b));
+    b.style.display = "", document.body.classList.add("lzon");
+    let d = Li(), need = Ai(), done = Math.min(d.sec, need), rest = Math.max(0, Math.ceil((need - d.sec) / 60));
+    b.children[0].textContent = "⏱ " + Math.floor(done / 60) + " von " + je.dailyMinutes + " Minuten geschafft";
+    b.children[1].firstChild.style.width = done / need * 100 + "%";
+    b.children[2].textContent = d.ex ? "✅ Tagespr\xFCfung geschafft! Tippen = Urkunde" : window.__tpRun ? "\u{1F3C1} Tagespr\xFCfung l\xE4uft …" : d.sec >= need ? "\u{1F3C1} Die Tagespr\xFCfung ist bereit! Hier tippen." : "\u{1F3C1} Noch " + rest + (rest === 1 ? " Minute" : " Minuten") + " bis zur Tagespr\xFCfung";
+    b.classList.toggle("done", d.sec >= need);
+  }
+  function LZ_barTap() {
+    if (!Ae || window.__tpRun || window.__dkRun) return;
+    let d = Li();
+    if (d.sec >= Ai()) return d.ex ? Pr(Ys) : TP_offer(null, Ys);
+    window.__quizOpen || Ri();
+  }
+  setInterval(LZ_bar, 1e3);
+
+  // Knöpfe an einer Station und im Lernbuch
+  function LZ_station(st, o) {
+    let back = () => Ar(st);
+    (st.subj || []).includes(1) && o.append(K("p", { class: "qtag" }, "✍️ Mit Papier und Stift"), K("div", { class: "qrow" }, K("button", { class: "qbtn", onclick: () => DK_menu(back) }, "\u{1F3A7} Diktat"), K("button", { class: "qbtn", onclick: () => DK_copyMenu(back) }, "✏️ W\xF6rter abschreiben")));
+    LZ_extra(o, back);
+  }
+  function LZ_extra(o, back) {
+    let d = Li(), pend = DK_pendAll().length;
+    pend && o.append(K("button", { class: "qbtn big", onclick: () => DK_pendList(back) }, "\u{1F468}‍\u{1F469} Ein Erwachsener muss noch kontrollieren (" + pend + ")"));
+    d.sec >= Ai() && o.append(K("button", { class: "qbtn go big", onclick: () => d.ex ? Pr(back) : TP_offer(null, back) }, d.ex ? "\u{1F3C5} Urkunde von heute" : d.exRun ? "\u{1F3C1} Tagespr\xFCfung weitermachen" : "\u{1F3C1} Tagespr\xFCfung starten"));
+  }
+  function LZ_book(u) {
+    LZ_extra(u, Ri), Ae && !Ae.offline && Ae.name !== "Admin" && u.append(K("button", { class: "qbtn", onclick: SP_fig }, "\u{1F5BC} Mein Profilbild"));
+  }
+
+  // ---------- Spieler-Auswahl ----------
+  var SP_AV = ["\u{1F981}", "\u{1F42F}", "\u{1F436}", "\u{1F431}", "\u{1F98A}", "\u{1F43C}", "\u{1F438}", "\u{1F435}", "\u{1F984}", "\u{1F432}", "\u{1F680}", "⚽", "\u{1F3CE}️", "\u{1F996}", "\u{1F42C}", "\u{1F916}"];
+  function SP_cache(list) {
+    try {
+      list ? localStorage.setItem("milo3d_players", JSON.stringify(list)) : list = JSON.parse(localStorage.getItem("milo3d_players") || "[]");
+    } catch {
+      list = list || [];
+    }
+    return list;
+  }
+  function cl(msg) {
+    Ae = null;
+    let e = ln(), grid = K("div", { class: "spgrid" }), info = K("p", { class: "qmsg" }, msg || "Tippe auf dein Bild."), draw = (list) => {
+      grid.innerHTML = "";
+      list.length || grid.append(K("p", { class: "qmsg" }, "Noch keine Spieler da. Ein Erwachsener kann unten einen anlegen."));
+      for (let p of list) grid.append(K("button", { class: "spcard", onclick: () => SP_pw(p) }, K("span", { class: "spav" }, p.figure || "\u{1F642}"), K("b", {}, p.name)));
+    };
+    draw(SP_cache()), LZ_bar();
+    vf({ action: "listPlayers" }).then((r) => {
+      r.j && r.j.ok && grid.isConnected && draw(SP_cache(r.j.players));
+    }).catch(() => {
+      info.textContent = (msg ? msg + " " : "") + "Kein Internet. Wer sich hier schon angemeldet hat, kann trotzdem spielen.";
+    });
+    e.append(K("div", { class: "qbox splogin" }, K("h2", {}, "Milos Lern-Welt"), K("p", { class: "qsub" }, "Wer spielt?"), grid, info, K("div", { class: "qrow" }, K("button", { class: "qbtn", onclick: SP_new }, "➕ Neuer Spieler"), K("button", { class: "qbtn", onclick: () => cl_old("Eltern: Name „Admin“ und das Eltern-Passwort.", true) }, "\u{1F468}‍\u{1F469} Eltern"))));
+  }
+  async function SP_hash(n, pin) {
+    try {
+      let d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("milo3d:" + n + ":" + pin));
+      return Array.from(new Uint8Array(d)).map((b) => b.toString(16).padStart(2, "0")).join("");
+    } catch {
+      return null;
+    }
+  }
+  async function SP_saveLocal(n, pin) {
+    try {
+      let h = await SP_hash(n, pin);
+      if (!h) return;
+      let m = JSON.parse(localStorage.getItem("milo3d_lh") || "{}");
+      m[n] = h, localStorage.setItem("milo3d_lh", JSON.stringify(m));
+    } catch {
+    }
+  }
+  async function SP_checkLocal(n, pin) {
+    try {
+      let m = JSON.parse(localStorage.getItem("milo3d_lh") || "{}");
+      if (m[n]) return m[n] === await SP_hash(n, pin);
+      let c = JSON.parse(localStorage.getItem("milo3d_cred") || "null");
+      return !!(c && c.name === n && c.pin === pin);
+    } catch {
+      return false;
+    }
+  }
+  function SP_pw(p) {
+    let e = ln(), pw = K("input", { class: "qin", type: "password", inputmode: "numeric", autocomplete: "off", placeholder: "Dein Passwort", maxlength: 8 }), m = K("p", { class: "qmsg" }, "Gib dein Passwort ein. Beim ersten Mal denkst du dir eins aus: 4 bis 8 Zahlen."), busy = false, go = async () => {
+      let pin = pw.value.trim();
+      if (busy) return;
+      if (!/^[0-9]{4,8}$/.test(pin)) {
+        m.textContent = "Das Passwort hat 4 bis 8 Zahlen.";
+        return;
+      }
+      busy = true, m.textContent = "Einen Moment …", Ae = { name: p.name, pin };
+      try {
+        let u = await ss("login");
+        if (u.status === 200 && u.j.ok) return await SP_saveLocal(p.name, pin), SP_done(u.j.firstLogin, false);
+        Ae = null, m.textContent = u.status === 401 ? "Das Passwort stimmt nicht. Versuch es nochmal." : u.status === 404 ? "Diesen Spieler gibt es nicht mehr." : "Hat nicht geklappt. Versuch es nochmal.";
+      } catch {
+        if (await SP_checkLocal(p.name, pin)) return Ae.offline = true, SP_done(false, true);
+        Ae = null, m.textContent = "Kein Internet. Ohne Internet geht es nur, wenn du dich auf diesem Ger\xE4t schon einmal angemeldet hast.";
+      }
+      busy = false;
+    };
+    pw.addEventListener("keydown", (c) => {
+      c.key === "Enter" && go();
+    }), e.append(K("div", { class: "qbox splogin" }, K("div", { class: "spav big" }, p.figure || "\u{1F642}"), K("h2", {}, "Hallo " + p.name + "!"), pw, m, K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: go }, "Los geht's"), K("button", { class: "qbtn", onclick: () => cl() }, "Zur\xFCck")))), setTimeout(() => pw.focus(), 60);
+  }
+  function SP_done(first, off) {
+    ol(Ae.name), off || uf(), qs(), Ys(), LZ_bar(), Zs(first ? "Passwort gespeichert. Merk es dir gut!" : off ? "Ohne Internet: Dein Fortschritt wird sp\xE4ter \xFCbertragen." : "Hallo " + Ae.name + "! Viel Spa\xDF beim Lernen.");
+  }
+  function SP_avPick(sel, onPick) {
+    let avs = K("div", { class: "spavs" }), draw = () => {
+      avs.innerHTML = "";
+      for (let a of SP_AV) avs.append(K("button", { class: "spavb" + (a === sel ? " on" : ""), onclick: () => {
+        sel = a, onPick(a), draw();
+      } }, a));
+    };
+    return draw(), avs;
+  }
+  function SP_new() {
+    let e = ln(), sel = SP_AV[0], nm = K("input", { class: "qin", placeholder: "Spielername", maxlength: 20, autocomplete: "off" }), pp = K("input", { class: "qin", type: "password", inputmode: "numeric", autocomplete: "off", placeholder: "Eltern-Passwort", maxlength: 8 }), m = K("p", { class: "qmsg" }, "Nur f\xFCr Erwachsene. Das Kind w\xE4hlt sein Passwort bei der ersten Anmeldung selbst."), go = async () => {
+      let n = nm.value.trim();
+      if (!n) return void (m.textContent = "Bitte einen Namen eingeben.");
+      m.textContent = "Einen Moment …";
+      try {
+        let r = await vf({ action: "register", parentPin: pp.value.trim(), newName: n, figure: sel });
+        if (pp.value = "", r.j.ok) return Zs("Spieler " + r.j.name + " ist angelegt."), cl();
+        m.textContent = r.status === 401 ? "Das Eltern-Passwort stimmt nicht." : r.status === 409 ? "Diesen Namen gibt es schon." : "Hat nicht geklappt (" + (r.j.error || r.status) + ").";
+      } catch {
+        m.textContent = "Daf\xFCr braucht man Internet.";
+      }
+    };
+    e.append(K("div", { class: "qbox splogin" }, K("h2", {}, "➕ Neuer Spieler"), nm, K("p", { class: "qtag" }, "Profilbild aussuchen"), SP_avPick(sel, (a) => sel = a), pp, m, K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: go }, "Anlegen"), K("button", { class: "qbtn", onclick: () => cl() }, "Zur\xFCck"))));
+  }
+  function SP_fig() {
+    let cur = (SP_cache().find((p) => Ae && p.name === Ae.name) || {}).figure, sel = cur || SP_AV[0];
+    ln().append(K("div", { class: "qbox" }, K("h2", {}, "\u{1F5BC} Mein Profilbild"), SP_avPick(sel, (a) => sel = a), K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: async () => {
+      try {
+        let r = await ss("setFigure", { figure: sel });
+        if (r.j && r.j.ok) {
+          let L = SP_cache();
+          L.forEach((p) => p.name === Ae.name && (p.figure = sel)), SP_cache(L), Zs("Neues Bild gespeichert!");
+        } else Zs("Hat nicht geklappt.");
+      } catch {
+        Zs("Daf\xFCr braucht man Internet.");
+      }
+      Ri();
+    } }, "Speichern"), K("button", { class: "qbtn", onclick: Ri }, "Zur\xFCck"))));
+  }
+
+  // ---------- Tagesprüfung (höchstens 5 Minuten) ----------
+  var TP_MAX = 300, TP_N = 10, TP_iv = null;
+  function TP_pool(d) {
+    let out = [], seen = new Set(), add = (q) => {
+      q && !seen.has(q.id) && out.length < TP_N && (seen.add(q.id), out.push(q));
+    };
+    rl(d.wr || []).forEach((id) => add(sl.get(id)));
+    let fis = Object.keys(d.s || {}).map(Number).filter((f) => d.s[f].n);
+    fis.length || (fis = [0, 1, 2, 3]);
+    let pool = sa(fis);
+    return rl(pool.filter((q) => ye.p[q.id] && ye.p[q.id].w && !ye.p[q.id].s)).forEach(add), rl(pool.filter((q) => ye.p[q.id] && ye.p[q.id].r)).forEach(add), rl(pool).forEach(add), out;
+  }
+  function TP_offer(st, back) {
+    back = back || Ys, ra = false;
+    let d = Li();
+    if (d.ex) return Pr(back);
+    if (d.sec < Ai()) return Zs("Die Tagespr\xFCfung kommt nach " + je.dailyMinutes + " Minuten Lernen.");
+    let n = Math.min(TP_N, (d.wr || []).length);
+    ln().append(K("div", { class: "qbox" }, K("h2", {}, "\u{1F389} " + je.dailyMinutes + " Minuten geschafft!"), K("p", { class: "qsub" }, d.exRun ? "Mach mit deiner Tagespr\xFCfung weiter." : "Jetzt kommt deine Tagespr\xFCfung."), K("p", { class: "qmsg" }, "Sie dauert h\xF6chstens 5 Minuten. " + (n ? "Es kommen Fragen, die heute noch schwer waren. So siehst du, was du schon gelernt hast." : "Es kommen Fragen aus deinen F\xE4chern von heute.") + " Danach bekommst du deine Urkunde."), K("button", { class: "qbtn go big", onclick: () => TP_start(back) }, "\u{1F3C1} Pr\xFCfung starten"), K("button", { class: "qbtn big", onclick: back }, "Erst noch weiter lernen")));
+  }
+  function TP_start(back) {
+    back = back || Ys;
+    let d = Li();
+    if (d.ex) return Pr(back);
+    if (d.sec < Ai()) return TP_offer(null, back);
+    let run = d.exRun;
+    if (!run || !run.ids || !run.ids.length) {
+      let qq = TP_pool(d);
+      if (!qq.length) return d.ex = { n: 0, r: 0, a: 0, sec: 0, at: Date.now() }, is = true, Pi(), Pr(back);
+      run = d.exRun = { ids: qq.map((q) => q.id), k: 0, r: 0, used: 0 };
+    }
+    let Q = run.ids.map((id) => sl.get(id)).filter(Boolean);
+    Q.length !== run.ids.length && (run.ids = Q.map((q) => q.id), run.k = Math.min(run.k, Q.length)), Xs(), window.__curFi = null, window.__tpRun = true;
+    let last = Date.now(), hold = false, done = false, barI = null, barT = null, finish = (to) => {
+      if (done) return;
+      done = true, clearInterval(TP_iv), TP_iv = null, window.__tpRun = false, d.ex = { n: run.ids.length, r: run.r, a: run.k, sec: Math.round(run.used), at: Date.now(), to: !!to }, delete d.exRun, is = true, Pi(), Rr(false), LZ_bar(), to && Zs("⏰ Die 5 Minuten sind um. Gut gemacht!"), Pr(back);
+    };
+    TP_iv && clearInterval(TP_iv), TP_iv = setInterval(() => {
+      let now = Date.now(), dt = Math.min(1, (now - last) / 1e3);
+      if (last = now, done || hold || document.hidden || !window.__tpRun) return;
+      d.exSec = run.used += dt;
+      let left = Math.max(0, TP_MAX - run.used);
+      barI && (barI.style.width = left / TP_MAX * 100 + "%"), barT && (barT.textContent = oa(left)), Math.floor(run.used * 5) % 25 === 0 && Pi(), left <= 0 && finish(true);
+    }, 200);
+    let show = () => {
+      if (run.k >= Q.length) return finish(false);
+      let q = Q[run.k], h = mf(q), e = ln(), answered = false, left = Math.max(0, TP_MAX - run.used);
+      Cr(false), hold = false, barI = K("i", { style: "width:" + left / TP_MAX * 100 + "%" }), barT = K("span", { class: "qtime" }, oa(left));
+      let fb = K("div", { class: "qfb" }), nx = K("button", { class: "qbtn go", style: "display:none", onclick: show }, run.k + 1 >= Q.length ? "Fertig ✓" : "Weiter"), num = run.k + 1, opts = h.map((m) => K("button", { class: "qopt", onclick: () => {
+        if (answered || done) return;
+        answered = true, hold = true;
+        let ok = m === q.a;
+        ok && run.r++, run.k++, hf(q.id, ok, true), Pi(), opts.forEach((b, j) => {
+          b.disabled = true, h[j] === q.a ? b.classList.add("right") : h[j] === m && b.classList.add("wrong");
+        }), fb.textContent = (ok ? "✓ Richtig! " : "✗ Leider falsch. ") + (q.e || ""), fb.className = "qfb " + (ok ? "ok" : "bad"), nx.style.display = "";
+      } }, q.o[m]));
+      e.append(K("div", { class: "qbox" }, K("div", { class: "qhead" }, K("h2", {}, "\u{1F3C1} Tagespr\xFCfung"), K("button", { class: "qx", onclick: () => {
+        hold = true, confirm("Pr\xFCfung unterbrechen? Du kannst sp\xE4ter weitermachen.") ? (done = true, clearInterval(TP_iv), TP_iv = null, window.__tpRun = false, Pi(), back()) : hold = answered;
+      } }, "✕")), K("div", { class: "qbar t" }, barI, barT), K("p", { class: "qtag" }, "Frage " + num + " von " + Q.length + " \xB7 " + UK_fach(q.fi)), K("p", { class: "qq" }, q.q), K("div", { class: "qopts" }, opts), fb, K("div", { class: "qrow" }, nx)));
+    };
+    show();
+  }
+
+  // ---------- Deutsch: Diktat und Wörter abschreiben ----------
+  var DK_S = ["Der Hund spielt im Garten.", "Mama kauft frisches Brot beim B\xE4cker.", "Im Winter f\xE4llt oft Schnee.", "Die Katze schl\xE4ft auf dem Sofa.", "Wir fahren mit dem Fahrrad zur Schule.", "Der Vogel sitzt auf dem Dach.", "Am Wochenende besuchen wir die Oma.", "Mein Bruder trinkt gern kalte Milch.", "Die Kinder springen in den Bach.", "Im Wald wohnen viele Tiere.", "Papa repariert das alte Auto.", "Die Sonne scheint hell am Himmel.", "Ich lese gern spannende B\xFCcher.", "Der Lehrer schreibt an die Tafel.", "Nach dem Essen putze ich die Z\xE4hne.", "Der Igel sucht im Herbst Futter.", "Wir backen einen leckeren Kuchen.", "Die Blumen brauchen viel Wasser.", "Unser Haus hat eine gr\xFCne T\xFCr.", "Der Bauer f\xFCttert die K\xFChe.", "Im Sommer gehen wir schwimmen.", "Meine Freundin hat einen kleinen Hasen.", "Der Zug f\xE4hrt p\xFCnktlich ab.", "Die Stra\xDFe ist heute sehr nass.", "Ich packe meine Tasche f\xFCr morgen.", "Der Fu\xDFball liegt hinter der Hecke.", "Am Abend wird es schnell dunkel.", "Die Maus l\xE4uft schnell in ihr Loch.", "Wir spielen drau\xDFen Verstecken.", "Der Drache fliegt hoch \xFCber das Feld.", "Im K\xFChlschrank steht ein Glas Saft.", "Der Hund bellt laut am Zaun.", "Lisa malt ein sch\xF6nes Bild.", "Die Ente schwimmt auf dem See.", "Opa erz\xE4hlt uns eine lustige Geschichte.", "Morgen schreiben wir einen Test.", "Der B\xE4cker steht sehr fr\xFCh auf.", "Die Eule schl\xE4ft am Tag.", "Im Herbst fallen die bunten Bl\xE4tter.", "Ich helfe meiner Mutter in der K\xFCche."];
+  var DK_W = "Fahrrad Schule Kuchen Wasser Fenster Br\xFCcke Hexe Zucker Katze Pflaume Stra\xDFe Fu\xDFball Gl\xFCck Sonne spielen laufen springen schreiben sch\xF6n gro\xDF klein M\xFCtze Schnee Igel Biene Wiese Ziege K\xFCche B\xE4ume H\xE4user Freund Wolke Regen Blitz Stuhl Tisch Lehrer Pferd Vogel Fisch Nacht Mittag Apfel Birne Kirsche Schatz Ritter Burg Drache Zahn Uhr Jacke Hose Schuhe Tasche Heft Stift Lineal Rucksack Kerze Licht dunkel hell kalt warm Winter Sommer Herbst Fr\xFChling Eule Fuchs Hase Maus Zebra Affe Krokodil Schmetterling Rakete Stern Mond Insel Schiff Wellen Sand Muschel Bahnhof Ampel Polizei Feuerwehr Brot Butter K\xE4se Nudeln Suppe L\xF6ffel Gabel Messer Teller Becher fr\xF6hlich m\xFCde mutig leise laut".split(" ");
+  var DK_TYP = { diktat: "Diktat", abschreiben: "W\xF6rter abschreiben" };
+  function DK_fresh(key, all, need, size) {
+    let used = ye[key] || (ye[key] = []), pool = all.map((x, i) => i).filter((i) => !used.includes(i));
+    pool.length < need && (used.length = 0, pool = all.map((x, i) => i));
+    let out = [], n = 0;
+    for (let i of rl(pool)) {
+      if (n >= need) break;
+      out.push(i), n += size(all[i]);
+    }
+    return used.push(...out), used.length > all.length - need && used.splice(0, used.length - (all.length - need)), out.map((i) => all[i]);
+  }
+  function DK_web(t) {
+    let S = window.speechSynthesis;
+    if (!S) return Zs("Vorlesen geht auf diesem Ger\xE4t leider nicht.");
+    S.cancel();
+    let u = new SpeechSynthesisUtterance(t), v = S.getVoices().find((x) => /^de/i.test(x.lang));
+    u.lang = "de-DE", u.rate = 0.8, v && (u.voice = v), S.speak(u);
+  }
+  function DK_speak(t) {
+    let C = window.Capacitor, P = C && C.Plugins && C.Plugins.TextToSpeech;
+    if (P && C.isNativePlatform && C.isNativePlatform()) {
+      Promise.resolve(P.stop && P.stop()).catch(() => {
+      }).then(() => P.speak({ text: t, lang: "de-DE", rate: 0.75, pitch: 1, volume: 1, category: "playback" })).catch(() => DK_web(t));
+      return;
+    }
+    DK_web(t);
+  }
+  function DK_begin() {
+    Cr(true), window.__curFi = 1, window.__idleSec = 180, window.__dkRun = true;
+  }
+  function DK_end() {
+    Cr(false), window.__curFi = null, window.__idleSec = 0, window.__dkRun = false;
+    try {
+      window.speechSynthesis && speechSynthesis.cancel();
+    } catch {
+    }
+  }
+  function DK_choice(label, list, cur, set) {
+    return [K("p", { class: "qsub" }, label), K("div", { class: "qrow" }, list.map(([v, t]) => K("button", { class: "qbtn" + (v === cur ? " go" : ""), onclick: () => set(v) }, t)))];
+  }
+  function DK_menu(back) {
+    let mode = 1, len = 12, box = K("div", { class: "qbox" }), draw = () => {
+      box.innerHTML = "", box.append(K("div", { class: "qhead" }, K("h2", {}, "\u{1F3A7} Diktat"), K("button", { class: "qx", onclick: back }, "✕")), K("p", { class: "qmsg" }, "Leg ein Blatt Papier und einen Stift bereit. Ich lese dir S\xE4tze vor. Du schreibst sie auf. Erst wenn du auf „Weiter“ tippst, lese ich weiter."), ...DK_choice("Wie soll ich vorlesen?", [[1, "Wort f\xFCr Wort"], [2, "Immer 2 W\xF6rter"], [3, "Ganzer Satz"]], mode, (v) => (mode = v, draw())), ...DK_choice("Wie lang?", [[12, "Kurz"], [20, "Mittel"], [30, "Lang"]], len, (v) => (len = v, draw())), K("button", { class: "qbtn go big", onclick: () => DK_diktat(back, mode, len) }, "\u{1F3A7} Diktat starten"));
+    };
+    draw(), ln().append(box);
+  }
+  function DK_copyMenu(back) {
+    let len = 10, box = K("div", { class: "qbox" }), draw = () => {
+      box.innerHTML = "", box.append(K("div", { class: "qhead" }, K("h2", {}, "✏️ W\xF6rter abschreiben"), K("button", { class: "qx", onclick: back }, "✕")), K("p", { class: "qmsg" }, "Leg ein Blatt Papier und einen Stift bereit. Hier kommt immer ein Wort. Schreib es genau ab. Dann tippst du auf „Weiter“."), ...DK_choice("Wie viele W\xF6rter?", [[10, "10"], [15, "15"], [20, "20"]], len, (v) => (len = v, draw())), K("button", { class: "qbtn go big", onclick: () => DK_copy(back, len) }, "✏️ Los geht's"));
+    };
+    draw(), ln().append(box);
+  }
+  function DK_abort(back) {
+    confirm("Wirklich aufh\xF6ren? Dann wird diese Aufgabe nicht gewertet.") && (DK_end(), back());
+  }
+  function DK_diktat(back, mode, len) {
+    let sents = DK_fresh("dkUsedS", DK_S, len, (s) => s.split(" ").length), chunks = [];
+    for (let s of sents) {
+      let w = s.split(" "), step = mode === 3 ? w.length : mode;
+      for (let i = 0; i < w.length; i += step) chunks.push({ t: w.slice(i, i + step).join(" "), end: i + step >= w.length });
+    }
+    let e = ln(), s0 = Li().sec, k = -1;
+    DK_begin();
+    let info = K("p", { class: "qbig" }, "\u{1F3A7}"), hint = K("p", { class: "qmsg" }, "Tippe auf Start. Dann h\xF6rst du den ersten Teil."), again = K("button", { class: "qbtn", style: "display:none", onclick: () => k >= 0 && DK_speak(chunks[k].t) }, "\u{1F501} Nochmal h\xF6ren"), next = K("button", { class: "qbtn go big", onclick: () => {
+      if (k >= chunks.length - 1) return DK_finish(back, { typ: "diktat", text: sents.join(" "), n: sents.join(" ").split(" ").length, mode, sec: Li().sec - s0 });
+      k++, DK_speak(chunks[k].t), info.textContent = "Teil " + (k + 1) + " von " + chunks.length, hint.textContent = chunks[k].end ? "Satzende: Punkt nicht vergessen! Ein neuer Satz f\xE4ngt gro\xDF an." : "Schreib auf, was du geh\xF6rt hast.", again.style.display = "", next.textContent = k >= chunks.length - 1 ? "✓ Fertig geschrieben" : "Weiter ▶";
+    } }, "▶ Start");
+    e.append(K("div", { class: "qbox" }, K("div", { class: "qhead" }, K("h2", {}, "\u{1F3A7} Diktat"), K("button", { class: "qx", onclick: () => DK_abort(back) }, "✕")), K("p", { class: "qtag" }, sents.length + " S\xE4tze \xB7 " + ["", "Wort f\xFCr Wort", "Immer 2 W\xF6rter", "Ganzer Satz"][mode]), info, hint, again, next));
+  }
+  function DK_copy(back, len) {
+    let words = DK_fresh("dkUsedW", DK_W, len, () => 1), e = ln(), s0 = Li().sec, k = 0;
+    DK_begin();
+    let w = K("div", { class: "dkword" }, words[0]), info = K("p", { class: "qtag" }, "Wort 1 von " + words.length), next = K("button", { class: "qbtn go big", onclick: () => {
+      if (k >= words.length - 1) return DK_finish(back, { typ: "abschreiben", text: words.join(", "), words, n: words.length, sec: Li().sec - s0 });
+      k++, w.textContent = words[k], info.textContent = "Wort " + (k + 1) + " von " + words.length, k >= words.length - 1 && (next.textContent = "✓ Fertig geschrieben");
+    } }, words.length > 1 ? "Weiter ▶" : "✓ Fertig geschrieben");
+    e.append(K("div", { class: "qbox" }, K("div", { class: "qhead" }, K("h2", {}, "✏️ Abschreiben"), K("button", { class: "qx", onclick: () => DK_abort(back) }, "✕")), info, w, K("p", { class: "qmsg" }, "Schreib das Wort genau so ab, wie es hier steht."), next));
+  }
+  function DK_finish(back, it) {
+    DK_end();
+    let d = Li();
+    it.id = "dk" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), it.day = Tr(), it.at = Date.now(), it.sec = Math.round(it.sec), (d.pend || (d.pend = [])).push(it), is = true, Pi(), Rr(false), ln().append(K("div", { class: "qbox" }, K("h2", {}, "\u{1F31F} Super, fertig!"), K("p", { class: "qsub" }, "Jetzt schaut ein Erwachsener nach, wie du geschrieben hast."), K("p", { class: "qmsg" }, "Daf\xFCr braucht man das Eltern-Passwort."), K("button", { class: "qbtn go big", onclick: () => DK_check(it, back) }, "\u{1F468}‍\u{1F469} Erwachsener kontrolliert jetzt"), K("button", { class: "qbtn big", onclick: back }, "Sp\xE4ter kontrollieren")));
+  }
+  function DK_pendAll() {
+    let out = [];
+    for (let k of Object.keys(ye.days || {}).sort()) for (let x of ye.days[k].pend || []) out.push(x);
+    return out;
+  }
+  function DK_pendList(back) {
+    let L = DK_pendAll();
+    if (!L.length) return back();
+    ln().append(K("div", { class: "qbox" }, K("div", { class: "qhead" }, K("h2", {}, "\u{1F468}‍\u{1F469} Noch zu kontrollieren"), K("button", { class: "qx", onclick: back }, "✕")), L.map((x) => K("button", { class: "qbtn big", onclick: () => DK_check(x, () => DK_pendList(back)) }, DK_TYP[x.typ] + " \xB7 " + x.n + " W\xF6rter \xB7 " + new Date(x.at).toLocaleDateString("de-DE")))));
+  }
+  function DK_check(it, back) {
+    Mf(() => DK_checkScreen(it, back));
+  }
+  function DK_checkScreen(it, back) {
+    let d = ye.days[it.day];
+    if (!d || !(d.pend || []).some((x) => x.id === it.id)) return Zs("Diese Aufgabe ist schon kontrolliert."), back();
+    let inp = K("input", { class: "qin", type: "number", inputmode: "numeric", min: 0, max: it.n, value: "0" }), m = K("p", { class: "qmsg" }), val = () => parseInt(inp.value, 10), set = (v) => {
+      inp.value = String(Math.max(0, Math.min(it.n, (isNaN(v) ? 0 : v))));
+    }, text = it.typ === "abschreiben" ? K("ol", { class: "dktext" }, (it.words || it.text.split(", ")).map((w) => K("li", {}, w))) : K("div", { class: "dktext" }, it.text);
+    ln().append(K("div", { class: "qbox" }, K("div", { class: "qhead" }, K("h2", {}, "\u{1F468}‍\u{1F469} Kontrolle: " + DK_TYP[it.typ]), K("button", { class: "qx", onclick: back }, "✕")), K("p", { class: "qtag" }, (Ae && Ae.name || "") + " \xB7 " + new Date(it.at).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" }) + " \xB7 " + it.n + " W\xF6rter"), K("p", { class: "qmsg" }, "So h\xE4tte es richtig hei\xDFen m\xFCssen:"), text, K("p", { class: "qsub" }, "Wie viele W\xF6rter sind falsch geschrieben?"), K("div", { class: "dknum" }, K("button", { class: "qbtn", onclick: () => set(val() - 1) }, "−"), inp, K("button", { class: "qbtn", onclick: () => set(val() + 1) }, "+")), m, K("button", { class: "qbtn go big", onclick: () => {
+      let w = val();
+      if (isNaN(w) || w < 0 || w > it.n) return void (m.textContent = "Bitte eine Zahl von 0 bis " + it.n + " eingeben.");
+      if (!confirm(w + " von " + it.n + " W\xF6rtern falsch. Kontrolle best\xE4tigen?")) return;
+      let res = { id: it.id, typ: it.typ, n: it.n, wrong: w, right: it.n - w, err: Math.round(w / it.n * 1e3) / 10, pct: LZ_pct(it.n - w, it.n), sec: it.sec, mode: it.mode, at: it.at, ct: Date.now(), ok: 1, by: "Eltern" };
+      res.note = r_(res.pct), (d.dk || (d.dk = [])).some((x) => x.id === it.id) || d.dk.push(res), d.pend = d.pend.filter((x) => x.id !== it.id), is = true, Pi(), Rr(false), DK_result(res, back);
+    } }, "✓ Kontrolle best\xE4tigen")));
+  }
+  function DK_result(r, back) {
+    let msg = r.pct >= 95 ? "Wow, fast alles richtig! Super geschrieben!" : r.pct >= 80 ? "Toll gemacht! Nur ein paar W\xF6rter waren schwer." : r.pct >= 50 ? "Gut ge\xFCbt! Ein paar W\xF6rter \xFCben wir noch." : "Danke f\xFCrs Schreiben! Jedes Mal wirst du ein St\xFCck besser.";
+    ln().append(K("div", { class: "qbox" }, K("h2", {}, "✍️ " + DK_TYP[r.typ]), K("p", { class: "qbig" }, r.right + " von " + r.n + " richtig"), K("p", { class: "qsub" }, msg), K("div", { class: "dkstat" }, K("div", {}, "W\xF6rter insgesamt: " + r.n), K("div", {}, "Richtig: " + r.right), K("div", {}, "Falsch: " + r.wrong), K("div", {}, "Fehlerquote: " + String(r.err).replace(".", ",") + " %"), K("div", {}, "Schreibzeit: " + oa(r.sec) + " Minuten"), K("div", {}, "Leistung: " + r.pct + " %"), K("b", {}, "Note: " + r.note + " (" + LZ_GN[r.note] + ")")), K("button", { class: "qbtn go big", onclick: back }, "Weiter")));
+  }
+
+  // ---------- Urkunde ----------
+  var UK_tpl = null;
+  function UK_loadTpl(cb) {
+    let src = Ne && Ne.certTpl;
+    if (!src) return UK_tpl = null, false;
+    if (UK_tpl && UK_tpl.__src === src) return UK_tpl.complete && UK_tpl.naturalWidth > 0;
+    return UK_tpl = new Image(), UK_tpl.__src = src, UK_tpl.onload = () => cb && cb(), UK_tpl.src = src, false;
+  }
+  function UK_rows(d) {
+    let rows = [];
+    for (let f of Object.keys(d.s || {})) {
+      let x = d.s[f];
+      x && x.n && rows.push({ name: UK_fach(f), r: x.r, n: x.n, unit: "Aufgaben", fi: +f });
+    }
+    for (let typ of ["diktat", "abschreiben"]) {
+      let L = (d.dk || []).filter((x) => x.typ === typ);
+      L.length && rows.push({ name: "Deutsch \xB7 " + (typ === "diktat" ? "Diktat" : "Abschreiben"), r: L.reduce((a, x) => a + x.right, 0), n: L.reduce((a, x) => a + x.n, 0), unit: "W\xF6rter", dk: true });
+    }
+    return d.ex && d.ex.n && rows.push({ name: "Tagespr\xFCfung", r: d.ex.r, n: d.ex.n, unit: "Fragen", exam: true }), rows.forEach((x) => (x.pct = LZ_pct(x.r, x.n), x.note = r_(x.pct))), rows;
+  }
+  function UK_prev(today) {
+    let keys = Object.keys(ye.days || {}).filter((k) => k < today).sort().reverse();
+    for (let k of keys) {
+      let d = ye.days[k];
+      if (d && d.s && Object.values(d.s).some((x) => x.n >= 3)) return [k, d];
+    }
+    return null;
+  }
+  function UK_compare(d, key) {
+    let p = UK_prev(key);
+    if (!p) return "Heute ist dein erster Lerntag zum Vergleichen. Morgen kannst du sehen, ob du noch besser geworden bist.";
+    let [pk, pd] = p, r1 = 0, n1 = 0, r0 = 0, n0 = 0, names = [];
+    for (let f in d.s || {}) {
+      let a = d.s[f], b = pd.s[f];
+      a && b && a.n >= 3 && b.n >= 3 && (r1 += a.r, n1 += a.n, r0 += b.r, n0 += b.n, names.push(UK_fach(f)));
+    }
+    let y = new Date(key + "T12:00:00");
+    y.setDate(y.getDate() - 1);
+    let when = Tr(y) === pk ? "gestern" : "beim letzten Mal (" + new Date(pk + "T12:00:00").toLocaleDateString("de-DE") + ")";
+    if (!n1) return "Heute hast du andere F\xE4cher ge\xFCbt als " + when + ". Darum vergleichen wir heute nicht.";
+    let a = LZ_pct(r1, n1), b = LZ_pct(r0, n0), what = " (" + names.join(", ") + ")";
+    return a - b >= 5 ? "Heute warst du besser als " + when + what + ": " + a + " % statt " + b + " % richtig. Super!" : b - a >= 5 ? "Heute war es etwas schwerer als " + when + what + ": " + a + " % statt " + b + " % richtig. Das ist ganz normal. Beim n\xE4chsten Mal klappt es wieder besser!" : "Du warst genauso gut wie " + when + what + ": " + a + " % richtig. Toll, dass du dranbleibst!";
+  }
+  function UK_data(d) {
+    let key = Object.keys(ye.days).find((k) => ye.days[k] === d) || Tr(), rows = UK_rows(d), tot = rows.length ? Math.round(rows.reduce((a, x) => a + x.pct, 0) / rows.length) : null, subj = [], ss = d.ss || {};
+    for (let f of Object.keys(d.s || {})) d.s[f].n && subj.push(UK_fach(f) + (ss[f] >= 30 ? " (" + Math.round(ss[f] / 60) + " Min.)" : ""));
+    (d.dk || []).length && !subj.some((x) => x.startsWith("Deutsch")) && subj.push("Deutsch (Diktat/Abschreiben)");
+    let dn = d.dn || 0, dt = d.dt || 0, ign = dn - dt, star = dn ? (ign / dn >= 0.8 ? 3 : ign / dn >= 0.55 ? 2 : 1) : 3, conc = (dn ? "Von " + dn + " Ablenkungen hast du " + ign + " nicht beachtet. " : "Heute kamen keine Ablenkungen. ") + (d.pauses ? "Du hast " + d.pauses + " Mal eine kleine Pause gemacht." : "Du warst die ganze Zeit dabei."), avg = d.qn ? Math.round(d.qt / d.qn) : null, dkSec = (d.dk || []).reduce((a, x) => a + (x.sec || 0), 0), speed = (avg != null ? "F\xFCr eine Aufgabe hast du im Durchschnitt " + Math.max(1, avg) + (avg <= 1 ? " Sekunde" : " Sekunden") + " gebraucht." : "Heute gab es keine Quiz-Aufgaben.") + (dkSec ? " Geschrieben hast du " + Math.max(1, Math.round(dkSec / 60)) + " Minuten." : ""), pos = tot == null ? "Toll, dass du heute gelernt hast!" : tot >= 90 ? "Wow! Du hast heute ganz toll gelernt. Darauf kannst du stolz sein!" : tot >= 70 ? "Heute hast du schon richtig viel geschafft! Du wirst jeden Tag ein kleines St\xFCck besser." : tot >= 50 ? "Du hast dich heute besonders angestrengt. Ein paar Aufgaben waren noch schwierig. Das schaffen wir beim n\xE4chsten Mal!" : "Toll, dass du heute so flei\xDFig gelernt hast! Schwere Aufgaben machen dich stark. Du wirst jeden Tag ein kleines St\xFCck besser.", math = rows.find((x) => x.fi === 0), dkr = rows.filter((x) => x.dk), tip;
+    tip = dn && dt / dn > 0.4 ? "Wenn etwas Lustiges kommt: Mach erst die Aufgabe fertig. Dann darfst du schauen." : dkr.some((x) => x.pct < 80) ? "Lass dir beim Schreiben etwas mehr Zeit. Sprich das Wort leise mit." : avg != null && avg < 6 && tot != null && tot < 70 ? "Lies die Aufgabe erst einmal ganz in Ruhe." : math && math.pct < 70 ? "Schau dir die Zahlen genau an." : (d.pauses || 0) > 2 ? "Trink vor dem Lernen etwas Wasser. Dann bleibst du besser dran." : ["Lies die Aufgabe erst einmal ganz in Ruhe.", "Du schaffst das! \xDCbung macht dich immer besser.", "Lies jede Antwort einmal ganz durch, bevor du tippst.", "Wenn du unsicher bist: Atme einmal tief durch und \xFCberleg nochmal."][key.split("-").reduce((a, x) => a + +x, 0) % 4];
+    return { key, rows, tot, subj, star, conc, speed, cmp: UK_compare(d, key), pos, tip };
+  }
+  function UK_wrap(r, t, x, y, w, lh) {
+    let words = String(t).split(" "), line = "";
+    for (let c of words) {
+      let l = line ? line + " " + c : c;
+      r.measureText(l).width > w && line ? (r.fillText(line, x, y), line = c, y += lh) : line = l;
+    }
+    return r.fillText(line, x, y), y + lh;
+  }
+  function UK_render(r, d, D, W, H, f, tpl) {
+    let F = (px, st) => (st || "") + " " + Math.round(px * f) + "px Georgia,serif", red = "#7a1f1f", ink = "#2e2210", L = 130, R = W - 130, CW = R - L;
+    if (tpl) r.drawImage(tpl, 0, 0, W, H);
+    else {
+      let g = r.createLinearGradient(0, 0, W, H);
+      g.addColorStop(0, "#f6e7c1"), g.addColorStop(0.5, "#efd9a3"), g.addColorStop(1, "#e3c78a"), r.fillStyle = g, r.fillRect(0, 0, W, H), r.strokeStyle = red, r.lineWidth = 14, r.strokeRect(50, 50, W - 100, H - 100), r.strokeStyle = "#b8892b", r.lineWidth = 5, r.strokeRect(78, 78, W - 156, H - 156);
+    }
+    r.textAlign = "center", r.fillStyle = red, r.font = F(92, "bold"), r.fillText("⚔ URKUNDE ⚔", W / 2, 200 * f + 10), r.fillStyle = ink, r.font = F(38, "italic"), r.fillText("f\xFCr flei\xDFiges Lernen", W / 2, 262 * f + 10), r.font = F(64, "bold"), r.fillText(Ae && Ae.name || "Milo", W / 2, 360 * f + 10);
+    let dt = new Date(D.key + "T12:00:00"), y = 420 * f + 10;
+    r.font = F(32), y = UK_wrap(r, "hat am " + dt.toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) + ", ganze " + Math.round(d.sec / 60) + " Minuten gelernt" + (d.ex && d.ex.n ? " und die Tagespr\xFCfung geschafft." : "."), W / 2, y, CW, 42 * f), y += 8 * f, r.textAlign = "left";
+    let sec = (h, t) => {
+      r.fillStyle = red, r.font = F(31, "bold"), r.fillText(h, L, y), y += 40 * f, r.fillStyle = ink, r.font = F(28), y = UK_wrap(r, t, L, y, CW, 36 * f) + 10 * f;
+    };
+    sec("\u{1F4DA} Das hast du heute ge\xFCbt", D.subj.join(", ") || "–"), sec("\u{1F3AF} Konzentration  " + "★".repeat(D.star) + "☆".repeat(3 - D.star), D.conc), sec("⏱ Aufgabenzeit", D.speed), sec("\u{1F4C8} Vergleich", D.cmp), r.fillStyle = red, r.font = F(34, "bold italic"), r.textAlign = "center", y = UK_wrap(r, D.pos, W / 2, y + 12 * f, CW, 44 * f) + 6 * f, r.textAlign = "left", sec("\u{1F4A1} Tipp f\xFCr morgen", D.tip);
+    let cx = [L, L + CW * 0.48, L + CW * 0.66, L + CW * 0.8];
+    y += 6 * f, r.fillStyle = red, r.font = F(29, "bold"), r.fillText("Bereich", cx[0], y), r.fillText("Richtig", cx[1], y), r.fillText("Prozent", cx[2], y), r.fillText("Note", cx[3], y), y += 12 * f, r.fillRect(L, y, CW, 3), y += 38 * f, r.fillStyle = ink;
+    for (let x of D.rows) r.font = F(28, x.exam ? "bold" : ""), r.fillText(x.name, cx[0], y), r.fillText(x.r + " von " + x.n, cx[1], y), r.fillText(x.pct + " %", cx[2], y), r.fillText(x.note + " " + LZ_GN[x.note], cx[3], y), y += 38 * f;
+    D.rows.length || (r.font = F(28, "italic"), r.fillText("Heute gab es noch keine bewerteten Aufgaben.", cx[0], y), y += 38 * f), r.fillStyle = red, r.fillRect(L, y - 22 * f, CW, 3), y += 22 * f, r.font = F(36, "bold"), D.tot != null && (r.fillText("Gesamtnote: " + r_(D.tot) + " (" + LZ_GN[r_(D.tot)] + ")", L, y), r.font = F(24), r.fillStyle = ink, r.fillText("Durchschnitt aller Bereiche: " + D.tot + " %", L + CW * 0.6, y), y += 34 * f);
+    let gr = je.grades, sp = [];
+    for (let i = 0; i < 6; i++) sp.push(i + 1 + " = " + (i === 0 ? "100–" + gr[0] : i === 5 ? "unter " + gr[4] : gr[i - 1] - 1 + "–" + gr[i]) + " %");
+    r.fillStyle = ink, r.font = F(20, "italic"), y = UK_wrap(r, "Notenspiegel: " + sp.join(" \xB7 "), L, y, CW, 26 * f);
+    let sy = Math.max(y + 90 * f, H - 190), half = (CW - 80) / 2;
+    return r.strokeStyle = ink, r.lineWidth = 2, r.beginPath(), r.moveTo(L, sy), r.lineTo(L + half, sy), r.moveTo(R - half, sy), r.lineTo(R, sy), r.stroke(), r.font = F(24), r.textAlign = "center", r.fillText("Unterschrift Erwachsener", L + half / 2, sy + 34), r.fillText("Unterschrift " + (Ae && Ae.name || "Kind"), R - half / 2, sy + 34), y;
+  }
+  function UK_draw(d) {
+    let W = 1240, H = 1754, c = document.createElement("canvas");
+    c.width = W, c.height = H;
+    let D = UK_data(d), paint = () => {
+      let r = c.getContext("2d"), tpl = UK_loadTpl(paint) ? UK_tpl : null;
+      for (let f of [1, 0.93, 0.86, 0.8, 0.74, 0.68]) if (r.clearRect(0, 0, W, H), UK_render(r, d, D, W, H, f, tpl) < H - 280 || f === 0.68) break;
+    };
+    return paint(), c;
+  }
+  async function UK_save(b, name) {
+    let C = window.Capacitor, P = C && C.Plugins;
+    if (P && P.Filesystem && P.Share && C.isNativePlatform && C.isNativePlatform()) try {
+      let data = await new Promise((res, rej) => {
+        let fr = new FileReader();
+        fr.onload = () => res(String(fr.result).split(",")[1]), fr.onerror = rej, fr.readAsDataURL(b);
+      }), w = await P.Filesystem.writeFile({ path: name, data, directory: "CACHE" });
+      await P.Share.share({ title: "Urkunde", text: "Meine Urkunde", url: w.uri, dialogTitle: "Urkunde speichern oder drucken" });
+      return;
+    } catch (e) {
+      if (/cancel/i.test(String(e && e.message || e))) return;
+    }
+    let s = URL.createObjectURL(b), a = K("a", { href: s, download: name });
+    document.body.append(a), a.click(), a.remove(), setTimeout(() => URL.revokeObjectURL(s), 1e4);
+  }
+  function UK_tplAdmin() {
+    let inp = K("input", { type: "file", accept: "image/*", style: "display:none" }), prev = K("div", {});
+    inp.addEventListener("change", () => {
+      let f = inp.files && inp.files[0];
+      if (!f) return;
+      let img = new Image();
+      img.onload = () => {
+        let c = document.createElement("canvas");
+        c.width = 1240, c.height = 1754, c.getContext("2d").drawImage(img, 0, 0, 1240, 1754);
+        let cfg = la(Ne);
+        cfg.certTpl = c.toDataURL("image/jpeg", 0.85), URL.revokeObjectURL(img.src), ca(cfg), UK_tplAdmin();
+      }, img.src = URL.createObjectURL(f);
+    });
+    Ne.certTpl && prev.append(K("img", { src: Ne.certTpl, style: "width:160px;border-radius:6px;margin:8px auto;display:block" }));
+    ln().append(K("div", { class: "qbox" }, K("div", { class: "qhead" }, K("h2", {}, "\u{1F5BC} Urkunden-Vorlage"), K("button", { class: "qx", onclick: Ci }, "✕")), K("p", { class: "qmsg" }, "Lade ein Bild (Hochformat, A4) hoch. Es wird f\xFCr jede Urkunde als Hintergrund benutzt. Die Texte stehen immer an der gleichen Stelle."), prev, inp, K("button", { class: "qbtn go big", onclick: () => inp.click() }, Ne.certTpl ? "Andere Vorlage w\xE4hlen" : "Vorlage w\xE4hlen"), Ne.certTpl && K("button", { class: "qbtn big", onclick: () => {
+      let cfg = la(Ne);
+      delete cfg.certTpl, ca(cfg), UK_tplAdmin();
+    } }, "Vorlage entfernen (Standard-Urkunde)"), K("button", { class: "qbtn big", onclick: () => {
+      let c = UK_draw(Li());
+      c.style.cssText = "width:100%;border-radius:8px", ln().append(K("div", { class: "qbox" }, K("h2", {}, "Vorschau"), c, K("button", { class: "qbtn", onclick: UK_tplAdmin }, "Zur\xFCck")));
+    } }, "Vorschau ansehen")));
+  }
+  window.__lz = { station: (id) => pf(id), book: () => Ri(), dist: (k) => wi && dShow(k, wi, wi.querySelector(".qbox"), Li()) };
+  // ================= Ende Lernspiel-Erweiterung =================
   function Pr(i) {
+    if (!Li().ex) return TP_offer(null, i);
     ra = false, Cr(false);
     let t = Li();
     t.cert = 1, Pi();
-    let e = l_(t);
+    let e = UK_draw(t);
     e.style.cssText = "width:100%;max-width:420px;border-radius:8px;box-shadow:0 4px 18px #000a", ln().append(K("div", { class: "qbox" }, K("h2", {}, "\u{1F3C5} Deine Urkunde"), e, K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: () => {
-      let s = URL.createObjectURL(h_(e)), r = K("a", { href: s, download: "Urkunde-" + Tr() + ".pdf" });
-      document.body.append(r), r.click(), r.remove(), setTimeout(() => URL.revokeObjectURL(s), 1e4);
-    } }, "\u2B07 PDF herunterladen"), !t.ok && K("button", { class: "qbtn boss", onclick: () => gl(t, () => Pr(i)) }, "\u{1F468}\u200D\u{1F469} Eltern best\xE4tigen"), K("button", { class: "qbtn", onclick: i }, "Weiter lernen"), K("button", { class: "qbtn", onclick: Ys }, "Schlie\xDFen"))));
+      UK_save(h_(e), "Urkunde-" + (Ae && Ae.name || "Milo") + "-" + Tr() + ".pdf");
+    } }, "\u2B07 PDF speichern / drucken"), !t.ok && K("button", { class: "qbtn boss", onclick: () => gl(t, () => Pr(i)) }, "\u{1F468}\u200D\u{1F469} Eltern best\xE4tigen"), K("button", { class: "qbtn", onclick: i }, "Weiter lernen"), K("button", { class: "qbtn", onclick: Ys }, "Schlie\xDFen"))));
   }
   var Ws, nf;
   function Zs(i) {
@@ -15037,7 +15546,7 @@ startxref
       let c = r >= a;
       o.append(K("button", { class: "qbtn big" + (c ? " boss" : ""), disabled: !c, onclick: () => gf(i) }, "\u2694 Abschlusspr\xFCfung"), K("p", { class: "qmsg" }, c ? "20 Fragen \xB7 je " + je.examSeconds + " Sekunden \xB7 Bereits falsch beantwortete kommen zuerst." : "Noch " + (a - r) + " Mathe-Fragen m\xFCssen einmal richtig sein, dann geht der Endboss auf.")), ye.ex && o.append(K("p", { class: "qmsg" }, "Beste Pr\xFCfung: " + ye.ex + " / " + je.examCount));
     }
-    Li().sec >= Ai() && o.append(K("button", { class: "qbtn", onclick: () => Pr(() => Ar(i)) }, "\u{1F3C5} Urkunde von heute")), t.append(o);
+    LZ_station(i, o), t.append(o);
   }
   function mf(i) {
     return rl([0, 1, 2, 3].slice(0, i.o.length));
@@ -15046,37 +15555,102 @@ startxref
     if (document.getElementById("dstyle")) return;
     let st = document.createElement("style");
     st.id = "dstyle";
-    st.textContent = "@keyframes dfly{0%{transform:translateX(-20vw)}100%{transform:translateX(120vw)}}@keyframes dwob{0%,100%{transform:rotate(-12deg) scale(1)}50%{transform:rotate(12deg) scale(1.15)}}.dist{position:fixed;z-index:99999;cursor:pointer;user-select:none;-webkit-user-select:none;line-height:1}";
+    st.textContent = "@keyframes dfly{0%{transform:translateX(-20vw)}100%{transform:translateX(120vw)}}@keyframes dwob{0%,100%{transform:rotate(-12deg) scale(1)}50%{transform:rotate(12deg) scale(1.15)}}.dist{position:fixed;z-index:1;cursor:pointer;user-select:none;-webkit-user-select:none;line-height:1}@keyframes dfl{0%,100%{transform:translateX(0)}50%{transform:translateX(18px) rotate(12deg)}}@keyframes dfr{0%,100%{transform:translateX(0)}50%{transform:translateX(-18px) rotate(-12deg)}}@keyframes dbo{0%,100%{transform:scale(.4);opacity:0}50%{transform:scale(1.2);opacity:1}}@keyframes dwv{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(14deg)}}.dmsg{padding:8px 12px;border-radius:14px;background:#fff8d6;color:#3a2a10;font:700 15px system-ui;box-shadow:0 2px 8px #0006;white-space:nowrap}.dfight{font-size:44px;white-space:nowrap}.dfight span{display:inline-block}.dfl{animation:dfl .45s ease-in-out infinite}.dfr{animation:dfr .45s ease-in-out infinite}.dbo{font-size:26px;animation:dbo .45s ease-in-out infinite}.dwave{display:flex;align-items:center;gap:8px}.dwv{font-size:50px;display:inline-block;animation:dwv .6s ease-in-out infinite;transform-origin:50% 90%}.dwbtn{padding:8px 12px;border-radius:12px;border:1px solid #9dff5a;background:rgba(89,255,90,.2);color:#fff;font:700 14px system-ui}.dframe{position:fixed}";
     document.head.append(st);
   }
   function dStart(box, cp) {
     let day = cp || Li();
     day.nq = (day.nq || 0) + 1;
     if (Math.random() >= (cp ? 0.5 : 0.4)) return;
-    let lvl = cp ? 2 : day.dl || 1, set = lvl === 1 ? ["\u{1F98B}", "\u{1F41D}"] : lvl === 2 ? ["\u{1F426}", "\u{1F415}", "\u{1F514}"] : ["\u{1F381}", "\u{1F388}", "\u{1F47B}"], size = lvl === 1 ? 34 : lvl === 2 ? 56 : 88;
+    let card0 = box.querySelector(".qbox");
     setTimeout(() => {
-      if (!box.isConnected) return;
+      if (!box.isConnected || box.style.display === "none" || !card0 || !card0.isConnected) return;
       dStyle();
-      let el = document.createElement("div");
-      el.className = "dist";
-      el.textContent = set[Math.floor(Math.random() * set.length)];
-      el.style.fontSize = size + "px";
-      if (lvl === 1) {
-        el.style.top = "4px";
-        el.style.animation = "dfly 6s linear forwards";
-      } else {
-        el.style.top = (25 + Math.random() * 40) + "vh";
-        el.style.animation = lvl === 2 ? "dfly 4.5s linear forwards" : "dfly 5s linear forwards, dwob .5s ease-in-out infinite";
-      }
-      day.dn = (day.dn || 0) + 1;
-      el.onclick = () => {
-        day.dt = (day.dt || 0) + 1;
-        cp || (is = true, Pi());
-        el.remove();
-      };
-      el.addEventListener("animationend", (ev) => { ev.animationName === "dfly" && el.remove(); });
-      box.append(el);
+      let kinds = ["fly", "gift", "msg", "fight", "build", "wave"], kind = cp ? "fly" : kinds[Math.floor(Math.random() * kinds.length)];
+      dShow(kind, box, card0, day, cp);
     }, 2000 + Math.random() * 6000);
+  }
+  // Freie Fläche um die Aufgabenkarte. Ablenkungen liegen HINTER der Karte (z-index), verdecken sie also nie.
+  function dSpot(card, w, h) {
+    let R = card.getBoundingClientRect(), W = innerWidth, H = innerHeight, top = R.top - 70, bot = H - R.bottom, out = [];
+    top >= h + 6 && out.push({ x: Math.max(6, Math.min(W - w - 6, R.left + Math.random() * Math.max(1, R.width - w))), y: 70 + (top - h) / 2 });
+    bot >= h + 6 && out.push({ x: Math.max(6, Math.min(W - w - 6, R.left + Math.random() * Math.max(1, R.width - w))), y: R.bottom + (bot - h) / 2 });
+    R.left >= w + 6 && out.push({ x: (R.left - w) / 2, y: R.top + Math.random() * Math.max(1, R.height - h) });
+    W - R.right >= w + 6 && out.push({ x: R.right + (W - R.right - w) / 2, y: R.top + Math.random() * Math.max(1, R.height - h) });
+    return out.length ? out[Math.floor(Math.random() * out.length)] : null;
+  }
+  function dEl(box, html, cls) {
+    let el = document.createElement("div");
+    return el.className = "dist " + (cls || ""), el.innerHTML = html, box.append(el), el;
+  }
+  function dTap(el, day, cp, after) {
+    el.onclick = () => {
+      day.dt = (day.dt || 0) + 1, cp || (is = true, Pi()), after ? after() : el.remove();
+    };
+  }
+  function dPath(R, pad, u) {
+    // Punkt auf dem Rand eines um pad vergrößerten Rechtecks, u = 0..1 (im Uhrzeigersinn ab oben links)
+    let x0 = Math.max(4, R.left - pad), y0 = Math.max(74, R.top - pad), x1 = Math.min(innerWidth - 40, R.right + pad), y1 = Math.min(innerHeight - 40, R.bottom + pad), w = x1 - x0, h = y1 - y0, P = 2 * (w + h), s = (u % 1) * P;
+    return s < w ? [x0 + s, y0] : s < w + h ? [x1, y0 + s - w] : s < 2 * w + h ? [x1 - (s - w - h), y1] : [x0, y1 - (s - 2 * w - h)];
+  }
+  function dShow(kind, box, card, day, cp) {
+    let R = card.getBoundingClientRect(), end = (el, ms) => setTimeout(() => el.isConnected && (el.style.transition = "opacity .5s", el.style.opacity = "0", setTimeout(() => el.remove(), 550)), ms);
+    if (kind === "fly") {
+      let lvl = cp ? 2 : day.dl || 1, set = lvl === 1 ? ["\u{1F98B}", "\u{1F41D}"] : lvl === 2 ? ["\u{1F426}", "\u{1F415}", "\u{1F514}"] : ["\u{1F381}", "\u{1F388}", "\u{1F47B}"], size = lvl === 1 ? 34 : lvl === 2 ? 56 : 88, el = dEl(box, set[Math.floor(Math.random() * set.length)]);
+      el.style.fontSize = size + "px", lvl === 1 ? (el.style.top = "74px", el.style.animation = "dfly 6s linear forwards") : (el.style.top = 25 + Math.random() * 40 + "vh", el.style.animation = lvl === 2 ? "dfly 4.5s linear forwards" : "dfly 5s linear forwards, dwob .5s ease-in-out infinite"), day.dn = (day.dn || 0) + 1, dTap(el, day, cp), el.addEventListener("animationend", (ev) => {
+        ev.animationName === "dfly" && el.remove();
+      });
+      return;
+    }
+    if (kind === "gift") {
+      // A: das fliegende Geschenk – kreist einmal um das Aufgabenfeld
+      let el = dEl(box, "\u{1F381}"), t0 = performance.now(), dur = 6500, u0 = Math.random();
+      el.style.fontSize = "40px", el.style.left = "0", el.style.top = "0", day.dn = (day.dn || 0) + 1, dTap(el, day, cp);
+      let step = (now) => {
+        if (!el.isConnected) return;
+        let p = (now - t0) / dur;
+        if (p >= 1) return el.remove();
+        let [x, y] = dPath(R, 26, u0 + p);
+        el.style.transform = "translate(" + (x - 20) + "px," + (y - 22) + "px) rotate(" + Math.sin(p * 30) * 15 + "deg)", requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      return;
+    }
+    if (kind === "msg" || kind === "fight" || kind === "wave") {
+      let sz = kind === "msg" ? [230, 44] : kind === "fight" ? [130, 60] : [200, 64], at = dSpot(card, sz[0], sz[1]);
+      if (!at) return dShow("gift", box, card, day, cp);
+      let el;
+      if (kind === "msg") el = dEl(box, "\u{1F426} Hallo! Nicht ablenken lassen!", "dmsg");
+      else if (kind === "fight") el = dEl(box, '<span class="dfl">\u{1F9CD}</span><span class="dbo">\u{1F4A5}</span><span class="dfr">\u{1F9CD}‍♂️</span>', "dfight");
+      else el = dEl(box, '<span class="dwv">\u{1F64B}</span>', "dwave");
+      if (el.style.left = at.x + "px", el.style.top = at.y + "px", kind === "wave") {
+        // E: die winkende Figur – zurückwinken ist freiwillig und kostet keine Sterne
+        let b = document.createElement("button");
+        b.className = "dwbtn", b.textContent = "\u{1F44B} Zur\xFCckwinken", b.onclick = (ev) => {
+          ev.stopPropagation(), day.wv = (day.wv || 0) + 1, cp || (is = true, Pi()), el.firstChild.textContent = "\u{1F970}", b.remove(), end(el, 1200);
+        }, el.append(b), end(el, 6500);
+        return;
+      }
+      day.dn = (day.dn || 0) + 1, dTap(el, day, cp), end(el, kind === "msg" ? 3500 : 5000);
+      return;
+    }
+    if (kind === "build") {
+      // D: der kleine Baumeister baut einen Rahmen um das Lernfeld
+      let pad = 10, fr = dEl(box, "", "dframe"), bars = [0, 1, 2, 3].map(() => {
+        let b = document.createElement("i");
+        return fr.append(b), b;
+      }), man = dEl(box, "\u{1F477}"), x0 = R.left - pad, y0 = R.top - pad, w = R.width + 2 * pad, h = R.height + 2 * pad, t0 = performance.now(), dur = 6e3;
+      fr.style.cssText = "left:0;top:0;pointer-events:none", man.style.fontSize = "34px", man.style.left = "0", man.style.top = "0", day.dn = (day.dn || 0) + 1, dTap(man, day, cp, () => (man.remove(), fr.remove()));
+      let B = (b, x, y, bw, bh) => b.style.cssText = "position:fixed;background:#d9a441;box-shadow:0 0 0 1px #7a4b12;left:" + x + "px;top:" + y + "px;width:" + Math.max(0, bw) + "px;height:" + Math.max(0, bh) + "px", step = (now) => {
+        if (!man.isConnected) return fr.remove();
+        let p = Math.min(1, (now - t0) / dur), q = (a) => Math.max(0, Math.min(1, (p - a) * 4)), T = 6;
+        B(bars[0], x0, y0, w * q(0), T), B(bars[1], x0 + w - T, y0, T, h * q(0.25)), B(bars[2], x0 + w - w * q(0.5), y0 + h - T, w * q(0.5), T), B(bars[3], x0, y0 + h - h * q(0.75), T, h * q(0.75));
+        let [mx, my] = p < 0.25 ? [x0 + w * q(0), y0] : p < 0.5 ? [x0 + w, y0 + h * q(0.25)] : p < 0.75 ? [x0 + w - w * q(0.5), y0 + h] : [x0, y0 + h - h * q(0.75)];
+        if (man.style.transform = "translate(" + (mx - 17) + "px," + (my - 34) + "px)", p < 1) return requestAnimationFrame(step);
+        end(man, 1500), end(fr, 1500);
+      };
+      requestAnimationFrame(step);
+    }
   }
   function dText(day) {
     if (!day.dn) return "";
@@ -15091,9 +15665,9 @@ startxref
   function u_(i) {
     Xs();
     let t = sa(i.subj), e = () => {
-      if (ra) return Pr(() => e());
+      if (ra) return TP_offer(i, () => e());
       let n = n_(t), s = ln();
-      Cr(true);
+      Cr(true), window.__qStart = Li().sec, window.__curFi = n.fi;
       let r = mf(n), a = false, o = K("div", { class: "qfb" }), c = K("button", { class: "qbtn go", style: "display:none", onclick: e }, "Weiter"), l = r.map((u) => K("button", { class: "qopt", onclick: () => {
         if (a) return;
         a = true;
@@ -15234,7 +15808,7 @@ startxref
       d && o++, a.append(K("div", { class: "qcell" + (d ? " ok" : "") + (h === e.getDate() ? " now" : "") }, d ? "\u2694" : h === e.getDate() ? "\u{1F6E1}" : String(h)));
     }
     let c = Ne.monthGoal || 20, l = t.sec >= Ai(), u = K("div", { class: "qbox" }, K("div", { class: "qhead" }, K("h2", {}, "\u{1F4D6} Mein Lernbuch"), K("button", { class: "qx", onclick: Ys }, "\u2715")), K("p", { class: "qsub" }, "\u{1F3F0} Rang: " + p_() + " \xB7 \u{1F525} Serie: " + m_() + " Tag(e)"), K("p", { class: "qmsg" }, "Heute gelernt: " + oa(t.sec) + " von " + je.dailyMinutes + ":00 Minuten" + (t.ok ? " \xB7 von Eltern best\xE4tigt \u2713" : "")), K("p", { class: "qtag" }, e.toLocaleDateString("de-DE", { month: "long", year: "numeric" }) + ": " + o + " von " + c + " Tagen"), a, K("p", { class: "qmsg" }, o >= c ? "\u{1F4B0} Monats-Schatz geschafft!" : "Noch " + (c - o) + " Tage bis zum Monats-Schatz \u{1F4B0}"), Ne.school && K("p", { class: "qmsg" }, "\u{1F4CC} In der Schule dran: " + Ne.school));
-    dText(t) && u.append(K("p", { class: "qmsg" }, dText(t))), l && u.append(K("button", { class: "qbtn go", onclick: () => Pr(Ri) }, "\u{1F3C5} Urkunde von heute")), l && !t.ok && u.append(K("button", { class: "qbtn boss", onclick: () => gl(t, Ri) }, "\u{1F468}\u200D\u{1F469} Eltern best\xE4tigen")), u.append(K("div", { class: "qrow" }, K("button", { class: "qbtn", onclick: () => Mf(bf) }, "\u{1F468}\u200D\u{1F469} Eltern-Bereich"), yf() && K("button", { class: "qbtn go", onclick: Ci }, "\u2699 Admin"), K("button", { class: "qbtn", onclick: i_ }, "Abmelden"))), i.append(u);
+    dText(t) && u.append(K("p", { class: "qmsg" }, dText(t))), LZ_book(u), l && !t.ok && u.append(K("button", { class: "qbtn boss", onclick: () => gl(t, Ri) }, "\u{1F468}\u200D\u{1F469} Eltern best\xE4tigen")), u.append(K("div", { class: "qrow" }, K("button", { class: "qbtn", onclick: () => Mf(bf) }, "\u{1F468}\u200D\u{1F469} Eltern-Bereich"), yf() && K("button", { class: "qbtn go", onclick: Ci }, "\u2699 Admin"), K("button", { class: "qbtn", onclick: i_ }, "Abmelden"))), i.append(u);
   }
   function bf() {
     let i = ln(), t = Li();
@@ -15244,7 +15818,7 @@ startxref
     } }, "\u23F1 Zeit nachtragen"), K("button", { class: "qbtn", disabled: t.sec < Ai() || t.ok, onclick: () => gl(t, Ri) }, "\u2713 Heutigen Tag best\xE4tigen"), K("div", { class: "qrow" }, K("button", { class: "qbtn", onclick: Ri }, "Zur\xFCck"))));
   }
   function Ci() {
-    ln().append(K("div", { class: "qbox" }, K("div", { class: "qhead" }, K("h2", {}, "\u2699 Admin"), K("button", { class: "qx", onclick: Ri }, "\u2715")), K("p", { class: "qmsg" }, "Hier \xE4nderst du Orte, Aufgaben und Einstellungen. Alles gilt sofort f\xFCr Milo (er braucht Internet beim App-Start)."), K("button", { class: "qbtn go big", onclick: xl }, "\u{1F4CD} Orte & Namen"), K("button", { class: "qbtn big", onclick: Sf }, "\u2795 Neue Aufgabe"), K("button", { class: "qbtn big", onclick: Ef }, "\u{1F4CB} Eigene Aufgaben (" + Ne.qs.length + ")"), K("button", { class: "qbtn big", onclick: g_ }, "\u{1F381} Belohnungen, Noten, Schule")));
+    ln().append(K("div", { class: "qbox" }, K("div", { class: "qhead" }, K("h2", {}, "\u2699 Admin"), K("button", { class: "qx", onclick: Ri }, "\u2715")), K("p", { class: "qmsg" }, "Hier \xE4nderst du Orte, Aufgaben und Einstellungen. Alles gilt sofort f\xFCr Milo (er braucht Internet beim App-Start)."), K("button", { class: "qbtn go big", onclick: xl }, "\u{1F4CD} Orte & Namen"), K("button", { class: "qbtn big", onclick: Sf }, "\u2795 Neue Aufgabe"), K("button", { class: "qbtn big", onclick: Ef }, "\u{1F4CB} Eigene Aufgaben (" + Ne.qs.length + ")"), K("button", { class: "qbtn big", onclick: g_ }, "\u{1F381} Belohnungen, Noten, Schule"), K("button", { class: "qbtn big", onclick: UK_tplAdmin }, "\u{1F5BC} Urkunden-Vorlage")));
   }
   var of = (i, t, e) => {
     let n = K("input", { type: "checkbox" });

@@ -15,6 +15,9 @@
     "esbuild": "^0.21.5",
     "@capacitor/core": "^6.1.2",
     "@capacitor/cli": "^6.1.2",
-    "@capacitor/android": "^6.1.2"
+    "@capacitor/android": "^6.1.2",
+    "@capacitor-community/text-to-speech": "^4.1.1",
+    "@capacitor/filesystem": "^6.0.0",
+    "@capacitor/share": "^6.0.0"
   }
 }

@@ -89,6 +89,7 @@ exec(open(D + '/patch_kit.py', encoding='utf8').read())
 exec(open(D + '/patch_monsters.py', encoding='utf8').read())
 exec(open(D + '/patch_walk_trail.py', encoding='utf8').read())
 exec(open(D + '/patch_quality.py', encoding='utf8').read())
+exec(open(D + '/patch_lernspiel.py', encoding='utf8').read())
 # ---------------- Stationen / Schleife / Einbau ----------------
 rep('    function It(k) {\n      Pt = k,', '    function It(k) {\n      Pt = k, window.__selSt = k,', 'Station-merken')
 rep('h.update(Q, _t, l, V.tx, V.tz, V.dist, f.safe, E)', 'MP.update(Q, _t, V.dist), h.update(Q, _t, l, V.tx, V.tz, V.dist, f.safe, E)', 'Schleife')
