@@ -12830,6 +12830,14 @@ void main() {
       for (let b = -1; b <= 1; b++) for (let N = -1; N <= 1; N++) y += L[(D + b) * O + G + N];
       y >= 2 && (tt[D * O + G] = 1);
     }
+    for (let D = 0; D < W; D++) for (let G = 0; G < O; G++) {
+      let y = Math.floor(G / n), b = Math.floor(D / n), N = Math.min(i.w - 1, Math.floor((G + 1) / n)), I = Math.min(i.h - 1, Math.floor((D + 1) / n)), c1 = 0, c2 = 0;
+      for (let B = b; B <= I; B++) for (let it = y; it <= N; it++) {
+        c2++;
+        g[B * i.w + it] === 1 && c1++;
+      }
+      c2 && c1 / c2 >= 0.25 && (tt[D * O + G] = 0);
+    }
     let z = { GW: O, GH: W, blocked: tt, g0x: ct, g0z: X };
     z.cell = (D, G) => [Math.floor(D - ct), Math.floor(G - X)], z.ok = (D, G) => {
       let y = Math.floor(D - ct), b = Math.floor(G - X);
@@ -14109,20 +14117,34 @@ void main() {
     let V = (dt, ot) => Math.hypot(dt - He.x, ot - He.z) < He.fenceR + 1;
     n.homeSafe = V, n.shield = null, n.safeAt = (dt, ot) => V(dt, ot) || !!(n.shield && n.shield.on && Math.hypot(dt - n.shield.x, ot - n.shield.z) < n.shield.r);
     let C = null, gt = null;
+    n.oldNear = (x, z) => {
+      let lim = n.pts.length - 6;
+      if (lim <= 0) return false;
+      let hx = Math.floor(x / 4), hz = Math.floor(z / 4);
+      for (let a = -1; a <= 1; a++) for (let b = -1; b <= 1; b++) {
+        let list = n.hash.get((hx + a + 5e3) * 10007 + (hz + b + 5e3));
+        if (list) for (let idx of list) {
+          if (idx >= lim) continue;
+          let q = n.pts[idx], dx = q[0] - x, dz = q[1] - z;
+          if (dx * dx + dz * dz < 5.76) return true;
+        }
+      }
+      return false;
+    };
     n.track = (dt, ot) => {
       if (V(dt, ot)) {
         n.pts.length && C !== null && H(), C = null;
         return;
       }
-      C === null && (n.lastBreak = true, pt($[0], $[1]), C = $[0], gt = $[1]);
+      C === null && (n.lastBreak = true, n.oldNear($[0], $[1]) || pt($[0], $[1]), C = $[0], gt = $[1]);
       let bt = Math.hypot(dt - C, ot - gt);
       if (bt >= Qc) {
-        let Et = Math.floor(bt / Qc);
+        let Et = Math.floor(bt / Qc), C0 = C, g0 = gt;
         for (let O = 1; O <= Et; O++) {
-          let W = O * Qc / bt;
-          pt(C + (dt - C) * W, gt + (ot - gt) * W);
+          let W = O * Qc / bt, px = C0 + (dt - C0) * W, pz = g0 + (ot - g0) * W;
+          n.oldNear(px, pz) ? n.lastBreak || H() : pt(px, pz);
         }
-        C = n.pts[n.pts.length - 1][0], gt = n.pts[n.pts.length - 1][1];
+        C = C0 + (dt - C0) * (Et * Qc / bt), gt = g0 + (ot - g0) * (Et * Qc / bt);
       }
     };
     for (let dt = 0; dt < (opts.simple ? 0 : 5); dt++) {
