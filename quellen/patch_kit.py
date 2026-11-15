@@ -163,8 +163,8 @@ GROUND = '''
     {
       const cob = ktex(KTD.cob, 512, 512, true), brk = ktex(KTD.brk, 512, 512, true);
       cob.repeat.set(7 / 3, 7 / 3), brk.repeat.set(5 / 2, 5 / 2);
-      U.road.map = cob, U.road.color.setHex(0xd6cec4), U.road.roughness = 0.9, U.road.metalness = 0, U.road.envMapIntensity = 0.25;
-      U.side.map = brk, U.side.color.setHex(0xddd8d0), U.side.envMapIntensity = 0.3;
+      U.road.map = cob, U.road.color.setHex(0x86807a), U.road.roughness = 0.9, U.road.metalness = 0, U.road.envMapIntensity = 0.25;
+      U.side.map = brk, U.side.color.setHex(0xd2ccc4), U.side.envMapIntensity = 0.3;
       U.marking.visible = false;
     }
 '''
@@ -174,17 +174,17 @@ TOWN = '''
     const FMAT = new ae({ map: ktex(KTD.fcol, 1024, 800, false), emissiveMap: ktex(KTD.fem, 1024, 800, false), emissive: 0xffffff, emissiveIntensity: 1.3, vertexColors: true, roughness: 0.9 });
     FMAT.envMapIntensity = 0.3;
     const FW = new Ot(), FR = new Ot();
-    const FTINT = [[1, 1, 1], [1, 0.95, 0.86], [0.98, 0.9, 0.78], [0.96, 0.88, 0.86], [0.9, 0.9, 0.88], [1, 0.97, 0.92]];
-    const RTINT = [[0.5, 0.37, 0.3], [0.58, 0.4, 0.32], [0.45, 0.34, 0.3], [0.4, 0.36, 0.36], [0.62, 0.45, 0.36]];
+    const FTINT = [[0.8, 0.9, 1], [0.86, 0.93, 1], [0.78, 0.86, 0.98], [0.92, 0.95, 1], [1, 0.97, 0.92], [0.84, 0.9, 0.96], [0.96, 0.9, 0.82], [0.8, 0.88, 0.95]];
+    const RTINT = [[0.55, 0.36, 0.3], [0.62, 0.4, 0.32], [0.36, 0.26, 0.28], [0.4, 0.3, 0.34], [0.66, 0.42, 0.34], [0.34, 0.28, 0.3]];
     const tuv = (t) => {
       const u0 = (t % 4) / 4 + 2e-3, u1 = (t % 4 + 1) / 4 - 2e-3, v0 = t < 4 ? 0.502 : 2e-3, v1 = t < 4 ? 0.998 : 0.498;
       return [u0, u1, v0, v1];
     };
-    const FWOK = (Pt, D, B) => Pt === "house" && D !== KIT_IDX && Math.hypot(B[0], B[1]) > 14;
+    const FWOK = (Pt, D, B) => Pt === "house" && D !== KIT_IDX && Math.hypot(B[0], B[1]) > 9;
     let FTI = FTINT[0];
-    function FWB(y, I, vt, j, D, GE) {
+    function FWB(y, I, vt, j, D, GE, ruin) {
       (window.__fw = window.__fw || []).push(Jc(y));
-      const R = me(D * 389 + 5), nE = y.length, hf = vt / j, stone = R() < 0.22, tint = FTI = FTINT[R() * FTINT.length | 0];
+      const R = me(D * 389 + 5), nE = y.length, hf = vt / j, stone = R() < 0.22, tint = FTI = ruin ? [0.62, 0.56, 0.5] : FTINT[R() * FTINT.length | 0];
       let door = -1, LL = 0;
       for (let e = 0; e < nE; e++) {
         const P0 = y[e], P1 = y[(e + 1) % nE], L = Math.hypot(P1[0] - P0[0], P1[1] - P0[1]);
@@ -195,15 +195,25 @@ TOWN = '''
         if (L < 0.15) continue;
         const nx = I * dz / L, nz = -I * dx / L, nm = Math.max(1, Math.round(L / 2.2)), gr = GE.has(e);
         const sh = 0.86 + 0.14 * (nx * -0.5 + nz * -0.8), col = [tint[0] * sh, tint[1] * sh, tint[2] * sh];
+        const tops = [];
+        for (let k = 0; k < nm; k++) tops.push(ruin ? vt * (R() < 0.35 ? 1 : 0.28 + R() * 0.6) : vt);
         for (let f = 0; f < j; f++) for (let k = 0; k < nm; k++) {
-          const t0 = k / nm, t1 = (k + 1) / nm, y0 = f * hf, y1 = (f + 1) * hf;
+          const t0 = k / nm, t1 = (k + 1) / nm, y0 = f * hf, y1 = Math.min((f + 1) * hf, tops[k]);
+          if (y1 <= y0 + 0.05) continue;
           let tile;
           if (f === 0) tile = e === door && k === nm >> 1 ? 3 : !gr && L > 1.6 && (k + e) % 2 === 0 ? (stone ? 7 : 2) : stone ? 5 : 4;
           else tile = gr ? 0 : (k + f + e) % 2 === 0 || nm === 1 ? (R() < 0.45 ? 1 : R() < 0.5 ? 6 : 2) : 0;
+          ruin && (tile = tile === 1 || tile === 6 || tile === 7 ? 2 : tile === 3 ? 4 : tile);
           let [u0, u1, v0, v1] = tuv(tile);
+          v1 = v0 + (v1 - v0) * (y1 - y0) / hf;
           I > 0 && ([u0, u1] = [u1, u0]);
           const ax = P0[0] + dx * t0, az = P0[1] + dz * t0, bx = P0[0] + dx * t1, bz = P0[1] + dz * t1;
           FW.quad([ax, y0, az], [bx, y0, bz], [bx, y1, bz], [ax, y1, az], [u0, v0], [u1, v0], [u1, v1], [u0, v1], col, [nx, 0, nz]);
+          if (ruin) {
+            const c2 = col.map((c) => c * 0.6), ix = nx * 0.25, iz = nz * 0.25;
+            FW.quad([bx - ix, y0, bz - iz], [ax - ix, y0, az - iz], [ax - ix, y1, az - iz], [bx - ix, y1, bz - iz], [u1, v0], [u0, v0], [u0, v1], [u1, v1], c2, [-nx, 0, -nz]);
+            FW.quad([ax, y1, az], [bx, y1, bz], [bx - ix, y1, bz - iz], [ax - ix, y1, az - iz], [0.03, 0.7], [0.1, 0.7], [0.1, 0.72], [0.03, 0.72], c2, [0, 1, 0]);
+          }
         }
       }
     }
@@ -229,4 +239,57 @@ rep(': yt(Z, vt, Ct, Nt, Mt, A);\n        D === KIT_IDX && KIT_FIN(at, Z, vt, A)
     ': FWH ? FWROOF(D, (rc) => yt(Z, vt, Ct, rc, Mt, A)) : yt(Z, vt, Ct, Nt, Mt, A);\n        D === KIT_IDX && KIT_FIN(at, Z, vt, A);', 'Stadt-Daecher')
 rep("S(q.toGeometry(), U.wall, { shadow: true, receive: true }),",
     "S(FW.toGeometry(), FMAT, { shadow: true, receive: true }), S(FR.toGeometry(), kitMat('MI_RoundTiles'), { shadow: true, receive: true }), S(q.toGeometry(), U.wall, { shadow: true, receive: true }),", 'Stadt-Meshes')
-rep('st = N / Z.area > 0.78 && N > 22,', 'st = N / Z.area > (Math.hypot(B[0], B[1]) > 14 && N < 700 ? 0.6 : 0.78) && N > 22,', 'Stadt-mehr-Satteldaecher')
+rep('st = N / Z.area > 0.78 && N > 22,', 'st = Math.hypot(B[0], B[1]) > 9 ? N > 7 : N / Z.area > 0.78 && N > 22,', 'Stadt-mehr-Satteldaecher')
+rep('rt(y, I, vt, j, Ct, A, { ruin: true, uOff: $t, vOff: ee });', 'FWH ? FWB(y, I, vt, j, D, GE, true) : rt(y, I, vt, j, Ct, A, { ruin: true, uOff: $t, vOff: ee });', 'Stadt-Ruinen')
+rep('let _t = yt(Z, vt * 0.82, Math.min(2.6, Z.d * 0.35), Nt.map((Tt) => Tt * 0.6), Ct, A, true);', 'let _t = FWH ? FWROOF(D, (rc) => yt(Z, vt * 0.82, Math.min(2.6, Z.d * 0.35), rc.map((Tt) => Tt * 0.75), Ct, A, true)) : yt(Z, vt * 0.82, Math.min(2.6, Z.d * 0.35), Nt.map((Tt) => Tt * 0.6), Ct, A, true);', 'Stadt-Ruinen-Dach')
+
+
+# ---------------- Tag-Look wie im Video: Gras, Baeume ----------------
+DAYMATS = '''
+    {
+      const mk = (r, g, b, seed, hi) => {
+        const cv = ji(512, 512), c = cv.getContext("2d"), R = me(seed);
+        c.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+        c.fillRect(0, 0, 512, 512);
+        for (let i = 0; i < 160; i++) {
+          const x = R() * 512, y = R() * 512, rad = 20 + R() * 60, l = R() < 0.5;
+          const gr = c.createRadialGradient(x, y, 0, x, y, rad);
+          gr.addColorStop(0, l ? "rgba(" + hi + ",.35)" : "rgba(20,70,20,.30)");
+          gr.addColorStop(1, "rgba(0,0,0,0)");
+          c.fillStyle = gr;
+          for (const ox of [-512, 0, 512]) for (const oy of [-512, 0, 512]) {
+            c.save();
+            c.translate(ox, oy);
+            c.fillRect(x - rad, y - rad, rad * 2, rad * 2);
+            c.restore();
+          }
+        }
+        for (let i = 0; i < 3500; i++) {
+          const x = R() * 512, y = R() * 512, h = 4 + R() * 8;
+          c.strokeStyle = "rgba(" + (70 + R() * 70 | 0) + "," + (150 + R() * 80 | 0) + "," + (40 + R() * 40 | 0) + ",.6)";
+          c.lineWidth = 1.2;
+          c.beginPath();
+          c.moveTo(x, y);
+          c.lineTo(x + (R() - 0.5) * 4, y - h);
+          c.stroke();
+        }
+        return Qi(cv);
+      };
+      const GD = mk(92, 150, 52, 11, "170,225,90"), GG = mk(80, 140, 46, 12, "150,215,80"), GM = mk(120, 160, 56, 13, "200,230,100");
+      const g0 = [U.ground.map, U.ground.color.getHex()], gg0 = [U.grass.map, U.grass.color.getHex()], gm0 = [U.meadow.map, U.meadow.color.getHex()];
+      window.__setDayMats = (d) => {
+        const set = (m, t, c) => {
+          m.map = t;
+          m.color.setHex(c);
+          m.needsUpdate = true;
+        };
+        if (d) set(U.ground, GD, 0xffffff), set(U.grass, GG, 0xffffff), set(U.meadow, GM, 0xffffff);
+        else set(U.ground, g0[0], g0[1]), set(U.grass, gg0[0], gg0[1]), set(U.meadow, gm0[0], gm0[1]);
+      };
+      window.__setDayMats(window.__day === true);
+    }
+'''
+rep('U.marking.visible = false;\n    }\n', 'U.marking.visible = false;\n    }\n' + DAYMATS, 'Tag-Gras')
+rep('        window.__day = b2;\n', '        window.__day = b2;\n        window.__setDayMats && window.__setDayMats(b2);\n', 'Tag-Gras-Schalter')
+rep('return [fe(0.16, 0.46, S), fe(0.3, 0.66, S), fe(0.11, 0.24, S)];', 'return [fe(0.3, 0.66, S), fe(0.5, 0.95, S), fe(0.1, 0.3, S)];', 'Baum-Blattfarbe')
+rep('f = [12096728, 10123460, 8829082, 13666990, 9400502, 7383194];', 'f = [16777215, 15335376, 13234336, 16777152, 11593872, 14155744];', 'Baum-Tints')

@@ -12477,9 +12477,52 @@ void main() {
     {
       const cob = ktex(KTD.cob, 512, 512, true), brk = ktex(KTD.brk, 512, 512, true);
       cob.repeat.set(7 / 3, 7 / 3), brk.repeat.set(5 / 2, 5 / 2);
-      U.road.map = cob, U.road.color.setHex(0xd6cec4), U.road.roughness = 0.9, U.road.metalness = 0, U.road.envMapIntensity = 0.25;
-      U.side.map = brk, U.side.color.setHex(0xddd8d0), U.side.envMapIntensity = 0.3;
+      U.road.map = cob, U.road.color.setHex(0x86807a), U.road.roughness = 0.9, U.road.metalness = 0, U.road.envMapIntensity = 0.25;
+      U.side.map = brk, U.side.color.setHex(0xd2ccc4), U.side.envMapIntensity = 0.3;
       U.marking.visible = false;
+    }
+
+    {
+      const mk = (r, g, b, seed, hi) => {
+        const cv = ji(512, 512), c = cv.getContext("2d"), R = me(seed);
+        c.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+        c.fillRect(0, 0, 512, 512);
+        for (let i = 0; i < 160; i++) {
+          const x = R() * 512, y = R() * 512, rad = 20 + R() * 60, l = R() < 0.5;
+          const gr = c.createRadialGradient(x, y, 0, x, y, rad);
+          gr.addColorStop(0, l ? "rgba(" + hi + ",.35)" : "rgba(20,70,20,.30)");
+          gr.addColorStop(1, "rgba(0,0,0,0)");
+          c.fillStyle = gr;
+          for (const ox of [-512, 0, 512]) for (const oy of [-512, 0, 512]) {
+            c.save();
+            c.translate(ox, oy);
+            c.fillRect(x - rad, y - rad, rad * 2, rad * 2);
+            c.restore();
+          }
+        }
+        for (let i = 0; i < 3500; i++) {
+          const x = R() * 512, y = R() * 512, h = 4 + R() * 8;
+          c.strokeStyle = "rgba(" + (70 + R() * 70 | 0) + "," + (150 + R() * 80 | 0) + "," + (40 + R() * 40 | 0) + ",.6)";
+          c.lineWidth = 1.2;
+          c.beginPath();
+          c.moveTo(x, y);
+          c.lineTo(x + (R() - 0.5) * 4, y - h);
+          c.stroke();
+        }
+        return Qi(cv);
+      };
+      const GD = mk(92, 150, 52, 11, "170,225,90"), GG = mk(80, 140, 46, 12, "150,215,80"), GM = mk(120, 160, 56, 13, "200,230,100");
+      const g0 = [U.ground.map, U.ground.color.getHex()], gg0 = [U.grass.map, U.grass.color.getHex()], gm0 = [U.meadow.map, U.meadow.color.getHex()];
+      window.__setDayMats = (d) => {
+        const set = (m, t, c) => {
+          m.map = t;
+          m.color.setHex(c);
+          m.needsUpdate = true;
+        };
+        if (d) set(U.ground, GD, 0xffffff), set(U.grass, GG, 0xffffff), set(U.meadow, GM, 0xffffff);
+        else set(U.ground, g0[0], g0[1]), set(U.grass, gg0[0], gg0[1]), set(U.meadow, gm0[0], gm0[1]);
+      };
+      window.__setDayMats(window.__day === true);
     }
 
     {
@@ -12726,17 +12769,17 @@ void main() {
     const FMAT = new ae({ map: ktex(KTD.fcol, 1024, 800, false), emissiveMap: ktex(KTD.fem, 1024, 800, false), emissive: 0xffffff, emissiveIntensity: 1.3, vertexColors: true, roughness: 0.9 });
     FMAT.envMapIntensity = 0.3;
     const FW = new Ot(), FR = new Ot();
-    const FTINT = [[1, 1, 1], [1, 0.95, 0.86], [0.98, 0.9, 0.78], [0.96, 0.88, 0.86], [0.9, 0.9, 0.88], [1, 0.97, 0.92]];
-    const RTINT = [[0.5, 0.37, 0.3], [0.58, 0.4, 0.32], [0.45, 0.34, 0.3], [0.4, 0.36, 0.36], [0.62, 0.45, 0.36]];
+    const FTINT = [[0.8, 0.9, 1], [0.86, 0.93, 1], [0.78, 0.86, 0.98], [0.92, 0.95, 1], [1, 0.97, 0.92], [0.84, 0.9, 0.96], [0.96, 0.9, 0.82], [0.8, 0.88, 0.95]];
+    const RTINT = [[0.55, 0.36, 0.3], [0.62, 0.4, 0.32], [0.36, 0.26, 0.28], [0.4, 0.3, 0.34], [0.66, 0.42, 0.34], [0.34, 0.28, 0.3]];
     const tuv = (t) => {
       const u0 = (t % 4) / 4 + 2e-3, u1 = (t % 4 + 1) / 4 - 2e-3, v0 = t < 4 ? 0.502 : 2e-3, v1 = t < 4 ? 0.998 : 0.498;
       return [u0, u1, v0, v1];
     };
-    const FWOK = (Pt, D, B) => Pt === "house" && D !== KIT_IDX && Math.hypot(B[0], B[1]) > 14;
+    const FWOK = (Pt, D, B) => Pt === "house" && D !== KIT_IDX && Math.hypot(B[0], B[1]) > 9;
     let FTI = FTINT[0];
-    function FWB(y, I, vt, j, D, GE) {
+    function FWB(y, I, vt, j, D, GE, ruin) {
       (window.__fw = window.__fw || []).push(Jc(y));
-      const R = me(D * 389 + 5), nE = y.length, hf = vt / j, stone = R() < 0.22, tint = FTI = FTINT[R() * FTINT.length | 0];
+      const R = me(D * 389 + 5), nE = y.length, hf = vt / j, stone = R() < 0.22, tint = FTI = ruin ? [0.62, 0.56, 0.5] : FTINT[R() * FTINT.length | 0];
       let door = -1, LL = 0;
       for (let e = 0; e < nE; e++) {
         const P0 = y[e], P1 = y[(e + 1) % nE], L = Math.hypot(P1[0] - P0[0], P1[1] - P0[1]);
@@ -12747,15 +12790,25 @@ void main() {
         if (L < 0.15) continue;
         const nx = I * dz / L, nz = -I * dx / L, nm = Math.max(1, Math.round(L / 2.2)), gr = GE.has(e);
         const sh = 0.86 + 0.14 * (nx * -0.5 + nz * -0.8), col = [tint[0] * sh, tint[1] * sh, tint[2] * sh];
+        const tops = [];
+        for (let k = 0; k < nm; k++) tops.push(ruin ? vt * (R() < 0.35 ? 1 : 0.28 + R() * 0.6) : vt);
         for (let f = 0; f < j; f++) for (let k = 0; k < nm; k++) {
-          const t0 = k / nm, t1 = (k + 1) / nm, y0 = f * hf, y1 = (f + 1) * hf;
+          const t0 = k / nm, t1 = (k + 1) / nm, y0 = f * hf, y1 = Math.min((f + 1) * hf, tops[k]);
+          if (y1 <= y0 + 0.05) continue;
           let tile;
           if (f === 0) tile = e === door && k === nm >> 1 ? 3 : !gr && L > 1.6 && (k + e) % 2 === 0 ? (stone ? 7 : 2) : stone ? 5 : 4;
           else tile = gr ? 0 : (k + f + e) % 2 === 0 || nm === 1 ? (R() < 0.45 ? 1 : R() < 0.5 ? 6 : 2) : 0;
+          ruin && (tile = tile === 1 || tile === 6 || tile === 7 ? 2 : tile === 3 ? 4 : tile);
           let [u0, u1, v0, v1] = tuv(tile);
+          v1 = v0 + (v1 - v0) * (y1 - y0) / hf;
           I > 0 && ([u0, u1] = [u1, u0]);
           const ax = P0[0] + dx * t0, az = P0[1] + dz * t0, bx = P0[0] + dx * t1, bz = P0[1] + dz * t1;
           FW.quad([ax, y0, az], [bx, y0, bz], [bx, y1, bz], [ax, y1, az], [u0, v0], [u1, v0], [u1, v1], [u0, v1], col, [nx, 0, nz]);
+          if (ruin) {
+            const c2 = col.map((c) => c * 0.6), ix = nx * 0.25, iz = nz * 0.25;
+            FW.quad([bx - ix, y0, bz - iz], [ax - ix, y0, az - iz], [ax - ix, y1, az - iz], [bx - ix, y1, bz - iz], [u1, v0], [u0, v0], [u0, v1], [u1, v1], c2, [-nx, 0, -nz]);
+            FW.quad([ax, y1, az], [bx, y1, bz], [bx - ix, y1, bz - iz], [ax - ix, y1, az - iz], [0.03, 0.7], [0.1, 0.7], [0.1, 0.72], [0.03, 0.72], c2, [0, 1, 0]);
+          }
         }
       }
     }
@@ -12795,7 +12848,7 @@ void main() {
       }), y.length < 3) continue;
       let b = Ru(y), N = Math.abs(b);
       if (N < 7) continue;
-      let I = b > 0 ? 1 : -1, A = me(D * 7919 + 13), B = Jc(y), it = [B[0] / n + s, B[1] / n + r], Z = Cu(y), st = N / Z.area > (Math.hypot(B[0], B[1]) > 14 && N < 700 ? 0.6 : 0.78) && N > 22, lt = Math.hypot(it[0] - pt[0], it[1] - pt[1]), St = Math.hypot(it[0] - V[0], it[1] - V[1]), j = N < 40 ? 1 : N < 120 || A() < 0.65 ? 2 : 3, vt = j * 3 + (j === 1 ? 0.5 : 0), Mt = $[A() * $.length | 0].map((Ct) => Ct * (0.85 + A() * 0.2)), Nt = et[A() * et.length | 0].map((Ct) => Ct * (0.8 + A() * 0.35)), Pt = "house";
+      let I = b > 0 ? 1 : -1, A = me(D * 7919 + 13), B = Jc(y), it = [B[0] / n + s, B[1] / n + r], Z = Cu(y), st = Math.hypot(B[0], B[1]) > 9 ? N > 7 : N / Z.area > 0.78 && N > 22, lt = Math.hypot(it[0] - pt[0], it[1] - pt[1]), St = Math.hypot(it[0] - V[0], it[1] - V[1]), j = N < 40 ? 1 : N < 120 || A() < 0.65 ? 2 : 3, vt = j * 3 + (j === 1 ? 0.5 : 0), Mt = $[A() * $.length | 0].map((Ct) => Ct * (0.85 + A() * 0.2)), Nt = et[A() * et.length | 0].map((Ct) => Ct * (0.8 + A() * 0.35)), Pt = "house";
       lt < 62 ? (Pt = "castle", vt = 10 + A() * 2, j = 3, Mt = [0.62, 0.55, 0.48]) : St < 22 && N > 120 && (Pt = "church", vt = 9, j = 3, Mt = [0.78, 0.72, 0.62]);
       let It = bt.some((Ct) => Math.hypot(it[0] - Ct[0], it[1] - Ct[1]) < 14), kt = Pt === "house" && !It && A() < 0.14 && N > 25 && D !== KIT_IDX, $t = A() * 4 | 0, ee = A() * 4 | 0;
       let GE = new Set(), FWH = FWOK(Pt, D, B);
@@ -12813,7 +12866,7 @@ void main() {
       if (kt) {
         ot++;
         let Ct = Mt.map((_t) => _t * 0.78);
-        rt(y, I, vt, j, Ct, A, { ruin: true, uOff: $t, vOff: ee });
+        FWH ? FWB(y, I, vt, j, D, GE, true) : rt(y, I, vt, j, Ct, A, { ruin: true, uOff: $t, vOff: ee });
         let at = Ji.triangulateShape(y.map((_t) => new Bt(_t[0], _t[1])), []);
         for (let _t of at) J.tri([y[_t[0]][0], 0.06, y[_t[0]][1]], [y[_t[1]][0], 0.06, y[_t[1]][1]], [y[_t[2]][0], 0.06, y[_t[2]][1]], xt, xt, xt, [0.16, 0.13, 0.11], br);
         let F = 3 + (A() * 5 | 0);
@@ -12822,7 +12875,7 @@ void main() {
           J.box(Ut, Vt * 0.35, Gt, Vt * (0.8 + A()), Vt * 0.7, Vt * (0.6 + A()), A() * 6.28, [0.34 + A() * 0.14, 0.3 + A() * 0.12, 0.27 + A() * 0.1]);
         }
         if (st && A() < 0.6) {
-          let _t = yt(Z, vt * 0.82, Math.min(2.6, Z.d * 0.35), Nt.map((Tt) => Tt * 0.6), Ct, A, true);
+          let _t = FWH ? FWROOF(D, (rc) => yt(Z, vt * 0.82, Math.min(2.6, Z.d * 0.35), rc.map((Tt) => Tt * 0.75), Ct, A, true)) : yt(Z, vt * 0.82, Math.min(2.6, Z.d * 0.35), Nt.map((Tt) => Tt * 0.6), Ct, A, true);
         }
         A() < 0.45 && gt.push([B[0], B[1], vt]), o.ruinPools = o.ruinPools || [], o.ruinPools.push({ x: B[0], z: B[1], y: 0.22, rot: 0, sx: 1 + Math.min(1.2, Math.sqrt(N) / 14) });
         continue;
@@ -13071,7 +13124,7 @@ void main() {
         return [S / ht, q * 1.2 / ht, J / ht];
       }, w = (M) => {
         let S = Le((M - _) / m * 0.5 + 0.5, 0, 1);
-        return [fe(0.16, 0.46, S), fe(0.3, 0.66, S), fe(0.11, 0.24, S)];
+        return [fe(0.3, 0.66, S), fe(0.5, 0.95, S), fe(0.1, 0.3, S)];
       }, T = u.index, U = T ? T.count : p.count;
       for (let M = 0; M < U; M += 3) {
         let S = T ? T.getX(M) : M, q = T ? T.getX(M + 1) : M + 1, J = T ? T.getX(M + 2) : M + 2, ht = E(S), H = E(q), $ = E(J), et = (pt) => [(pt[0] * 0.8 + pt[2] * 0.6) * 0.32, (pt[1] * 0.9 + pt[2] * 0.3 - pt[0] * 0.2) * 0.32];
@@ -13089,7 +13142,7 @@ void main() {
         if (w === 1 || w === 2 || w === 3 || w === 4) return true;
       }
       return false;
-    }, h = e.treeDensity, f = [12096728, 10123460, 8829082, 13666990, 9400502, 7383194];
+    }, h = e.treeDensity, f = [16777215, 15335376, 13234336, 16777152, 11593872, 14155744];
     for (let x = c.x0 - 80; x < c.x1 + 80; x += 3.4) for (let v = c.z0 - 80; v < c.z1 + 80; v += 3.4) {
       let E = x >= c.x0 && x <= c.x1 && v >= c.z0 && v <= c.z1, R;
       if (E) {
@@ -16195,6 +16248,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
       let RC = 0;
       const day = (b2) => {
         window.__day = b2;
+        window.__setDayMats && window.__setDayMats(b2);
         SC.background = new Xt(b2 ? 10474751 : 1705490);
         SC.fog = new Co(b2 ? 13624063 : 2755100, b2 ? 16e-4 : 4e-3);
         HEMI.color.set(b2 ? 15269887 : 10117832);
