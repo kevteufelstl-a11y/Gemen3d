@@ -6,7 +6,7 @@
   var UK_fach = (f) => (fl[f] && fl[f].f || "Fach").replace(" bis Klasse 6", "");
   (function LZ_css() {
     let st = document.createElement("style");
-    st.textContent = "#lzbar{position:fixed;left:max(12px,env(safe-area-inset-left));top:max(10px,env(safe-area-inset-top));z-index:60;width:min(300px,38vw);min-width:150px;box-sizing:border-box;padding:4px 8px 5px;border-radius:12px;background:rgba(8,14,12,.9);border:1px solid var(--line,#3a5);font:700 11.5px/1.2 system-ui,sans-serif;color:#fff;text-align:left;cursor:pointer;pointer-events:auto;box-shadow:0 2px 10px #0008}#lzbar .lzb{height:6px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden;margin:3px 0 2px}#lzbar .lzb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#3fd46b,#9dff5a);transition:width .5s}#lzbar.done .lzb i{background:linear-gradient(90deg,#ffd34d,#ff9f1a)}#lzbar .lze{font-weight:600;font-size:10.5px;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}body.lzon #title{visibility:hidden}#quiz{padding-top:78px!important}#quiz>.qbox{position:relative;z-index:2}.spgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin:12px 0}.spcard{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:14px;border:1px solid var(--line,#3a5);background:rgba(255,255,255,.06);color:#fff;font-size:16px}.spav{font-size:46px;line-height:1}.spav.big{font-size:70px}.spavs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}.spavb{font-size:30px;width:52px;height:52px;border-radius:12px;border:2px solid transparent;background:rgba(255,255,255,.06)}.spavb.on{border-color:#9dff5a;background:rgba(89,255,90,.2)}.dkword{font:700 46px/1.2 Georgia,serif;color:#fff;margin:22px 0;word-break:break-word}.dktext{text-align:left;font-size:17px;line-height:1.5;background:rgba(255,255,255,.07);padding:10px 12px;border-radius:10px;user-select:text;-webkit-user-select:text}.dknum{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px 0}.dknum .qin{width:110px;font-size:26px}.dknum .qbtn{min-width:56px;font-size:24px}.dkstat{text-align:left;margin:8px auto;max-width:340px;font-size:15px;line-height:1.6}";
+    st.textContent = "#lzbar{position:fixed;left:max(12px,env(safe-area-inset-left));top:max(10px,env(safe-area-inset-top));z-index:60;width:min(300px,38vw);min-width:150px;box-sizing:border-box;padding:4px 8px 5px;border-radius:12px;background:rgba(8,14,12,.9);border:1px solid var(--line,#3a5);font:700 11.5px/1.2 system-ui,sans-serif;color:#fff;text-align:left;cursor:pointer;pointer-events:auto;box-shadow:0 2px 10px #0008}#lzbar .lzb{height:6px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden;margin:3px 0 2px}#lzbar .lzb i{display:block;height:100%;width:0;background:linear-gradient(90deg,#3fd46b,#9dff5a);transition:width .5s}#lzbar.done .lzb i{background:linear-gradient(90deg,#ffd34d,#ff9f1a)}body.shon #hud{margin-top:36px}#lzbar .shl{margin-top:4px;font:700 10.5px/1.2 system-ui,sans-serif}#lzbar .lzb.sh{margin:2px 0 0}#lzbar .lzb.sh i{background:linear-gradient(90deg,#3aa8ff,#7be0ff)}#lzbar .shl.low .lzb.sh i{background:#ffb02e}#lzbar .shl.empty{color:#ff8a8a}#lzbar .shl.empty .lzb.sh i{background:#ff4d4d}#lzbar .lze{font-weight:600;font-size:10.5px;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}body.lzon #title{visibility:hidden}#quiz{padding-top:78px!important}#quiz>.qbox{position:relative;z-index:2}.spgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin:12px 0}.spcard{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:14px;border:1px solid var(--line,#3a5);background:rgba(255,255,255,.06);color:#fff;font-size:16px}.spav{font-size:46px;line-height:1}.spav.big{font-size:70px}.spavs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}.spavb{font-size:30px;width:52px;height:52px;border-radius:12px;border:2px solid transparent;background:rgba(255,255,255,.06)}.spavb.on{border-color:#9dff5a;background:rgba(89,255,90,.2)}.dkword{font:700 46px/1.2 Georgia,serif;color:#fff;margin:22px 0;word-break:break-word}.dktext{text-align:left;font-size:17px;line-height:1.5;background:rgba(255,255,255,.07);padding:10px 12px;border-radius:10px;user-select:text;-webkit-user-select:text}.dknum{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px 0}.dknum .qin{width:110px;font-size:26px}.dknum .qbtn{min-width:56px;font-size:24px}.dkstat{text-align:left;margin:8px auto;max-width:340px;font-size:15px;line-height:1.6}";
     document.head.append(st);
   })();
 
@@ -45,7 +45,7 @@
       b && (b.style.display = "none"), document.body.classList.remove("lzon");
       return;
     }
-    b || (b = K("div", { id: "lzbar", onclick: LZ_barTap }, K("div", {}), K("div", { class: "lzb" }, K("i")), K("div", { class: "lze" })), document.body.append(b));
+    b || (b = K("div", { id: "lzbar", onclick: LZ_barTap }, K("div", {}), K("div", { class: "lzb" }, K("i")), K("div", { class: "lze" }), K("div", { class: "shl", style: "display:none" }, K("span"), K("div", { class: "lzb sh" }, K("i")))), document.body.append(b));
     b.style.display = "", document.body.classList.add("lzon");
     let d = Li(), need = Ai(), done = Math.min(d.sec, need), rest = Math.max(0, Math.ceil((need - d.sec) / 60));
     b.children[0].textContent = "⏱ " + Math.floor(done / 60) + " von " + je.dailyMinutes + " Minuten geschafft";
@@ -60,6 +60,49 @@
     window.__quizOpen || Ri();
   }
   setInterval(LZ_bar, 1e3);
+
+  // ---------- Lernschild: schützt vor wilden Monstern, solange gelernt wird ----------
+  var SH_v = null, SH_key = "", SH_state = 0, SH_warned = false;
+  function SH_cfg() {
+    let c = window.__shCfg || { min: 15, learn: 5 }, min = c.min == null ? 15 : c.min;
+    return { on: min > 0, max: min * 60, learn: Math.max(1, c.learn || 5) * 60 };
+  }
+  function SH_load() {
+    let k = "milo_schild_" + (Ae && (Ae.id || Ae.name) || "");
+    if (k !== SH_key) {
+      SH_key = k;
+      try { let x = localStorage.getItem(k); SH_v = x == null ? null : +x; } catch (e) { SH_v = null; }
+      SH_warned = false, SH_state = 0;
+    }
+    return SH_v;
+  }
+  function SH_tick() {
+    let c = SH_cfg(), b = document.getElementById("lzbar");
+    if (!Ae || Ae.admin || LZ_loginOpen() || !c.on) {
+      window.__shM = window.__shS = window.__shD = window.__shW = 0, SH_state = 0, document.body.classList.remove("shon");
+      return;
+    }
+    document.body.classList.add("shon"), SH_load(), SH_v == null && (SH_v = c.max), SH_v = Math.min(SH_v, c.max);
+    let learning = window.__curFi != null || window.__tpRun || window.__dkRun, paused = document.hidden || (window.__quizOpen && !learning);
+    if (!paused) {
+      if (learning) SH_v = Math.min(c.max, SH_v + c.max / c.learn);
+      else SH_v = Math.max(0, SH_v - 1);
+    }
+    try { localStorage.setItem(SH_key, String(Math.round(SH_v))); } catch (e) {}
+    let empty = SH_v <= 0;
+    window.__shM = empty ? 1.45 : 0, window.__shS = empty ? 1.7 : 0, window.__shD = empty ? 1.35 : 0, window.__shW = empty ? 0.5 : 0;
+    if (empty && SH_state !== 2) SH_state = 2, !learning && Zs("\u{1F6E1} Dein Schild ist leer! Die Monster sind wild. L\xF6se Aufgaben!");
+    else if (!empty && SH_state === 2) SH_state = 0, Zs("\u{1F6E1} Dein Schild ist wieder da. Super!");
+    if (!empty && SH_v <= 60 && !learning && !SH_warned) SH_warned = true, Zs("\u{1F6E1} Dein Schild wird schwach! L\xF6se eine Aufgabe.");
+    SH_v > 90 && (SH_warned = false);
+    b && b.children[3] && SH_draw(b.children[3], c);
+  }
+  function SH_draw(el, c) {
+    let p = Math.max(0, Math.min(1, SH_v / c.max));
+    el.style.display = "", el.children[1].firstChild.style.width = p * 100 + "%", el.classList.toggle("low", p < 0.2), el.classList.toggle("empty", SH_v <= 0);
+    el.firstChild.textContent = "\u{1F6E1} Schild: " + (SH_v <= 0 ? "leer!" : Math.ceil(SH_v / 60) + " Min.");
+  }
+  setInterval(SH_tick, 1e3);
 
   // Knöpfe an einer Station und im Lernbuch
   function LZ_station(st, o) {

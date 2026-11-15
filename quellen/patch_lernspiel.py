@@ -53,3 +53,10 @@ rep(r'K("button", { class: "qbtn big", onclick: g_ }, "\u{1F381} Belohnungen, No
 # PDF-Seite im Seitenverhältnis der neuen Urkunde (1152x2064) statt A4
 rep('/MediaBox [0 0 595 842]', '/MediaBox [0 0 595 1066]', 'LS-PDF-Seite')
 rep('"q 595 0 0 842 0 0 cm /Im0 Do Q"', '"q 595 0 0 1066 0 0 cm /Im0 Do Q"', 'LS-PDF-Bild')
+
+# Lernschild: leerer Schild macht Monster schneller, aufmerksamer und stärker; Waffen schwächer
+rep('let ot = 0, Et = false, O = 1;', 'let ot = 0, Et = false, O = window.__shM || 1;', 'LS-Schild-Tempo')
+rep('rt < gt.sense', 'rt < gt.sense * (window.__shS || 1)', 'LS-Schild-Sicht')
+rep('$(gt.dmg, C)', '$(gt.dmg * (window.__shD || 1), C)', 'LS-Schild-Schaden')
+rep('api.hit(best, w2.dmg, "player");', 'api.hit(best, w2.dmg * (window.__shW || 1), "player");', 'LS-Schild-Waffe')
+rep('wi && (wi.style.display = "none"), window.__quizOpen = false,', 'wi && (wi.style.display = "none"), window.__quizOpen = false, window.__curFi = null,', 'LS-Schild-Quizende')

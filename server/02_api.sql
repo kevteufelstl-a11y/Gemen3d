@@ -60,6 +60,8 @@ begin
   if jsonb_typeof(s->'sessionMinutes') = 'number' then o := o || jsonb_build_object('sessionMinutes', least(120, greatest(0, (s->>'sessionMinutes')::numeric::int))); end if;
   if jsonb_typeof(s->'pauseMinutes') = 'number' then o := o || jsonb_build_object('pauseMinutes', least(60, greatest(0, (s->>'pauseMinutes')::numeric::int))); end if;
   if jsonb_typeof(s->'examQuestions') = 'number' then o := o || jsonb_build_object('examQuestions', least(20, greatest(5, (s->>'examQuestions')::numeric::int))); end if;
+  if jsonb_typeof(s->'shieldMin') = 'number' then o := o || jsonb_build_object('shieldMin', least(60, greatest(0, (s->>'shieldMin')::numeric::int))); end if;
+  if jsonb_typeof(s->'shieldLearn') = 'number' then o := o || jsonb_build_object('shieldLearn', least(30, greatest(1, (s->>'shieldLearn')::numeric::int))); end if;
   if jsonb_typeof(s->'goalTasks') = 'number' then o := o || jsonb_build_object('goalTasks', least(200, greatest(0, (s->>'goalTasks')::numeric::int))); end if;
   if jsonb_typeof(s->'goalText') = 'string' then o := o || jsonb_build_object('goalText', left(s->>'goalText', 200)); end if;
   if s->>'distraction' in ('aus', 'auto', '1', '2', '3') then o := o || jsonb_build_object('distraction', s->>'distraction'); end if;
