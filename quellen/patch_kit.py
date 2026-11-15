@@ -44,7 +44,7 @@ KIT_CODE = '''    const KITD = ''' + KIT + ''';
       };
       im.src = 'data:image/jpeg;base64,' + src;
       if (m === 'MI_RoundTiles') tx.repeat.set(0.5, 0.5);
-      return KMATS[m] = new ae({ map: tx, roughness: 0.9, side: m === 'MI_RoundTiles' ? Ue : 0 });
+      return KMATS[m] = new ae({ map: tx, roughness: 0.9, side: m === 'MI_RoundTiles' ? Ue : 0, vertexColors: m === 'MI_RoundTiles' });
     };
     const KROOF = new Ot();
     function KITROOF(fn) {
@@ -144,3 +144,89 @@ rep('at = yt(Z, vt, Ct, Nt, Mt, A);',
     'at = D === KIT_IDX ? KITROOF(() => yt(Z, vt, Ct, [0.5, 0.37, 0.3], [0.9, 0.86, 0.78], A)) : yt(Z, vt, Ct, Nt, Mt, A);\n        D === KIT_IDX && KIT_FIN(at, Z, vt, A);', 'Kit-Dach')
 rep('if (A() < 0.5 && wt(at.P, at.top, at.L, A), Pt === "church") {', 'if (A() < 0.5 && D !== KIT_IDX && wt(at.P, at.top, at.L, A), Pt === "church") {', 'Kit-kein-alter-Schornstein')
 rep('if (Pt !== "castle") {\n        let Ct = me(D * 131 + 977);', 'if (Pt !== "castle" && D !== KIT_IDX) {\n        let Ct = me(D * 131 + 977);', 'Kit-kein-Graffiti')
+
+# ---------------- Ganze Stadt im Fachwerk-Stil ----------------
+# Fassaden: aus den Kit-Waenden vorgebackenes Bild (8 Kacheln je 2 m x 1 Stockwerk), Daecher mit Kit-Ziegeln,
+# Strassen als Kopfsteinpflaster, Gehwege mit Ziegeln. Sehr wenige Dreiecke, laeuft auch auf dem Handy.
+KTOWN = open(D + '/kit_town.json', encoding='utf8').read().strip()
+GROUND = '''
+    const KTD = ''' + KTOWN + ''';
+    const ktex = (b64, w, h, rep) => {
+      const cv = ji(w, h), tx = Qi(cv, { repeat: rep, aniso: 4 }), im = new Image();
+      im.onload = () => {
+        cv.getContext("2d").drawImage(im, 0, 0, w, h);
+        tx.needsUpdate = true;
+      };
+      im.src = "data:image/jpeg;base64," + b64;
+      return tx;
+    };
+    {
+      const cob = ktex(KTD.cob, 512, 512, true), brk = ktex(KTD.brk, 512, 512, true);
+      cob.repeat.set(7 / 3, 7 / 3), brk.repeat.set(5 / 2, 5 / 2);
+      U.road.map = cob, U.road.color.setHex(0xd6cec4), U.road.roughness = 0.9, U.road.metalness = 0, U.road.envMapIntensity = 0.25;
+      U.side.map = brk, U.side.color.setHex(0xddd8d0), U.side.envMapIntensity = 0.3;
+      U.marking.visible = false;
+    }
+'''
+rep('U.roof.envMapIntensity = 0.5, o.mats = U;', 'U.roof.envMapIntensity = 0.5, o.mats = U;' + GROUND, 'Stadt-Boden')
+
+TOWN = '''
+    const FMAT = new ae({ map: ktex(KTD.fcol, 1024, 800, false), emissiveMap: ktex(KTD.fem, 1024, 800, false), emissive: 0xffffff, emissiveIntensity: 1.3, vertexColors: true, roughness: 0.9 });
+    FMAT.envMapIntensity = 0.3;
+    const FW = new Ot(), FR = new Ot();
+    const FTINT = [[1, 1, 1], [1, 0.95, 0.86], [0.98, 0.9, 0.78], [0.96, 0.88, 0.86], [0.9, 0.9, 0.88], [1, 0.97, 0.92]];
+    const RTINT = [[0.5, 0.37, 0.3], [0.58, 0.4, 0.32], [0.45, 0.34, 0.3], [0.4, 0.36, 0.36], [0.62, 0.45, 0.36]];
+    const tuv = (t) => {
+      const u0 = (t % 4) / 4 + 2e-3, u1 = (t % 4 + 1) / 4 - 2e-3, v0 = t < 4 ? 0.502 : 2e-3, v1 = t < 4 ? 0.998 : 0.498;
+      return [u0, u1, v0, v1];
+    };
+    const FWOK = (Pt, D, B) => Pt === "house" && D !== KIT_IDX && Math.hypot(B[0], B[1]) > 14;
+    let FTI = FTINT[0];
+    function FWB(y, I, vt, j, D, GE) {
+      (window.__fw = window.__fw || []).push(Jc(y));
+      const R = me(D * 389 + 5), nE = y.length, hf = vt / j, stone = R() < 0.22, tint = FTI = FTINT[R() * FTINT.length | 0];
+      let door = -1, LL = 0;
+      for (let e = 0; e < nE; e++) {
+        const P0 = y[e], P1 = y[(e + 1) % nE], L = Math.hypot(P1[0] - P0[0], P1[1] - P0[1]);
+        !GE.has(e) && L > LL && (LL = L, door = e);
+      }
+      for (let e = 0; e < nE; e++) {
+        const P0 = y[e], P1 = y[(e + 1) % nE], dx = P1[0] - P0[0], dz = P1[1] - P0[1], L = Math.hypot(dx, dz);
+        if (L < 0.15) continue;
+        const nx = I * dz / L, nz = -I * dx / L, nm = Math.max(1, Math.round(L / 2.2)), gr = GE.has(e);
+        const sh = 0.86 + 0.14 * (nx * -0.5 + nz * -0.8), col = [tint[0] * sh, tint[1] * sh, tint[2] * sh];
+        for (let f = 0; f < j; f++) for (let k = 0; k < nm; k++) {
+          const t0 = k / nm, t1 = (k + 1) / nm, y0 = f * hf, y1 = (f + 1) * hf;
+          let tile;
+          if (f === 0) tile = e === door && k === nm >> 1 ? 3 : !gr && L > 1.6 && (k + e) % 2 === 0 ? (stone ? 7 : 2) : stone ? 5 : 4;
+          else tile = gr ? 0 : (k + f + e) % 2 === 0 || nm === 1 ? (R() < 0.45 ? 1 : R() < 0.5 ? 6 : 2) : 0;
+          let [u0, u1, v0, v1] = tuv(tile);
+          I > 0 && ([u0, u1] = [u1, u0]);
+          const ax = P0[0] + dx * t0, az = P0[1] + dz * t0, bx = P0[0] + dx * t1, bz = P0[1] + dz * t1;
+          FW.quad([ax, y0, az], [bx, y0, bz], [bx, y1, bz], [ax, y1, az], [u0, v0], [u1, v0], [u1, v1], [u0, v1], col, [nx, 0, nz]);
+        }
+      }
+    }
+    function FWROOF(D, fn) {
+      const sv = ht, sj = J, g = FTI.map((c) => c * 0.92);
+      ht = FR, J = { tri: (a, b, c, ua, ub, uc, cl, n) => FW.tri(a, b, c, [0.03, 0.7], [0.1, 0.7], [0.065, 0.92], g, n), box: (...a) => sj.box(...a), quad: (...a) => sj.quad(...a) };
+      try {
+        return fn(RTINT[me(D * 977 + 3)() * RTINT.length | 0]);
+      } finally {
+        ht = sv, J = sj;
+      }
+    }
+'''
+rep("    function KIT_FIN(at, Z, vt, A) {", TOWN + "    function KIT_FIN(at, Z, vt, A) {", 'Stadt-Fassaden-Code')
+
+# Graffiti nur noch auf jeder dritten moeglichen Wand der Fachwerkhaeuser, und dort ohne Fenster
+rep('if (Pt !== "castle" && D !== KIT_IDX) {\n        let Ct = me(D * 131 + 977);',
+    'let GE = new Set(), FWH = FWOK(Pt, D, B);\n      if (Pt !== "castle" && D !== KIT_IDX) {\n        let Ct = me(D * 131 + 977);', 'Stadt-GE')
+rep('if (Ut < 4.2 || Ct() > 0.42) continue;', 'if (Ut < 4.2 || Ct() > 0.42 || FWH && (D * 7 + at) % 3) continue;\n          GE.add(at);', 'Stadt-Graffiti')
+rep('D === KIT_IDX ? KITB(Z, y, vt, j, I, A) : rt(y, I, vt, j, Mt, A, { uOff: $t, vOff: ee })',
+    'D === KIT_IDX ? KITB(Z, y, vt, j, I, A) : FWH && !kt ? FWB(y, I, vt, j, D, GE) : rt(y, I, vt, j, Mt, A, { uOff: $t, vOff: ee })', 'Stadt-Waende')
+rep(': yt(Z, vt, Ct, Nt, Mt, A);\n        D === KIT_IDX && KIT_FIN(at, Z, vt, A);',
+    ': FWH ? FWROOF(D, (rc) => yt(Z, vt, Ct, rc, Mt, A)) : yt(Z, vt, Ct, Nt, Mt, A);\n        D === KIT_IDX && KIT_FIN(at, Z, vt, A);', 'Stadt-Daecher')
+rep("S(q.toGeometry(), U.wall, { shadow: true, receive: true }),",
+    "S(FW.toGeometry(), FMAT, { shadow: true, receive: true }), S(FR.toGeometry(), kitMat('MI_RoundTiles'), { shadow: true, receive: true }), S(q.toGeometry(), U.wall, { shadow: true, receive: true }),", 'Stadt-Meshes')
+rep('st = N / Z.area > 0.78 && N > 22,', 'st = N / Z.area > (Math.hypot(B[0], B[1]) > 14 && N < 700 ? 0.6 : 0.78) && N > 22,', 'Stadt-mehr-Satteldaecher')
