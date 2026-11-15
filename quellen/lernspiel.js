@@ -95,7 +95,8 @@
     };
     draw(SP_cache()), LZ_bar();
     vf({ action: "listPlayers" }).then((r) => {
-      r.j && r.j.ok && grid.isConnected && draw(SP_cache(r.j.players));
+      if (!(r.j && r.j.ok) || !grid.isConnected) return;
+      SP_epoch(r.j.epoch), draw(SP_cache(r.j.players)), r.j.parentSet === false && SP_setup();
     }).catch(() => {
       info.textContent = (msg ? msg + " " : "") + "Kein Internet. Wer sich hier schon angemeldet hat, kann trotzdem spielen.";
     });
@@ -163,8 +164,36 @@
     };
     return draw(), avs;
   }
-  function SP_new() {
-    let e = ln(), sel = SP_AV[0], nm = K("input", { class: "qin", placeholder: "Spielername", maxlength: 20, autocomplete: "off" }), pp = K("input", { class: "qin", type: "password", inputmode: "numeric", autocomplete: "off", placeholder: "Eltern-Passwort", maxlength: 8 }), m = K("p", { class: "qmsg" }, "Nur f\xFCr Erwachsene. Das Kind w\xE4hlt sein Passwort bei der ersten Anmeldung selbst."), go = async () => {
+  // Komplettes Zurücksetzen auf dem Server -> alte Spielerdaten auf diesem Gerät löschen
+  function SP_epoch(ep) {
+    if (!ep) return;
+    try {
+      let old = localStorage.getItem("milo3d_epoch");
+      if (old === ep) return;
+      for (let k of Object.keys(localStorage)) (k.startsWith("milo3d_v1_") || k === "milo3d_lh" || k === "milo3d_cred" || k === "milo3d_players") && localStorage.removeItem(k);
+      localStorage.setItem("milo3d_epoch", ep), ye = { p: {}, ex: 0, days: {} }, Ti = [];
+    } catch {
+    }
+  }
+  // Erster Start: Eltern-Passwort festlegen
+  function SP_setup() {
+    let e = ln(), a = K("input", { class: "qin", type: "password", inputmode: "numeric", autocomplete: "off", placeholder: "Eltern-Passwort (4\u20138 Zahlen)", maxlength: 8 }), b = K("input", { class: "qin", type: "password", inputmode: "numeric", autocomplete: "off", placeholder: "Nochmal eingeben", maxlength: 8 }), m = K("p", { class: "qmsg" }, "Das Kind darf dieses Passwort nicht kennen. Damit legt ihr neue Spieler an und kontrolliert Diktate."), go = async () => {
+      let p1 = a.value.trim(), p2 = b.value.trim();
+      if (!/^[0-9]{4,8}$/.test(p1)) return void (m.textContent = "Bitte 4 bis 8 Zahlen.");
+      if (p1 !== p2) return void (m.textContent = "Die beiden Eingaben sind nicht gleich.");
+      m.textContent = "Einen Moment \u2026";
+      try {
+        let r = await vf({ action: "parentSetup", parentPin: p1 });
+        if (r.j.ok) return Zs("Eltern-Passwort gespeichert."), SP_new(p1);
+        m.textContent = r.status === 409 ? "Es gibt schon ein Eltern-Passwort." : "Hat nicht geklappt (" + (r.j.error || r.status) + ").";
+      } catch {
+        m.textContent = "Daf\xFCr braucht man Internet.";
+      }
+    };
+    e.append(K("div", { class: "qbox splogin" }, K("h2", {}, "\u{1F44B} Willkommen!"), K("p", { class: "qsub" }, "Zuerst legt ein Erwachsener das Eltern-Passwort fest."), a, b, m, K("button", { class: "qbtn go big", onclick: go }, "Speichern")));
+  }
+  function SP_new(pre) {
+    let e = ln(), sel = SP_AV[0], nm = K("input", { class: "qin", placeholder: "Spielername", maxlength: 20, autocomplete: "off" }), pp = K("input", { class: "qin", type: "password", inputmode: "numeric", autocomplete: "off", placeholder: "Eltern-Passwort", maxlength: 8, value: typeof pre == "string" ? pre : "" }), m = K("p", { class: "qmsg" }, "Nur f\xFCr Erwachsene. Das Kind w\xE4hlt sein Passwort bei der ersten Anmeldung selbst."), go = async () => {
       let n = nm.value.trim();
       if (!n) return void (m.textContent = "Bitte einen Namen eingeben.");
       m.textContent = "Einen Moment …";
