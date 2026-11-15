@@ -16280,7 +16280,6 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
     let SETM = (() => {
       const SC = n, HEMI = r, SUN = a, REN = t;
       const rows = [
-        { k: "q", l: "Qualit\xE4t", o: ["Niedrig", "Mittel", "Hoch"] },
         { k: "spd", l: "Lauf-Geschwindigkeit", o: ["Langsam", "Normal", "Schnell", "Sehr schnell"] },
         { k: "mon", l: "Monster", o: ["An", "Aus"] },
         { k: "atk", l: "Monster-Verhalten", o: ["Angriff", "Friedlich"] },
@@ -17118,10 +17117,8 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
       let k = Jt === 2, Q = Jt === 1;
       pt.enabled = Jt >= 1, pt.strength = (k ? 0.55 : 0.45) * (window.__day ? 0.3 : 1), Be.shadows && (a.castShadow = k), Be.maxPR = Jt === 0 ? 1 : Q ? 1.35 : Ur ? 1.75 : 2, e = Math.min(e, Math.min(devicePixelRatio || 1, Be.maxPR)), Jt === 2 && (e = Math.min(devicePixelRatio || 1, Be.maxPR)), at(), te("btn-q").textContent = "Q:" + re[Jt];
     }
-    te("btn-q").addEventListener("click", () => {
-      Jt = (Jt + 2) % 3, _e();
-    }), window.__api.setQuality = (k) => {
-      Jt = k, _e();
+    window.__api.setQuality = (k) => {
+      Jt = 0, _e();
     }, te("btn-full").addEventListener("click", () => {
       let k = document.documentElement;
       document.fullscreenElement ? document.exitFullscreen() : (k.requestFullscreen || k.webkitRequestFullscreen || (() => {
