@@ -65,6 +65,7 @@
   function LZ_station(st, o) {
     let back = () => Ar(st);
     (st.subj || []).includes(1) && o.append(K("p", { class: "qtag" }, "✍️ Mit Papier und Stift"), K("div", { class: "qrow" }, K("button", { class: "qbtn", onclick: () => DK_menu(back) }, "\u{1F3A7} Diktat"), K("button", { class: "qbtn", onclick: () => DK_copyMenu(back) }, "✏️ W\xF6rter abschreiben")));
+    KO_paperFor(st).length && o.append(K("button", { class: "qbtn", onclick: () => KO_paperList(st, back) }, "\u{1F4DD} Papier-Aufgaben (" + KO_paperFor(st).length + ")"));
     LZ_extra(o, back);
   }
   function LZ_extra(o, back) {
@@ -73,158 +74,12 @@
     d.sec >= Ai() && o.append(K("button", { class: "qbtn go big", onclick: () => d.ex ? Pr(back) : TP_offer(null, back) }, d.ex ? "\u{1F3C5} Urkunde von heute" : d.exRun ? "\u{1F3C1} Tagespr\xFCfung weitermachen" : "\u{1F3C1} Tagespr\xFCfung starten"));
   }
   function LZ_book(u) {
-    LZ_extra(u, Ri), Ae && !Ae.offline && Ae.name !== "Admin" && u.append(K("button", { class: "qbtn", onclick: SP_fig }, "\u{1F5BC} Mein Profilbild"));
-  }
-
-  // ---------- Spieler-Auswahl ----------
-  var SP_AV = ["\u{1F981}", "\u{1F42F}", "\u{1F436}", "\u{1F431}", "\u{1F98A}", "\u{1F43C}", "\u{1F438}", "\u{1F435}", "\u{1F984}", "\u{1F432}", "\u{1F680}", "⚽", "\u{1F3CE}️", "\u{1F996}", "\u{1F42C}", "\u{1F916}"];
-  function SP_cache(list) {
-    try {
-      list ? localStorage.setItem("milo3d_players", JSON.stringify(list)) : list = JSON.parse(localStorage.getItem("milo3d_players") || "[]");
-    } catch {
-      list = list || [];
-    }
-    return list;
-  }
-  function cl(msg) {
-    Ae = null;
-    let e = ln(), grid = K("div", { class: "spgrid" }), info = K("p", { class: "qmsg" }, msg || "Tippe auf dein Bild."), draw = (list) => {
-      grid.innerHTML = "";
-      list.length || grid.append(K("p", { class: "qmsg" }, "Noch keine Spieler da. Ein Erwachsener kann unten einen anlegen."));
-      for (let p of list) grid.append(K("button", { class: "spcard", onclick: () => SP_pw(p) }, K("span", { class: "spav" }, p.figure || "\u{1F642}"), K("b", {}, p.name)));
-    };
-    draw(SP_cache()), LZ_bar();
-    vf({ action: "listPlayers" }).then((r) => {
-      if (!(r.j && r.j.ok) || !grid.isConnected) return;
-      SP_epoch(r.j.epoch), draw(SP_cache(r.j.players)), r.j.parentSet === false && SP_setup();
-    }).catch(() => {
-      info.textContent = (msg ? msg + " " : "") + "Kein Internet. Wer sich hier schon angemeldet hat, kann trotzdem spielen.";
-    });
-    e.append(K("div", { class: "qbox splogin" }, K("h2", {}, "Milos Lern-Welt"), K("p", { class: "qsub" }, "Wer spielt?"), grid, info, K("div", { class: "qrow" }, K("button", { class: "qbtn", onclick: SP_new }, "➕ Neuer Spieler"), K("button", { class: "qbtn", onclick: () => cl_old("Eltern: Name „Admin“ und das Eltern-Passwort.", true) }, "\u{1F468}‍\u{1F469} Eltern"))));
-  }
-  async function SP_hash(n, pin) {
-    try {
-      let d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("milo3d:" + n + ":" + pin));
-      return Array.from(new Uint8Array(d)).map((b) => b.toString(16).padStart(2, "0")).join("");
-    } catch {
-      return null;
-    }
-  }
-  async function SP_saveLocal(n, pin) {
-    try {
-      let h = await SP_hash(n, pin);
-      if (!h) return;
-      let m = JSON.parse(localStorage.getItem("milo3d_lh") || "{}");
-      m[n] = h, localStorage.setItem("milo3d_lh", JSON.stringify(m));
-    } catch {
-    }
-  }
-  async function SP_checkLocal(n, pin) {
-    try {
-      let m = JSON.parse(localStorage.getItem("milo3d_lh") || "{}");
-      if (m[n]) return m[n] === await SP_hash(n, pin);
-      let c = JSON.parse(localStorage.getItem("milo3d_cred") || "null");
-      return !!(c && c.name === n && c.pin === pin);
-    } catch {
-      return false;
-    }
-  }
-  function SP_pw(p) {
-    let e = ln(), pw = K("input", { class: "qin", type: "password", inputmode: "numeric", autocomplete: "off", placeholder: "Dein Passwort", maxlength: 8 }), m = K("p", { class: "qmsg" }, "Gib dein Passwort ein. Beim ersten Mal denkst du dir eins aus: 4 bis 8 Zahlen."), busy = false, go = async () => {
-      let pin = pw.value.trim();
-      if (busy) return;
-      if (!/^[0-9]{4,8}$/.test(pin)) {
-        m.textContent = "Das Passwort hat 4 bis 8 Zahlen.";
-        return;
-      }
-      busy = true, m.textContent = "Einen Moment …", Ae = { name: p.name, pin };
-      try {
-        let u = await ss("login");
-        if (u.status === 200 && u.j.ok) return await SP_saveLocal(p.name, pin), SP_done(u.j.firstLogin, false);
-        Ae = null, m.textContent = u.status === 401 ? "Das Passwort stimmt nicht. Versuch es nochmal." : u.status === 404 ? "Diesen Spieler gibt es nicht mehr." : "Hat nicht geklappt. Versuch es nochmal.";
-      } catch {
-        if (await SP_checkLocal(p.name, pin)) return Ae.offline = true, SP_done(false, true);
-        Ae = null, m.textContent = "Kein Internet. Ohne Internet geht es nur, wenn du dich auf diesem Ger\xE4t schon einmal angemeldet hast.";
-      }
-      busy = false;
-    };
-    pw.addEventListener("keydown", (c) => {
-      c.key === "Enter" && go();
-    }), e.append(K("div", { class: "qbox splogin" }, K("div", { class: "spav big" }, p.figure || "\u{1F642}"), K("h2", {}, "Hallo " + p.name + "!"), pw, m, K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: go }, "Los geht's"), K("button", { class: "qbtn", onclick: () => cl() }, "Zur\xFCck")))), setTimeout(() => pw.focus(), 60);
-  }
-  function SP_done(first, off) {
-    ol(Ae.name), off || uf(), qs(), Ys(), LZ_bar(), Zs(first ? "Passwort gespeichert. Merk es dir gut!" : off ? "Ohne Internet: Dein Fortschritt wird sp\xE4ter \xFCbertragen." : "Hallo " + Ae.name + "! Viel Spa\xDF beim Lernen.");
-  }
-  function SP_avPick(sel, onPick) {
-    let avs = K("div", { class: "spavs" }), draw = () => {
-      avs.innerHTML = "";
-      for (let a of SP_AV) avs.append(K("button", { class: "spavb" + (a === sel ? " on" : ""), onclick: () => {
-        sel = a, onPick(a), draw();
-      } }, a));
-    };
-    return draw(), avs;
-  }
-  // Komplettes Zurücksetzen auf dem Server -> alte Spielerdaten auf diesem Gerät löschen
-  function SP_epoch(ep) {
-    if (!ep) return;
-    try {
-      let old = localStorage.getItem("milo3d_epoch");
-      if (old === ep) return;
-      for (let k of Object.keys(localStorage)) (k.startsWith("milo3d_v1_") || k === "milo3d_lh" || k === "milo3d_cred" || k === "milo3d_players") && localStorage.removeItem(k);
-      localStorage.setItem("milo3d_epoch", ep), ye = { p: {}, ex: 0, days: {} }, Ti = [];
-    } catch {
-    }
-  }
-  // Erster Start: Eltern-Passwort festlegen
-  function SP_setup() {
-    let e = ln(), a = K("input", { class: "qin", type: "password", inputmode: "numeric", autocomplete: "off", placeholder: "Eltern-Passwort (4\u20138 Zahlen)", maxlength: 8 }), b = K("input", { class: "qin", type: "password", inputmode: "numeric", autocomplete: "off", placeholder: "Nochmal eingeben", maxlength: 8 }), m = K("p", { class: "qmsg" }, "Das Kind darf dieses Passwort nicht kennen. Damit legt ihr neue Spieler an und kontrolliert Diktate."), go = async () => {
-      let p1 = a.value.trim(), p2 = b.value.trim();
-      if (!/^[0-9]{4,8}$/.test(p1)) return void (m.textContent = "Bitte 4 bis 8 Zahlen.");
-      if (p1 !== p2) return void (m.textContent = "Die beiden Eingaben sind nicht gleich.");
-      m.textContent = "Einen Moment \u2026";
-      try {
-        let r = await vf({ action: "parentSetup", parentPin: p1 });
-        if (r.j.ok) return Zs("Eltern-Passwort gespeichert."), SP_new(p1);
-        m.textContent = r.status === 409 ? "Es gibt schon ein Eltern-Passwort." : "Hat nicht geklappt (" + (r.j.error || r.status) + ").";
-      } catch {
-        m.textContent = "Daf\xFCr braucht man Internet.";
-      }
-    };
-    e.append(K("div", { class: "qbox splogin" }, K("h2", {}, "\u{1F44B} Willkommen!"), K("p", { class: "qsub" }, "Zuerst legt ein Erwachsener das Eltern-Passwort fest."), a, b, m, K("button", { class: "qbtn go big", onclick: go }, "Speichern")));
-  }
-  function SP_new(pre) {
-    let e = ln(), sel = SP_AV[0], nm = K("input", { class: "qin", placeholder: "Spielername", maxlength: 20, autocomplete: "off" }), pp = K("input", { class: "qin", type: "password", inputmode: "numeric", autocomplete: "off", placeholder: "Eltern-Passwort", maxlength: 8, value: typeof pre == "string" ? pre : "" }), m = K("p", { class: "qmsg" }, "Nur f\xFCr Erwachsene. Das Kind w\xE4hlt sein Passwort bei der ersten Anmeldung selbst."), go = async () => {
-      let n = nm.value.trim();
-      if (!n) return void (m.textContent = "Bitte einen Namen eingeben.");
-      m.textContent = "Einen Moment …";
-      try {
-        let r = await vf({ action: "register", parentPin: pp.value.trim(), newName: n, figure: sel });
-        if (pp.value = "", r.j.ok) return Zs("Spieler " + r.j.name + " ist angelegt."), cl();
-        m.textContent = r.status === 401 ? "Das Eltern-Passwort stimmt nicht." : r.status === 409 ? "Diesen Namen gibt es schon." : "Hat nicht geklappt (" + (r.j.error || r.status) + ").";
-      } catch {
-        m.textContent = "Daf\xFCr braucht man Internet.";
-      }
-    };
-    e.append(K("div", { class: "qbox splogin" }, K("h2", {}, "➕ Neuer Spieler"), nm, K("p", { class: "qtag" }, "Profilbild aussuchen"), SP_avPick(sel, (a) => sel = a), pp, m, K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: go }, "Anlegen"), K("button", { class: "qbtn", onclick: () => cl() }, "Zur\xFCck"))));
-  }
-  function SP_fig() {
-    let cur = (SP_cache().find((p) => Ae && p.name === Ae.name) || {}).figure, sel = cur || SP_AV[0];
-    ln().append(K("div", { class: "qbox" }, K("h2", {}, "\u{1F5BC} Mein Profilbild"), SP_avPick(sel, (a) => sel = a), K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: async () => {
-      try {
-        let r = await ss("setFigure", { figure: sel });
-        if (r.j && r.j.ok) {
-          let L = SP_cache();
-          L.forEach((p) => p.name === Ae.name && (p.figure = sel)), SP_cache(L), Zs("Neues Bild gespeichert!");
-        } else Zs("Hat nicht geklappt.");
-      } catch {
-        Zs("Daf\xFCr braucht man Internet.");
-      }
-      Ri();
-    } }, "Speichern"), K("button", { class: "qbtn", onclick: Ri }, "Zur\xFCck"))));
+    LZ_extra(u, Ri), KO_book(u);
   }
 
   // ---------- Tagesprüfung (höchstens 5 Minuten) ----------
   var TP_MAX = 300, TP_N = 10, TP_iv = null;
+  window.__setTPN = (n) => TP_N = n;
   function TP_pool(d) {
     let out = [], seen = new Set(), add = (q) => {
       q && !seen.has(q.id) && out.length < TP_N && (seen.add(q.id), out.push(q));
@@ -289,7 +144,7 @@
   // ---------- Deutsch: Diktat und Wörter abschreiben ----------
   var DK_S = ["Der Hund spielt im Garten.", "Mama kauft frisches Brot beim B\xE4cker.", "Im Winter f\xE4llt oft Schnee.", "Die Katze schl\xE4ft auf dem Sofa.", "Wir fahren mit dem Fahrrad zur Schule.", "Der Vogel sitzt auf dem Dach.", "Am Wochenende besuchen wir die Oma.", "Mein Bruder trinkt gern kalte Milch.", "Die Kinder springen in den Bach.", "Im Wald wohnen viele Tiere.", "Papa repariert das alte Auto.", "Die Sonne scheint hell am Himmel.", "Ich lese gern spannende B\xFCcher.", "Der Lehrer schreibt an die Tafel.", "Nach dem Essen putze ich die Z\xE4hne.", "Der Igel sucht im Herbst Futter.", "Wir backen einen leckeren Kuchen.", "Die Blumen brauchen viel Wasser.", "Unser Haus hat eine gr\xFCne T\xFCr.", "Der Bauer f\xFCttert die K\xFChe.", "Im Sommer gehen wir schwimmen.", "Meine Freundin hat einen kleinen Hasen.", "Der Zug f\xE4hrt p\xFCnktlich ab.", "Die Stra\xDFe ist heute sehr nass.", "Ich packe meine Tasche f\xFCr morgen.", "Der Fu\xDFball liegt hinter der Hecke.", "Am Abend wird es schnell dunkel.", "Die Maus l\xE4uft schnell in ihr Loch.", "Wir spielen drau\xDFen Verstecken.", "Der Drache fliegt hoch \xFCber das Feld.", "Im K\xFChlschrank steht ein Glas Saft.", "Der Hund bellt laut am Zaun.", "Lisa malt ein sch\xF6nes Bild.", "Die Ente schwimmt auf dem See.", "Opa erz\xE4hlt uns eine lustige Geschichte.", "Morgen schreiben wir einen Test.", "Der B\xE4cker steht sehr fr\xFCh auf.", "Die Eule schl\xE4ft am Tag.", "Im Herbst fallen die bunten Bl\xE4tter.", "Ich helfe meiner Mutter in der K\xFCche."];
   var DK_W = "Fahrrad Schule Kuchen Wasser Fenster Br\xFCcke Hexe Zucker Katze Pflaume Stra\xDFe Fu\xDFball Gl\xFCck Sonne spielen laufen springen schreiben sch\xF6n gro\xDF klein M\xFCtze Schnee Igel Biene Wiese Ziege K\xFCche B\xE4ume H\xE4user Freund Wolke Regen Blitz Stuhl Tisch Lehrer Pferd Vogel Fisch Nacht Mittag Apfel Birne Kirsche Schatz Ritter Burg Drache Zahn Uhr Jacke Hose Schuhe Tasche Heft Stift Lineal Rucksack Kerze Licht dunkel hell kalt warm Winter Sommer Herbst Fr\xFChling Eule Fuchs Hase Maus Zebra Affe Krokodil Schmetterling Rakete Stern Mond Insel Schiff Wellen Sand Muschel Bahnhof Ampel Polizei Feuerwehr Brot Butter K\xE4se Nudeln Suppe L\xF6ffel Gabel Messer Teller Becher fr\xF6hlich m\xFCde mutig leise laut".split(" ");
-  var DK_TYP = { diktat: "Diktat", abschreiben: "W\xF6rter abschreiben" };
+  var DK_TYP = { diktat: "Diktat", abschreiben: "W\xF6rter abschreiben", papier: "Papier-Aufgabe" };
   function DK_fresh(key, all, need, size) {
     let used = ye[key] || (ye[key] = []), pool = all.map((x, i) => i).filter((i) => !used.includes(i));
     pool.length < need && (used.length = 0, pool = all.map((x, i) => i));
@@ -345,6 +200,7 @@
     confirm("Wirklich aufh\xF6ren? Dann wird diese Aufgabe nicht gewertet.") && (DK_end(), back());
   }
   function DK_diktat(back, mode, len) {
+    if (KO_block()) return;
     let sents = DK_fresh("dkUsedS", DK_S, len, (s) => s.split(" ").length), chunks = [];
     for (let s of sents) {
       let w = s.split(" "), step = mode === 3 ? w.length : mode;
@@ -359,6 +215,7 @@
     e.append(K("div", { class: "qbox" }, K("div", { class: "qhead" }, K("h2", {}, "\u{1F3A7} Diktat"), K("button", { class: "qx", onclick: () => DK_abort(back) }, "✕")), K("p", { class: "qtag" }, sents.length + " S\xE4tze \xB7 " + ["", "Wort f\xFCr Wort", "Immer 2 W\xF6rter", "Ganzer Satz"][mode]), info, hint, again, next));
   }
   function DK_copy(back, len) {
+    if (KO_block()) return;
     let words = DK_fresh("dkUsedW", DK_W, len, () => 1), e = ln(), s0 = Li().sec, k = 0;
     DK_begin();
     let w = K("div", { class: "dkword" }, words[0]), info = K("p", { class: "qtag" }, "Wort 1 von " + words.length), next = K("button", { class: "qbtn go big", onclick: () => {
@@ -383,7 +240,7 @@
     ln().append(K("div", { class: "qbox" }, K("div", { class: "qhead" }, K("h2", {}, "\u{1F468}‍\u{1F469} Noch zu kontrollieren"), K("button", { class: "qx", onclick: back }, "✕")), L.map((x) => K("button", { class: "qbtn big", onclick: () => DK_check(x, () => DK_pendList(back)) }, DK_TYP[x.typ] + " \xB7 " + x.n + " W\xF6rter \xB7 " + new Date(x.at).toLocaleDateString("de-DE")))));
   }
   function DK_check(it, back) {
-    Mf(() => DK_checkScreen(it, back));
+    KO_confirmFlow(it, back);
   }
   function DK_checkScreen(it, back) {
     let d = ye.days[it.day];
@@ -401,7 +258,7 @@
   }
   function DK_result(r, back) {
     let msg = r.pct >= 95 ? "Wow, fast alles richtig! Super geschrieben!" : r.pct >= 80 ? "Toll gemacht! Nur ein paar W\xF6rter waren schwer." : r.pct >= 50 ? "Gut ge\xFCbt! Ein paar W\xF6rter \xFCben wir noch." : "Danke f\xFCrs Schreiben! Jedes Mal wirst du ein St\xFCck besser.";
-    ln().append(K("div", { class: "qbox" }, K("h2", {}, "✍️ " + DK_TYP[r.typ]), K("p", { class: "qbig" }, r.right + " von " + r.n + " richtig"), K("p", { class: "qsub" }, msg), K("div", { class: "dkstat" }, K("div", {}, "W\xF6rter insgesamt: " + r.n), K("div", {}, "Richtig: " + r.right), K("div", {}, "Falsch: " + r.wrong), K("div", {}, "Fehlerquote: " + String(r.err).replace(".", ",") + " %"), K("div", {}, "Schreibzeit: " + oa(r.sec) + " Minuten"), K("div", {}, "Leistung: " + r.pct + " %"), K("b", {}, "Note: " + r.note + " (" + LZ_GN[r.note] + ")")), K("button", { class: "qbtn go big", onclick: back }, "Weiter")));
+    ln().append(K("div", { class: "qbox" }, K("h2", {}, "✍️ " + DK_TYP[r.typ]), K("p", { class: "qbig" }, r.right + " von " + r.n + " richtig"), K("p", { class: "qsub" }, msg), K("div", { class: "dkstat" }, K("div", {}, (r.typ === "papier" ? "Teilaufgaben" : "W\xF6rter") + " insgesamt: " + r.n), K("div", {}, "Richtig: " + r.right), K("div", {}, "Falsch: " + r.wrong), K("div", {}, "Fehlerquote: " + String(r.err).replace(".", ",") + " %"), K("div", {}, "Schreibzeit: " + oa(r.sec) + " Minuten"), K("div", {}, "Leistung: " + r.pct + " %"), K("b", {}, "Note: " + r.note + " (" + LZ_GN[r.note] + ")")), K("button", { class: "qbtn go big", onclick: back }, "Weiter")));
   }
 
   // ---------- Urkunde ----------
@@ -418,9 +275,9 @@
       let x = d.s[f];
       x && x.n && rows.push({ name: UK_fach(f), r: x.r, n: x.n, unit: "Aufgaben", fi: +f });
     }
-    for (let typ of ["diktat", "abschreiben"]) {
+    for (let typ of ["diktat", "abschreiben", "papier"]) {
       let L = (d.dk || []).filter((x) => x.typ === typ);
-      L.length && rows.push({ name: "Deutsch \xB7 " + (typ === "diktat" ? "Diktat" : "Abschreiben"), r: L.reduce((a, x) => a + x.right, 0), n: L.reduce((a, x) => a + x.n, 0), unit: "W\xF6rter", dk: true });
+      L.length && rows.push({ name: typ === "papier" ? "Papier-Aufgaben" : "Deutsch \xB7 " + (typ === "diktat" ? "Diktat" : "Abschreiben"), r: L.reduce((a, x) => a + x.right, 0), n: L.reduce((a, x) => a + x.n, 0), unit: "W\xF6rter", dk: true });
     }
     return d.ex && d.ex.n && rows.push({ name: "Tagespr\xFCfung", r: d.ex.r, n: d.ex.n, unit: "Fragen", exam: true }), rows.forEach((x) => (x.pct = LZ_pct(x.r, x.n), x.note = r_(x.pct))), rows;
   }

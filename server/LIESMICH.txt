@@ -1,0 +1,7 @@
+Server von Milos Lern-Welt (Supabase-Projekt "Milos lern app")
+01_schema.sql  Tabellen: families, sessions, auth_fails, system_settings, confirmations, friend_requests, blocks, admin_log (+ Spalten in profiles)
+02_api.sql     Funktion milo_api: gesamte Logik und alle Rechtepruefungen (Admin / Eltern / Kind)
+Edge Function "api" ruft nur milo_api auf.
+test_api.mjs   54 Server-Tests gegen eine lokale Postgres-Kopie (PGlite): node test_api.mjs
+test_oberflaeche.py  27 Tests der Oberflaeche im Browser gegen dieselbe Logik
+Passwoerter: bcrypt. Sitzungen: zufaelliger Schluessel, nur als SHA-256 gespeichert. Nach 5 Fehlversuchen 15 Min. Sperre.
