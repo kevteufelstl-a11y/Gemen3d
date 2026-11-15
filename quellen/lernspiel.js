@@ -264,8 +264,7 @@
   // ---------- Urkunde ----------
   var UK_tpl = null;
   function UK_loadTpl(cb) {
-    let src = Ne && Ne.certTpl;
-    if (!src) return UK_tpl = null, false;
+    let src = Ne && Ne.certTpl || "__UK_BG__";
     if (UK_tpl && UK_tpl.__src === src) return UK_tpl.complete && UK_tpl.naturalWidth > 0;
     return UK_tpl = new Image(), UK_tpl.__src = src, UK_tpl.onload = () => cb && cb(), UK_tpl.src = src, false;
   }
@@ -321,35 +320,35 @@
     return r.fillText(line, x, y), y + lh;
   }
   function UK_render(r, d, D, W, H, f, tpl) {
-    let F = (px, st) => (st || "") + " " + Math.round(px * f) + "px Georgia,serif", red = "#7a1f1f", ink = "#2e2210", L = 130, R = W - 130, CW = R - L;
+    let F = (px, st) => (st || "") + " " + Math.round(px * f) + "px Georgia,serif", head = "#2a1a0c", ink = "#3a2a16", red = "#6e1b12", L = 250, R = 905, CW = R - L;
     if (tpl) r.drawImage(tpl, 0, 0, W, H);
     else {
       let g = r.createLinearGradient(0, 0, W, H);
-      g.addColorStop(0, "#f6e7c1"), g.addColorStop(0.5, "#efd9a3"), g.addColorStop(1, "#e3c78a"), r.fillStyle = g, r.fillRect(0, 0, W, H), r.strokeStyle = red, r.lineWidth = 14, r.strokeRect(50, 50, W - 100, H - 100), r.strokeStyle = "#b8892b", r.lineWidth = 5, r.strokeRect(78, 78, W - 156, H - 156);
+      g.addColorStop(0, "#f6e7c1"), g.addColorStop(1, "#e3c78a"), r.fillStyle = g, r.fillRect(0, 0, W, H);
     }
-    r.textAlign = "center", r.fillStyle = red, r.font = F(92, "bold"), r.fillText("⚔ URKUNDE ⚔", W / 2, 200 * f + 10), r.fillStyle = ink, r.font = F(38, "italic"), r.fillText("f\xFCr flei\xDFiges Lernen", W / 2, 262 * f + 10), r.font = F(64, "bold"), r.fillText(Ae && Ae.name || "Milo", W / 2, 360 * f + 10);
-    let dt = new Date(D.key + "T12:00:00"), y = 420 * f + 10;
-    r.font = F(32), y = UK_wrap(r, "hat am " + dt.toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) + ", ganze " + Math.round(d.sec / 60) + " Minuten gelernt" + (d.ex && d.ex.n ? " und die Tagespr\xFCfung geschafft." : "."), W / 2, y, CW, 42 * f), y += 8 * f, r.textAlign = "left";
+    let name = Ae && Ae.name || "Milo", dt = new Date(D.key + "T12:00:00"), y = 392;
+    r.textAlign = "center", r.fillStyle = head, r.font = F(40 / f, "bold"), r.fillText("\u{1F4DC} MEILENSTEIN-URKUNDE", W / 2, y), y += 62 * f;
+    r.font = F(28 / f, "bold"), r.fillText("\u{1F3C6} F\xFCr unseren epischen Lern-Helden:", W / 2, y), y += 62 * f;
+    r.fillStyle = red, r.font = F(58, "bold");
+    let nf = 58;
+    while (r.measureText(name).width > CW && nf > 26) nf -= 2, r.font = F(nf, "bold");
+    r.fillText(name, W / 2, y), y += 44 * f, r.fillStyle = ink, r.font = F(19 / f, "italic"), r.fillText(dt.toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) + " \xB7 " + Math.round(d.sec / 60) + " Minuten gelernt", W / 2, y), y += 48 * f, r.textAlign = "left";
     let sec = (h, t) => {
-      r.fillStyle = red, r.font = F(31, "bold"), r.fillText(h, L, y), y += 40 * f, r.fillStyle = ink, r.font = F(28), y = UK_wrap(r, t, L, y, CW, 36 * f) + 10 * f;
+      r.fillStyle = head, r.font = F(28, "bold"), r.fillText(h, L, y), y += 36 * f, r.fillStyle = ink, r.font = F(25), y = UK_wrap(r, t, L + 14, y, CW - 14, 32 * f) + 8 * f;
     };
-    sec("\u{1F4DA} Das hast du heute ge\xFCbt", D.subj.join(", ") || "–"), sec("\u{1F3AF} Konzentration  " + "★".repeat(D.star) + "☆".repeat(3 - D.star), D.conc), sec("⏱ Aufgabenzeit", D.speed), sec("\u{1F4C8} Vergleich", D.cmp), r.fillStyle = red, r.font = F(34, "bold italic"), r.textAlign = "center", y = UK_wrap(r, D.pos, W / 2, y + 12 * f, CW, 44 * f) + 6 * f, r.textAlign = "left", sec("\u{1F4A1} Tipp f\xFCr morgen", D.tip);
-    let cx = [L, L + CW * 0.48, L + CW * 0.66, L + CW * 0.8];
-    y += 6 * f, r.fillStyle = red, r.font = F(29, "bold"), r.fillText("Bereich", cx[0], y), r.fillText("Richtig", cx[1], y), r.fillText("Prozent", cx[2], y), r.fillText("Note", cx[3], y), y += 12 * f, r.fillRect(L, y, CW, 3), y += 38 * f, r.fillStyle = ink;
-    for (let x of D.rows) r.font = F(28, x.exam ? "bold" : ""), r.fillText(x.name, cx[0], y), r.fillText(x.r + " von " + x.n, cx[1], y), r.fillText(x.pct + " %", cx[2], y), r.fillText(x.note + " " + LZ_GN[x.note], cx[3], y), y += 38 * f;
-    D.rows.length || (r.font = F(28, "italic"), r.fillText("Heute gab es noch keine bewerteten Aufgaben.", cx[0], y), y += 38 * f), r.fillStyle = red, r.fillRect(L, y - 22 * f, CW, 3), y += 22 * f, r.font = F(36, "bold"), D.tot != null && (r.fillText("Gesamtnote: " + r_(D.tot) + " (" + LZ_GN[r_(D.tot)] + ")", L, y), r.font = F(24), r.fillStyle = ink, r.fillText("Durchschnitt aller Bereiche: " + D.tot + " %", L + CW * 0.6, y), y += 34 * f);
-    let gr = je.grades, sp = [];
-    for (let i = 0; i < 6; i++) sp.push(i + 1 + " = " + (i === 0 ? "100–" + gr[0] : i === 5 ? "unter " + gr[4] : gr[i - 1] - 1 + "–" + gr[i]) + " %");
-    r.fillStyle = ink, r.font = F(20, "italic"), y = UK_wrap(r, "Notenspiegel: " + sp.join(" \xB7 "), L, y, CW, 26 * f);
-    let sy = Math.max(y + 90 * f, H - 190), half = (CW - 80) / 2;
-    return r.strokeStyle = ink, r.lineWidth = 2, r.beginPath(), r.moveTo(L, sy), r.lineTo(L + half, sy), r.moveTo(R - half, sy), r.lineTo(R, sy), r.stroke(), r.font = F(24), r.textAlign = "center", r.fillText("Unterschrift Erwachsener", L + half / 2, sy + 34), r.fillText("Unterschrift " + (Ae && Ae.name || "Kind"), R - half / 2, sy + 34), y;
+    sec("1. Das bearbeitete Fach:", "\u{1F4D0} " + (D.subj.join(", ") || "–")), sec("2. Deine Super-Konzentration:", "\u{1F9D8} " + D.conc + " " + "★".repeat(D.star) + "☆".repeat(3 - D.star)), sec("3. Dein starkes Tempo:", "⏱ " + D.speed), sec("4. Der Blick zur\xFCck:", "\u{1F4C8} " + D.cmp), sec("5. Dein Motivations-Turbo (Das Wichtigste!):", "⭐ " + D.pos), sec("6. Dein geheimer Profi-Tipp f\xFCr das n\xE4chste Mal:", "\u{1F4A1} " + D.tip);
+    r.fillStyle = red, r.fillRect(L, y - 6 * f, CW, 3), y += 34 * f, r.fillStyle = head, r.font = F(30, "bold"), D.tot != null ? (r.fillText("A. Gesamtnote:  ⭐ Note " + r_(D.tot) + " (" + LZ_GN[r_(D.tot)] + ", " + D.tot + " %)", L, y), y += 44 * f) : (r.fillText("A. Gesamtnote: noch keine Wertung", L, y), y += 44 * f);
+    r.fillText("B. Einzelnote pro Fach:", L, y), y += 38 * f, r.fillStyle = ink;
+    for (let x of D.rows) r.font = F(25, x.exam ? "bold" : ""), y = UK_wrap(r, x.name + ": ⭐ Note " + x.note + " (" + LZ_GN[x.note] + ", " + x.pct + " %) \xB7 " + x.r + " von " + x.n, L + 14, y, CW - 14, 31 * f) + 3 * f;
+    let sy = 1688, half = (CW - 50) / 2;
+    return r.strokeStyle = head, r.lineWidth = 2, r.beginPath(), r.moveTo(L, sy), r.lineTo(L + half, sy), r.moveTo(R - half, sy), r.lineTo(R, sy), r.stroke(), r.fillStyle = ink, r.font = F(21, "italic"), r.textAlign = "center", r.fillText("Unterschrift Erwachsener", L + half / 2, sy + 30), r.fillText("Unterschrift " + name, R - half / 2, sy + 30), y;
   }
   function UK_draw(d) {
-    let W = 1240, H = 1754, c = document.createElement("canvas");
+    let W = 1152, H = 2064, c = document.createElement("canvas");
     c.width = W, c.height = H;
     let D = UK_data(d), paint = () => {
       let r = c.getContext("2d"), tpl = UK_loadTpl(paint) ? UK_tpl : null;
-      for (let f of [1, 0.93, 0.86, 0.8, 0.74, 0.68]) if (r.clearRect(0, 0, W, H), UK_render(r, d, D, W, H, f, tpl) < H - 280 || f === 0.68) break;
+      for (let f of [1.14, 1.07, 1, 0.93, 0.86, 0.8, 0.74, 0.68]) if (r.clearRect(0, 0, W, H), UK_render(r, d, D, W, H, f, tpl) < 1625 || f === 0.68) break;
     };
     return paint(), c;
   }
@@ -376,7 +375,7 @@
       let img = new Image();
       img.onload = () => {
         let c = document.createElement("canvas");
-        c.width = 1240, c.height = 1754, c.getContext("2d").drawImage(img, 0, 0, 1240, 1754);
+        c.width = 1152, c.height = 2064, c.getContext("2d").drawImage(img, 0, 0, 1152, 2064);
         let cfg = la(Ne);
         cfg.certTpl = c.toDataURL("image/jpeg", 0.85), URL.revokeObjectURL(img.src), ca(cfg), UK_tplAdmin();
       }, img.src = URL.createObjectURL(f);

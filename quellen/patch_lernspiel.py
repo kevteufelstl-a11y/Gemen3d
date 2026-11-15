@@ -4,7 +4,7 @@
 
 # Neue Funktionen in den Spiel-Bereich einsetzen (vor der Urkunde)
 rep('  function Pr(i) {\n    ra = false, Cr(false);',
-    open(D + '/lernspiel.js', encoding='utf8').read() +
+    open(D + '/lernspiel.js', encoding='utf8').read().replace('__UK_BG__', 'data:image/jpeg;base64,' + __import__('base64').b64encode(open(D + '/urkunde_bg.jpg','rb').read()).decode()) +
     '  function Pr(i) {\n    if (!Li().ex) return TP_offer(null, i);\n    ra = false, Cr(false);', 'LS-Einbau')
 
 # Urkunde: neues Layout, PDF über Teilen-Menü (Speichern/Drucken)
@@ -49,3 +49,7 @@ rep(r'l && u.append(K("button", { class: "qbtn go", onclick: () => Pr(Ri) }, "\u
 # Admin: Urkunden-Vorlage hochladen
 rep(r'K("button", { class: "qbtn big", onclick: g_ }, "\u{1F381} Belohnungen, Noten, Schule")',
     r'K("button", { class: "qbtn big", onclick: g_ }, "\u{1F381} Belohnungen, Noten, Schule"), K("button", { class: "qbtn big", onclick: UK_tplAdmin }, "\u{1F5BC} Urkunden-Vorlage")', 'LS-Admin')
+
+# PDF-Seite im Seitenverhältnis der neuen Urkunde (1152x2064) statt A4
+rep('/MediaBox [0 0 595 842]', '/MediaBox [0 0 595 1066]', 'LS-PDF-Seite')
+rep('"q 595 0 0 842 0 0 cm /Im0 Do Q"', '"q 595 0 0 1066 0 0 cm /Im0 Do Q"', 'LS-PDF-Bild')
