@@ -185,7 +185,7 @@ TOWN = '''
     function FWB(y, I, vt, j, D, GE, ruin) {
       (window.__fw = window.__fw || []).push(Jc(y));
       const R = me(D * 389 + 5), nE = y.length, hf = vt / j, stone = R() < 0.22, tint = FTI = ruin ? [0.62, 0.56, 0.5] : FTINT[R() * FTINT.length | 0];
-      let door = -1, LL = 0;
+      let door = -1, LL = 0, bal = 0, porch = 0;
       for (let e = 0; e < nE; e++) {
         const P0 = y[e], P1 = y[(e + 1) % nE], L = Math.hypot(P1[0] - P0[0], P1[1] - P0[1]);
         !GE.has(e) && L > LL && (LL = L, door = e);
@@ -195,7 +195,7 @@ TOWN = '''
         if (L < 0.15) continue;
         const nx = I * dz / L, nz = -I * dx / L, nm = Math.max(1, Math.round(L / 2.2)), gr = GE.has(e);
         const sh = 0.86 + 0.14 * (nx * -0.5 + nz * -0.8), col = [tint[0] * sh, tint[1] * sh, tint[2] * sh];
-        const tops = [];
+        const tops = [], WN = [];
         for (let k = 0; k < nm; k++) tops.push(ruin ? vt * (R() < 0.35 ? 1 : 0.28 + R() * 0.6) : vt);
         for (let f = 0; f < j; f++) for (let k = 0; k < nm; k++) {
           const t0 = k / nm, t1 = (k + 1) / nm, y0 = f * hf, y1 = Math.min((f + 1) * hf, tops[k]);
@@ -204,6 +204,7 @@ TOWN = '''
           if (f === 0) tile = e === door && k === nm >> 1 ? 3 : !gr && L > 1.6 && (k + e) % 2 === 0 ? (stone ? 7 : 2) : stone ? 5 : 4;
           else tile = gr ? 0 : (k + f + e) % 2 === 0 || nm === 1 ? (R() < 0.45 ? 1 : R() < 0.5 ? 6 : 2) : 0;
           ruin && (tile = tile === 1 || tile === 6 || tile === 7 ? 2 : tile === 3 ? 4 : tile);
+          !ruin && (tile === 1 || tile === 2 || tile === 6 || tile === 7) && WN.push([k, f, t0, t1]);
           let [u0, u1, v0, v1] = tuv(tile);
           v1 = v0 + (v1 - v0) * (y1 - y0) / hf;
           I > 0 && ([u0, u1] = [u1, u0]);
@@ -213,6 +214,79 @@ TOWN = '''
             const c2 = col.map((c) => c * 0.6), ix = nx * 0.25, iz = nz * 0.25;
             FW.quad([bx - ix, y0, bz - iz], [ax - ix, y0, az - iz], [ax - ix, y1, az - iz], [bx - ix, y1, bz - iz], [u1, v0], [u0, v0], [u0, v1], [u1, v1], c2, [-nx, 0, -nz]);
             FW.quad([ax, y1, az], [bx, y1, bz], [bx - ix, y1, bz - iz], [ax - ix, y1, az - iz], [0.03, 0.7], [0.1, 0.7], [0.1, 0.72], [0.03, 0.72], c2, [0, 1, 0]);
+          }
+        }
+        if (!ruin) {
+          const o = -Math.atan2(dz, dx), ux = dx / L, uz = dz / L;
+          const W = (u, v) => [P0[0] + ux * u + nx * v, P0[1] + uz * u + nz * v];
+          const WOOD = [0.34, 0.2, 0.1], DW = [0.22, 0.13, 0.07], ST = [0.45, 0.44, 0.43];
+          let hasBal = false;
+          if (j >= 2 && !gr && L >= 4.4 && e !== door && bal < 2 && R() < 0.42) {
+            bal++;
+            hasBal = true;
+            const bw = Math.min(L - 1.2, L > 7 && R() < 0.5 ? 4.4 : 2.2), uc = L / 2;
+            let [cx, cz] = W(uc, 0.55);
+            J.box(cx, hf + 0.04, cz, bw, 0.14, 1.1, o, WOOD);
+            [cx, cz] = W(uc, 1.02);
+            J.box(cx, hf + 1.0, cz, bw, 0.07, 0.07, o, DW);
+            for (const sd of [-1, 1]) {
+              [cx, cz] = W(uc + sd * (bw / 2 - 0.04), 0.55);
+              J.box(cx, hf + 1.0, cz, 0.07, 0.07, 1.1, o, DW);
+              [cx, cz] = W(uc + sd * (bw / 2 - 0.06), 1.02);
+              J.box(cx, hf / 2, cz, 0.16, hf, 0.16, o, DW);
+              for (let q = 1; q < 3; q++) {
+                [cx, cz] = W(uc + sd * (bw / 2 - 0.04), q * 0.36);
+                J.box(cx, hf + 0.52, cz, 0.05, 0.9, 0.05, o, WOOD);
+              }
+            }
+            const np = Math.round(bw / 0.8);
+            for (let q = 0; q <= np; q++) {
+              [cx, cz] = W(uc - bw / 2 + 0.06 + q * (bw - 0.12) / np, 1.02);
+              J.box(cx, hf + 0.52, cz, 0.05, 0.9, 0.05, o, WOOD);
+            }
+          }
+          if (e === door && !porch) {
+            porch = 1;
+            const uc = (nm >> 1) * (L / nm) + L / nm / 2;
+            let [cx, cz] = W(uc, 0.5);
+            J.box(cx, 0.05, cz, 1.9, 0.1, 1.0, o, ST);
+            for (const sd of [-1, 1]) {
+              [cx, cz] = W(uc + sd * 0.95, 1.05);
+              J.box(cx, 1.25, cz, 0.1, 2.5, 0.1, o, DW);
+            }
+            const A = (u, v, yy) => {
+              const q = W(u, v);
+              return [q[0], yy, q[1]];
+            };
+            const a1 = A(uc - 1.1, 0, 2.85), b1 = A(uc + 1.1, 0, 2.85), c1 = A(uc + 1.1, 1.15, 2.45), d1 = A(uc - 1.1, 1.15, 2.45);
+            J.quad(a1, b1, c1, d1, [0, 0], [1, 0], [1, 1], [0, 1], [0.42, 0.16, 0.12], [nx * 0.3, 0.9, nz * 0.3]);
+            J.quad(d1, c1, b1, a1, [0, 0], [1, 0], [1, 1], [0, 1], [0.2, 0.12, 0.08], [0, -1, 0]);
+            if (R() < 0.6) {
+              [cx, cz] = W(uc + 1.6, 0.45);
+              J.box(cx, 0.3, cz, 0.6, 0.6, 0.6, o + R(), WOOD);
+              [cx, cz] = W(uc - 1.6, 0.45);
+              J.box(cx, 0.4, cz, 0.55, 0.8, 0.55, o, DW);
+              J.box(cx, 0.4, cz, 0.55, 0.8, 0.55, o + 0.785, DW);
+            }
+          }
+          const FL = [[0.7, 0.1, 0.1], [0.8, 0.6, 0.12], [0.75, 0.3, 0.5], [0.7, 0.7, 0.7]];
+          for (const [k, f, t0, t1] of WN) {
+            if (f > 1 || f === 1 && hasBal || R() > 0.16) continue;
+            const uc = (t0 + t1) / 2 * L, yy = f * hf + 0.33 * hf - 0.12;
+            let [cx, cz] = W(uc, 0.14);
+            J.box(cx, yy, cz, 1.0, 0.2, 0.28, o, DW);
+            [cx, cz] = W(uc, 0.14);
+            J.box(cx, yy + 0.2, cz, 0.95, 0.16, 0.22, o, FL[R() * 4 | 0]);
+          }
+          if (!gr && R() < 0.28) {
+            const k = R() * nm | 0, GR = [[0.22, 0.5, 0.16], [0.3, 0.62, 0.2], [0.18, 0.42, 0.14], [0.4, 0.68, 0.22]], top = 1.8 + R() * Math.min(3.8, vt - 2);
+            let u = (k + 0.2 + R() * 0.6) * L / nm;
+            for (let q = 0; q < 13; q++) {
+              const yy = 0.1 + q / 13 * top, sz = 0.4 + R() * 0.3, uu = u + (R() - 0.5) * 0.6, col2 = GR[R() * 4 | 0];
+              u += (R() - 0.5) * 0.12;
+              const pa = W(uu - sz / 2, 0.05), pb = W(uu + sz / 2, 0.05);
+              J.quad([pa[0], yy, pa[1]], [pb[0], yy, pb[1]], [pb[0], yy + sz, pb[1]], [pa[0], yy + sz, pa[1]], [0, 0], [1, 0], [1, 1], [0, 1], col2, [nx, 0, nz]);
+            }
           }
         }
       }
