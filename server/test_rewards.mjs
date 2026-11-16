@@ -43,7 +43,7 @@ r = await api({ action: 'rewardPick', token: tok.Max, kind: 'tag', period: today
 check('Doppelte Auswahl (mehrfach klicken) abgelehnt', r.s === 409, r);
 check('Es gibt genau eine Zeile', (await db.query(`select count(*)::int c from rewards where profile_id=$1`, [kid.Max])).rows[0].c === 1);
 r = await api({ action: 'saveBogus', token: tok.Max });
-await saveDays(tok.Max, { [today]: { sec: 1000, ex: { n: 5, r: 2 } } });
+await saveDays(tok.Max, { [today]: { ex: { n: 5, r: 2 } } });
 r = await api({ action: 'rewardList', token: tok.Max });
 check('Tagesprüfung mit Note 5 (2 von 5): keine Belohnung', r.b.rewards.tag[0].reached === false);
 await saveDays(tok.Max, { [today]: goal() });
