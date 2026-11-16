@@ -13,7 +13,7 @@
   // ---------- Lernzeit pro Fach und pro Aufgabe ----------
   function LZ_tick(e, t) {
     let f = window.__curFi;
-    f != null && ((e.ss || (e.ss = {}))[f] = (e.ss[f] || 0) + t), e.ex && !e.goal && e.sec >= Ai() && (e.goal = 1, is = true, RW_goal());
+    f != null && ((e.ss || (e.ss = {}))[f] = (e.ss[f] || 0) + t), TP_pass(e.ex) && !e.goal && (e.goal = 1, is = true, RW_goal());
   }
   function LZ_ans(d, q, ok) {
     if (window.__qStart != null) {
@@ -120,8 +120,11 @@
     LZ_extra(u, Ri), KO_book(u);
   }
 
-  // ---------- Tagesprüfung (höchstens 5 Minuten) ----------
-  var TP_MAX = 300, TP_N = 10, TP_iv = null;
+  // ---------- Tagesprüfung (40 Sekunden pro Frage) ----------
+  var TP_Q = 40, TP_N = 10, TP_iv = null;
+  function TP_pass(x) {
+    return !!(x && x.n > 0 && LZ_pct(x.r, x.n) >= je.grades[3]);
+  }
   window.__setTPN = (n) => TP_N = n;
   function TP_pool(d) {
     let out = [], seen = new Set(), add = (q) => {
@@ -139,7 +142,7 @@
     if (d.ex) return Pr(back);
     if (d.sec < Ai()) return Zs("Die Tagespr\xFCfung kommt nach " + je.dailyMinutes + " Minuten Lernen.");
     let n = Math.min(TP_N, (d.wr || []).length);
-    ln().append(K("div", { class: "qbox" }, K("h2", {}, "\u{1F389} " + je.dailyMinutes + " Minuten geschafft!"), K("p", { class: "qsub" }, d.exRun ? "Mach mit deiner Tagespr\xFCfung weiter." : "Jetzt kommt deine Tagespr\xFCfung."), K("p", { class: "qmsg" }, "Sie dauert h\xF6chstens 5 Minuten. " + (n ? "Es kommen Fragen, die heute noch schwer waren. So siehst du, was du schon gelernt hast." : "Es kommen Fragen aus deinen F\xE4chern von heute.") + " Danach bekommst du deine Urkunde."), K("button", { class: "qbtn go big", onclick: () => TP_start(back) }, "\u{1F3C1} Pr\xFCfung starten"), K("button", { class: "qbtn big", onclick: back }, "Erst noch weiter lernen")));
+    ln().append(K("div", { class: "qbox" }, K("h2", {}, "\u{1F389} " + je.dailyMinutes + " Minuten geschafft!"), K("p", { class: "qsub" }, d.exRun ? "Mach mit deiner Tagespr\xFCfung weiter." : "Jetzt kommt deine Tagespr\xFCfung."), K("p", { class: "qmsg" }, "Pro Frage hast du 40 Sekunden. Ab Note 4 darfst du dir eine Belohnung ziehen. " + (n ? "Es kommen Fragen, die heute noch schwer waren. So siehst du, was du schon gelernt hast." : "Es kommen Fragen aus deinen F\xE4chern von heute.") + " Danach bekommst du deine Urkunde."), K("button", { class: "qbtn go big", onclick: () => TP_start(back) }, "\u{1F3C1} Pr\xFCfung starten"), K("button", { class: "qbtn big", onclick: back }, "Erst noch weiter lernen")));
   }
   function TP_start(back) {
     back = back || Ys;
@@ -154,29 +157,35 @@
     }
     let Q = run.ids.map((id) => sl.get(id)).filter(Boolean);
     Q.length !== run.ids.length && (run.ids = Q.map((q) => q.id), run.k = Math.min(run.k, Q.length)), Xs(), window.__curFi = null, window.__tpRun = true;
-    let last = Date.now(), hold = false, done = false, barI = null, barT = null, finish = (to) => {
+    let last = Date.now(), hold = false, done = false, barI = null, barT = null, onTimeout = null, finish = (to) => {
       if (done) return;
-      done = true, clearInterval(TP_iv), TP_iv = null, window.__tpRun = false, d.ex = { n: run.ids.length, r: run.r, a: run.k, sec: Math.round(run.used), at: Date.now(), to: !!to }, delete d.exRun, is = true, Pi(), Rr(false), LZ_bar(), to && Zs("⏰ Die 5 Minuten sind um. Gut gemacht!"), Pr(back);
+      done = true, clearInterval(TP_iv), TP_iv = null, window.__tpRun = false, d.ex = { n: run.ids.length, r: run.r, a: run.k, sec: Math.round(run.used), at: Date.now(), to: !!to }, delete d.exRun, is = true, Pi(), Rr(false), LZ_bar(), TP_pass(d.ex) && !d.goal && (d.goal = 1, is = true, Pi(), RW_goal()), Pr(back);
     };
     TP_iv && clearInterval(TP_iv), TP_iv = setInterval(() => {
       let now = Date.now(), dt = Math.min(1, (now - last) / 1e3);
       if (last = now, done || hold || document.hidden || !window.__tpRun) return;
-      d.exSec = run.used += dt;
-      let left = Math.max(0, TP_MAX - run.used);
-      barI && (barI.style.width = left / TP_MAX * 100 + "%"), barT && (barT.textContent = oa(left)), Math.floor(run.used * 5) % 25 === 0 && Pi(), left <= 0 && finish(true);
+      d.exSec = run.used += dt, run.qt = (run.qt || 0) + dt;
+      let left = Math.max(0, TP_Q - run.qt);
+      barI && (barI.style.width = left / TP_Q * 100 + "%"), barT && (barT.textContent = oa(left)), Math.floor(run.used * 5) % 25 === 0 && Pi(), left <= 0 && onTimeout && onTimeout();
     }, 200);
     let show = () => {
       if (run.k >= Q.length) return finish(false);
-      let q = Q[run.k], h = mf(q), e = ln(), answered = false, left = Math.max(0, TP_MAX - run.used);
-      Cr(false), hold = false, barI = K("i", { style: "width:" + left / TP_MAX * 100 + "%" }), barT = K("span", { class: "qtime" }, oa(left));
+      let q = Q[run.k], h = mf(q), e = ln(), answered = false, left = TP_Q;
+      run.qt = 0, Cr(false), hold = false, barI = K("i", { style: "width:100%" }), barT = K("span", { class: "qtime" }, oa(left));
       let fb = K("div", { class: "qfb" }), nx = K("button", { class: "qbtn go", style: "display:none", onclick: show }, run.k + 1 >= Q.length ? "Fertig ✓" : "Weiter"), num = run.k + 1, opts = h.map((m) => K("button", { class: "qopt", onclick: () => {
         if (answered || done) return;
-        answered = true, hold = true;
+        answered = true, hold = true, onTimeout = null;
         let ok = m === q.a;
         ok && run.r++, run.k++, hf(q.id, ok, true), Pi(), opts.forEach((b, j) => {
           b.disabled = true, h[j] === q.a ? b.classList.add("right") : h[j] === m && b.classList.add("wrong");
         }), fb.textContent = (ok ? "✓ Richtig! " : "✗ Leider falsch. ") + (q.e || ""), fb.className = "qfb " + (ok ? "ok" : "bad"), nx.style.display = "";
       } }, q.o[m]));
+      onTimeout = () => {
+        if (answered || done) return;
+        answered = true, hold = true, onTimeout = null, run.k++, hf(q.id, false, true), Pi(), opts.forEach((b, j) => {
+          b.disabled = true, h[j] === q.a && b.classList.add("right");
+        }), fb.textContent = "⏰ Die Zeit ist um. " + (q.e || ""), fb.className = "qfb bad", nx.style.display = "";
+      };
       e.append(K("div", { class: "qbox" }, K("div", { class: "qhead" }, K("h2", {}, "\u{1F3C1} Tagespr\xFCfung"), K("button", { class: "qx", onclick: () => {
         hold = true, confirm("Pr\xFCfung unterbrechen? Du kannst sp\xE4ter weitermachen.") ? (done = true, clearInterval(TP_iv), TP_iv = null, window.__tpRun = false, Pi(), back()) : hold = answered;
       } }, "✕")), K("div", { class: "qbar t" }, barI, barT), K("p", { class: "qtag" }, "Frage " + num + " von " + Q.length + " \xB7 " + UK_fach(q.fi)), K("p", { class: "qq" }, q.q), K("div", { class: "qopts" }, opts), fb, K("div", { class: "qrow" }, nx)));

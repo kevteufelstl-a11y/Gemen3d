@@ -62,7 +62,7 @@
       kids.push(K("p", { class: "ko-small" }, x.days + " von " + x.total + " Lerntagen geschafft" + (x.lost ? "" : x.reached ? "" : " – kein Tag darf fehlen!")), K("div", { class: "rwp" }, K("i", { style: "width:" + (x.total ? Math.min(100, x.days / x.total * 100) : 0) + "%" })), RW_days(x));
       x.lost && kids.push(K("p", { class: "qmsg", style: "color:#ff8a8a" }, "Leider verpasst: " + x.missed.map((d) => RW_fd(d, { day: "numeric", month: "numeric" })).join(", ") + ". Die Monatsbelohnung entfällt in diesem Monat – ein Nachholen gibt es nicht. Nächsten Monat klappt es!"));
     }
-    if (kind === "tag" && !x.reached) kids.push(K("p", { class: "ko-small" }, "Erreiche dein Tagesziel (" + je.dailyMinutes + " Minuten lernen und Tagesprüfung), dann darfst du eine Belohnung ziehen."));
+    if (kind === "tag" && !x.reached) kids.push(K("p", { class: "ko-small" }, "Schaffe die Tagesprüfung (nach " + je.dailyMinutes + " Minuten lernen) mit mindestens Note 4, dann darfst du eine Belohnung ziehen."));
     if (pick) kids.push(K("p", { class: "qmsg", style: "margin:4px 0" }, RW_IC[kind] + " Du hast gezogen: " + pick.choice), RW_status(pick));
     if (pick && (pick.status === "offen" || pick.status === "bestaetigt")) kids.push(K("button", { class: "qbtn", onclick: () => RW_parentSet(kind, x) }, "\u{1F468}‍\u{1F469} Eltern: Status ändern"));
     if (un) kids.push(K("p", { class: "qmsg", style: "color:#ffd54a" }, "\u{1F513} Freigeschaltet! Lass das Glück entscheiden:"), K("button", { class: "qbtn go", onclick: (e) => RW_draw(kind, x, e.target) }, "\u{1F3B2} Belohnung ziehen"));
