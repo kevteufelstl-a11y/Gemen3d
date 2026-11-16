@@ -18,9 +18,15 @@ do $$ begin
   if exists (select 1 from pg_roles where rolname = 'anon') then execute 'revoke all on public.rewards from anon, authenticated'; end if;
 end $$;
 
+-- Feste Freigaben durch die Eltern (überleben das Neuspeichern des Spielstands)
+create table if not exists public.reward_grants (profile_id uuid not null references public.profiles(id) on delete cascade, period text not null, note text, created_at timestamptz not null default now(), primary key (profile_id, period));
+alter table public.reward_grants enable row level security;
+do $$ begin if exists (select 1 from pg_roles where rolname = 'anon') then execute 'revoke all on public.reward_grants from anon, authenticated'; end if; end $$;
+
 -- Tag geschafft? Tagesprüfung mit mindestens Note 4 (ab 50 %, gerundet wie im Spiel) oder von den Eltern per goal-Markierung freigegeben
 create or replace function public.milo_rw_dayok(pid uuid, k text) returns boolean language sql stable set search_path = public as $$
-  select coalesce((
+  select exists (select 1 from reward_grants rg where rg.profile_id = pid and rg.period = k)
+    or coalesce((
     select (s.d->>'goal') = '1' or case when coalesce((s.d->'ex'->>'n')::numeric, 0) > 0 then round(100 * coalesce((s.d->'ex'->>'r')::numeric, 0) / (s.d->'ex'->>'n')::numeric) >= 50 else false end
     from (select g.state->'days'->k as d from game_saves g where g.profile_id = pid and g.game = 'milo3d_days') s
     where jsonb_typeof(s.d) = 'object'), false)
