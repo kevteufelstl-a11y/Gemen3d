@@ -15843,8 +15843,27 @@ startxref
       m.textContent = KO_msg(r);
     } }, "\u{1F6E1} Einrichten"));
   }
+  var KO_pad = (n) => String(n || 0).padStart(3, "0");
+  var KO_famLabel = (f) => (/^familie /i.test(f.name) ? "" : "Familie ") + f.name + (f.no ? " \u2013 ID " + KO_pad(f.no) : "");
+  function KO_welcome(body, offline) {
+    let list = K("div", { class: "ko-famlist" }), info = K("p", { class: "qmsg" }, "Zu welcher Familie geh\xF6rst du?"), pick = (f) => {
+      localStorage.setItem("milo3d_family", JSON.stringify({ id: f.id, name: f.name, no: f.no })), KO_home(body);
+    }, draw = (fs) => {
+      list.replaceChildren(...fs.map((f) => K("button", { class: "qbtn big", onclick: () => pick(f) }, "\u{1F3E0} " + KO_famLabel(f))));
+      fs.length || list.append(K("p", { class: "ko-small" }, "Noch keine Familie. Registriere die erste!"));
+    }, cache = KO_ls("milo3d_famlist");
+    Array.isArray(cache) && cache.length && draw(cache);
+    offline || vf({ action: "familyList" }).then((r) => {
+      r.j && r.j.ok ? (KO_ls("milo3d_famlist", r.j.families), list.isConnected && draw(r.j.families)) : info.textContent = "Die Familien konnten nicht geladen werden.";
+    }).catch(() => {
+      info.textContent = "Keine Verbindung. Du kannst dich trotzdem mit deinem Spielernamen anmelden.";
+    });
+    body.parentNode.classList.remove("ko-a", "ko-p");
+    body.replaceChildren(KO_role("k"), K("h2", {}, "Willkommen bei Milo!"), info, list, K("button", { class: "qbtn big go", onclick: () => KO_parentRegister(() => KO_home(body)) }, "\u2795 Neue Familie registrieren"), K("button", { class: "qbtn", onclick: () => KO_childLogin("", "") }, "\u{1F9D2} Mit Spielernamen anmelden"), K("div", { class: "qrow" }, K("button", { class: "qbtn", onclick: () => KO_parentLogin() }, "\u{1F468}\u200D\u{1F469} Eltern"), K("button", { class: "qbtn", onclick: KO_adminLogin }, "\u{1F6E1} Admin")));
+  }
   function KO_home(body, msg, offline) {
-    let fam = KO_fam(), grid = K("div", { class: "spgrid" }), info = K("p", { class: "qmsg" }, msg || (fam ? (/^familie /i.test(fam.name) ? "" : "Familie ") + fam.name + ": Tippe auf dein Bild." : "Melde dich mit deinem Spielernamen an.")), draw = (list) => {
+    if (!KO_fam() && !msg) return KO_welcome(body, offline);
+    let fam = KO_fam(), grid = K("div", { class: "spgrid" }), info = K("p", { class: "qmsg" }, msg || (fam ? KO_famLabel(fam) + ": Tippe auf dein Bild." : "Melde dich mit deinem Spielernamen an.")), draw = (list) => {
       grid.replaceChildren(...list.map((p) => K("button", { class: "spcard", onclick: () => KO_childLogin(p.name, p.figure, !p.hasPin) }, K("span", { class: "spav" }, p.figure || "\u{1F642}"), K("b", {}, p.name))));
     };
     body.parentNode.classList.remove("ko-a", "ko-p");
@@ -15854,7 +15873,7 @@ startxref
       r.j && r.j.ok ? (cache[fam.id] = r.j.players, KO_ls("milo3d_players", cache), grid.isConnected && draw(r.j.players)) : r.status === 404 && (localStorage.removeItem("milo3d_family"), info.textContent = "Dieses Gerät gehört zu keiner Familie mehr.");
     }).catch(() => {
     });
-    body.replaceChildren(KO_role("k"), K("p", { class: "qsub" }, "Wer spielt?"), grid, info, K("button", { class: "qbtn go big", onclick: () => KO_childLogin("", "") }, "\u{1F9D2} Mit Spielernamen anmelden"), K("div", { class: "qrow" }, K("button", { class: "qbtn", onclick: () => KO_parentLogin() }, "\u{1F468}‍\u{1F469} Eltern"), K("button", { class: "qbtn", onclick: KO_adminLogin }, "\u{1F6E1} Admin")));
+    body.replaceChildren(KO_role("k"), K("p", { class: "qsub" }, "Wer spielt?"), grid, info, K("button", { class: "qbtn go big", onclick: () => KO_childLogin("", "") }, "\u{1F9D2} Mit Spielernamen anmelden"), K("button", { class: "qbtn", onclick: () => (localStorage.removeItem("milo3d_family"), KO_welcome(body, offline)) }, "\u{1F504} Andere Familie w\xE4hlen"), K("div", { class: "qrow" }, K("button", { class: "qbtn", onclick: () => KO_parentLogin() }, "\u{1F468}‍\u{1F469} Eltern"), K("button", { class: "qbtn", onclick: KO_adminLogin }, "\u{1F6E1} Admin")));
   }
 
   // ---------------- Kind ----------------
@@ -16097,6 +16116,75 @@ startxref
     let r = await KO_call("ping");
     r.status === 200 && (r.j.friendRequests > (KO.frN || 0) && Zs("\u{1F46B} Du hast eine neue Freundschaftsanfrage!"), KO.frN = r.j.friendRequests, r.j.profile && r.j.profile.settings && (ye.settings = r.j.profile.settings, KO_apply()));
   }, 6e4);
+  // ---------------- Spieleinladungen (Freunde, 16.11.2026) ----------------
+  // Einladung wird zentral in Supabase verwaltet (inviteSend/inviteList/inviteRespond). Der Raumcode kommt vom Server.
+  var KO_inv = { seen: {}, wait: null, box: null, cur: null, iv: null };
+  function KO_invOff() {
+    clearInterval(KO_inv.iv), KO_inv.iv = null, KO_inv.cur = null, KO_inv.box && KO_inv.box.remove(), KO_inv.box = null;
+  }
+  function KO_invBox(title, text, btns, cd) {
+    KO_invOff();
+    let b = K("div", { id: "ko-inv", style: "position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6)" }, K("div", { class: "qbox", style: "max-width:340px;width:90%;text-align:center;position:relative" }, K("div", { style: "font-size:46px" }, "\u{1F3AE}"), K("h2", {}, title), text ? K("p", { class: "qmsg" }, text) : null, cd || null, ...btns));
+    return document.body.append(b), KO_inv.box = b, b;
+  }
+  function KO_invMsg(r) {
+    let e = r && r.j && r.j.error, M = { not_friend: "Ihr seid noch keine Freunde.", offline: "Dein Freund ist gerade nicht online.", already_invited: "Du hast schon eine Einladung offen. Bitte kurz warten.", busy: "Dein Freund bekommt gerade eine andere Einladung.", mp_off: "Zusammen spielen ist bei dir ausgeschaltet (Eltern-Einstellung).", mp_off_other: "Dein Freund darf gerade nicht zusammen spielen.", blocked: "Das geht nicht.", too_many: "Zu viele Einladungen. Bitte warte ein bisschen." };
+    return M[e] || KO_msg(r);
+  }
+  function KO_invJoin(room) {
+    if (!window.__mpJoin) return Zs("Zusammen spielen ist gerade nicht bereit.");
+    window.__quizOpen && Ys(), window.__mpJoin(room), Zs("\u{1F465} Ihr spielt jetzt zusammen!");
+  }
+  async function KO_invite(p) {
+    let r = await KO_call("inviteSend", { to: p.id });
+    if (!r.j.ok) return void Zs(KO_invMsg(r));
+    KO_inv.wait = { id: r.j.id, name: p.name, until: Date.now() + 65e3 }, KO_invKick();
+    KO_invBox("Einladung gesendet", p.name + " wird gefragt … Bitte kurz warten.", [K("button", { class: "qbtn", onclick: async () => {
+      KO_inv.wait = null, KO_invOff(), await KO_call("inviteCancel");
+    } }, "Zur\xFCckziehen")]);
+  }
+  function KO_invIncoming(v) {
+    if (KO_inv.seen[v.id] || window.__tpRun || window.__dkRun || KO_inv.wait) return;
+    KO_inv.seen[v.id] = 1;
+    let left = v.seconds, cd = K("p", { class: "ko-small" }, "Noch " + left + " Sekunden"), done = async (acc) => {
+      KO_invOff();
+      let r = await KO_call("inviteRespond", { id: v.id, accept: acc });
+      acc && (r.j && r.j.ok && r.j.room ? KO_invJoin(r.j.room) : Zs("Die Einladung ist leider schon abgelaufen."));
+    };
+    KO_invBox("M\xF6chtest du mit " + v.name + " zusammen spielen?", "", [K("button", { class: "qbtn go big", onclick: () => done(true) }, "JA, MITSPIELEN"), K("button", { class: "qbtn big", onclick: () => done(false) }, "NEIN, DANKE")], cd), KO_inv.cur = v.id, KO_inv.iv = setInterval(() => {
+      left--, cd.textContent = "Noch " + Math.max(0, left) + " Sekunden", left <= 0 && KO_invOff();
+    }, 1e3);
+    try {
+      navigator.vibrate && navigator.vibrate([120, 80, 120]);
+    } catch {
+    }
+  }
+  function KO_invKick() {
+    clearTimeout(KO_inv.t), KO_inv.t = setTimeout(KO_invPoll, 800);
+  }
+  async function KO_invPoll() {
+    if (clearTimeout(KO_inv.t), KO_inv.busy) return;
+    KO_inv.busy = true;
+    try {
+      if (Ae && !Ae.offline && Ae.token && !Ae.admin && !document.hidden && !window.__mpOff) {
+        let r = await KO_call("inviteList");
+        if (r.status === 200 && r.j.ok) {
+          let inc = r.j.incoming || [];
+          KO_inv.cur && !inc.some((x) => x.id === KO_inv.cur) && !KO_inv.wait && KO_invOff();
+          inc.forEach(KO_invIncoming);
+          let w = KO_inv.wait;
+          if (w) {
+            let o = (r.j.outgoing || []).find((x) => x.id === w.id);
+            if (o && o.status !== "pending") KO_inv.wait = null, KO_invOff(), o.status === "accepted" ? KO_invJoin(o.room) : Zs(o.status === "declined" ? "\u{1F614} " + w.name + " m\xF6chte gerade nicht spielen." : o.status === "expired" ? w.name + " hat nicht geantwortet." : "Die Einladung wurde beendet.");
+            else if (!o && Date.now() > w.until) KO_inv.wait = null, KO_invOff(), Zs(w.name + " hat nicht geantwortet.");
+          }
+        }
+      }
+    } catch {
+    }
+    KO_inv.busy = false, KO_inv.t = setTimeout(KO_invPoll, KO_inv.wait ? 2500 : 8e3);
+  }
+  KO_inv.t = setTimeout(KO_invPoll, 5e3);
   async function KO_friends() {
     if (!Ae || Ae.offline) return Zs("Freunde gehen nur mit Internet.");
     let r = await KO_call("friendList");
@@ -16113,7 +16201,7 @@ startxref
         let x = await KO_call("friendRequest", { q: s.j.player.name });
         x.j.ok ? (Zs(x.j.waitParent ? "Anfrage gespeichert. Deine Eltern müssen sie noch erlauben." : "Anfrage verschickt!"), KO_friends()) : m.textContent = KO_msg(x);
       } }, "Anfrage schicken"));
-    } }, "Suchen")), L.incoming.length ? K("div", { class: "ko-sec" }, K("h3", {}, "\u{1F4E9} Anfragen an dich"), L.incoming.map((p) => p.waitParent ? row(p, K("span", { class: "ko-small" }, "wartet auf Eltern")) : row(p, K("button", { class: "qbtn go", onclick: () => act("friendRespond", { id: p.id, accept: true }, "Angenommen!") }, "✓"), K("button", { class: "qbtn", onclick: () => act("friendRespond", { id: p.id, accept: false }) }, "✕")))) : null, K("div", { class: "ko-sec" }, K("h3", {}, "\u{1F46B} Meine Freunde (" + L.friends.length + ")"), L.friends.length ? L.friends.map((p) => row(p, K("button", { class: "qbtn", onclick: () => confirm(p.name + " als Freund entfernen?") && act("friendRemove", { id: p.id }) }, "Entfernen"), K("button", { class: "qbtn", onclick: () => confirm(p.name + " blockieren? Dann kann er/sie dir keine Anfragen mehr schicken.") && act("block", { q: p.name }, "Blockiert.") }, "\u{1F6AB}"))) : K("p", { class: "ko-small" }, "Noch keine Freunde. Frag deine Freunde nach ihrem Code!")), L.outgoing.length ? K("div", { class: "ko-sec" }, K("h3", {}, "⏳ Gesendet"), L.outgoing.map((p) => row(p, K("span", { class: "ko-small" }, p.waitParent ? "wartet auf deine Eltern" : "wartet auf Antwort"), K("button", { class: "qbtn", onclick: () => act("friendRemove", { id: p.id }) }, "Zurückziehen")))) : null, L.blocked.length ? K("div", { class: "ko-sec" }, K("h3", {}, "\u{1F6AB} Blockiert"), L.blocked.map((n) => row({ name: n }, K("button", { class: "qbtn", onclick: () => act("unblock", { q: n }) }, "Freigeben")))) : null));
+    } }, "Suchen")), L.incoming.length ? K("div", { class: "ko-sec" }, K("h3", {}, "\u{1F4E9} Anfragen an dich"), L.incoming.map((p) => p.waitParent ? row(p, K("span", { class: "ko-small" }, "wartet auf Eltern")) : row(p, K("button", { class: "qbtn go", onclick: () => act("friendRespond", { id: p.id, accept: true }, "Angenommen!") }, "✓"), K("button", { class: "qbtn", onclick: () => act("friendRespond", { id: p.id, accept: false }) }, "✕")))) : null, K("div", { class: "ko-sec" }, K("h3", {}, "\u{1F46B} Meine Freunde (" + L.friends.length + ")"), L.friends.length ? L.friends.map((p) => row(p, p.online ? K("button", { class: "qbtn go", onclick: () => KO_invite(p) }, "\u{1F3AE} ONLINE \u2013 GEMEINSAM SPIELEN") : null, K("button", { class: "qbtn", onclick: () => confirm(p.name + " als Freund entfernen?") && act("friendRemove", { id: p.id }) }, "Entfernen"), K("button", { class: "qbtn", onclick: () => confirm(p.name + " blockieren? Dann kann er/sie dir keine Anfragen mehr schicken.") && act("block", { q: p.name }, "Blockiert.") }, "\u{1F6AB}"))) : K("p", { class: "ko-small" }, "Noch keine Freunde. Frag deine Freunde nach ihrem Code!")), L.outgoing.length ? K("div", { class: "ko-sec" }, K("h3", {}, "⏳ Gesendet"), L.outgoing.map((p) => row(p, K("span", { class: "ko-small" }, p.waitParent ? "wartet auf deine Eltern" : "wartet auf Antwort"), K("button", { class: "qbtn", onclick: () => act("friendRemove", { id: p.id }) }, "Zurückziehen")))) : null, L.blocked.length ? K("div", { class: "ko-sec" }, K("h3", {}, "\u{1F6AB} Blockiert"), L.blocked.map((n) => row({ name: n }, K("button", { class: "qbtn", onclick: () => act("unblock", { q: n }) }, "Freigeben")))) : null));
   }
 
   // ---------------- Eltern ----------------
@@ -16133,11 +16221,11 @@ startxref
       if (p1.value !== p2.value) return void (m.textContent = "Die beiden Passwörter sind nicht gleich.");
       m.textContent = "Einen Moment …";
       let r = await KO_call("parentRegister", { login: lg.value, displayName: dn.value, password: p1.value });
-      r.j.ok ? (Zs("Elternkonto erstellt!"), KO_parentIn(r.j, back)) : m.textContent = KO_msg(r);
+      r.j.ok ? (Zs("Elternkonto erstellt! Eure Familien-ID: " + KO_pad(r.j.family.no)), KO_parentIn(r.j, back)) : m.textContent = KO_msg(r);
     } }, "Erstellen"), K("button", { class: "qbtn", onclick: () => KO_parentLogin(back) }, "Zurück")));
   }
   function KO_parentIn(j, back) {
-    KO.par = { token: j.token, family: j.family, back }, localStorage.setItem("milo3d_family", JSON.stringify({ id: j.family.id, name: j.family.name, login: j.family.login })), KO_parentHome();
+    KO.par = { token: j.token, family: j.family, back }, localStorage.setItem("milo3d_family", JSON.stringify({ id: j.family.id, name: j.family.name, login: j.family.login, no: j.family.no })), KO_parentHome();
   }
   function KO_parentLeave() {
     let b = KO.par && KO.par.back, t = KO.par && KO.par.token;
@@ -16147,7 +16235,7 @@ startxref
   async function KO_parentHome(sel) {
     let r = await KO_call("familyOverview", {}, "p");
     if (!r.j.ok) return Zs(KO_msg(r)), KO_parentLeave();
-    let F = r.j, kids = F.children, admin = !!KO.par.familyId, box = KO_box("ko-p wide", KO_role(admin ? "a" : "p"), K("div", { class: "qhead" }, K("h2", {}, "\u{1F468}‍\u{1F469} " + F.family.name), K("button", { class: "qx", onclick: KO_parentLeave }, "✕"))), tabs = K("div", { class: "ko-tabs" }), main = K("div", {});
+    let F = r.j, kids = F.children, admin = !!KO.par.familyId, box = KO_box("ko-p wide", KO_role(admin ? "a" : "p"), K("div", { class: "qhead" }, K("h2", {}, "\u{1F468}‍\u{1F469} " + F.family.name + (F.family.no ? " \u2013 ID " + KO_pad(F.family.no) : "")), K("button", { class: "qx", onclick: KO_parentLeave }, "✕"))), tabs = K("div", { class: "ko-tabs" }), main = K("div", {});
     KO.par.kids = kids;
     let show = (k) => {
       main.__k = k, [...tabs.children].forEach((b) => b.classList.toggle("on", b.dataset.k === String(k))), main.replaceChildren(K("p", { class: "qmsg" }, "Lade …")), k === "fam" ? KO_famView(main, F) : k === "neu" ? KO_kidNew(main) : KO_kidView(main, kids.find((c) => c.id === k));
@@ -18073,6 +18161,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
         }
       }
       function openPanel() { panel.classList.add("show"); window.__mpOpen = true; renderPanel(); }
+      window.__mpJoin = (code) => { const nn = (myName() || "Spieler").slice(0, 12); try { localStorage.setItem("milo_mp_name", nn); } catch (e2) { } net.join(String(code).toUpperCase(), nn); refreshUI(); };
       function closePanel() { panel.classList.remove("show"); window.__mpOpen = false; }
       if (btn) btn.addEventListener("click", openPanel);
 

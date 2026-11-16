@@ -5,3 +5,5 @@ Edge Function "api" ruft nur milo_api auf.
 test_api.mjs   54 Server-Tests gegen eine lokale Postgres-Kopie (PGlite): node test_api.mjs
 test_oberflaeche.py  27 Tests der Oberflaeche im Browser gegen dieselbe Logik
 Passwoerter: bcrypt. Sitzungen: zufaelliger Schluessel, nur als SHA-256 gespeichert. Nach 5 Fehlversuchen 15 Min. Sperre.
+04_familien_einladungen.sql  Familiennummern (family_no, 001/002 ...) + Tabelle game_invites + Funktion milo_invites + Erweiterung von milo_api (familyList, invite*, Abmelden = offline)
+test_familien_einladungen.py  23 Browser-Tests (Server nachgestellt): Familienauswahl, Anmeldung, Einladung senden/annehmen/ablehnen

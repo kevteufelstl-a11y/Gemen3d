@@ -225,6 +225,7 @@
         }
       }
       function openPanel() { panel.classList.add("show"); window.__mpOpen = true; renderPanel(); }
+      window.__mpJoin = (code) => { const nn = (myName() || "Spieler").slice(0, 12); try { localStorage.setItem("milo_mp_name", nn); } catch (e2) { } net.join(String(code).toUpperCase(), nn); refreshUI(); };
       function closePanel() { panel.classList.remove("show"); window.__mpOpen = false; }
       if (btn) btn.addEventListener("click", openPanel);
 
