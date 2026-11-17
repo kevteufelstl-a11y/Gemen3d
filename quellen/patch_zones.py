@@ -20,7 +20,12 @@ rep('    {\n      let D = (o.bounds.x0 + o.bounds.x1) / 2, G = (o.bounds.z0 + o.
     '    if (!i.zoneId) {\n      let D = (o.bounds.x0 + o.bounds.x1) / 2, G = (o.bounds.z0 + o.bounds.z1) / 2, y = new Ke(4e3, 4e3);', 'ZN-Boden')
 # Kit-Haus, Burg und Kirche gehoeren zu Zone 1
 rep('    const kdec = (b, C) => {', '    i.zoneId && (KIT_IDX = -1);\n    const kdec = (b, C) => {', 'ZN-Kit')
-rep('      lt < 62 && N > 600 ? (Pt = "castle"', '      !i.zoneId && lt < 62 && N > 600 ? (Pt = "castle"', 'ZN-Burg')
+rep('      lt < 62 && N > 600 ? (Pt = "castle"', '      dt[D].t === "villa" && (Pt = "villa", j = 3, vt = 9.6, Mt = [0.93, 0.9, 0.84]);\n      dt[D].t === "castle" || !i.zoneId && lt < 62 && N > 600 ? (Pt = "castle"', 'ZN-Burg-Villa')
+# Burg-Modell auch an anderen Stellen bauen koennen (Zone 2), Zone 1 unveraendert
+rep('    const BURG_PLACE = () => {\n      const BP = a(899, 673);', '    const BURG_PLACE = (PP, PR) => {\n      const BP = PP || a(899, 673);', 'ZN-Burg-Ort')
+rep('      o.burgPos = BP;\n    };', '      PP || (o.burgPos = BP);\n    };', 'ZN-Burg-Pos')
+rep('      const BG = burgGemenBuild(Ot, me(4242), BP[0], BP[1], 33 * Math.PI / 180);', '      const BG = burgGemenBuild(Ot, me(4242), BP[0], BP[1], PR != null ? PR : 33 * Math.PI / 180);', 'ZN-Burg-Drehung')
+rep('        BURG_PLACE();', '        i.zoneId ? BURG_PLACE(B, Z.ang) : BURG_PLACE();', 'ZN-Burg-Aufruf')
 rep(' : St < 22 && N > 120 && (Pt = "church"', ' : !i.zoneId && St < 22 && N > 120 && (Pt = "church"', 'ZN-Kirche')
 # Stationen nur aus Zone 1
 rep('    let Et = Sr[0];\n    Et.px = [s, r];\n    for (let D of Sr) {',
@@ -58,3 +63,5 @@ rep('$ && $(gt.dmg * (window.__shD || 1), C)', '$ && $(C.guard ? 9999 : gt.dmg *
 rep('MP.update(Q, _t, V.dist), h.update(Q, _t, l, V.tx, V.tz, V.dist, f.safe, E)', 'window.__hurtPlayer = E, MP.update(Q, _t, V.dist), h.update(Q, _t, l, V.tx, V.tz, V.dist, f.safe, E)', 'ZN-Fernangriff')
 # Waechter rennen bei der Jagd deutlich schneller als normale Monster
 rep('(rt > tt * 0.7 ? (ot = gt.speed * O, T(C, PT.x, PT.z, ot, U) || (ot = 0.3))', '(rt > tt * 0.7 ? (ot = gt.speed * (C.guard ? window.__zoneGuardSpeed || 2.6 : O), T(C, PT.x, PT.z, ot, U) || (ot = 0.3))', 'ZN-Waechter-Tempo')
+# Villen im Fachwerk-Stil (3 Geschosse, grosser Grundriss)
+rep('const FWOK = (Pt, D, B) => Pt === "house" && D !== KIT_IDX', 'const FWOK = (Pt, D, B) => (Pt === "house" || Pt === "villa") && D !== KIT_IDX', 'ZN-Villa-Fachwerk')
