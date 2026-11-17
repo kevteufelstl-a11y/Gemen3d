@@ -1,4 +1,4 @@
--- Milos Lern-Welt: gesamte Server-Logik. Aufruf nur über die Edge Function "api" (Service-Rolle).
+-- LERNZONE ZERO: gesamte Server-Logik. Aufruf nur über die Edge Function "api" (Service-Rolle).
 -- Rückgabe: {"s": HTTP-Status, "b": Antwort}
 
 create or replace function public.milo_norm(t text) returns text language sql immutable as $$

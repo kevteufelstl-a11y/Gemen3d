@@ -1,4 +1,4 @@
--- Milos Lern-Welt: Konten, Rollen, Sitzungen, Freunde (Migration 15.11.2026)
+-- LERNZONE ZERO: Konten, Rollen, Sitzungen, Freunde (Migration 15.11.2026)
 -- Bestehende Tabellen (profiles, game_saves, learning_progress, highscores) bleiben erhalten und werden nur erweitert.
 -- Alle Tabellen: RLS an, keine Policies -> nur der Server (Edge Function mit Service-Rolle) kommt an die Daten.
 

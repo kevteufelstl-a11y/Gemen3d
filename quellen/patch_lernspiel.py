@@ -37,7 +37,7 @@ rep('!s.reward && n.reward && (s.reward = n.reward);', '!s.reward && n.reward &&
 # Anmeldung: neue Spieler-Auswahl beim Start (alte Eingabemaske bleibt für "Eltern"/Admin)
 rep('  function cl(i, t) {', '  function cl_old(i, t) {', 'LS-cl-alt')
 rep('e.append(K("div", { class: "qbox" }, K("h2", {}, "Milos Lern-Welt"), K("p", { class: "qsub" }, "Wer spielt?"), n, s, r,',
-    'e.append(K("div", { class: "qbox splogin" }, K("h2", {}, "Milos Lern-Welt"), K("p", { class: "qsub" }, "Wer spielt?"), n, s, r,', 'LS-cl-alt-box')
+    'e.append(K("div", { class: "qbox splogin" }, K("h2", {}, "\\u{1F480}LERNZONE ZERO\\u{1F480}"), K("p", { class: "qsub" }, "Wer spielt?"), n, s, r,', 'LS-cl-alt-box')
 rep('    if (!i) {\n      Ae = null, cl();\n      return;\n    }', '    {\n      Ae = null, cl();\n      return;\n    }', 'LS-immer-Auswahl')
 
 # Station und Lernbuch: Diktat, Abschreiben, offene Kontrollen, Tagesprüfung/Urkunde

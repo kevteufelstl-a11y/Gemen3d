@@ -1,4 +1,4 @@
-Server von Milos Lern-Welt (Supabase-Projekt "Milos lern app")
+Server von LERNZONE ZERO (Supabase-Projekt "Milos lern app")
 01_schema.sql  Tabellen: families, sessions, auth_fails, system_settings, confirmations, friend_requests, blocks, admin_log (+ Spalten in profiles)
 02_api.sql     Funktion milo_api: gesamte Logik und alle Rechtepruefungen (Admin / Eltern / Kind)
 Edge Function "api" ruft nur milo_api auf.

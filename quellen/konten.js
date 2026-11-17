@@ -66,7 +66,7 @@
   function cl(msg) {
     Ae = null, KO.par = null, KO.adm = null;
     let e = ln(), body = K("div", {}, K("p", { class: "qmsg" }, "Einen Moment …"));
-    e.append(KO_box("splogin", K("h2", {}, "Milos Lern-Welt"), body)), LZ_bar();
+    e.append(KO_box("splogin", K("h2", {}, "\u{1F480}LERNZONE ZERO\u{1F480}"), body)), LZ_bar();
     vf({ action: "status" }).then((r) => {
       if (!body.isConnected) return;
       if (!(r.j && r.j.ok)) throw 0;
@@ -100,7 +100,7 @@
       info.textContent = "Keine Verbindung. Du kannst dich trotzdem mit deinem Spielernamen anmelden.";
     });
     body.parentNode.classList.remove("ko-a", "ko-p");
-    body.replaceChildren(KO_role("k"), K("h2", {}, "Willkommen bei Milo!"), info, list, K("button", { class: "qbtn big go", onclick: () => KO_parentRegister(() => KO_home(body)) }, "\u2795 Neue Familie registrieren"), K("button", { class: "qbtn", onclick: () => KO_childLogin("", "") }, "\u{1F9D2} Mit Spielernamen anmelden"), K("div", { class: "qrow" }, K("button", { class: "qbtn", onclick: () => KO_parentLogin() }, "\u{1F468}\u200D\u{1F469} Eltern"), K("button", { class: "qbtn", onclick: KO_adminLogin }, "\u{1F6E1} Admin")));
+    body.replaceChildren(KO_role("k"), K("h2", {}, "Willkommen!"), info, list, K("button", { class: "qbtn big go", onclick: () => KO_parentRegister(() => KO_home(body)) }, "\u2795 Neue Familie registrieren"), K("button", { class: "qbtn", onclick: () => KO_childLogin("", "") }, "\u{1F9D2} Mit Spielernamen anmelden"), K("div", { class: "qrow" }, K("button", { class: "qbtn", onclick: () => KO_parentLogin() }, "\u{1F468}\u200D\u{1F469} Eltern"), K("button", { class: "qbtn", onclick: KO_adminLogin }, "\u{1F6E1} Admin")));
   }
   function KO_home(body, msg, offline) {
     if (!KO_fam() && !msg) return KO_welcome(body, offline);
