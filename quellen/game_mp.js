@@ -18947,8 +18947,15 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
             if (!m) throw err || new Error("keine Verbindung");
             const cur = localStorage.getItem("milo_upd_build") > window.__BUILD ? localStorage.getItem("milo_upd_build") : window.__BUILD;
             if (m[1] <= cur) { say("\u2705 Du hast schon die neueste Version."); btn.disabled = false; return; }
-            try { localStorage.setItem("milo_upd_html", txt); localStorage.setItem("milo_upd_build", m[1]); }
-            catch (e3) { throw new Error("Zu wenig Speicher auf dem Handy"); }
+            // Große Versionen passen nicht in localStorage (ca. 5 MB) -> IndexedDB
+            const idbPut = (k, v) => new Promise((res, rej) => {
+              const o = indexedDB.open("milo_upd", 1);
+              o.onupgradeneeded = () => o.result.createObjectStore("f");
+              o.onerror = () => rej(o.error);
+              o.onsuccess = () => { const tx = o.result.transaction("f", "readwrite"); tx.objectStore("f").put(v, k); tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error); tx.onabort = () => rej(tx.error); };
+            });
+            try { await idbPut("html", txt); try { localStorage.removeItem("milo_upd_html"); } catch (e5) { } localStorage.setItem("milo_upd_build", m[1]); }
+            catch (e3) { throw new Error("Zu wenig Speicher auf dem Handy (" + Math.round(txt.length / 1e6) + " MB)"); }
             say("\u2705 Neue Version geladen. Starte neu \u2026");
             setTimeout(() => location.reload(), 900);
           } catch (e2) {
