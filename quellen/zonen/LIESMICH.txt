@@ -11,3 +11,6 @@ alte Werte unter "vorher_v1") bewacht eine Monster-Kette die Grenze (registry: "
 patrouillieren in einem schmalen Streifen auf der Seite von Zone 1. Spieler ohne Freischaltung, die naeher als
 12 m an die Grenze kommen, werden von allen Waechtern im Umkreis von 70 m angegriffen; jeder Treffer ist toedlich.
 Admin und freigeschaltete Spieler werden ignoriert und koennen hindurch.
+17.11. spaeter: Keine unsichtbare Wand mehr. Zone 2 kann betreten werden; Eindringlinge ohne Freischaltung werden
+von allen Waechtern gejagt (schneller als normale Monster), mit Feuerbaellen beschossen und im Nahkampf sofort getoetet.
+Einstellungen in registry.json -> barrier (trigger, range, shotRange, shotRangeInside, shotEvery, shotSpeed, shotDamage).

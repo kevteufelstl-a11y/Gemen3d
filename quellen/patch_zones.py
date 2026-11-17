@@ -54,3 +54,7 @@ rep('wt = !PH && !E.peace && !E.puppet && rt < gt.sense * (window.__shS || 1)',
 rep('            let z = a() * 6.28, D = 5 + a() * 14;\n            C.wx = C.x + Math.cos(z) * D, C.wz = C.z + Math.sin(z) * D, C.wanderT = 3 + a() * 5, C.idle = E.puppet ? true : a() < 0.3;',
     '            let z = a() * 6.28, D = 5 + a() * 14;\n            if (C.guard) C.guard.f = !C.guard.f, C.wx = C.guard.f ? C.guard.bx : C.guard.ax, C.wz = C.guard.f ? C.guard.bz : C.guard.az, C.wanderT = 3 + a() * 3, C.idle = false;\n            else C.wx = C.x + Math.cos(z) * D, C.wz = C.z + Math.sin(z) * D, C.wanderT = 3 + a() * 5, C.idle = E.puppet ? true : a() < 0.3;', 'ZN-Waechter-Patrouille')
 rep('$ && $(gt.dmg * (window.__shD || 1), C)', '$ && $(C.guard ? 9999 : gt.dmg * (window.__shD || 1), C)', 'ZN-Waechter-toedlich')
+# Schaden am Spieler fuer die Feuerbaelle der Waechter erreichbar machen
+rep('MP.update(Q, _t, V.dist), h.update(Q, _t, l, V.tx, V.tz, V.dist, f.safe, E)', 'window.__hurtPlayer = E, MP.update(Q, _t, V.dist), h.update(Q, _t, l, V.tx, V.tz, V.dist, f.safe, E)', 'ZN-Fernangriff')
+# Waechter rennen bei der Jagd deutlich schneller als normale Monster
+rep('(rt > tt * 0.7 ? (ot = gt.speed * O, T(C, PT.x, PT.z, ot, U) || (ot = 0.3))', '(rt > tt * 0.7 ? (ot = gt.speed * (C.guard ? window.__zoneGuardSpeed || 2.6 : O), T(C, PT.x, PT.z, ot, U) || (ot = 0.3))', 'ZN-Waechter-Tempo')

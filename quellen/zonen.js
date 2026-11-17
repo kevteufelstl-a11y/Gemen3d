@@ -150,16 +150,16 @@
     w.ok = (x, y) => {
       const gx = Math.floor(x - w.g0x), gy = Math.floor(y - w.g0z);
       if (gx >= 0 && gy >= 0 && gx < w.GW && gy < w.GH && !(ZN.inZone && ZN.inZone(x, y))) return ok0(x, y);
-      for (const z of ZN_zones()) if (z.o2 && z.allowed && z.wpoly && ZN_inPoly(x, y, z.wpoly)) return z.o2.walk.ok(x, y);
+      for (const z of ZN_zones()) if (z.o2 && (z.allowed || z.barrier) && z.wpoly && ZN_inPoly(x, y, z.wpoly)) return z.o2.walk.ok(x, y);
       return gx >= 0 && gy >= 0 && gx < w.GW && gy < w.GH ? ok0(x, y) : false;
     };
     const n0 = w.nearest;
     w.nearest = (x, y) => {
-      for (const z of ZN_zones()) if (z.o2 && z.allowed && z.wpoly && ZN_inPoly(x, y, z.wpoly)) return z.o2.walk.nearest(x, y);
+      for (const z of ZN_zones()) if (z.o2 && (z.allowed || z.barrier) && z.wpoly && ZN_inPoly(x, y, z.wpoly)) return z.o2.walk.nearest(x, y);
       return n0(x, y);
     };
     ZN.inZone = (x, y) => {
-      for (const z of ZN_zones()) if (z.o2 && z.allowed && z.wpoly && ZN_inPoly(x, y, z.wpoly)) return true;
+      for (const z of ZN_zones()) if (z.o2 && (z.allowed || z.barrier) && z.wpoly && ZN_inPoly(x, y, z.wpoly)) return true;
       return false;
     };
   }
@@ -202,7 +202,7 @@
       z.fog && (z.fog.visible = !z.allowed);
       // Spieler steht in einer Zone, die er nicht (mehr) betreten darf -> zurueck an den Start
       const api = window.__api, pl = api && api.player;
-      if (!z.allowed && pl && ZN_inPoly(pl.x, pl.z, z.wpoly)) {
+      if (!z.allowed && !z.barrier && pl && ZN_inPoly(pl.x, pl.z, z.wpoly)) {
         const q = ZN.o.walk.nearest(2.6, 9) || [2.6, 9];
         pl.x = q[0], pl.z = q[1], pl.path = null;
       }
@@ -269,10 +269,62 @@
     if (!pl || PT !== pl) return false;
     const z = ZN_zones().find((zz) => zz.id === C.guard.zone);
     if (!z || z.allowed) return false;
-    const b = z.barrier || {}, dB = ZN_borderDist(z, pl.x, pl.z);
-    if (dB > (b.trigger || 12)) return false;
-    return Math.hypot(C.x - pl.x, C.z - pl.z) < (b.range || 70);
+    return ZN_threat(z, pl) && (ZN_inPoly(pl.x, pl.z, z.wpoly) || Math.hypot(C.x - pl.x, C.z - pl.z) < ((z.barrier || {}).range || 70));
   };
+  function ZN_threat(z, pl) {
+    if (z.allowed || !z.barrier) return false;
+    return ZN_inPoly(pl.x, pl.z, z.wpoly) || ZN_borderDist(z, pl.x, pl.z) < (z.barrier.trigger || 12);
+  }
+  // Fernangriff: Waechter werfen Feuerbaelle auf Eindringlinge
+  var ZN_shots = [], ZN_shotGeo = null, ZN_shotMat = null, ZN_haloMat = null;
+  function ZN_fire(C, pl, b) {
+    if (!ZN_shotGeo) {
+      ZN_shotGeo = new Dn(0.32, 10, 8), ZN_shotMat = new se({ color: 16750640 }), ZN_haloMat = new se({ color: 16722112, transparent: true, opacity: 0.45, depthWrite: false, blending: Ee });
+    }
+    let sh = ZN_shots.find((q) => !q.on);
+    if (!sh) {
+      if (ZN_shots.length > 80) return;
+      const g = new pe(), core = new zt(ZN_shotGeo, ZN_shotMat), halo = new zt(ZN_shotGeo, ZN_haloMat);
+      halo.scale.setScalar(2.4), g.add(core, halo), ZN.scene.add(g), sh = { g }, ZN_shots.push(sh);
+    }
+    const sp = b.shotSpeed || 24, dx0 = pl.x - C.x, dz0 = pl.z - C.z, t = Math.hypot(dx0, dz0) / sp;
+    const tx = pl.x + (pl.vx || 0) * t * 0.8, tz = pl.z + (pl.vz || 0) * t * 0.8, L = Math.hypot(tx - C.x, tz - C.z) || 1;
+    sh.on = true, sh.x = C.x, sh.y = 1.6, sh.z = C.z, sh.vx = (tx - C.x) / L * sp, sh.vz = (tz - C.z) / L * sp, sh.life = 3, sh.dmg = b.shotDamage || 45;
+    sh.g.visible = true, sh.g.position.set(sh.x, sh.y, sh.z);
+  }
+  function ZN_combat(dt) {
+    const api = window.__api, pl = api && api.player, gm = api && api.game, mon = ZN.mon;
+    if (!pl || !mon || !mon.enabled || window.__quizOpen) return;
+    // Spieler-Geschwindigkeit fuer das Vorhalten schaetzen
+    ZN.lp && dt > 0 && (pl.vx = (pl.x - ZN.lp[0]) / dt, pl.vz = (pl.z - ZN.lp[1]) / dt), ZN.lp = [pl.x, pl.z];
+    for (const z of ZN_zones()) {
+      if (!z.barrier || !ZN_threat(z, pl) || gm && gm.dead > 0) continue;
+      const b = z.barrier, inside = ZN_inPoly(pl.x, pl.z, z.wpoly), rng = inside ? b.shotRangeInside || 140 : b.shotRange || 45;
+      for (const C of mon.guards || []) {
+        if (C.guard.zone !== z.id) continue;
+        const d = Math.hypot(C.x - pl.x, C.z - pl.z);
+        if (d > rng || d < 3) continue;
+        C.guard.cd = (C.guard.cd || Math.random() * 1.5) - dt;
+        C.guard.cd <= 0 && (C.guard.cd = (b.shotEvery || 1.6) * (inside ? 0.45 : 1) * (0.7 + Math.random() * 0.6), ZN_fire(C, pl, b));
+      }
+    }
+    for (const sh of ZN_shots) {
+      if (!sh.on) continue;
+      const ox = sh.x, oz = sh.z;
+      sh.x += sh.vx * dt, sh.z += sh.vz * dt, sh.life -= dt, sh.y = 1.2 + 0.4 * Math.max(0, sh.life / 3);
+      sh.g.position.set(sh.x, sh.y, sh.z);
+      // Treffer auf der ganzen Flugstrecke dieses Takts pruefen (kein Durchtunneln bei niedriger Bildrate)
+      const sx = sh.x - ox, sz = sh.z - oz, s2 = sx * sx + sz * sz || 1, tt = Math.max(0, Math.min(1, ((pl.x - ox) * sx + (pl.z - oz) * sz) / s2));
+      if (Math.hypot(ox + sx * tt - pl.x, oz + sz * tt - pl.z) < 1.2) {
+        window.__hurtPlayer && window.__hurtPlayer(sh.dmg), sh.life = 0;
+        try {
+          FX.pop(sh.x, 1.2, sh.z, 16733440, 1.6, 0.3);
+        } catch {
+        }
+      }
+      sh.life <= 0 && (sh.on = false, sh.g.visible = false);
+    }
+  }
   // Aufruf nach dem Bau von Zone 1
   async function ZN_init(o, scene, cfg, mon) {
     ZN.o = o, ZN.scene = scene, ZN.cfg = cfg, ZN.mon = mon;
@@ -285,8 +337,15 @@
       z.barrier && z.barrier.type === "monster" && mon && mon.addGuard && ZN_guards(z, mon);
     }
     const t0 = performance.now();
+    let tPrev = performance.now();
     (function tick() {
-      const t = (performance.now() - t0) / 1e3;
+      const now = performance.now(), dt = Math.min(0.05, (now - tPrev) / 1e3);
+      tPrev = now;
+      try {
+        ZN_combat(dt);
+      } catch (e) {
+      }
+      const t = (now - t0) / 1e3;
       for (const z of ZN_zones()) {
         z.fence && z.fence.userData.pulse(t);
         z.fog && z.fog.visible && z.fog.userData.pulse(t);
