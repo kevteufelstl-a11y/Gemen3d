@@ -24,12 +24,12 @@
     },
     {
       "id": "z2",
-      "name": "Zone 2 – Neumühle und Aa-Wiesen",
+      "name": "Zone 2 – Neumühle, Aa-Wiesen und Gemen-Süd",
       "color": "#ff2bd6",
       "status": "locked",
       "geo": {
         "file": "z2/geo.json",
-        "version": 1
+        "version": 2
       },
       "optik": {
         "file": "z2/optik.json",
@@ -52,7 +52,7 @@
       "sichtbar": true,
       "barrier": {
         "type": "monster",
-        "spacing": 7,
+        "spacing": 9,
         "offset": 3.5,
         "trigger": 12,
         "range": 70,

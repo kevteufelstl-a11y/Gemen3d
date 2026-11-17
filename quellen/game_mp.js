@@ -13891,7 +13891,7 @@ function burgGemenBuild(Ot, rng, OX, OZ, ROT) {
         }
       } else {
         let M = Math.min(Math.abs(x - c.x0), Math.abs(x - c.x1), Math.abs(v - c.z0), Math.abs(v - c.z1)), S = x < c.x0 ? c.x0 - x : x > c.x1 ? x - c.x1 : 0, q = 0.5 + 0.5 * Math.sin(x * 0.05 + v * 0.037) * Math.cos(v * 0.021 - x * 0.013);
-        R = i.zoneId || window.__zoneBlockRing && window.__zoneBlockRing(x, v) ? 0 : M < 55 * q + 10 ? 0.38 : 0;
+        R = 0;
       }
       if (R *= h, s() > R) continue;
       let w = x + (s() - 0.5) * 2.6, T = v + (s() - 0.5) * 2.6;

@@ -32,7 +32,7 @@ rep('    let Et = Sr[0];\n    Et.px = [s, r];\n    for (let D of Sr) {',
     '    let Et = Sr[0];\n    i.zoneId || (Et.px = [s, r]);\n    if (!i.zoneId) for (let D of Sr) {', 'ZN-Stationen')
 # Baeume: kein Waldring um weitere Zonen; Waldring von Zone 1 nicht in andere Zonen
 rep('        R = M < 55 * q + 10 ? 0.38 : 0;',
-    '        R = i.zoneId || window.__zoneBlockRing && window.__zoneBlockRing(x, v) ? 0 : M < 55 * q + 10 ? 0.38 : 0;', 'ZN-Waldring')
+    '        R = 0;', 'ZN-Waldring')
 # Zonen starten, sobald die Welt fertig ist
 rep('    window.__api = { diag() {', '    ZN_init(o, n, Be, h);\n    window.__api = { diag() {', 'ZN-Start')
 
