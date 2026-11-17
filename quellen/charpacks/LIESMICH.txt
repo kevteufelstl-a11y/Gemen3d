@@ -1,0 +1,33 @@
+CHARAKTER-PACKS (seit 17.11.2026)
+=================================
+Jede *.json-Datei in diesem Ordner ist ein Charakter-Pack. Beim Bau (python3 patch.py min) werden alle
+Dateien automatisch eingebunden. Neue Figuren erscheinen dann von selbst unter MEIN CHARAKTER.
+Am Spiel selbst muss dafür nichts geändert werden.
+
+Aufbau einer Pack-Datei
+  id          eindeutige Pack-ID (nur a-z, 0-9, _), z. B. "zombie_pack". NIE wieder ändern.
+  name        Anzeigename, z. B. "Zombie-Pack"
+  version     Zahl. Bei Änderungen erhöhen (die höhere Version gewinnt).
+  desc        Beschreibung
+  previewChar ID der Figur für das Vorschaubild
+  elements    Gestaltungselemente (Hautfarbe, Frisur, Kleidung …):
+              { "<schlüssel>": { "label", "icon", "part"(optional: Modellteil), "needs"(optional),
+                                 "options": [ { "id", "label", "tex"(Textur) | "color"(#rrggbb) } ] } }
+  bodies      Körper/Grundfiguren: [ { "id", "label", "icon" } ]
+  characters  Fertige Figuren:     [ { "id", "name", "body", "parts": { "<element>": "<option-id>" } } ]
+  models      Gebackene 3D-Daten je Körper (aus scripts/race_bake.py)
+  tex         Texturen als JPEG (base64)
+
+Regeln, damit Spielerdaten sicher bleiben
+  - IDs von Pack, Körpern, Elementen und Optionen nie umbenennen oder neu vergeben.
+  - Optionen dürfen dazukommen. Entfernt man eine, zeigt das Spiel bei alten Figuren automatisch die erste Option
+    an. Die gespeicherten Daten bleiben unverändert (wird die Option wieder eingebaut, ist alles wie vorher).
+  - Fehlt ein ganzes Pack, sehen betroffene Spieler die Standardfigur. Ihre Charaktere bleiben gespeichert.
+  - Elemente werden nur angezeigt, wenn das Modellteil bzw. die Textur im Pack vorhanden ist.
+  - Die Standardfigur ist fest eingebaut (Pack "standard") und kann nicht entfernt werden.
+
+Speicherung
+  Server: Tabelle characters + profiles.active_character / char_intro_done (server/05_charaktere.sql),
+  nur über milo_api (Aktionen charList, charSave, charDelete, charSelect, charIntro), immer nur eigene Figuren.
+  Kopie auf dem Gerät (localStorage milo3d_chars_<Spieler-ID>) für die Anzeige ohne Internet.
+Tests: server/test_charaktere.mjs (Server, 28 Tests), server/test_charaktere_ui.py (Oberfläche, 40 Tests).

@@ -108,6 +108,7 @@ rep('        f = true, Xs();\n        let S = M === l.a;', '        f = true, Xs
 rep('confirm("Pr\\xFCfung abbrechen?") && Ar(i);', 'confirm(CP ? "Wettbewerb aufgeben?" : "Pr\\xFCfung abbrechen?") && (CP ? CP.cancel() : Ar(i));', 'gf-Abbruch')
 rep('    }, o = () => {\n      if (Xs(), r > ye.ex', '    }, o = () => {\n      if (CP) {\n        Xs(), CP.finish(r, CP.tt);\n        return;\n      }\n      if (Xs(), r > ye.ex', 'gf-Ende')
 
+exec(open(D + '/patch_chars.py', encoding='utf8').read())
 open(D + '/game_mp.js', 'w', encoding='utf8').write(s)
 
 # ---------------- HTML zusammensetzen ----------------
