@@ -12718,7 +12718,50 @@ void main() {
     if (!pl || PT !== pl) return false;
     const z = ZN_zones().find((zz) => zz.id === C.guard.zone);
     if (!z || z.allowed) return false;
-    return ZN_threat(z, pl) && (ZN_inPoly(pl.x, pl.z, z.wpoly) || Math.hypot(C.x - pl.x, C.z - pl.z) < ((z.barrier || {}).range || 70));
+    const gm = window.__api.game, b = z.barrier || {};
+    // Nach dem Tod lassen die Waechter los und kehren an die Grenze zurueck
+    if (gm && gm.dead > 0) {
+      for (const g of ZN.mon && ZN.mon.guards || []) g.guard.lock = false;
+      return false;
+    }
+    if (C.guard.lock) return true;
+    if (!ZN_threat(z, pl)) return false;
+    if (!ZN_inPoly(pl.x, pl.z, z.wpoly) && Math.hypot(C.x - pl.x, C.z - pl.z) > (b.range || 70)) return false;
+    // Alarm: alle Waechter im weiten Umkreis haengen sich an den Spieler und lassen nicht mehr los
+    const R = b.lockRange || 150;
+    for (const g of ZN.mon && ZN.mon.guards || []) g.guard.zone === z.id && Math.hypot(g.x - pl.x, g.z - pl.z) < R && (g.guard.lock = true);
+    C.guard.lock = true;
+    return true;
+  };
+  // Verfolgung mit Wegsuche: Waechter laufen um Haeuser herum (max. 2 neue Wege pro Bild, damit es fluessig bleibt)
+  ZN.pathBudget = 2;
+  function ZN_walkFor(x, y) {
+    for (const z of ZN_zones()) if (z.o2 && z.wpoly && ZN_inPoly(x, y, z.wpoly)) return z.o2.walk;
+    const g = window.GEMEN_DATA, S = g.scale, wx = (x / S + g.home[0]), wy = (y / S + g.home[1]);
+    return wx >= 0 && wy >= 0 && wx <= g.w && wy <= g.h ? ZN.o.walk : null;
+  }
+  window.__zoneGuardStep = (C, PT, sp, U, T) => {
+    const G = C.guard, d = Math.hypot(PT.x - C.x, PT.z - C.z);
+    if (d < 6) return G.path = null, T(C, PT.x, PT.z, sp, U);
+    G.pt = (G.pt || 0) - U;
+    const end = G.path && G.path.length ? G.path[G.path.length - 1] : null;
+    if ((!G.path || G.pt <= 0 || end && Math.hypot(end[0] - PT.x, end[1] - PT.z) > 8) && ZN.pathBudget > 0) {
+      ZN.pathBudget--, G.pt = 1.2 + Math.random() * 0.6;
+      const wa = ZN_walkFor(C.x, C.z), wb = ZN_walkFor(PT.x, PT.z);
+      let P = null;
+      try {
+        P = wa && wa === wb && wa.path ? wa.path(C.x, C.z, PT.x, PT.z) : null;
+      } catch (e) {
+      }
+      G.path = P && P.length > 1 ? P.slice(1) : null;
+    }
+    if (G.path && G.path.length) {
+      const q = G.path[0];
+      Math.hypot(q[0] - C.x, q[1] - C.z) < 1.3 && G.path.shift();
+      const r = G.path[0] || [PT.x, PT.z];
+      return T(C, r[0], r[1], sp, U) || (G.path = null, T(C, PT.x, PT.z, sp, U));
+    }
+    return T(C, PT.x, PT.z, sp, U);
   };
   function ZN_threat(z, pl) {
     if (z.allowed || !z.barrier) return false;
@@ -12748,6 +12791,7 @@ void main() {
     ZN.lp && dt > 0 && (pl.vx = (pl.x - ZN.lp[0]) / dt, pl.vz = (pl.z - ZN.lp[1]) / dt), ZN.lp = [pl.x, pl.z];
     for (const z of ZN_zones()) {
       if (!z.barrier || !ZN_threat(z, pl) || gm && gm.dead > 0) continue;
+      if (z.barrier.shots === false) continue;
       const b = z.barrier, inside = ZN_inPoly(pl.x, pl.z, z.wpoly), rng = inside ? b.shotRangeInside || 140 : b.shotRange || 45;
       for (const C of mon.guards || []) {
         if (C.guard.zone !== z.id) continue;
@@ -12790,6 +12834,7 @@ void main() {
     (function tick() {
       const now = performance.now(), dt = Math.min(0.05, (now - tPrev) / 1e3);
       tPrev = now;
+      ZN.pathBudget = 2;
       try {
         ZN_combat(dt);
       } catch (e) {
@@ -15350,12 +15395,12 @@ function burgGemenBuild(Ot, rng, OX, OZ, ROT) {
       if (!E.enabled) return;
       let et = 0, pt = 0, V = Math.max(170, ht * 1.25);
       for (let C of h) {
-        let gt = C.T, PT = E.pick(C, S, H), xt = PT.x - C.x, At = PT.z - C.z, rt = Math.hypot(xt, At), PH = PT === S ? H : PT.remote ? PT.safe : false, yt = Math.hypot(C.x - q, C.z - J) < V, wt = C.guard ? !E.puppet && !!(window.__zoneGuardHot && window.__zoneGuardHot(C, PT)) : !PH && !E.peace && !E.puppet && rt < gt.sense * (window.__shS || 1), dt = C.state === "chase";
+        let gt = C.T, PT = E.pick(C, S, H), xt = PT.x - C.x, At = PT.z - C.z, rt = Math.hypot(xt, At), PH = PT === S ? H : PT.remote ? PT.safe : false, yt = Math.hypot(C.x - q, C.z - J) < V, wt = C.guard ? !PH && !E.puppet && !!(window.__zoneGuardHot && window.__zoneGuardHot(C, PT)) : !PH && !E.peace && !E.puppet && rt < gt.sense * (window.__shS || 1), dt = C.state === "chase";
         C.state = wt ? "chase" : "wander";
         let ot = 0, Et = false, O = window.__shM || 1;
         if (C.state === "chase") {
           let tt = gt.reach;
-          C.cd -= U, C.wind > 0 ? (C.wind -= U, C.yawT = Math.atan2(xt, At), ot = 0, C.wind <= 0 && (C.cd = 1.4, C.lunge = 0.35, !PH && rt < tt + (gt.fly ? 1 : 0.8) && (PT === S ? $ && $(C.guard ? 9999 : gt.dmg * (window.__shD || 1), C) : PT.remote ? E.onRemoteHit && E.onRemoteHit(PT.id, gt.dmg) : E.dogHit && E.dogHit(gt.dmg, C)))) : (rt > tt * 0.7 ? (ot = gt.speed * (C.guard ? window.__zoneGuardSpeed || 2.6 : O), T(C, PT.x, PT.z, ot, U) || (ot = 0.3)) : C.yawT = Math.atan2(xt, At), rt < tt + (gt.fly ? 0.6 : 0.4) && C.cd <= 0 && !PH && (C.wind = 0.6)), pt++, et = Math.max(et, 1 - Le((rt - 3) / (gt.sense - 3), 0, 1));
+          C.cd -= U, C.wind > 0 ? (C.wind -= U, C.yawT = Math.atan2(xt, At), ot = 0, C.wind <= 0 && (C.cd = 1.4, C.lunge = 0.35, !PH && rt < tt + (gt.fly ? 1 : 0.8) && (PT === S ? $ && $(C.guard ? 9999 : gt.dmg * (window.__shD || 1), C) : PT.remote ? E.onRemoteHit && E.onRemoteHit(PT.id, gt.dmg) : E.dogHit && E.dogHit(gt.dmg, C)))) : (rt > tt * 0.7 ? (ot = gt.speed * (C.guard ? window.__zoneGuardSpeed || 2.6 : O), (C.guard && window.__zoneGuardStep ? window.__zoneGuardStep(C, PT, ot, U, T) : T(C, PT.x, PT.z, ot, U)) || (ot = 0.3)) : C.yawT = Math.atan2(xt, At), rt < tt + (gt.fly ? 0.6 : 0.4) && C.cd <= 0 && !PH && (C.wind = 0.6)), pt++, et = Math.max(et, 1 - Le((rt - 3) / (gt.sense - 3), 0, 1));
         } else {
           if (C.wind = 0, C.wanderT -= U, C.wanderT <= 0) {
             let z = a() * 6.28, D = 5 + a() * 14;

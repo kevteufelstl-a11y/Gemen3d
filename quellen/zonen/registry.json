@@ -57,12 +57,14 @@
         "trigger": 12,
         "range": 70,
         "deadly": true,
-        "note": "Monster-Kette an der Grenze. Man kann die Zone betreten, aber Spieler ohne Freischaltung werden ab 12 m vor der Grenze und in der ganzen Zone von den Waechtern gejagt (2,6-fach schneller als normale Monster), mit Feuerbaellen beschossen (45 Schaden) und im Nahkampf sofort getoetet.",
+        "note": "Monster-Kette an der Grenze. Wer ohne Freischaltung naeher als 12 m an die Grenze kommt, loest Alarm aus: alle Waechter im Umkreis von 150 m jagen den Spieler ueberall hin (2,6-fach schneller als normale Monster) und lassen erst los, wenn er tot ist. Nahkampftreffer sind toedlich. Keine Feuerbaelle.",
         "shotRange": 45,
         "shotRangeInside": 140,
         "shotEvery": 1.6,
         "shotSpeed": 24,
-        "shotDamage": 45
+        "shotDamage": 45,
+        "shots": false,
+        "lockRange": 150
       }
     }
   ]

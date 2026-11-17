@@ -269,7 +269,50 @@
     if (!pl || PT !== pl) return false;
     const z = ZN_zones().find((zz) => zz.id === C.guard.zone);
     if (!z || z.allowed) return false;
-    return ZN_threat(z, pl) && (ZN_inPoly(pl.x, pl.z, z.wpoly) || Math.hypot(C.x - pl.x, C.z - pl.z) < ((z.barrier || {}).range || 70));
+    const gm = window.__api.game, b = z.barrier || {};
+    // Nach dem Tod lassen die Waechter los und kehren an die Grenze zurueck
+    if (gm && gm.dead > 0) {
+      for (const g of ZN.mon && ZN.mon.guards || []) g.guard.lock = false;
+      return false;
+    }
+    if (C.guard.lock) return true;
+    if (!ZN_threat(z, pl)) return false;
+    if (!ZN_inPoly(pl.x, pl.z, z.wpoly) && Math.hypot(C.x - pl.x, C.z - pl.z) > (b.range || 70)) return false;
+    // Alarm: alle Waechter im weiten Umkreis haengen sich an den Spieler und lassen nicht mehr los
+    const R = b.lockRange || 150;
+    for (const g of ZN.mon && ZN.mon.guards || []) g.guard.zone === z.id && Math.hypot(g.x - pl.x, g.z - pl.z) < R && (g.guard.lock = true);
+    C.guard.lock = true;
+    return true;
+  };
+  // Verfolgung mit Wegsuche: Waechter laufen um Haeuser herum (max. 2 neue Wege pro Bild, damit es fluessig bleibt)
+  ZN.pathBudget = 2;
+  function ZN_walkFor(x, y) {
+    for (const z of ZN_zones()) if (z.o2 && z.wpoly && ZN_inPoly(x, y, z.wpoly)) return z.o2.walk;
+    const g = window.GEMEN_DATA, S = g.scale, wx = (x / S + g.home[0]), wy = (y / S + g.home[1]);
+    return wx >= 0 && wy >= 0 && wx <= g.w && wy <= g.h ? ZN.o.walk : null;
+  }
+  window.__zoneGuardStep = (C, PT, sp, U, T) => {
+    const G = C.guard, d = Math.hypot(PT.x - C.x, PT.z - C.z);
+    if (d < 6) return G.path = null, T(C, PT.x, PT.z, sp, U);
+    G.pt = (G.pt || 0) - U;
+    const end = G.path && G.path.length ? G.path[G.path.length - 1] : null;
+    if ((!G.path || G.pt <= 0 || end && Math.hypot(end[0] - PT.x, end[1] - PT.z) > 8) && ZN.pathBudget > 0) {
+      ZN.pathBudget--, G.pt = 1.2 + Math.random() * 0.6;
+      const wa = ZN_walkFor(C.x, C.z), wb = ZN_walkFor(PT.x, PT.z);
+      let P = null;
+      try {
+        P = wa && wa === wb && wa.path ? wa.path(C.x, C.z, PT.x, PT.z) : null;
+      } catch (e) {
+      }
+      G.path = P && P.length > 1 ? P.slice(1) : null;
+    }
+    if (G.path && G.path.length) {
+      const q = G.path[0];
+      Math.hypot(q[0] - C.x, q[1] - C.z) < 1.3 && G.path.shift();
+      const r = G.path[0] || [PT.x, PT.z];
+      return T(C, r[0], r[1], sp, U) || (G.path = null, T(C, PT.x, PT.z, sp, U));
+    }
+    return T(C, PT.x, PT.z, sp, U);
   };
   function ZN_threat(z, pl) {
     if (z.allowed || !z.barrier) return false;
@@ -299,6 +342,7 @@
     ZN.lp && dt > 0 && (pl.vx = (pl.x - ZN.lp[0]) / dt, pl.vz = (pl.z - ZN.lp[1]) / dt), ZN.lp = [pl.x, pl.z];
     for (const z of ZN_zones()) {
       if (!z.barrier || !ZN_threat(z, pl) || gm && gm.dead > 0) continue;
+      if (z.barrier.shots === false) continue;
       const b = z.barrier, inside = ZN_inPoly(pl.x, pl.z, z.wpoly), rng = inside ? b.shotRangeInside || 140 : b.shotRange || 45;
       for (const C of mon.guards || []) {
         if (C.guard.zone !== z.id) continue;
@@ -341,6 +385,7 @@
     (function tick() {
       const now = performance.now(), dt = Math.min(0.05, (now - tPrev) / 1e3);
       tPrev = now;
+      ZN.pathBudget = 2;
       try {
         ZN_combat(dt);
       } catch (e) {
