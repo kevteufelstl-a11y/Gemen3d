@@ -1,0 +1,8 @@
+Zonen (ab 17.11.2026)
+registry.json  Liste aller Zonen: ID, Name, Farbe, Status, Nachbarn, Freischaltregel, Aufgaben je Klasse.
+zN/geo.json    Geografische Ebene einer Zone (Strassen-Mittellinien mit Breite, Strassen- und Gehwegflaechen,
+               Haeuser, Wasser, Wiesen, Klassenbild, Zonengrenze). Eigenes Pixelraster, gleicher Massstab wie Zone 1
+               (scale 0.50378 Einheiten pro Pixel, 1 Einheit = ca. 0,98 m). home = Pixel des Welt-Nullpunkts.
+zN/optik.json  Optische Ebene (Grafikpaket, Nebel, Zaun). Unabhaengig von der Geografie.
+Zone 1 bleibt in GEMEN_DATA (part_head.html) und wird nicht veraendert.
+Zone 2 wurde aus 23 Google-Maps-Screenshots erzeugt (Werkzeuge: z2_werkzeuge/), Anker: Jugendburg Gemen.

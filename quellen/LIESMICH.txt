@@ -6,3 +6,9 @@ patch_dog.py ersetzt den Kugel-Hund durch den animierten Shiba (Quaternius, CC0)
 patch_lernspiel.py + lernspiel.js (15.11.): Spieler-Auswahl mit Profilbildern, Lernzeit-Leiste oben, Tagespruefung (max. 5 Min.,
 heute falsch beantwortete Fragen zuerst, Zeit getrennt von der Lernzeit), Diktat und Woerter abschreiben mit Elternkontrolle,
 neue Urkunde (Vorlage im Admin-Menue hochladbar), 5 neue Ablenkungen (in patch_distract.py). Mathe bleibt unveraendert.
+patch_zones.py + zonen.js + zonen/ (17.11.): Zonen-System. Zone 2 (Neumuehle + Aa-Wiesen) als eigene Einheit mit
+eigener geografischer und optischer Ebene (zonen/registry.json, zonen/z2/geo.json, zonen/z2/optik.json).
+Zone 1 (GEMEN_DATA) unveraendert. Zone 2 wird nur gebaut, wenn der Spieler sie betreten darf (Admin oder
+Freischaltung auf dem Server, Aktion zoneAccess). Sonst: pink leuchtender Zaun + Nebel, kein Zutritt.
+Server: server/06_zonen.sql (Tabellen zones, zone_unlocks, zone_versions, Funktion milo_zones).
+Erzeugung der Zone-2-Daten aus den Google-Maps-Screenshots: z2_werkzeuge/.

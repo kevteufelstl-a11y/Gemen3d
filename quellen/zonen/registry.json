@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "note": "Zonen-Register. Jede Zone hat eine eigene ID, eine geografische Ebene (geo) und eine optische Ebene (optik) mit eigener Versionsnummer. Zone 1 nutzt unveraendert GEMEN_DATA.",
+  "zones": [
+    {
+      "id": "z1",
+      "name": "Zone 1 – Gemen Ortskern",
+      "color": "#59ff5a",
+      "status": "active",
+      "geo": { "src": "GEMEN_DATA", "version": 1 },
+      "optik": { "file": "z1/optik.json", "version": 1 },
+      "neighbors": ["z2"],
+      "unlock": { "type": "always" }
+    },
+    {
+      "id": "z2",
+      "name": "Zone 2 – Neumühle und Aa-Wiesen",
+      "color": "#ff2bd6",
+      "status": "locked",
+      "geo": { "file": "z2/geo.json", "version": 1 },
+      "optik": { "file": "z2/optik.json", "version": 1 },
+      "neighbors": ["z1"],
+      "unlock": { "type": "exam", "exam": null, "note": "Abschlusspruefung wird spaeter festgelegt. Bis dahin: nur Admin bzw. Freischaltung durch den Admin auf dem Server." },
+      "tasks": { "klassen": { "4": [], "5": [] } }
+    }
+  ]
+}
