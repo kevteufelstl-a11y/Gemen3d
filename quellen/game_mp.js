@@ -12616,7 +12616,7 @@ void main() {
     if (z.o2 || z.building) return;
     z.building = true;
     try {
-      Zs("\u{1F5FA} " + z.name + " wird geladen …");
+      z.allowed && Zs("\u{1F5FA} " + z.name + " wird geladen …");
     } catch {
     }
     await Lr();
@@ -12635,7 +12635,7 @@ void main() {
     z.o2 = o2, z.building = false;
     ZN_apply();
     try {
-      Zs("✅ " + z.name + " ist bereit.");
+      z.allowed && Zs("✅ " + z.name + " ist bereit.");
     } catch {
     }
   }
@@ -12645,8 +12645,9 @@ void main() {
     for (const z of ZN_zones()) {
       if (z.id === "z1" || !z.wpoly) continue;
       z.allowed = al.has(z.id);
-      z.allowed && !z.o2 && ZN_build(z);
-      z.o2 && (z.o2.root.visible = z.allowed);
+      const show = z.allowed || z.sichtbar;
+      show && !z.o2 && ZN_build(z);
+      z.o2 && (z.o2.root.visible = show);
       z.fog && (z.fog.visible = !z.allowed);
       // Spieler steht in einer Zone, die er nicht (mehr) betreten darf -> zurueck an den Start
       const api = window.__api, pl = api && api.player;
@@ -12679,14 +12680,58 @@ void main() {
     }
     ZN_apply();
   }
+  // Monster-Waechter: dichte Kette entlang der Grenze, auf der Seite von Zone 1
+  function ZN_guards(z, mon) {
+    const b = z.barrier, sp = b.spacing || 7, off = b.offset || 3.5, types = ["imp1", "pug1", "imp2", "pug2", "imp3", "pug3"];
+    z.bsegs = [];
+    let k = 0;
+    for (const run of ZN_border(z)) {
+      for (let i = 0; i < run.length - 1; i++) z.bsegs.push([run[i], run[i + 1]]);
+      const a = run[0], c = run[run.length - 1], L = Math.hypot(c[0] - a[0], c[1] - a[1]) || 1;
+      let nx = (c[1] - a[1]) / L, nz = -(c[0] - a[0]) / L;
+      const mx = (a[0] + c[0]) / 2, mz = (a[1] + c[1]) / 2;
+      ZN_inPoly(mx + nx * 2, mz + nz * 2, z.wpoly) && (nx = -nx, nz = -nz);
+      const dx = (c[0] - a[0]) / L, dz = (c[1] - a[1]) / L;
+      for (let d = sp / 2; d < L; d += sp) {
+        const px = a[0] + dx * d + nx * off, pz = a[1] + dz * d + nz * off;
+        const q = ZN.o.walk.nearest(px, pz);
+        if (!q || Math.hypot(q[0] - px, q[1] - pz) > 9) continue;
+        const h = sp * 0.6, C = mon.addGuard(types[k++ % types.length], q[0] - dx * h, q[1] - dz * h, q[0] + dx * h, q[1] + dz * h);
+        C.guard.zone = z.id;
+      }
+    }
+    z.guardCount = k;
+  }
+  function ZN_borderDist(z, x, y) {
+    let best = 1e9;
+    for (const [a, c] of z.bsegs || []) {
+      const vx = c[0] - a[0], vz = c[1] - a[1], L2 = vx * vx + vz * vz || 1;
+      let t = ((x - a[0]) * vx + (y - a[1]) * vz) / L2;
+      t = Math.max(0, Math.min(1, t));
+      best = Math.min(best, Math.hypot(x - a[0] - vx * t, y - a[1] - vz * t));
+    }
+    return best;
+  }
+  // Greifen die Waechter an? Nur den eigenen Spieler, nur ohne Freischaltung, nur nahe der Grenze.
+  window.__zoneGuardHot = (C, PT) => {
+    const api = window.__api, pl = api && api.player;
+    if (!pl || PT !== pl) return false;
+    const z = ZN_zones().find((zz) => zz.id === C.guard.zone);
+    if (!z || z.allowed) return false;
+    const b = z.barrier || {}, dB = ZN_borderDist(z, pl.x, pl.z);
+    if (dB > (b.trigger || 12)) return false;
+    return Math.hypot(C.x - pl.x, C.z - pl.z) < (b.range || 70);
+  };
   // Aufruf nach dem Bau von Zone 1
-  async function ZN_init(o, scene, cfg) {
-    ZN.o = o, ZN.scene = scene, ZN.cfg = cfg;
+  async function ZN_init(o, scene, cfg, mon) {
+    ZN.o = o, ZN.scene = scene, ZN.cfg = cfg, ZN.mon = mon;
     ZN_hookWalk(o);
     for (const z of ZN_zones()) {
       if (z.id === "z1" || !z.wpoly) continue;
-      z.fence = ZN_fence(z), scene.add(z.fence);
-      z.fog = ZN_fog(z), scene.add(z.fog);
+      const op = z.optikData || {};
+      op.fence && (z.fence = ZN_fence(z), scene.add(z.fence));
+      op.fog && (z.fog = ZN_fog(z), scene.add(z.fog));
+      z.barrier && z.barrier.type === "monster" && mon && mon.addGuard && ZN_guards(z, mon);
     }
     const t0 = performance.now();
     (function tick() {
@@ -12697,9 +12742,9 @@ void main() {
       }
       requestAnimationFrame(tick);
     })();
-    ZN.ready = true, ZN_apply();
+    ZN.ready = true, setTimeout(ZN_apply, 2500);
     setInterval(ZN_check, 1500), ZN_check();
-    window.__zones = { list: () => ZN_zones().map((z) => ({ id: z.id, name: z.name, status: z.status, allowed: !!z.allowed, built: !!z.o2 })), apply: ZN_apply, inPoly: ZN_inPoly };
+    window.__zones = { list: () => ZN_zones().map((z) => ({ id: z.id, name: z.name, status: z.status, allowed: !!z.allowed, built: !!z.o2, guards: z.guardCount || 0 })), apply: ZN_apply, inPoly: ZN_inPoly };
   }
   async function Du(i, t, e) {
     let n = i.scale, s = i.home[0], r = i.home[1], a = (D, G) => [(D - s) * n, (G - r) * n], o = { S: n, HX: s, HY: r, W2: a, update: [], stations: [], blockers: [], lampPositions: [], fires: [] }, c = i.w * n, l = i.h * n;
@@ -15161,6 +15206,14 @@ function burgGemenBuild(Ot, rng, OX, OZ, ROT) {
     let v = { imp1: 9, imp2: 8, imp3: 8, pug1: 8, pug2: 7, pug3: 7 };
     for (let U in v) for (let M = 0; M < v[U]; M++) p(U);
     let E = { list: h, enabled: s, threat: 0, chasers: 0, root: r };
+    E.guards = [];
+    E.addGuard = (type, ax, az, bx, bz) => {
+      const C = p(type);
+      C.guard = { ax, az, bx, bz, f: a() < 0.5 };
+      const t0 = a();
+      C.x = ax + (bx - ax) * t0, C.z = az + (bz - az) * t0, C.wx = C.x, C.wz = C.z, C.y = 0, C.state = "wander";
+      return E.guards.push(C), C;
+    };
     E.peace = false;
     E.dog = null;
     E.remotes = [];
@@ -15179,6 +15232,10 @@ function burgGemenBuild(Ot, rng, OX, OZ, ROT) {
       return TG;
     };
     E.relocate = (U) => {
+      if (U.guard) {
+        U.x = U.guard.ax, U.z = U.guard.az, U.wx = U.x, U.wz = U.z, U.state = "wander";
+        return;
+      }
       x(U);
       U.state = "wander";
     };
@@ -15188,7 +15245,7 @@ function burgGemenBuild(Ot, rng, OX, OZ, ROT) {
       const want = {};
       for (const k in mix) want[k] = Math.round(tot * mix[k] / sum);
       for (const k in mix) {
-        let have = h.filter((c2) => c2.type === k);
+        let have = h.filter((c2) => c2.type === k && !c2.guard);
         while (have.length > want[k]) {
           const c2 = have.pop();
           r.remove(c2.g);
@@ -15198,7 +15255,7 @@ function burgGemenBuild(Ot, rng, OX, OZ, ROT) {
       }
       const todo = [];
       for (const k in mix) {
-        let have = h.filter((c2) => c2.type === k).length;
+        let have = h.filter((c2) => c2.type === k && !c2.guard).length;
         for (let j = have; j < want[k]; j++) todo.push(k);
       }
       E._tok = (E._tok || 0) + 1;
@@ -15213,7 +15270,7 @@ function burgGemenBuild(Ot, rng, OX, OZ, ROT) {
     E.setEnabled = (U) => {
       E.enabled = U, r.visible = U;
     }, r.visible = s, E.scatterNear = (U, M, S) => {
-      for (let q of h) Math.hypot(q.x - U, q.z - M) < S && (x(q), q.state = "wander");
+      for (let q of h) Math.hypot(q.x - U, q.z - M) < S && !q.guard && (x(q), q.state = "wander");
     };
     function R(U, M, S) {
       return !(!U.T.fly && !f.ok(M, S) || e.safeAt(M, S));
@@ -15233,16 +15290,17 @@ function burgGemenBuild(Ot, rng, OX, OZ, ROT) {
       if (!E.enabled) return;
       let et = 0, pt = 0, V = Math.max(170, ht * 1.25);
       for (let C of h) {
-        let gt = C.T, PT = E.pick(C, S, H), xt = PT.x - C.x, At = PT.z - C.z, rt = Math.hypot(xt, At), PH = PT === S ? H : PT.remote ? PT.safe : false, yt = Math.hypot(C.x - q, C.z - J) < V, wt = !PH && !E.peace && !E.puppet && rt < gt.sense * (window.__shS || 1), dt = C.state === "chase";
+        let gt = C.T, PT = E.pick(C, S, H), xt = PT.x - C.x, At = PT.z - C.z, rt = Math.hypot(xt, At), PH = PT === S ? H : PT.remote ? PT.safe : false, yt = Math.hypot(C.x - q, C.z - J) < V, wt = C.guard ? !E.puppet && !!(window.__zoneGuardHot && window.__zoneGuardHot(C, PT)) : !PH && !E.peace && !E.puppet && rt < gt.sense * (window.__shS || 1), dt = C.state === "chase";
         C.state = wt ? "chase" : "wander";
         let ot = 0, Et = false, O = window.__shM || 1;
         if (C.state === "chase") {
           let tt = gt.reach;
-          C.cd -= U, C.wind > 0 ? (C.wind -= U, C.yawT = Math.atan2(xt, At), ot = 0, C.wind <= 0 && (C.cd = 1.4, C.lunge = 0.35, !PH && rt < tt + (gt.fly ? 1 : 0.8) && (PT === S ? $ && $(gt.dmg * (window.__shD || 1), C) : PT.remote ? E.onRemoteHit && E.onRemoteHit(PT.id, gt.dmg) : E.dogHit && E.dogHit(gt.dmg, C)))) : (rt > tt * 0.7 ? (ot = gt.speed * O, T(C, PT.x, PT.z, ot, U) || (ot = 0.3)) : C.yawT = Math.atan2(xt, At), rt < tt + (gt.fly ? 0.6 : 0.4) && C.cd <= 0 && !PH && (C.wind = 0.6)), pt++, et = Math.max(et, 1 - Le((rt - 3) / (gt.sense - 3), 0, 1));
+          C.cd -= U, C.wind > 0 ? (C.wind -= U, C.yawT = Math.atan2(xt, At), ot = 0, C.wind <= 0 && (C.cd = 1.4, C.lunge = 0.35, !PH && rt < tt + (gt.fly ? 1 : 0.8) && (PT === S ? $ && $(C.guard ? 9999 : gt.dmg * (window.__shD || 1), C) : PT.remote ? E.onRemoteHit && E.onRemoteHit(PT.id, gt.dmg) : E.dogHit && E.dogHit(gt.dmg, C)))) : (rt > tt * 0.7 ? (ot = gt.speed * O, T(C, PT.x, PT.z, ot, U) || (ot = 0.3)) : C.yawT = Math.atan2(xt, At), rt < tt + (gt.fly ? 0.6 : 0.4) && C.cd <= 0 && !PH && (C.wind = 0.6)), pt++, et = Math.max(et, 1 - Le((rt - 3) / (gt.sense - 3), 0, 1));
         } else {
           if (C.wind = 0, C.wanderT -= U, C.wanderT <= 0) {
             let z = a() * 6.28, D = 5 + a() * 14;
-            C.wx = C.x + Math.cos(z) * D, C.wz = C.z + Math.sin(z) * D, C.wanderT = 3 + a() * 5, C.idle = E.puppet ? true : a() < 0.3;
+            if (C.guard) C.guard.f = !C.guard.f, C.wx = C.guard.f ? C.guard.bx : C.guard.ax, C.wz = C.guard.f ? C.guard.bz : C.guard.az, C.wanderT = 3 + a() * 3, C.idle = false;
+            else C.wx = C.x + Math.cos(z) * D, C.wz = C.z + Math.sin(z) * D, C.wanderT = 3 + a() * 5, C.idle = E.puppet ? true : a() < 0.3;
           }
           let tt = Math.hypot(C.wx - C.x, C.wz - C.z);
           !C.idle && !E.puppet && tt > 1 ? (ot = gt.wander * O, T(C, C.wx, C.wz, ot, U)) : C.wanderT -= U, H && rt < 12 ? (C.yawT = Math.atan2(xt, At), C.snarl = 1) : C.snarl = 0;
@@ -19560,7 +19618,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
       }
       Vt || requestAnimationFrame(ce);
     }
-    ZN_init(o, n, Be);
+    ZN_init(o, n, Be, h);
     window.__api = { diag() {
       let k = [], Q = new In(), Lt = new Y(), Yt = new Y();
       return n.traverse((Ht) => {

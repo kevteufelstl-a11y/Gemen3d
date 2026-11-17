@@ -6,3 +6,8 @@ zN/geo.json    Geografische Ebene einer Zone (Strassen-Mittellinien mit Breite, 
 zN/optik.json  Optische Ebene (Grafikpaket, Nebel, Zaun). Unabhaengig von der Geografie.
 Zone 1 bleibt in GEMEN_DATA (part_head.html) und wird nicht veraendert.
 Zone 2 wurde aus 23 Google-Maps-Screenshots erzeugt (Werkzeuge: z2_werkzeuge/), Anker: Jugendburg Gemen.
+17.11. abends: Zone 2 fuer alle sichtbar (registry: "sichtbar": true). Statt Zaun und Nebel (optik v2: fence/fog = null,
+alte Werte unter "vorher_v1") bewacht eine Monster-Kette die Grenze (registry: "barrier"): ca. 134 Imps/Puglins
+patrouillieren in einem schmalen Streifen auf der Seite von Zone 1. Spieler ohne Freischaltung, die naeher als
+12 m an die Grenze kommen, werden von allen Waechtern im Umkreis von 70 m angegriffen; jeder Treffer ist toedlich.
+Admin und freigeschaltete Spieler werden ignoriert und koennen hindurch.

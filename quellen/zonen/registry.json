@@ -7,21 +7,58 @@
       "name": "Zone 1 – Gemen Ortskern",
       "color": "#59ff5a",
       "status": "active",
-      "geo": { "src": "GEMEN_DATA", "version": 1 },
-      "optik": { "file": "z1/optik.json", "version": 1 },
-      "neighbors": ["z2"],
-      "unlock": { "type": "always" }
+      "geo": {
+        "src": "GEMEN_DATA",
+        "version": 1
+      },
+      "optik": {
+        "file": "z1/optik.json",
+        "version": 1
+      },
+      "neighbors": [
+        "z2"
+      ],
+      "unlock": {
+        "type": "always"
+      }
     },
     {
       "id": "z2",
       "name": "Zone 2 – Neumühle und Aa-Wiesen",
       "color": "#ff2bd6",
       "status": "locked",
-      "geo": { "file": "z2/geo.json", "version": 1 },
-      "optik": { "file": "z2/optik.json", "version": 1 },
-      "neighbors": ["z1"],
-      "unlock": { "type": "exam", "exam": null, "note": "Abschlusspruefung wird spaeter festgelegt. Bis dahin: nur Admin bzw. Freischaltung durch den Admin auf dem Server." },
-      "tasks": { "klassen": { "4": [], "5": [] } }
+      "geo": {
+        "file": "z2/geo.json",
+        "version": 1
+      },
+      "optik": {
+        "file": "z2/optik.json",
+        "version": 2
+      },
+      "neighbors": [
+        "z1"
+      ],
+      "unlock": {
+        "type": "exam",
+        "exam": null,
+        "note": "Abschlusspruefung wird spaeter festgelegt. Bis dahin: nur Admin bzw. Freischaltung durch den Admin auf dem Server."
+      },
+      "tasks": {
+        "klassen": {
+          "4": [],
+          "5": []
+        }
+      },
+      "sichtbar": true,
+      "barrier": {
+        "type": "monster",
+        "spacing": 7,
+        "offset": 3.5,
+        "trigger": 12,
+        "range": 70,
+        "deadly": true,
+        "note": "Monster-Kette an der Grenze. Greift nur Spieler ohne Freischaltung an, sobald sie naeher als 'trigger' an die Grenze kommen. Jeder Treffer ist toedlich."
+      }
     }
   ]
 }

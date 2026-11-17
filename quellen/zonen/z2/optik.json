@@ -1,3 +1,17 @@
-{ "pack": "standard", "version": 1,
-  "fog": { "color": "#8f7aa8", "opacity": 0.86 },
-  "fence": { "color": "#ff2bd6", "glow": 1.8, "height": 2.6 } }
+{
+  "pack": "standard",
+  "version": 2,
+  "fog": null,
+  "fence": null,
+  "vorher_v1": {
+    "fog": {
+      "color": "#8f7aa8",
+      "opacity": 0.86
+    },
+    "fence": {
+      "color": "#ff2bd6",
+      "glow": 1.8,
+      "height": 2.6
+    }
+  }
+}

@@ -167,7 +167,7 @@
     if (z.o2 || z.building) return;
     z.building = true;
     try {
-      Zs("\u{1F5FA} " + z.name + " wird geladen …");
+      z.allowed && Zs("\u{1F5FA} " + z.name + " wird geladen …");
     } catch {
     }
     await Lr();
@@ -186,7 +186,7 @@
     z.o2 = o2, z.building = false;
     ZN_apply();
     try {
-      Zs("✅ " + z.name + " ist bereit.");
+      z.allowed && Zs("✅ " + z.name + " ist bereit.");
     } catch {
     }
   }
@@ -196,8 +196,9 @@
     for (const z of ZN_zones()) {
       if (z.id === "z1" || !z.wpoly) continue;
       z.allowed = al.has(z.id);
-      z.allowed && !z.o2 && ZN_build(z);
-      z.o2 && (z.o2.root.visible = z.allowed);
+      const show = z.allowed || z.sichtbar;
+      show && !z.o2 && ZN_build(z);
+      z.o2 && (z.o2.root.visible = show);
       z.fog && (z.fog.visible = !z.allowed);
       // Spieler steht in einer Zone, die er nicht (mehr) betreten darf -> zurueck an den Start
       const api = window.__api, pl = api && api.player;
@@ -230,14 +231,58 @@
     }
     ZN_apply();
   }
+  // Monster-Waechter: dichte Kette entlang der Grenze, auf der Seite von Zone 1
+  function ZN_guards(z, mon) {
+    const b = z.barrier, sp = b.spacing || 7, off = b.offset || 3.5, types = ["imp1", "pug1", "imp2", "pug2", "imp3", "pug3"];
+    z.bsegs = [];
+    let k = 0;
+    for (const run of ZN_border(z)) {
+      for (let i = 0; i < run.length - 1; i++) z.bsegs.push([run[i], run[i + 1]]);
+      const a = run[0], c = run[run.length - 1], L = Math.hypot(c[0] - a[0], c[1] - a[1]) || 1;
+      let nx = (c[1] - a[1]) / L, nz = -(c[0] - a[0]) / L;
+      const mx = (a[0] + c[0]) / 2, mz = (a[1] + c[1]) / 2;
+      ZN_inPoly(mx + nx * 2, mz + nz * 2, z.wpoly) && (nx = -nx, nz = -nz);
+      const dx = (c[0] - a[0]) / L, dz = (c[1] - a[1]) / L;
+      for (let d = sp / 2; d < L; d += sp) {
+        const px = a[0] + dx * d + nx * off, pz = a[1] + dz * d + nz * off;
+        const q = ZN.o.walk.nearest(px, pz);
+        if (!q || Math.hypot(q[0] - px, q[1] - pz) > 9) continue;
+        const h = sp * 0.6, C = mon.addGuard(types[k++ % types.length], q[0] - dx * h, q[1] - dz * h, q[0] + dx * h, q[1] + dz * h);
+        C.guard.zone = z.id;
+      }
+    }
+    z.guardCount = k;
+  }
+  function ZN_borderDist(z, x, y) {
+    let best = 1e9;
+    for (const [a, c] of z.bsegs || []) {
+      const vx = c[0] - a[0], vz = c[1] - a[1], L2 = vx * vx + vz * vz || 1;
+      let t = ((x - a[0]) * vx + (y - a[1]) * vz) / L2;
+      t = Math.max(0, Math.min(1, t));
+      best = Math.min(best, Math.hypot(x - a[0] - vx * t, y - a[1] - vz * t));
+    }
+    return best;
+  }
+  // Greifen die Waechter an? Nur den eigenen Spieler, nur ohne Freischaltung, nur nahe der Grenze.
+  window.__zoneGuardHot = (C, PT) => {
+    const api = window.__api, pl = api && api.player;
+    if (!pl || PT !== pl) return false;
+    const z = ZN_zones().find((zz) => zz.id === C.guard.zone);
+    if (!z || z.allowed) return false;
+    const b = z.barrier || {}, dB = ZN_borderDist(z, pl.x, pl.z);
+    if (dB > (b.trigger || 12)) return false;
+    return Math.hypot(C.x - pl.x, C.z - pl.z) < (b.range || 70);
+  };
   // Aufruf nach dem Bau von Zone 1
-  async function ZN_init(o, scene, cfg) {
-    ZN.o = o, ZN.scene = scene, ZN.cfg = cfg;
+  async function ZN_init(o, scene, cfg, mon) {
+    ZN.o = o, ZN.scene = scene, ZN.cfg = cfg, ZN.mon = mon;
     ZN_hookWalk(o);
     for (const z of ZN_zones()) {
       if (z.id === "z1" || !z.wpoly) continue;
-      z.fence = ZN_fence(z), scene.add(z.fence);
-      z.fog = ZN_fog(z), scene.add(z.fog);
+      const op = z.optikData || {};
+      op.fence && (z.fence = ZN_fence(z), scene.add(z.fence));
+      op.fog && (z.fog = ZN_fog(z), scene.add(z.fog));
+      z.barrier && z.barrier.type === "monster" && mon && mon.addGuard && ZN_guards(z, mon);
     }
     const t0 = performance.now();
     (function tick() {
@@ -248,7 +293,7 @@
       }
       requestAnimationFrame(tick);
     })();
-    ZN.ready = true, ZN_apply();
+    ZN.ready = true, setTimeout(ZN_apply, 2500);
     setInterval(ZN_check, 1500), ZN_check();
-    window.__zones = { list: () => ZN_zones().map((z) => ({ id: z.id, name: z.name, status: z.status, allowed: !!z.allowed, built: !!z.o2 })), apply: ZN_apply, inPoly: ZN_inPoly };
+    window.__zones = { list: () => ZN_zones().map((z) => ({ id: z.id, name: z.name, status: z.status, allowed: !!z.allowed, built: !!z.o2, guards: z.guardCount || 0 })), apply: ZN_apply, inPoly: ZN_inPoly };
   }

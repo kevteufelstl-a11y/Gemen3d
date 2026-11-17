@@ -29,4 +29,28 @@ rep('    let Et = Sr[0];\n    Et.px = [s, r];\n    for (let D of Sr) {',
 rep('        R = M < 55 * q + 10 ? 0.38 : 0;',
     '        R = i.zoneId || window.__zoneBlockRing && window.__zoneBlockRing(x, v) ? 0 : M < 55 * q + 10 ? 0.38 : 0;', 'ZN-Waldring')
 # Zonen starten, sobald die Welt fertig ist
-rep('    window.__api = { diag() {', '    ZN_init(o, n, Be);\n    window.__api = { diag() {', 'ZN-Start')
+rep('    window.__api = { diag() {', '    ZN_init(o, n, Be, h);\n    window.__api = { diag() {', 'ZN-Start')
+
+# ---------------- Monster-Waechter an der Zonengrenze (17.11. abends) ----------------
+# Waechter sind normale Monster mit Patrouillenstrecke. Sie bleiben an der Grenze, werden nicht
+# umverteilt oder durch die Monster-Anzahl entfernt und greifen nur an, wenn ein nicht freigeschalteter
+# Spieler an die Grenze kommt. Dann ist jeder Treffer toedlich.
+rep('    let E = { list: h, enabled: s, threat: 0, chasers: 0, root: r };',
+    '''    let E = { list: h, enabled: s, threat: 0, chasers: 0, root: r };
+    E.guards = [];
+    E.addGuard = (type, ax, az, bx, bz) => {
+      const C = p(type);
+      C.guard = { ax, az, bx, bz, f: a() < 0.5 };
+      const t0 = a();
+      C.x = ax + (bx - ax) * t0, C.z = az + (bz - az) * t0, C.wx = C.x, C.wz = C.z, C.y = 0, C.state = "wander";
+      return E.guards.push(C), C;
+    };''', 'ZN-Waechter-Anlegen')
+rep('    E.relocate = (U) => {\n      x(U);',
+    '    E.relocate = (U) => {\n      if (U.guard) {\n        U.x = U.guard.ax, U.z = U.guard.az, U.wx = U.x, U.wz = U.z, U.state = "wander";\n        return;\n      }\n      x(U);', 'ZN-Waechter-Rueckkehr')
+s = s.replace('let have = h.filter((c2) => c2.type === k)', 'let have = h.filter((c2) => c2.type === k && !c2.guard)'); n_ok += 1
+rep('Math.hypot(q.x - U, q.z - M) < S && (x(q), q.state = "wander");', 'Math.hypot(q.x - U, q.z - M) < S && !q.guard && (x(q), q.state = "wander");', 'ZN-Waechter-Streuen')
+rep('wt = !PH && !E.peace && !E.puppet && rt < gt.sense * (window.__shS || 1)',
+    'wt = C.guard ? !E.puppet && !!(window.__zoneGuardHot && window.__zoneGuardHot(C, PT)) : !PH && !E.peace && !E.puppet && rt < gt.sense * (window.__shS || 1)', 'ZN-Waechter-Angriff')
+rep('            let z = a() * 6.28, D = 5 + a() * 14;\n            C.wx = C.x + Math.cos(z) * D, C.wz = C.z + Math.sin(z) * D, C.wanderT = 3 + a() * 5, C.idle = E.puppet ? true : a() < 0.3;',
+    '            let z = a() * 6.28, D = 5 + a() * 14;\n            if (C.guard) C.guard.f = !C.guard.f, C.wx = C.guard.f ? C.guard.bx : C.guard.ax, C.wz = C.guard.f ? C.guard.bz : C.guard.az, C.wanderT = 3 + a() * 3, C.idle = false;\n            else C.wx = C.x + Math.cos(z) * D, C.wz = C.z + Math.sin(z) * D, C.wanderT = 3 + a() * 5, C.idle = E.puppet ? true : a() < 0.3;', 'ZN-Waechter-Patrouille')
+rep('$ && $(gt.dmg * (window.__shD || 1), C)', '$ && $(C.guard ? 9999 : gt.dmg * (window.__shD || 1), C)', 'ZN-Waechter-toedlich')
