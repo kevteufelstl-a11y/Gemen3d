@@ -1,12 +1,13 @@
   // ---------- Belohnungssystem: Tages-, Wochen- und Monatsbelohnungen ----------
   var RW = { d: null, avail: 0 };
-  var RW_IC = { tag: "\u{1F381}", woche: "\u{1F3C5}", monat: "\u{1F3C6}" };
-  var RW_NAME = { tag: "Tägliche Belohnungen", woche: "Wochenbelohnungen", monat: "Monatsbelohnungen" };
+  var RW_IC = { tag: "\u{1F381}", woche: "\u{1F3C5}", monat: "\u{1F3C6}", trost: "\u{1F340}" };
+  var RW_NAME = { tag: "Tägliche Belohnungen", woche: "Wochenbelohnungen", monat: "Monatsbelohnungen", trost: "Trostpreise" };
   var RW_DEF = {
     tag: [["⏰", "15 Minuten länger aufbleiben"], ["\u{1F35D}", "Sich ein Essen wünschen, das irgendwann im Laufe der Woche gekocht wird"], ["\u{1F310}", "15 Minuten länger Internet am selben Tag"], ["\u{1F36C}", "Eine Süßigkeit im Wert von maximal 1 € wünschen"], ["\u{1F6B6}", "Einen gemeinsamen Spaziergang oder Weg wünschen, den wir zusammen laufen"], ["\u{1F333}", "15 Minuten länger draußen spielen"]],
     woche: [["\u{1F3AC}", "Einen Film aussuchen, den wir gemeinsam anschauen"], ["\u{1F372}", "Zwei Essen wünschen, die im Laufe der Woche gekocht werden"], ["\u{1F36B}", "Eine Süßigkeit im Wert von 2–3 € wünschen"], ["\u{1F319}", "An einem selbst gewählten Tag 25 Minuten länger aufbleiben"], ["\u{1F4F1}", "An einem selbst gewählten Tag 20 Minuten länger Internet nutzen"]],
     monat: [["\u{1F3A1}", "Du darfst aussuchen, was wir gemeinsam unternehmen (z. B. Schwimmen gehen, ins Kino gehen oder einen gemeinsamen Feuerabend machen)"], ["\u{1F355}", "Du darfst aussuchen, was wir gemeinsam zu essen bestellen"], ["\u{1F415}", "Du darfst einen Ausflugsort für die ganze Familie aussuchen, inklusive der Hunde (z. B. Landschaftspark mit einer gemeinsamen Runde, eine Panzerstrecke oder ein anderer Ort deiner Wahl)"], ["⛺", "Im Sommer: ein besonderer Survival-Tag mit Übernachtung im Zelt"]]
   };
+  RW_DEF.trost = [["\u{1F917}", "Eine extra Umarmung von den Eltern"], ["\u{1F3B2}", "10 Minuten gemeinsam ein Spiel spielen"], ["\u{1F3B5}", "Ein Lieblingslied aussuchen, das wir zusammen hören"]];
   var RW_ST = { offen: ["⏳", "Wartet auf die Eltern", "#ffb020"], bestaetigt: ["✅", "Von den Eltern bestätigt – noch nicht eingelöst", "#6fd68a"], abgelehnt: ["❌", "Abgelehnt – such dir eine andere aus", "#ff6b6b"], eingeloest: ["\u{1F389}", "Eingelöst", "#7cc0ff"] };
   (function RW_css() {
     let st = document.createElement("style");
@@ -24,7 +25,7 @@
   // Elterneinstellungen: je 10 Belohnungs-Plätze für Tag, Woche und Monat (gilt nur für dieses Kind)
   function RW_listFields(s) {
     let cur = s.rewardLists = s.rewardLists || {};
-    return K("div", {}, K("h3", {}, "\u{1F381} Belohnungen umschreiben"), K("p", { class: "ko-small" }, "Bis zu 10 Belohnungen pro Art. Leere Felder zählen nicht. Sind alle Felder einer Art leer, gelten wieder die Standard-Belohnungen."), ...["tag", "woche", "monat"].flatMap((k) => {
+    return K("div", {}, K("h3", {}, "\u{1F381} Belohnungen umschreiben"), K("p", { class: "ko-small" }, "Bis zu 10 Belohnungen pro Art. Der Trostpreis gilt bei Note 5 oder 6 in der Tagesprüfung. Leere Felder zählen nicht. Sind alle Felder einer Art leer, gelten wieder die Standard-Belohnungen."), ...["tag", "woche", "monat", "trost"].flatMap((k) => {
       let own = RW_clean(cur[k]), base = own.length ? own : RW_clean(Ne.rewardLists && Ne.rewardLists[k]).length ? RW_clean(Ne.rewardLists[k]) : RW_DEF[k].map((x) => x[1]), vals = [];
       for (let i = 0; i < 10; i++) vals[i] = base[i] || "";
       let upd = () => cur[k] = vals.map((v) => v.trim()).filter(Boolean);
@@ -37,7 +38,7 @@
   }
   var RW_fd = (s, o) => new Date(s + "T12:00:00").toLocaleDateString("de-DE", o);
   function RW_label(kind, x) {
-    if (kind === "tag") return (RW.d && x.period === RW.d.today ? "Heute · " : "") + RW_fd(x.period, { weekday: "long", day: "numeric", month: "long" });
+    if (kind === "tag" || kind === "trost") return (RW.d && x.period === RW.d.today ? "Heute · " : "") + RW_fd(x.period, { weekday: "long", day: "numeric", month: "long" });
     if (kind === "woche") return "Woche " + x.period.slice(-2) + " (" + RW_fd(x.from, { day: "numeric", month: "numeric" }) + " – " + RW_fd(x.to, { day: "numeric", month: "numeric" }) + ")";
     return new Date(x.period + "-15T12:00:00").toLocaleDateString("de-DE", { month: "long", year: "numeric" });
   }
@@ -48,12 +49,15 @@
     return RW_set(r.j.rewards), RW.d;
   }
   function RW_set(d) {
-    RW.d = d, RW.avail = ["tag", "woche", "monat"].reduce((a, k) => a + d[k].filter((x) => x.reached && (!x.pick || x.pick.status === "abgelehnt")).length, 0);
+    RW.d = d, RW.avail = ["tag", "trost", "woche", "monat"].reduce((a, k) => a + (d[k] || []).filter((x) => x.reached && (!x.pick || x.pick.status === "abgelehnt")).length, 0);
     let b = document.getElementById("rwbadge");
     b && (b.textContent = RW.avail ? String(RW.avail) : "", b.style.display = RW.avail ? "" : "none");
   }
   function RW_goal() {
     Zs("\u{1F381} Tagesziel geschafft! Hol dir deine Belohnung unter „Meine Belohnungen“."), setTimeout(RW_fetch, 4000);
+  }
+  function RW_trost() {
+    Zs("\u{1F340} Das war heute nicht leicht. Du bekommst einen Trostpreis! Schau unter „Meine Belohnungen“."), setTimeout(RW_fetch, 4000);
   }
   var RW_badge = () => K("span", { class: "ko-badge", id: "rwbadge", style: RW.avail ? "" : "display:none" }, RW.avail ? String(RW.avail) : "");
   function RW_seen(key, set) {
@@ -93,8 +97,8 @@
     let d = data && data.tag ? (RW_set(data), data) : await RW_fetch();
     if (!d) return void box.replaceChildren(K("p", { class: "qmsg" }, "Für die Belohnungen brauchst du Internet und ein Spieler-Konto."));
     let newly = [];
-    for (let k of ["tag", "woche", "monat"]) for (let x of d[k]) if (x.reached && !RW_seen(k + x.period)) newly.push([k, x]);
-    box.replaceChildren(...["tag", "woche", "monat"].map((k) => K("div", {}, K("h2", { style: "margin:14px 0 2px" }, RW_IC[k] + " " + RW_NAME[k]), ...d[k].map((x) => RW_item(k, x)))));
+    for (let k of ["tag", "trost", "woche", "monat"]) for (let x of d[k] || []) if (x.reached && !RW_seen(k + x.period)) newly.push([k, x]);
+    box.replaceChildren(...["tag", "trost", "woche", "monat"].filter((k) => k !== "trost" || (d.trost || []).length).map((k) => K("div", {}, K("h2", { style: "margin:14px 0 2px" }, RW_IC[k] + " " + RW_NAME[k]), ...d[k].map((x) => RW_item(k, x)))));
     if (newly.length) {
       for (let [k, x] of newly) RW_seen(k + x.period, true);
       let [k, x] = newly[0];
@@ -148,7 +152,7 @@
     let box = K("div", {}, K("p", { class: "ko-small" }, "Lade …"));
     KO_call("rewardParentList", { childId: c.id }, "p").then((r) => {
       if (!r.j || !r.j.ok) return void box.replaceChildren(K("p", { class: "ko-small" }, "Nicht erreichbar."));
-      let d = r.j.rewards, all = r.j.all, T = { tag: "Tag", woche: "Woche", monat: "Monat" }, cm = d.monat[0], per = (a) => a.kind === "tag" ? RW_fd(a.period, { day: "numeric", month: "numeric" }) : a.kind === "woche" ? "KW " + a.period.slice(-2) : new Date(a.period + "-15T12:00").toLocaleDateString("de-DE", { month: "long" });
+      let d = r.j.rewards, all = r.j.all, T = { tag: "Tag", trost: "Trostpreis", woche: "Woche", monat: "Monat" }, cm = d.monat[0], per = (a) => a.kind === "tag" || a.kind === "trost" ? RW_fd(a.period, { day: "numeric", month: "numeric" }) : a.kind === "woche" ? "KW " + a.period.slice(-2) : new Date(a.period + "-15T12:00").toLocaleDateString("de-DE", { month: "long" });
       RW.d = d;
       let act = (a, s, lbl) => K("button", { class: "qbtn", onclick: async () => {
         let x = await KO_call("rewardSetParent", { id: a.id, status: s }, "p");
@@ -161,6 +165,6 @@
     return box;
   }
   function RW_adminLists(cfg) {
-    let L = cfg.rewardLists || (cfg.rewardLists = { tag: [], woche: [], monat: [] });
-    return ["tag", "woche", "monat"].flatMap((k) => [K("p", { class: "qmsg" }, RW_IC[k] + " " + RW_NAME[k] + " (eine Belohnung pro Zeile)"), K("textarea", { class: "qin", rows: 5, onchange: (e) => L[k] = e.target.value.split("\n").map((s) => s.trim()).filter(Boolean) }, (L[k] && L[k].length ? L[k] : RW_DEF[k].map((x) => x[1])).join("\n"))]);
+    let L = cfg.rewardLists || (cfg.rewardLists = { tag: [], woche: [], monat: [], trost: [] });
+    return ["tag", "woche", "monat", "trost"].flatMap((k) => [K("p", { class: "qmsg" }, RW_IC[k] + " " + RW_NAME[k] + " (eine Belohnung pro Zeile)"), K("textarea", { class: "qin", rows: 5, onchange: (e) => L[k] = e.target.value.split("\n").map((s) => s.trim()).filter(Boolean) }, (L[k] && L[k].length ? L[k] : RW_DEF[k].map((x) => x[1])).join("\n"))]);
   }

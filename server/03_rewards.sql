@@ -3,7 +3,7 @@ create table if not exists public.rewards (
   id uuid primary key default gen_random_uuid(),
   profile_id uuid not null references public.profiles(id) on delete cascade,
   family_id uuid references public.families(id) on delete cascade,
-  kind text not null check (kind in ('tag', 'woche', 'monat')),
+  kind text not null check (kind in ('tag', 'woche', 'monat', 'trost')),
   period text not null,
   choice text not null,
   status text not null default 'offen' check (status in ('offen', 'bestaetigt', 'abgelehnt', 'eingeloest')),
@@ -32,8 +32,16 @@ create or replace function public.milo_rw_dayok(pid uuid, k text) returns boolea
     where jsonb_typeof(s.d) = 'object'), false)
 $$;
 
+-- Trostpreis: Tagesprüfung gemacht, aber Note 5 oder 6 (unter 50 %), und der Tag zählt nicht anders als geschafft (keine Eltern-Freigabe)
+create or replace function public.milo_rw_trost(pid uuid, k text) returns boolean language sql stable set search_path = public as $$
+  select not milo_rw_dayok(pid, k) and coalesce((
+    select coalesce((s.d->'ex'->>'n')::numeric, 0) > 0 and round(100 * coalesce((s.d->'ex'->>'r')::numeric, 0) / (s.d->'ex'->>'n')::numeric) < 50
+    from (select g.state->'days'->k as d from game_saves g where g.profile_id = pid and g.game = 'milo3d_days') s
+    where jsonb_typeof(s.d) = 'object'), false)
+$$;
+
 create or replace function public.milo_rw_status(pid uuid) returns jsonb language plpgsql stable set search_path = public as $$
-declare today date := (now() at time zone 'Europe/Berlin')::date; created date; d date; r jsonb := '[]'::jsonb; w jsonb := '[]'::jsonb; m jsonb := '[]'::jsonb;
+declare today date := (now() at time zone 'Europe/Berlin')::date; created date; d date; r jsonb := '[]'::jsonb; tp jsonb := '[]'::jsonb; w jsonb := '[]'::jsonb; m jsonb := '[]'::jsonb;
   ws date; wk text; cnt int; ms date; me date; st date; tot int; okc int; missed jsonb; pk jsonb; i int; ok boolean; wdays int := 5; mdays jsonb;
 begin
   select (created_at at time zone 'Europe/Berlin')::date into created from profiles where id = pid;
@@ -42,6 +50,12 @@ begin
     d := today - i; ok := milo_rw_dayok(pid, d::text);
     select to_jsonb(x) into pk from (select id, choice, status, chosen_at as "chosenAt", decided_at as "decidedAt", redeemed_at as "redeemedAt" from rewards where profile_id = pid and kind = 'tag' and period = d::text) x;
     if ok or i = 0 or pk is not null then r := r || jsonb_build_object('period', d::text, 'reached', ok, 'pick', pk); end if;
+  end loop;
+  -- Trostpreise: Tage mit Tagesprüfung Note 5 oder 6 (letzte 14 Tage)
+  for i in 0..13 loop
+    d := today - i; ok := milo_rw_trost(pid, d::text);
+    select to_jsonb(x) into pk from (select id, choice, status, chosen_at as "chosenAt", decided_at as "decidedAt", redeemed_at as "redeemedAt" from rewards where profile_id = pid and kind = 'trost' and period = d::text) x;
+    if ok or pk is not null then tp := tp || jsonb_build_object('period', d::text, 'reached', ok, 'pick', pk); end if;
   end loop;
   -- Wochen (ISO, Montag bis Sonntag): letzte 6 Wochen
   for i in 0..5 loop
@@ -71,7 +85,7 @@ begin
         'lost', jsonb_array_length(missed) > 0, 'reached', tot > 0 and okc = tot, 'pick', pk);
     end if;
   end loop;
-  return jsonb_build_object('today', today::text, 'weekNeed', wdays, 'tag', r, 'woche', w, 'monat', m);
+  return jsonb_build_object('today', today::text, 'weekNeed', wdays, 'tag', r, 'trost', tp, 'woche', w, 'monat', m);
 end $$;
 
 create or replace function public.milo_rewards(ses sessions, p jsonb, a text) returns jsonb language plpgsql security definer set search_path = public, extensions as $$
@@ -89,7 +103,7 @@ begin
 
     if a = 'rewardPick' then
       k := p->>'kind'; per := left(coalesce(p->>'period', ''), 10); c := left(btrim(coalesce(p->>'choice', '')), 140);
-      if k not in ('tag', 'woche', 'monat') or c = '' then return jsonb_build_object('s', 400, 'b', jsonb_build_object('error', 'bad')); end if;
+      if k not in ('tag', 'woche', 'monat', 'trost') or c = '' then return jsonb_build_object('s', 400, 'b', jsonb_build_object('error', 'bad')); end if;
       stt := milo_rw_status(me.id);
       for it in select * from jsonb_array_elements(stt->k) loop
         if it->>'period' = per and (it->>'reached')::boolean then found := true; end if;

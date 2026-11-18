@@ -142,7 +142,7 @@
     if (d.ex) return Pr(back);
     if (d.sec < Ai()) return Zs("Die Tagespr\xFCfung kommt nach " + je.dailyMinutes + " Minuten Lernen.");
     let n = Math.min(TP_N, (d.wr || []).length);
-    ln().append(K("div", { class: "qbox" }, K("h2", {}, "\u{1F389} " + je.dailyMinutes + " Minuten geschafft!"), K("p", { class: "qsub" }, d.exRun ? "Mach mit deiner Tagespr\xFCfung weiter." : "Jetzt kommt deine Tagespr\xFCfung."), K("p", { class: "qmsg" }, "Pro Frage hast du 40 Sekunden. Ab Note 4 darfst du dir eine Belohnung ziehen. " + (n ? "Es kommen Fragen, die heute noch schwer waren. So siehst du, was du schon gelernt hast." : "Es kommen Fragen aus deinen F\xE4chern von heute.") + " Danach bekommst du deine Urkunde."), K("button", { class: "qbtn go big", onclick: () => TP_start(back) }, "\u{1F3C1} Pr\xFCfung starten"), K("button", { class: "qbtn big", onclick: back }, "Erst noch weiter lernen")));
+    ln().append(K("div", { class: "qbox" }, K("h2", {}, "\u{1F389} " + je.dailyMinutes + " Minuten geschafft!"), K("p", { class: "qsub" }, d.exRun ? "Mach mit deiner Tagespr\xFCfung weiter." : "Jetzt kommt deine Tagespr\xFCfung."), K("p", { class: "qmsg" }, "Pro Frage hast du 40 Sekunden. Ab Note 4 darfst du dir eine Belohnung ziehen. Bei Note 5 oder 6 gibt es einen Trostpreis. " + (n ? "Es kommen Fragen, die heute noch schwer waren. So siehst du, was du schon gelernt hast." : "Es kommen Fragen aus deinen F\xE4chern von heute.") + " Danach bekommst du deine Urkunde."), K("button", { class: "qbtn go big", onclick: () => TP_start(back) }, "\u{1F3C1} Pr\xFCfung starten"), K("button", { class: "qbtn big", onclick: back }, "Erst noch weiter lernen")));
   }
   function TP_start(back) {
     back = back || Ys;
@@ -159,7 +159,7 @@
     Q.length !== run.ids.length && (run.ids = Q.map((q) => q.id), run.k = Math.min(run.k, Q.length)), Xs(), window.__curFi = null, window.__tpRun = true;
     let last = Date.now(), hold = false, done = false, barI = null, barT = null, onTimeout = null, finish = (to) => {
       if (done) return;
-      done = true, clearInterval(TP_iv), TP_iv = null, window.__tpRun = false, d.ex = { n: run.ids.length, r: run.r, a: run.k, sec: Math.round(run.used), at: Date.now(), to: !!to }, delete d.exRun, is = true, Pi(), Rr(false), LZ_bar(), TP_pass(d.ex) && !d.goal && (d.goal = 1, is = true, Pi(), RW_goal()), Pr(back);
+      done = true, clearInterval(TP_iv), TP_iv = null, window.__tpRun = false, d.ex = { n: run.ids.length, r: run.r, a: run.k, sec: Math.round(run.used), at: Date.now(), to: !!to }, delete d.exRun, is = true, Pi(), Rr(false), LZ_bar(), TP_pass(d.ex) && !d.goal && (d.goal = 1, is = true, Pi(), RW_goal()), !TP_pass(d.ex) && !d.goal && d.ex.n > 0 && (Pi(), RW_trost()), Pr(back);
     };
     TP_iv && clearInterval(TP_iv), TP_iv = setInterval(() => {
       let now = Date.now(), dt = Math.min(1, (now - last) / 1e3);
