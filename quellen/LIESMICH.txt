@@ -12,3 +12,12 @@ Zone 1 (GEMEN_DATA) unveraendert. Zone 2 wird nur gebaut, wenn der Spieler sie b
 Freischaltung auf dem Server, Aktion zoneAccess). Sonst: pink leuchtender Zaun + Nebel, kein Zutritt.
 Server: server/06_zonen.sql (Tabellen zones, zone_unlocks, zone_versions, Funktion milo_zones).
 Erzeugung der Zone-2-Daten aus den Google-Maps-Screenshots: z2_werkzeuge/.
+
+NATUR (18.11.2026)
+- Bäume, Büsche, Gras, Blumen, Farne, Steine, Pilze: "Stylized Nature MegaKit" (Standard) von Quaternius, Lizenz CC0
+  (siehe z2_werkzeuge/natur/LIZENZ_Quaternius.txt).
+- natur.json = verkleinerte Modelle + Texturen (erzeugt mit z2_werkzeuge/natur/conv.py, Fernbilder mit bake.py).
+- natur.js = Einbau: Bäume in 3 Stufen (nah volles Modell, mittel ausgedünnte Krone, fern Bild),
+  Bodenbewuchs wird rund um die Kamera erzeugt (immer gleich, aus den Koordinaten berechnet), Wind in Blättern/Gras.
+- patch_natur.py ersetzt nur die alten Klumpen-Bäume; Positionen und Dichte der Bäume bleiben wie vorher.
+- Test im Browser: window.__nat.stats() zeigt Bäume, Dreiecke und Zeichenaufrufe.
