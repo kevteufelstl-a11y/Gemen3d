@@ -162,6 +162,60 @@
       for (const z of ZN_zones()) if (z.o2 && (z.allowed || z.barrier) && z.wpoly && ZN_inPoly(x, y, z.wpoly)) return true;
       return false;
     };
+    const p0 = w.path;
+    const gridAt = (x, y) => {
+      for (const z of ZN_zones()) if (z.o2 && (z.allowed || z.barrier) && z.wpoly && ZN_inPoly(x, y, z.wpoly)) return z.o2.walk;
+      return w;
+    };
+    const pathIn = (g, a, b, c, d) => g === w ? p0(a, b, c, d) : g.path(a, b, c, d);
+    w.path = (x0, y0, x1, y1) => {
+      const ga = gridAt(x0, y0), gb = gridAt(x1, y1);
+      if (ga === gb) return pathIn(ga, x0, y0, x1, y1);
+      const len = Math.hypot(x1 - x0, y1 - y0), n = Math.max(2, Math.ceil(len / 1));
+      let q = [x0, y0], p = null;
+      for (let i = 1; i <= n; i++) {
+        const x = x0 + (x1 - x0) * i / n, y = y0 + (y1 - y0) * i / n;
+        if (gridAt(x, y) !== ga) { p = [x, y]; break; }
+        q = [x, y];
+      }
+      if (!p) return pathIn(ga, x0, y0, x1, y1);
+      const Z = ZN_zones().find((z) => z.o2 && (z.o2.walk === ga || z.o2.walk === gb));
+      if (!Z) return null;
+      const seg = (u, v) => {
+        const d = Math.hypot(v[0] - u[0], v[1] - u[1]), m = Math.max(1, Math.ceil(d / 0.5));
+        for (let i = 0; i <= m; i++) if (!w.ok(u[0] + (v[0] - u[0]) * i / m, u[1] + (v[1] - u[1]) * i / m)) return false;
+        return true;
+      };
+      if (!Z.xcand) {
+        Z.xcand = [];
+        for (const [a, b] of Z.bsegs || ZN_border(Z).flatMap((r) => r.slice(1).map((pt, i) => [r[i], pt]))) {
+          const L = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1, tx = (b[0] - a[0]) / L, ty = (b[1] - a[1]) / L;
+          for (let d = 0; d <= L; d += 3) {
+            const cx = a[0] + tx * d, cy = a[1] + ty * d;
+            for (const sg of [1, -1]) {
+              const nx = -ty * sg, ny = tx * sg;
+              const inA = gridAt(cx - nx * 2, cy - ny * 2) === w && gridAt(cx + nx * 2, cy + ny * 2) === Z.o2.walk;
+              if (!inA) continue;
+              const u = w.nearest(cx - nx * 2, cy - ny * 2), v = Z.o2.walk.nearest(cx + nx * 2, cy + ny * 2);
+              if (u && v && Math.hypot(u[0] - v[0], u[1] - v[1]) < 8 && seg(u, v)) Z.xcand.push({ u, v });
+            }
+          }
+        }
+      }
+      const toGa = ga === w;
+      const cand = Z.xcand.map((k) => {
+        const s0 = toGa ? k.u : k.v, e0 = toGa ? k.v : k.u;
+        return { u: s0, v: e0, c: Math.hypot(s0[0] - x0, s0[1] - y0) + Math.hypot(e0[0] - x1, e0[1] - y1) };
+      });
+      cand.sort((m, n) => m.c - n.c);
+      for (const k of cand.slice(0, 3)) {
+        const A = pathIn(ga, x0, y0, k.u[0], k.u[1]);
+        if (!A) continue;
+        const B = pathIn(gb, k.v[0], k.v[1], x1, y1);
+        if (B) return A.concat([k.v], B.slice(1));
+      }
+      return null;
+    };
   }
   async function ZN_build(z) {
     if (z.o2 || z.building) return;
