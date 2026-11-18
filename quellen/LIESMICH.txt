@@ -24,3 +24,7 @@ NATUR (18.11.2026)
 - Tag/Nacht (18.11.2026): Tag = Natur wie im Paket (inkl. Riesenbäume "TwistedTree", ca. 5 %),
   Nacht (Hölle) = nur tote Bäume (DeadTree), verdorrtes Gras, Steine, Pilze. Umschalten über window.__natDay(tag).
 - Karren: alter Bollerwagen der Standardfigur entfernt, Waffen-Karren auf Bollerwagen-Größe (x0,62) verkleinert.
+
+WICHTIG (18.11.2026): Die APK wird aus index.html im Hauptordner gebaut, NICHT aus quellen/index.html.
+Nach "python3 quellen/patch.py min" immer: cp quellen/index.html index.html  (sonst fehlen alle Aenderungen im Spiel).
+Waffen: kleiner Anhaenger, den der Hund zieht (patch_cart.py). Der alte Bollerwagen der Figur ist entfernt.
