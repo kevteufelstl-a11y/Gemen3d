@@ -111,6 +111,7 @@ rep('    }, o = () => {\n      if (Xs(), r > ye.ex', '    }, o = () => {\n      
 exec(open(D + '/patch_chars.py', encoding='utf8').read())
 exec(open(D + '/patch_zones.py', encoding='utf8').read())
 exec(open(D + '/patch_natur.py', encoding='utf8').read())
+exec(open(D + '/patch_weg.py', encoding='utf8').read())
 open(D + '/game_mp.js', 'w', encoding='utf8').write(s)
 
 # ---------------- HTML zusammensetzen ----------------

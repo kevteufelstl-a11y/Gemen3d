@@ -28,3 +28,9 @@ NATUR (18.11.2026)
 WICHTIG (18.11.2026): Die APK wird aus index.html im Hauptordner gebaut, NICHT aus quellen/index.html.
 Nach "python3 quellen/patch.py min" immer: cp quellen/index.html index.html  (sonst fehlen alle Aenderungen im Spiel).
 Waffen: kleiner Anhaenger, den der Hund zieht (patch_cart.py). Der alte Bollerwagen der Figur ist entfernt.
+
+WEG STATT TUNNEL (18.11.2026, patch_weg.py)
+- Tunnel-Roehre, Aura und Blumenstreifen werden nicht mehr angezeigt. Die Weg-Logik (Sicherheit, Monster) bleibt.
+- Neu: Stein-Bodenplatten (leuchten golden, wenn man darueberlaeuft, und gehen nach ca. 3 s wieder aus),
+  offene Torboegen abwechselnd aus Stein und Holz (etwa alle 9 m) und ca. 70 Gluehwuermchen am Weg.
+- Test im Browser: window.__weg.info() zeigt Platten, Boegen und leuchtende Platten.
