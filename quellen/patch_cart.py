@@ -39,6 +39,7 @@ CART = r'''
     let CART = (() => {
       const g2 = new pe();
       o.root.add(g2);
+      g2.scale.setScalar(0.62);
       const wood = new ae({ color: 9127187, roughness: 0.9 }), dark = new ae({ color: 4009754, roughness: 0.9 }), rock = new ae({ color: 8421504, roughness: 0.95 }), steel = new ae({ color: 12303291, roughness: 0.4, metalness: 0.6 });
       const bx = (m2, x2, y2, z2, w3, h3, d3, par) => { const q2 = new zt(new qi(w3, h3, d3), m2); q2.position.set(x2, y2, z2); (par || g2).add(q2); return q2; };
       bx(wood, 0, 0.62, 0, 1.3, 0.12, 1.7);
@@ -87,7 +88,7 @@ CART = r'''
         update(dt2, t2) {
           if (!h.enabled && false) return;
           const fx2 = Math.sin(l.yaw), fz2 = Math.cos(l.yaw);
-          let tx2 = l.x - fx2 * 3.2, tz2 = l.z - fz2 * 3.2;
+          let tx2 = l.x - fx2 * 2.05, tz2 = l.z - fz2 * 2.05;
           if (!C3.inited) { C3.inited = true; C3.x = tx2; C3.z = tz2; }
           if (!o.walk.ok(tx2, tz2)) { const q2 = o.walk.nearest(tx2, tz2); if (q2) { tx2 = q2[0]; tz2 = q2[1]; } else { tx2 = l.x; tz2 = l.z; } }
           const dx2 = tx2 - C3.x, dz2 = tz2 - C3.z, d2 = Math.hypot(dx2, dz2);
@@ -95,7 +96,7 @@ CART = r'''
           else if (d2 > 0.05) {
             const spd = Math.min(d2 * 3.5, 9), st3 = Math.min(d2, spd * dt2);
             C3.x += dx2 / d2 * st3; C3.z += dz2 / d2 * st3;
-            C3.ph += st3 / 0.42;
+            C3.ph += st3 / 0.26;
             let a2 = Math.atan2(l.x - C3.x, l.z - C3.z) - C3.yaw;
             a2 = Math.atan2(Math.sin(a2), Math.cos(a2));
             C3.yaw += a2 * Math.min(1, dt2 * 6);
@@ -112,7 +113,7 @@ CART = r'''
       document.addEventListener("pointerdown", (ev) => {
         if (window.__quizOpen || !g2.visible || (ov && ov.classList.contains("show"))) return;
         if (!ev.target || ev.target.tagName !== "CANVAS") return;
-        pv.set(C3.x, 0.9, C3.z).project(s);
+        pv.set(C3.x, 0.55, C3.z).project(s);
         if (pv.z > 1) return;
         const px = (pv.x * 0.5 + 0.5) * innerWidth, py = (-pv.y * 0.5 + 0.5) * innerHeight;
         if (Math.hypot(ev.clientX - px, ev.clientY - py) < 52) {
@@ -128,3 +129,5 @@ rep('    h.dogHit = null;\n    h.dogHit = (d2, C2) => DOG.hit(d2, C2);', CART + 
 rep('ATK.update(Q, _t), d.style.width', 'ATK.update(Q, _t), CART.update(Q, _t), d.style.width', 'Karren-Update')
 rep('{ k: "wp", l: "Waffen", o: ["Durch Aufgaben", "Alle offen (Test)"], n: "Schwert ab 10, Pistole ab 30 richtigen Antworten" }',
     '{ k: "wp", l: "Waffen", o: ["Durch Aufgaben", "Alle offen (Test)"], n: "Start: Faust. Stein ab 3, Stock ab 6, Schwert ab 10, Pistole ab 30 richtigen Antworten. Sie liegen im Karren (antippen)." }', 'Settings-Text')
+# 18.11.2026: alter Bollerwagen der Standardfigur entfernt (nur noch der Waffen-Karren folgt, in Bollerwagen-Groesse)
+rep('    let h = new pe();\n    t.add(h);', '    let h = new pe();', 'Alter-Bollerwagen-weg')

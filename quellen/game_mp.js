@@ -12907,7 +12907,7 @@ void main() {
   // ===== NATUR: Modelle aus "Stylized Nature MegaKit" (Quaternius, CC0) =====
   // Baeume in 3 Stufen (nah: volles Modell, mittel: ausgeduennt, fern: Bild), Bodenbewuchs rund um die Kamera, Wind.
   const NATD = window.GEMEN_NATUR;
-  const NAT = { T: { value: 0 }, mats: null, G: {}, worlds: [], cl: null };
+  const NAT = { T: { value: 0 }, mats: null, G: {}, worlds: [], cl: null, day: window.__day === true };
   const NAT_M4 = new ve(), NAT_Q = new En(), NAT_P = new Y(), NAT_S = new Y(), NAT_UP = new Y(0, 1, 0), NAT_C = new Xt();
   function NAT_dec(s, T) {
     const b = atob(s), u = new Uint8Array(b.length);
@@ -12960,15 +12960,18 @@ void main() {
     const T = NATD.tex, lf = (k) => new ae({ map: NAT_tex(T[k], false), alphaTest: 0.5, side: Ue, roughness: 0.88, envMapIntensity: 0.3 });
     const M = NAT.mats = {
       bark: new ae({ map: NAT_tex(T.bark, true), vertexColors: true, roughness: 0.95, envMapIntensity: 0.3 }),
+      barkT: new ae({ map: NAT_tex(T.barkT, true), vertexColors: true, roughness: 0.95, envMapIntensity: 0.3 }),
+      barkD: new ae({ map: NAT_tex(T.barkD, true), vertexColors: true, color: 12099719, roughness: 1, envMapIntensity: 0.2 }),
       leafN: lf("leafN"),
       leafP: lf("leafP"),
+      leafT: lf("leafT"),
       imp: new ae({ map: NAT_tex(T.imp, false), alphaTest: 0.45, side: Ue, roughness: 0.95, envMapIntensity: 0.25 }),
       sway: new ae({ map: NAT_tex(T.atlas, false), alphaTest: 0.5, side: Ue, vertexColors: true, roughness: 0.9, envMapIntensity: 0.3 }),
       still: new ae({ map: NAT_tex(T.atlas, false), alphaTest: 0.5, vertexColors: true, roughness: 0.92, envMapIntensity: 0.3 })
     };
-    NAT_wind(M.leafN, 0.012, "lN", 0.32), NAT_wind(M.leafP, 0.008, "lP", 0.3), NAT_wind(M.sway, 0.07, "sw", 0.28);
+    NAT_wind(M.leafN, 0.012, "lN", 0.32), NAT_wind(M.leafP, 0.008, "lP", 0.3), NAT_wind(M.leafT, 0.006, "lT", 0.32), NAT_wind(M.sway, 0.07, "sw", 0.28);
     M.still.customProgramCacheKey = () => "natst", M.still.onBeforeCompile = (sh) => NAT_glow(sh, 0.18);
-    M.bark.customProgramCacheKey = () => "natbk", M.bark.onBeforeCompile = (sh) => NAT_glow(sh, 0.12);
+    for (const k of ["bark", "barkT", "barkD"]) M[k].customProgramCacheKey = () => "natbk", M[k].onBeforeCompile = (sh) => NAT_glow(sh, 0.12);
     // Fernbild: Atlas-Spalte pro Baumart
     const nv = NATD.impOrder.length;
     M.imp.customProgramCacheKey = () => "natimp";
@@ -12991,7 +12994,7 @@ void main() {
     NAT.impGeo = gi;
     for (const t of NATD.impOrder) {
       const d = NATD.trees[t];
-      NAT.G[t] = { l0: [NAT_geo(d.l0.bark), NAT_geo(d.l0.leaf)], l1: [NAT_geo(d.l1.bark), NAT_geo(d.l1.leaf)] };
+      NAT.G[t] = { l0: [NAT_geo(d.l0.bark), d.l0.leaf ? NAT_geo(d.l0.leaf) : null], l1: [NAT_geo(d.l1.bark), d.l1.leaf ? NAT_geo(d.l1.leaf) : null] };
     }
     NAT.CG = {};
     for (const k in NATD.clutter) NAT.CG[k] = NAT_geo(NATD.clutter[k]);
@@ -13034,15 +13037,36 @@ void main() {
       const z = ZN_zones().find((zz) => zz.id === data.zoneId);
       W.poly = z && z.wpoly || null;
     }
-    const order = NATD.impOrder, nCommon = 5, rnd = me(4711 + (data && data.zoneId ? data.zoneId.length * 97 : 0));
+    const order = NATD.impOrder, rnd = me(4711 + (data && data.zoneId ? data.zoneId.length * 97 : 0));
+    const byKind = { common: [], pine: [], twist: [], dead: [] };
+    order.forEach((t, k) => byKind[NATD.trees[t].kind].push(k));
     const count = {};
     for (const t of order) count[t] = 0;
+    // Platz fuer Riesenbaum? (Krone ist sehr breit)
+    const roomy = (x, z) => {
+      for (let k = 0; k < 8; k++) {
+        const c = i.clsAt(x + Math.cos(k * 0.785) * 7, z + Math.sin(k * 0.785) * 7);
+        if (c === 1 || c === 2 || c === 3 || c === 4) return false;
+      }
+      return true;
+    };
+    const mk = (it, v, s, sy, col) => {
+      const t = order[v], d = NATD.trees[t];
+      NAT_Q.setFromAxisAngle(NAT_UP, it.rot), NAT_P.set(it.x, 0, it.z), NAT_S.set(s, s * sy, s), NAT_M4.compose(NAT_P, NAT_Q, NAT_S);
+      const mf = NAT_M4.toArray(new Float32Array(16));
+      const [iw, ih, iy] = d.imp;
+      NAT_P.set(it.x, iy * s * sy, it.z), NAT_S.set(iw * s, (ih - iy) * s * sy, iw * s), NAT_M4.compose(NAT_P, NAT_Q, NAT_S);
+      count[t]++;
+      return { v, t, mf, mi: NAT_M4.toArray(new Float32Array(16)), col: new Xt().setRGB(col[0] * 1.25, col[1] * 1.25, col[2] * 1.25, Se) };
+    };
+    const pickOf = (L) => L[rnd() * L.length | 0];
     for (const it of list) {
-      const forest = i.clsAt(it.x, it.z) === 6, pine = rnd() < (forest ? 0.55 : 0.15);
-      const v = pine ? nCommon + (rnd() * 5 | 0) : rnd() * 5 | 0, t = order[v], d = NATD.trees[t];
+      const forest = i.clsAt(it.x, it.z) === 6, r0 = rnd();
       const s = it.sx * 0.95, sy = it.sy / it.sx;
+      let kind = r0 < (forest ? 0.55 : 0.15) ? "pine" : "common";
+      if (kind === "common" && rnd() < (forest ? 0.08 : 0.05) && roomy(it.x, it.z)) kind = "twist";
       let col;
-      if (pine) {
+      if (kind === "pine") {
         const f = 0.85 + rnd() * 0.3;
         col = [0.25 * f, 0.44 * f, 0.06 * f];
       } else if (rnd() < 0.17) col = NAT_AUT[rnd() * NAT_AUT.length | 0];
@@ -13050,20 +13074,15 @@ void main() {
         const c = NAT_LEAF[rnd() * NAT_LEAF.length | 0], f = 0.88 + rnd() * 0.24;
         col = [c[0] * f, c[1] * f, c[2] * f];
       }
-      const rot = it.rot;
-      NAT_Q.setFromAxisAngle(NAT_UP, rot), NAT_P.set(it.x, 0, it.z), NAT_S.set(s, s * sy, s), NAT_M4.compose(NAT_P, NAT_Q, NAT_S);
-      const mf = NAT_M4.toArray(new Float32Array(16));
-      const [iw, ih, iy] = d.imp;
-      NAT_P.set(it.x, iy * s * sy, it.z), NAT_S.set(iw * s, (ih - iy) * s * sy, iw * s), NAT_M4.compose(NAT_P, NAT_Q, NAT_S);
-      const mi = NAT_M4.toArray(new Float32Array(16));
-      W.items.push({ x: it.x, z: it.z, v, t, mf, mi, col: new Xt().setRGB(col[0] * 1.25, col[1] * 1.25, col[2] * 1.25, Se) });
-      count[t]++;
+      const dayI = mk(it, pickOf(byKind[kind]), kind === "twist" ? s * 0.85 : s, sy, col);
+      const g = 0.62 + rnd() * 0.18;
+      const nightI = mk(it, pickOf(byKind.dead), s * (0.62 + rnd() * 0.2), 1, [g * 0.8, g * 0.75, g * 0.75]);
+      W.items.push({ x: it.x, z: it.z, d: dayI, n: nightI });
     }
     const sh = e.shadows;
     for (const t of order) {
-      const g = NAT.G[t], lm = NAT.mats[NATD.trees[t].lf];
-      W.m[t] = [[NAT_inst(g.l0[0], NAT.mats.bark, count[t], i.root, sh), NAT_inst(g.l0[1], lm, count[t], i.root, sh)],
-        [NAT_inst(g.l1[0], NAT.mats.bark, count[t], i.root, sh), NAT_inst(g.l1[1], lm, count[t], i.root, sh)]];
+      const g = NAT.G[t], d = NATD.trees[t], lm = NAT.mats[d.lf], bm = NAT.mats[d.bk];
+      W.m[t] = [0, 1].map((L) => [NAT_inst(g["l" + L][0], bm, count[t], i.root, sh), g["l" + L][1] ? NAT_inst(g["l" + L][1], lm, count[t], i.root, sh) : null].filter(Boolean));
     }
     const imp = NAT_inst(NAT.impGeo, NAT.mats.imp, W.items.length, i.root, false);
     const aOff = new Lo(new Float32Array(Math.max(1, W.items.length)), 1);
@@ -13085,12 +13104,13 @@ void main() {
       for (const t of order) for (const l of W.m[t]) for (const m of l) m.count = 0;
       imp.count = 0;
       const vis = i.root.visible;
-      for (const it of W.items) {
-        const dd = Math.hypot(it.x - x, it.z - z), de2 = Math.hypot(dd, ce);
+      for (const it0 of W.items) {
+        const it = NAT.day ? it0.d : it0.n;
+        const dd = Math.hypot(it0.x - x, it0.z - z), de2 = Math.hypot(dd, ce);
         if (de2 < D1) {
           const l = W.m[it.t][de2 < D0 ? 0 : 1];
           const k = l[0].count++;
-          l[0].instanceMatrix.array.set(it.mf, k * 16), put(l[1], it, it.mf);
+          l[0].instanceMatrix.array.set(it.mf, k * 16), l[1] && put(l[1], it, it.mf);
         } else {
           const k = put(imp, it, it.mi);
           aOff.array[k] = it.v;
@@ -13102,6 +13122,10 @@ void main() {
       }
       imp.visible = imp.count > 0;
       if (imp.count) imp.instanceMatrix.needsUpdate = true, imp.instanceColor.needsUpdate = true, aOff.needsUpdate = true;
+    };
+    W.relod = () => {
+      const L = W.last;
+      W.last = null, L && lod(L[0], L[1], L[2]);
     };
     i.treeLOD = (x, z, cd) => {
       lod(x, z, cd);
@@ -13120,6 +13144,26 @@ void main() {
     0: [["bushF", 0.05, 0.7, 1.1], ["bush", 0.02, 0.6, 0.95, 2], ["rock2", 0.018, 0.35, 0.7], ["rock1", 0.01, 0.35, 0.65], ["peb4", 0.02, 1, 2]],
     5: [["bushF", 0.05, 0.75, 1.15], ["bush", 0.018, 0.6, 0.9, 2], ["rock3", 0.012, 0.3, 0.6], ["rock2", 0.012, 0.35, 0.65]],
     6: [["bushF", 0.06, 0.8, 1.2], ["bush", 0.04, 0.7, 1.05, 2], ["rock1", 0.03, 0.45, 0.9], ["rock3", 0.025, 0.4, 0.8], ["fern", 0.05, 0.3, 0.42], ["mushL", 0.01, 0.7, 1]]
+  };
+  const NAT_SET_N = {
+    0: [["grassC", 0.12, 0.5, 0.75, 3], ["grassA", 0.08, 0.4, 0.6, 3], ["peb1", 0.03, 0.8, 1.6], ["peb3", 0.03, 0.8, 1.6], ["mush", 0.01, 0.6, 1]],
+    5: [["grassC", 0.16, 0.5, 0.75, 3], ["grassD", 0.08, 0.45, 0.6, 3], ["peb1", 0.02, 0.8, 1.5], ["peb2", 0.02, 0.8, 1.5]],
+    6: [["grassC", 0.1, 0.5, 0.7, 3], ["mush", 0.05, 0.7, 1.2], ["mushL", 0.01, 0.6, 0.9], ["peb2", 0.03, 0.8, 1.5], ["peb3", 0.02, 0.8, 1.5]]
+  };
+  const NAT_BIG_N = {
+    0: [["rock2", 0.04, 0.35, 0.75], ["rock1", 0.025, 0.35, 0.7], ["peb4", 0.04, 1, 2]],
+    5: [["rock3", 0.03, 0.3, 0.65], ["rock2", 0.03, 0.35, 0.7], ["peb4", 0.03, 1, 2]],
+    6: [["rock1", 0.05, 0.45, 0.95], ["rock3", 0.04, 0.4, 0.85], ["mushL", 0.015, 0.7, 1]]
+  };
+  window.__natDay = (b) => {
+    b = b === true;
+    if (NAT.day === b) return;
+    NAT.day = b;
+    for (const w of NAT.worlds) w.relod();
+    if (NAT.cl && NAT.cl.last) {
+      const L = NAT.cl.last;
+      NAT.cl.last = null, NAT_clutter(NAT.worlds[0].i, L[0], L[1]);
+    }
   };
   function NAT_clutterInit(root) {
     const mob = Ur, C = NAT.cl = { R: mob ? 34 : 50, g: 1.5, R2: mob ? 80 : 120, g2: 4, m: {}, last: null };
@@ -13154,6 +13198,7 @@ void main() {
       m.setMatrixAt(n, NAT_M4);
       if (tint === 1) NAT_C.setRGB(0.8 + h * 0.35, 0.95 + h * 0.1, 0.7 + h * 0.2, Se);
       else if (tint === 2) h < 0.5 ? NAT_C.setRGB(0.55, 1, 0.45, Se) : NAT_C.setRGB(1, 0.85, 0.7, Se);
+      else if (tint === 3) NAT_C.setRGB(0.5 + h * 0.25, 0.3 + h * 0.12, 0.17 + h * 0.06, Se);
       else NAT_C.setRGB(1, 1, 1, Se);
       m.setColorAt(n, NAT_C);
     };
@@ -13177,7 +13222,7 @@ void main() {
         add(pick[0], px, pz, pick[2] + (pick[3] - pick[2]) * h, h, pick[4]);
       }
     };
-    pass(C.R, C.g, NAT_SET, 11), pass(C.R2, C.g2, NAT_BIG, 29);
+    NAT.day ? (pass(C.R, C.g, NAT_SET, 11), pass(C.R2, C.g2, NAT_BIG, 29)) : (pass(C.R, C.g, NAT_SET_N, 11), pass(C.R2, C.g2, NAT_BIG_N, 29));
     for (const k in C.m) {
       const m = C.m[k];
       m.visible = m.count > 0;
@@ -13185,7 +13230,7 @@ void main() {
     }
   }
   window.__nat = { stats: () => {
-    const o = { welten: NAT.worlds.length, baeume: NAT.worlds.map((w) => w.items.length), tris: 0, draws: 0 };
+    const o = { tag: NAT.day, welten: NAT.worlds.length, baeume: NAT.worlds.map((w) => w.items.length), tris: 0, draws: 0 };
     const cnt = (m) => {
       if (!m.visible || !m.count) return;
       const g = m.geometry, n = g.index ? g.index.count / 3 : g.attributes.position.count / 3;
@@ -14706,7 +14751,6 @@ function burgGemenBuild(Ot, rng, OX, OZ, ROT) {
       R.box(0, 1.3, -0.3, 0.42, 0.55, 0.22, 0, [0.28, 0.22, 0.14]), s.add(ns(R, 0, e));
     }
     let h = new pe();
-    t.add(h);
     {
       let R = new Ot();
       R.box(0, 0.62, 0, 1, 0.45, 1.4, 0, [0.5, 0.25, 0.12]), R.box(0, 0.88, 0, 1.06, 0.06, 1.46, 0, [0.35, 0.18, 0.09]), R.box(0, 0.88, -0.2, 0.7, 0.3, 0.55, 0, [0.2, 0.55, 0.22]), R.box(0, 0.96, 0.35, 0.5, 0.22, 0.4, 0, [0.7, 0.5, 0.2]), h.add(ns(R, 0, e));
@@ -19142,6 +19186,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
     let CART = (() => {
       const g2 = new pe();
       o.root.add(g2);
+      g2.scale.setScalar(0.62);
       const wood = new ae({ color: 9127187, roughness: 0.9 }), dark = new ae({ color: 4009754, roughness: 0.9 }), rock = new ae({ color: 8421504, roughness: 0.95 }), steel = new ae({ color: 12303291, roughness: 0.4, metalness: 0.6 });
       const bx = (m2, x2, y2, z2, w3, h3, d3, par) => { const q2 = new zt(new qi(w3, h3, d3), m2); q2.position.set(x2, y2, z2); (par || g2).add(q2); return q2; };
       bx(wood, 0, 0.62, 0, 1.3, 0.12, 1.7);
@@ -19190,7 +19235,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
         update(dt2, t2) {
           if (!h.enabled && false) return;
           const fx2 = Math.sin(l.yaw), fz2 = Math.cos(l.yaw);
-          let tx2 = l.x - fx2 * 3.2, tz2 = l.z - fz2 * 3.2;
+          let tx2 = l.x - fx2 * 2.05, tz2 = l.z - fz2 * 2.05;
           if (!C3.inited) { C3.inited = true; C3.x = tx2; C3.z = tz2; }
           if (!o.walk.ok(tx2, tz2)) { const q2 = o.walk.nearest(tx2, tz2); if (q2) { tx2 = q2[0]; tz2 = q2[1]; } else { tx2 = l.x; tz2 = l.z; } }
           const dx2 = tx2 - C3.x, dz2 = tz2 - C3.z, d2 = Math.hypot(dx2, dz2);
@@ -19198,7 +19243,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
           else if (d2 > 0.05) {
             const spd = Math.min(d2 * 3.5, 9), st3 = Math.min(d2, spd * dt2);
             C3.x += dx2 / d2 * st3; C3.z += dz2 / d2 * st3;
-            C3.ph += st3 / 0.42;
+            C3.ph += st3 / 0.26;
             let a2 = Math.atan2(l.x - C3.x, l.z - C3.z) - C3.yaw;
             a2 = Math.atan2(Math.sin(a2), Math.cos(a2));
             C3.yaw += a2 * Math.min(1, dt2 * 6);
@@ -19215,7 +19260,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
       document.addEventListener("pointerdown", (ev) => {
         if (window.__quizOpen || !g2.visible || (ov && ov.classList.contains("show"))) return;
         if (!ev.target || ev.target.tagName !== "CANVAS") return;
-        pv.set(C3.x, 0.9, C3.z).project(s);
+        pv.set(C3.x, 0.55, C3.z).project(s);
         if (pv.z > 1) return;
         const px = (pv.x * 0.5 + 0.5) * innerWidth, py = (-pv.y * 0.5 + 0.5) * innerHeight;
         if (Math.hypot(ev.clientX - px, ev.clientY - py) < 52) {
@@ -19281,6 +19326,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
       const day = (b2) => {
         window.__day = b2;
         window.__setDayMats && window.__setDayMats(b2);
+        window.__natDay && window.__natDay(b2);
         SC.background = new Xt(b2 ? 10474751 : 1705490);
         SC.fog = new Co(b2 ? 13624063 : 2755100, b2 ? 16e-4 : 4e-3);
         HEMI.color.set(b2 ? 15269887 : 10117832);

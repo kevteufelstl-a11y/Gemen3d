@@ -13,3 +13,5 @@ rep('Et(1e-3), o.treeLOD(V.tx, V.tz), Ct()', 'Et(1e-3), o.treeLOD(V.tx, V.tz, C.
 rep('''    lod && o2.treeLOD && (ZN.o.treeLOD = (x, y) => {
       lod(x, y), o2.treeLOD(x, y);''', '''    lod && o2.treeLOD && (ZN.o.treeLOD = (x, y, c) => {
       lod(x, y, c), o2.treeLOD(x, y, c);''', 'NAT-Zonenkette')
+# Tag/Nacht: Tag = Natur wie im Paket, Nacht (Hoelle) = nur tote Baeume, verdorrtes Gras, Steine, Pilze
+rep('        window.__setDayMats && window.__setDayMats(b2);\n', '        window.__setDayMats && window.__setDayMats(b2);\n        window.__natDay && window.__natDay(b2);\n', 'NAT-Tag-Nacht')

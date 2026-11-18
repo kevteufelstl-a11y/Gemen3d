@@ -2,13 +2,13 @@
 <script type="module">
 import * as THREE from 'three'; import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 const r=new THREE.WebGLRenderer({antialias:true,alpha:true,preserveDrawingBuffer:true});r.setClearColor(0,0);r.outputColorSpace=THREE.SRGBColorSpace;
-const TL=new THREE.TextureLoader();const lt={leafN:TL.load(LT.leafN),leafP:TL.load(LT.leafP)};for(const k in lt)lt[k].colorSpace=THREE.SRGBColorSpace,lt[k].flipY=false;
-const T=['CommonTree_1','CommonTree_2','CommonTree_3','CommonTree_4','CommonTree_5','Pine_1','Pine_2','Pine_3','Pine_4','Pine_5'];
+const TL=new THREE.TextureLoader();const lt={leafN:TL.load(LT.leafN),leafP:TL.load(LT.leafP),leafT:TL.load(LT.leafT)};for(const k in lt)lt[k].colorSpace=THREE.SRGBColorSpace,lt[k].flipY=false;
+const T=['CommonTree_1','CommonTree_2','CommonTree_3','CommonTree_4','CommonTree_5','Pine_1','Pine_2','Pine_3','Pine_4','Pine_5','TwistedTree_1','TwistedTree_2','TwistedTree_3','TwistedTree_4','TwistedTree_5','DeadTree_1','DeadTree_2','DeadTree_3','DeadTree_4','DeadTree_5'];
 const L=new GLTFLoader();const B='file:///home/claude/natur_zip/glTF/';const out={};
 for(const t of T){
   const o=await new Promise((res,rej)=>L.load(B+t+'.gltf',res,undefined,rej));
   const s=new THREE.Scene();s.add(new THREE.AmbientLight(0xffffff,1.6));const d=new THREE.DirectionalLight(0xffffff,1.2);d.position.set(0.3,1,0.6);s.add(d);
-  o.scene.traverse(m=>{if(m.isMesh){const mt=m.material;if(/Leaves|Leaf/.test(mt.name)){mt.map=lt[t.startsWith('Pine')?'leafP':'leafN'];mt.color.set(0xffffff);mt.vertexColors=false;}mt.alphaTest=0.5;mt.transparent=false;mt.needsUpdate=true;}});
+  o.scene.traverse(m=>{if(m.isMesh){const mt=m.material;if(/Leaves|Leaf/.test(mt.name)){mt.map=lt[t.startsWith('Pine')?'leafP':t.startsWith('Twisted')?'leafT':'leafN'];mt.color.set(0xffffff);mt.vertexColors=false;}mt.alphaTest=0.5;mt.transparent=false;mt.needsUpdate=true;}});
   s.add(o.scene);const bb=new THREE.Box3().setFromObject(o.scene);
   const W=Math.max(-bb.min.x,bb.max.x,-bb.min.z,bb.max.z),H=bb.max.y,y0=bb.min.y;
   r.setSize(128,256);let c=new THREE.OrthographicCamera(-W,W,H,y0,0.1,100);c.position.set(0,0,50);c.lookAt(0,0,0);c.position.set(0,0,50);
