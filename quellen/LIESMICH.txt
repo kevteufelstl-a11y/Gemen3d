@@ -34,11 +34,3 @@ WEG STATT TUNNEL (18.11.2026, patch_weg.py)
 - Neu: Stein-Bodenplatten (leuchten golden, wenn man darueberlaeuft, und gehen nach ca. 3 s wieder aus),
   offene Torboegen abwechselnd aus Stein und Holz (etwa alle 9 m) und ca. 70 Gluehwuermchen am Weg.
 - Test im Browser: window.__weg.info() zeigt Platten, Boegen und leuchtende Platten.
-
-STARKE MONSTER (18.11.2026, patch_stark.py)
-- Horror-Monster und Kristall-Drache (grab3d.com, CC0), aus GLB verkleinert mit z2_werkzeuge/monster/conv_glb.py
-  (monster_horror.json ca. 6000 Dreiecke, monster_drache.json ca. 12000 Dreiecke, Texturen 512 px).
-- Bewegungen (Stehen, Laufen, Angriff) rechnerisch vorgebacken, gleiches Format wie Imp/Puglin.
-- 3-mal so stark: 90 Lebenspunkte (normal 30), Schaden 45/48 (normal 12-18).
-- Zone 1: 10 Horror + 10 Drachen (fest, unabhaengig von der Monster-Menge).
-- Zone 2: 100 (abwechselnd), nur wenn Zone 2 freigeschaltet ist (zonen.js ZN_zoneMonsters). Test: window.__zones.list() -> starke.
