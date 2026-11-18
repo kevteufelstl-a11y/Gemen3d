@@ -659,7 +659,7 @@
     KO_listEditor("\u{1F48E} Gegenstände", "items", [["name", "Name"], ["icon", "Bild (Emoji)"], ["desc", "Beschreibung"], ["kind", "Art", "select", [["sammel", "Sammelgegenstand"], ["ruestung", "Rüstung"], ["werkzeug", "Werkzeug"], ["truhe", "Schatztruhe"], ["besonders", "Besonderer Gegenstand"]]], ["rarity", "Seltenheit", "select", [["normal", "Normal"], ["selten", "Selten"], ["episch", "Episch"], ["legendaer", "Legendär"]]], ["need", "Freischalten ab richtigen Aufgaben (0 = nur per Event)", "number"], ["off", "Ausgeschaltet", "check"]], () => ({ name: "Neuer Gegenstand", icon: "\u{1F48E}", kind: "sammel", rarity: "normal", need: 50 }), "Gegenstände erscheinen in der Sammlung der Kinder („Meine Erfolge“). Sie haben noch keine Wirkung im Kampf – das ist nur bei Waffen so.");
   }
   function KO_admMonsters() {
-    let cfg = KO_cfg(), M = cfg.monsters || (cfg.monsters = {}), names = { imp1: "Imp (rot)", imp2: "Imp (grün)", imp3: "Imp (blau)", pug1: "Puglin 1", pug2: "Puglin 2", pug3: "Puglin 3" }, rows = [];
+    let cfg = KO_cfg(), M = cfg.monsters || (cfg.monsters = {}), names = { imp1: "Imp (rot)", imp2: "Imp (grün)", imp3: "Imp (blau)", pug1: "Puglin 1", pug2: "Puglin 2", pug3: "Puglin 3", horror: "Horror-Monster (stark)", drache: "Kristall-Drache (stark)" }, rows = [];
     for (let k of typeof Ei != "undefined" ? Object.keys(Ei) : []) {
       let e = Ei[k], d = e.__d || e, m = M[k] || (M[k] = {}), f = (key, lbl) => {
         let i = KO_in("Standard " + d[key], "number", { value: m[key] || "" });

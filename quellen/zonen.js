@@ -244,6 +244,40 @@
     } catch {
     }
   }
+  // Starke Monster in der Zone (18.11.2026): Horror-Monster + Kristall-Drache, nur wenn die Zone frei ist
+  function ZN_zoneMonsters(z) {
+    const mon = ZN.mon;
+    if (!mon || !mon.addZoneMon || z.monDone || !z.o2 || !z.allowed) return;
+    z.monDone = true;
+    const n = z.strongMonsters || 100, P = z.wpoly, wk = z.o2.walk, pts = [];
+    let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+    for (const q of P) x0 = Math.min(x0, q[0]), x1 = Math.max(x1, q[0]), y0 = Math.min(y0, q[1]), y1 = Math.max(y1, q[1]);
+    const okAt = (x, y, gap) => {
+      if (!ZN_inPoly(x, y, P) || !wk.ok(x, y) || ZN_borderDist(z, x, y) < 25) return false;
+      for (const q of pts) if (Math.abs(q[0] - x) < gap && Math.abs(q[1] - y) < gap && Math.hypot(q[0] - x, q[1] - y) < gap) return false;
+      return true;
+    };
+    const place = (C) => {
+      for (let t = 0; t < 400; t++) {
+        const x = x0 + Math.random() * (x1 - x0), y = y0 + Math.random() * (y1 - y0);
+        if (okAt(x, y, 6)) return C.x = x, C.z = y, C.wx = x, C.wz = y, C.y = 0, true;
+      }
+      return false;
+    };
+    for (let t = 0; t < n * 300 && pts.length < n; t++) {
+      const x = x0 + Math.random() * (x1 - x0), y = y0 + Math.random() * (y1 - y0);
+      okAt(x, y, 18) && pts.push([x, y]);
+    }
+    let k = 0;
+    const step = () => {
+      for (let j = 0; j < 10 && k < pts.length; j++, k++) {
+        const q = pts[k];
+        mon.addZoneMon(k % 2 ? "drache" : "horror", (C) => C.zp === void 0 || C.__z ? place(C) : (C.__z = 1, C.x = q[0], C.z = q[1], C.wx = q[0], C.wz = q[1], C.y = 0));
+      }
+      k < pts.length ? setTimeout(step, 40) : (z.strongCount = pts.length);
+    };
+    step();
+  }
   function ZN_apply() {
     if (!ZN.ready) return;
     const al = ZN_allowed();
@@ -253,6 +287,7 @@
       const show = z.allowed || z.sichtbar;
       show && !z.o2 && ZN_build(z);
       z.o2 && (z.o2.root.visible = show);
+      z.o2 && z.allowed && ZN_zoneMonsters(z);
       z.fog && (z.fog.visible = !z.allowed);
       // Spieler steht in einer Zone, die er nicht (mehr) betreten darf -> zurueck an den Start
       const api = window.__api, pl = api && api.player;
@@ -453,5 +488,5 @@
     })();
     ZN.ready = true, setTimeout(ZN_apply, 2500);
     setInterval(ZN_check, 1500), ZN_check();
-    window.__zones = { list: () => ZN_zones().map((z) => ({ id: z.id, name: z.name, status: z.status, allowed: !!z.allowed, built: !!z.o2, guards: z.guardCount || 0 })), apply: ZN_apply, inPoly: ZN_inPoly };
+    window.__zones = { list: () => ZN_zones().map((z) => ({ id: z.id, name: z.name, status: z.status, allowed: !!z.allowed, built: !!z.o2, guards: z.guardCount || 0, starke: z.strongCount || 0 })), apply: ZN_apply, inPoly: ZN_inPoly };
   }
