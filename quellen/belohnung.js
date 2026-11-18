@@ -13,9 +13,27 @@
     st.textContent = ".rwsec{margin:10px 0;padding:10px 12px;border-radius:14px;background:#ffffff10;border:1px solid #ffffff22}.rwsec h3{margin:0 0 4px;font-size:16px}.rwsec.un{border-color:#ffd54a;box-shadow:0 0 14px #ffd54a55;animation:rwglow 2s ease-in-out infinite}@keyframes rwglow{50%{box-shadow:0 0 24px #ffd54aaa}}.rwc{display:flex;gap:10px;align-items:center;width:100%;box-sizing:border-box;text-align:left;padding:9px 12px;margin:5px 0;border-radius:12px;border:1px solid #6fd68a88;background:#16301f;color:#fff;font:600 13.5px/1.25 system-ui,sans-serif;animation:rwpop .35s ease both}.rwc .ic{font-size:24px;flex:none}.rwc.lock{opacity:.5;filter:grayscale(.8);border-color:#ffffff33;background:#222}.rwc.sel{border-color:#ffd54a;background:#3a3216}@keyframes rwpop{0%{transform:scale(.7);opacity:0}70%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}.rwb{display:inline-block;margin:2px 0;padding:2px 9px;border-radius:99px;font:700 12px system-ui,sans-serif;color:#111}.rwp{height:9px;border-radius:5px;background:#0006;overflow:hidden;margin:6px 0}.rwp i{display:block;height:100%;background:linear-gradient(90deg,#6fd68a,#ffd54a)}.rwgrid{display:flex;flex-wrap:wrap;gap:3px;margin:6px 0}.rwd{width:24px;height:24px;border-radius:6px;font:700 11px/24px system-ui,sans-serif;text-align:center;background:#ffffff1a;color:#fff9}.rwd.ok{background:#2f9e55;color:#fff}.rwd.bad{background:#c0392b;color:#fff}.rwd.today{outline:2px solid #ffd54a}.rwpop{text-align:center;animation:rwpop .6s ease both}.rwpop .big{font-size:64px}.rwrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}";
     document.head.append(st);
   })();
+  // Reihenfolge: Liste der Eltern (pro Kind) > Liste vom Admin > Standardliste
+  function RW_clean(L) {
+    return Array.isArray(L) ? L.map((x) => String(x).trim()).filter(Boolean).slice(0, 10) : [];
+  }
   function RW_list(kind) {
-    let L = Ne.rewardLists && Ne.rewardLists[kind];
-    return L && L.filter((x) => String(x).trim()).length ? L.filter((x) => String(x).trim()).map((x) => [RW_IC[kind], String(x).trim()]) : RW_DEF[kind];
+    let ps = (ye.settings || {}).rewardLists, P = RW_clean(ps && ps[kind]), A = RW_clean(Ne.rewardLists && Ne.rewardLists[kind]), L = P.length ? P : A;
+    return L.length ? L.map((x) => [RW_IC[kind], x]) : RW_DEF[kind];
+  }
+  // Elterneinstellungen: je 10 Belohnungs-Plätze für Tag, Woche und Monat (gilt nur für dieses Kind)
+  function RW_listFields(s) {
+    let cur = s.rewardLists = s.rewardLists || {};
+    return K("div", {}, K("h3", {}, "\u{1F381} Belohnungen umschreiben"), K("p", { class: "ko-small" }, "Bis zu 10 Belohnungen pro Art. Leere Felder zählen nicht. Sind alle Felder einer Art leer, gelten wieder die Standard-Belohnungen."), ...["tag", "woche", "monat"].flatMap((k) => {
+      let own = RW_clean(cur[k]), base = own.length ? own : RW_clean(Ne.rewardLists && Ne.rewardLists[k]).length ? RW_clean(Ne.rewardLists[k]) : RW_DEF[k].map((x) => x[1]), vals = [];
+      for (let i = 0; i < 10; i++) vals[i] = base[i] || "";
+      let upd = () => cur[k] = vals.map((v) => v.trim()).filter(Boolean);
+      upd();
+      return [K("p", { class: "qmsg" }, RW_IC[k] + " " + RW_NAME[k] + " (10 Plätze)"), ...vals.map((v, i) => {
+        let inp = KO_in("Platz " + (i + 1) + " (leer = nicht benutzt)", "text", { value: v, maxlength: 200 });
+        return inp.addEventListener("input", () => (vals[i] = inp.value, upd())), inp;
+      })];
+    }));
   }
   var RW_fd = (s, o) => new Date(s + "T12:00:00").toLocaleDateString("de-DE", o);
   function RW_label(kind, x) {
