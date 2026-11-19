@@ -20666,7 +20666,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
           st.lights = null, SCENE.background = st.bg, SCENE.fog && st.fogc != null && SCENE.fog.color.setHex(st.fogc);
           placeAt(DX, 6.4);
           if (st.cam) C.dist = V.dist = st.cam.dist, C.pitch = V.pitch = st.cam.pitch, C.yaw = V.yaw = st.cam.yaw, st.cam = null;
-          V.follow = true, st.room = "";
+          V.follow = true, st.room = "", st.camRoom = "";
           document.body.classList.remove("kx-in"), dock.classList.remove("show");
         }, () => (st.busy = false));
       }
@@ -20698,16 +20698,13 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
             st.room = room;
             dock.querySelectorAll("[data-r]").forEach((b) => b.classList.toggle("on", b.dataset.r === room));
           }
-          const r = ROOMS[room];
-          if (r && r.wall) {
-            let ax, az, yaw;
-            if (r.wall === "n") ax = Math.max(-12.9, Math.min(12.9, lx)), az = r.z0 - 4, yaw = HD.rot;
-            else if (r.wall === "w") ax = r.x0 - 4, az = Math.max(-0.8, Math.min(8.8, lz)), yaw = Math.PI / 2 + HD.rot;
-            else ax = r.x1 + 4, az = Math.max(-0.8, Math.min(8.8, lz)), yaw = -Math.PI / 2 + HD.rot;
-            const [wx, wz] = toW(ax, az);
-            V.follow = false, C.tx = wx, C.tz = wz, C.yaw = yaw, C.pitch = 0.25, C.dist = ph ? 18 : 19;
-          } else {
-            V.follow = true, C.pitch = 1.08, C.dist = ph ? 25 : 27, C.yaw = HD.rot;
+          // Kamera wie oben auf der Karte: folgt der Figur, Wischen dreht frei. Nur beim Betreten einer Halle einmal zur Urkundenwand drehen.
+          V.follow = true;
+          if (st.camRoom !== room) {
+            st.camRoom = room;
+            const r = ROOMS[room];
+            if (r && r.wall) C.yaw = (r.wall === "n" ? 0 : r.wall === "w" ? Math.PI / 2 : -Math.PI / 2) + HD.rot, C.pitch = 0.45, C.dist = ph ? 16 : 18;
+            else if (room === "hub") C.pitch = 0.9, C.dist = ph ? 20 : 22;
           }
           // Wände zwischen Kamera und Figur ausblenden
           CAMERA.getWorldPosition(tv);
