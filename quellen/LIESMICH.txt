@@ -34,3 +34,8 @@ WEG STATT TUNNEL (18.11.2026, patch_weg.py)
 - Neu: Stein-Bodenplatten (leuchten golden, wenn man darueberlaeuft, und gehen nach ca. 3 s wieder aus),
   offene Torboegen abwechselnd aus Stein und Holz (etwa alle 9 m) und ca. 70 Gluehwuermchen am Weg.
 - Test im Browser: window.__weg.info() zeigt Platten, Boegen und leuchtende Platten.
+
+HAUS (haus.js, patch_haus.py)
+Das gruene Haus ist begehbar: Tippen -> "Haus betreten?" -> Innenraum mit Urkunden
+(Tage/Wochen/Monate) an den Waenden, Button pro Urkunde nutzt den bestehenden
+Belohnungs-Ablauf (Eltern bestaetigen, danach grau). Pfeile im Dock schwenken die Wand.
