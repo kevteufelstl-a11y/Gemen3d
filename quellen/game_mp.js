@@ -21068,7 +21068,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
     function It(k) {
       Pt = k, window.__selSt = k, te("card-t").textContent = (k.custom ? "\uFF0B " : k.id === 0 ? "\u2605 " : "Station " + k.id + " \xB7 ") + k.name, te("card-d").textContent = k.desc, j.classList.add("show"), V.follow = false, C.tx = k.x, C.tz = k.z, C.dist = 42, C.pitch = 0.9, wt(""), te("card-quiz").style.display = xn[k.id] ? "" : "none", $t();
     }
-    let kt = 16;
+    let kt = 26;
     function $t() {
       let k = te("card-quiz");
       if (!Pt || !xn[Pt.id]) return;
@@ -21129,7 +21129,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
           K("div", { class: "zl" }, list.map((k) => K("button", { onclick: () => { Ys(), go(k); } }, K("b", {}, k.custom ? "＋" : k.id === 0 ? "★" : String(k.id)), K("span", {}, k.name, K("small", {}, Math.round(Math.hypot(l.x - k.wx, l.z - k.wz)) + " m entfernt"))))))));
       };
       function go(k) {
-        It(k), te("card") && te("card").classList.remove("show");
+        It(k);
         window.__tp ? window.__tpGo(k) : l.goTo(k.wx, k.wz) ? (V.follow = true, C.dist = Math.min(C.dist, 45)) : Zs("Dorthin gibt es gerade keinen Weg.");
         nav.st = k;
       }
@@ -21182,6 +21182,14 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
             if (k2 >= N) break;
           }
           arrows.count = k2, arrows.instanceMatrix.needsUpdate = true, arrows.instanceColor && (arrows.instanceColor.needsUpdate = true);
+        }
+        // An einer Lernzone angekommen: Stationskarte (Aufgaben / Wettbewerb) öffnet sich automatisch
+        if (!window.__quizOpen && !document.body.classList.contains("kx-in")) {
+          let best = null, bd = 1e9;
+          for (const k of o.stations) { const d = Math.hypot(l.x - k.wx, l.z - k.wz); d < bd && (bd = d, best = k); }
+          const near = best && bd < (P && P.length && nav.st !== best ? 12 : 24) ? best : null;
+          if (near && near !== nav.here) { nav.here = near; if (!(P && P.length) || nav.st === near) It(near), nav.st === near && (nav.st = null); }
+          else if (!near && nav.here && Math.hypot(l.x - nav.here.wx, l.z - nav.here.wz) > 32) nav.here = null;
         }
         // Ziel-Anzeige
         const tg = nav.st, show = !!(tg && (P && P.length || Math.hypot(l.x - tg.wx, l.z - tg.wz) > 14)) && !document.body.classList.contains("kx-in");

@@ -8,3 +8,5 @@ rep('        window.__tp ? window.__tpGo(Pt) : l.goTo(Pt.wx, Pt.wz);', '        
 rep('            let Yt = l.goTo(Lt[0], Lt[1]);', '            let Yt = l.goTo(Lt[0], Lt[1]);\n            HUD.nav.st = null;', 'UI-Tippziel')
 rep('HS.update(Q, _t), ', 'HS.update(Q, _t), HUD.navUpdate(_t), ', 'UI-Schleife')
 rep('"\\u{1F381} Meine Belohnungen", RW_badge()),', '"\\u{1F381} Meine Belohnungen", RW_badge()), K("button", { class: "qbtn go", onclick: () => UKX.archive() }, "\\u{1F4DC} Meine Urkunden"),', 'UI-Urkunden-Menue')
+# Aufgaben-Knopf: Der Laufweg endet oft vor dem Gebäude (bis ca. 20 m vom Mittelpunkt) -> größerer Freigabe-Abstand
+rep('    let kt = 16;\n', '    let kt = 26;\n', 'UI-Stationsabstand')
