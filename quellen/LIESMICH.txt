@@ -39,3 +39,14 @@ HAUS (haus.js, patch_haus.py)
 Das gruene Haus ist begehbar: Tippen -> "Haus betreten?" -> Innenraum mit Urkunden
 (Tage/Wochen/Monate) an den Waenden, Button pro Urkunde nutzt den bestehenden
 Belohnungs-Ablauf (Eltern bestaetigen, danach grau). Pfeile im Dock schwenken die Wand.
+
+BELOHNUNGS-ZENTRALE (komplex.js, kit_scifi.json, patch_haus.py) – ersetzt den alten Haus-Innenraum
+Tippen aufs grüne Haus -> Aufzug nach unten in eine Sci-Fi-Station (Quaternius Modular SciFi MegaKit, CC0,
+umgewandelt mit tools/kit2json.py). Ankunftshalle + drei Hallen: Tage (Nord), Wochen (West), Monate (Ost).
+Große Karten an den Wänden, Tippen öffnet Urkunde + Belohnung. Elternbestätigung mit Passwort direkt in der Karte
+(Server-Aktion rewardParentSet, unverändert). Drinnen sieht die Kamera nur Ebene 1 (Komplex, Figur, Hund, Lichter).
+URKUNDEN (urkunden.js): "Meine Urkunden" = Archiv aus den Lerntagen im Konto, große Ansicht, PDF (A4, unverzerrt),
+Speichern in Dokumente/Urkunden (App) bzw. Download (Browser), Erfolg nur nach geprüftem Schreiben.
+BEDIENUNG (hud.js, patch_ui.py): ein Entfernungs-Knopf, Ziel-Menü (Kompass), Stationsnamen nur fürs Ziel,
+Boden-Pfeile entlang der Wegfindung, Vollbild blendet Knöpfe aus, eigenes Handy-Layout (Tablet unverändert).
+server/09_urkunden_schutz.sql: optionaler Schutz, dass Lerntage beim Speichern nie gelöscht werden (noch nicht eingespielt).

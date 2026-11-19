@@ -4,15 +4,15 @@
 
 # Neue Funktionen in den Spiel-Bereich einsetzen (vor der Urkunde)
 rep('  function Pr(i) {\n    ra = false, Cr(false);',
-    open(D + '/lernspiel.js', encoding='utf8').read().replace('__UK_BG__', 'data:image/jpeg;base64,' + __import__('base64').b64encode(open(D + '/urkunde_bg.jpg','rb').read()).decode()) +
+    (open(D + '/lernspiel.js', encoding='utf8').read() + open(D + '/urkunden.js', encoding='utf8').read()).replace('__UK_BG__', 'data:image/jpeg;base64,' + __import__('base64').b64encode(open(D + '/urkunde_bg.jpg','rb').read()).decode()) +
     '  function Pr(i) {\n    if (!Li().ex) return TP_offer(null, i);\n    ra = false, Cr(false);', 'LS-Einbau')
 
 # Urkunde: neues Layout, PDF über Teilen-Menü (Speichern/Drucken)
 rep('    let e = l_(t);\n', '    let e = UK_draw(t);\n', 'LS-Urkunde')
 rep(r'''      let s = URL.createObjectURL(h_(e)), r = K("a", { href: s, download: "Urkunde-" + Tr() + ".pdf" });
       document.body.append(r), r.click(), r.remove(), setTimeout(() => URL.revokeObjectURL(s), 1e4);''',
-    r'''      UK_save(h_(e), "Urkunde-" + (Ae && Ae.name || "Milo") + "-" + Tr() + ".pdf");''', 'LS-PDF')
-rep(r'"\u2B07 PDF herunterladen"', r'"\u2B07 PDF speichern / drucken"', 'LS-PDF-Text')
+    r'''      UKX.saveCanvas(e, UKX.fileName(Object.keys(ye.days).find((k) => ye.days[k] === t) || Tr()));''', 'LS-PDF')
+rep(r'"\u2B07 PDF herunterladen"', r'"\u2B07 Auf Handy herunterladen"', 'LS-PDF-Text')
 
 # Antworten: Zeit pro Aufgabe + heute falsch beantwortete merken; Prüfungsantworten zählen nicht als Lernaufgabe
 rep('  function hf(i, t) {\n    let e = ye.p[i]', '  function hf(i, t, nd) {\n    let e = ye.p[i]', 'LS-hf-Kopf')

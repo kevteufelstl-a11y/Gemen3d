@@ -5,6 +5,8 @@ man = os.path.join(root, 'app/src/main/AndroidManifest.xml')
 s = open(man, encoding='utf-8').read()
 if 'screenOrientation' not in s:
     s = s.replace('<activity', '<activity\n            android:screenOrientation="sensorLandscape"\n            android:hardwareAccelerated="true"', 1)
+if 'WRITE_EXTERNAL_STORAGE' not in s:
+    s = s.replace('</manifest>', '    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />\n</manifest>', 1)
 open(man, 'w', encoding='utf-8').write(s)
 sty = os.path.join(root, 'app/src/main/res/values/styles.xml')
 t = open(sty, encoding='utf-8').read()

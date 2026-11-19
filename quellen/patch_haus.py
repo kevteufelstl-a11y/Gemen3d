@@ -10,5 +10,5 @@ rep('    $(a, n.wall), $(o, n.plain), $(c, n.roof),', '    i.homeMain = [$(HA2, 
 rep('          let Lt = A(k.clientX, k.clientY);\n          if (Lt) {\n            let Yt = l.goTo(Lt[0], Lt[1]);',
     '          let Lt = window.__hsTap && window.__hsTap(k) ? null : A(k.clientX, k.clientY);\n          if (Lt) {\n            let Yt = l.goTo(Lt[0], Lt[1]);', 'HS-Tipp')
 # 3) Einbau + Schleife
-rep(anchor, open(D + '/haus.js', encoding='utf8').read() + ('    window.__dbg = (c) => eval(c);\n' if os.environ.get('HS_DEBUG') else '') + anchor, 'HS-Einbau')
+rep(anchor, open(D + '/komplex.js', encoding='utf8').read().replace('__SCIFI__', open(D + '/kit_scifi.json', encoding='utf8').read().strip()) + ('    window.__dbg = (c) => eval(c);\n' if os.environ.get('HS_DEBUG') else '') + anchor, 'HS-Einbau')
 rep('MP.update(Q, _t, V.dist), h.update(', 'MP.update(Q, _t, V.dist), HS.update(Q, _t), h.update(', 'HS-Schleife')

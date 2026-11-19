@@ -404,20 +404,9 @@
     };
     return paint(), c;
   }
+  // Alte Speicherfunktion: leitet an das neue, geprüfte Speichern weiter (siehe urkunden.js)
   async function UK_save(b, name) {
-    let C = window.Capacitor, P = C && C.Plugins;
-    if (P && P.Filesystem && P.Share && C.isNativePlatform && C.isNativePlatform()) try {
-      let data = await new Promise((res, rej) => {
-        let fr = new FileReader();
-        fr.onload = () => res(String(fr.result).split(",")[1]), fr.onerror = rej, fr.readAsDataURL(b);
-      }), w = await P.Filesystem.writeFile({ path: name, data, directory: "CACHE" });
-      await P.Share.share({ title: "Urkunde", text: "Meine Urkunde", url: w.uri, dialogTitle: "Urkunde speichern oder drucken" });
-      return;
-    } catch (e) {
-      if (/cancel/i.test(String(e && e.message || e))) return;
-    }
-    let s = URL.createObjectURL(b), a = K("a", { href: s, download: name });
-    document.body.append(a), a.click(), a.remove(), setTimeout(() => URL.revokeObjectURL(s), 1e4);
+    return UKX.saveBlob(b, name);
   }
   function UK_tplAdmin() {
     let inp = K("input", { type: "file", accept: "image/*", style: "display:none" }), prev = K("div", {});
