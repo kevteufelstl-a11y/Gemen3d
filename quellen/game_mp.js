@@ -20159,10 +20159,13 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
         hub: { x0: -8, x1: 8, z0: -4, z1: 12, col: 0x45f0d0, css: "#45f0d0" },
         tag: { x0: -16, x1: 16, z0: -24, z1: -8, col: 0xffc94a, css: "#ffc94a", title: "TAGESBELOHNUNGEN", icon: "\u{1F4C5}", wall: "n" },
         woche: { x0: -32, x1: -12, z0: -4, z1: 12, col: 0x5cc8ff, css: "#5cc8ff", title: "WOCHENBELOHNUNGEN", icon: "\u{1F3C5}", wall: "w" },
-        monat: { x0: 12, x1: 32, z0: -4, z1: 12, col: 0xd28bff, css: "#d28bff", title: "MONATSBELOHNUNGEN", icon: "\u{1F3C6}", wall: "e" }
+        monat: { x0: 12, x1: 32, z0: -4, z1: 12, col: 0xd28bff, css: "#d28bff", title: "MONATSBELOHNUNGEN", icon: "\u{1F3C6}", wall: "e" },
+        ein: { x0: -18, x1: 18, z0: 12, z1: 40, col: 0x8ff0ff, css: "#8ff0ff", title: "FIGUREN-AUSSTELLUNG", icon: "\u{1F3AD}" },
+        glueck: { x0: 20, x1: 40, z0: -30, z1: -6, col: 0xffb347, css: "#ffb347", title: "GLÜCKSHALLE", icon: "\u{1F381}" }
       };
-      const CORR = [{ x0: -2, x1: 2, z0: -8, z1: -4, to: "tag", ax: "z" }, { x0: -12, x1: -8, z0: 2, z1: 6, to: "woche", ax: "x" }, { x0: 8, x1: 12, z0: 2, z1: 6, to: "monat", ax: "x" }];
-      const ARRIVE = [0, 8.6], LIFT = [0, 12];
+      const RX0 = -34, RX1 = 42, RZ0 = -32, RZ1 = 42;
+      const CORR = [{ x0: -2, x1: 2, z0: -8, z1: -4, to: "tag", ax: "z" }, { x0: -12, x1: -8, z0: 2, z1: 6, to: "woche", ax: "x" }, { x0: 8, x1: 12, z0: 2, z1: 6, to: "monat", ax: "x" }, { x0: -2.4, x1: 2.4, z0: 12, z1: 12, to: "ein", ax: "z" }, { x0: 16, x1: 20, z0: -18, z1: -14, to: "glueck", ax: "x" }];
+      const ARRIVE = [0, 35.5], LIFT = [0, 40];
       const WH = 7; // Wandhöhe
       const st = { mode: "out", built: false, dyn: null, hits: [], pulse: [], busy: false, hint: false, qwas: false, grid: null, cam: null, lights: null, room: "", holo: [], walls: [], tm: 0 };
       const G = new pe();
@@ -20251,13 +20254,13 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
             const ox = px + inward[0] * 2, oz = pz + inward[1] * 2;
             emit(B, opt.flat ? "WallAstra_Straight_Flat" : (k + Math.round(t)) % 3 === 1 ? "WallWindow_Straight" : "WallAstra_Straight", ox, 0, oz, th, sz);
             emit(B, "TopAstra_Straight", ox, 0, oz, th, sz);
-            emit(B, "TopAstra_Straight", ox, 2, oz, th, sz);
+            for (let hh = 2; hh <= (opt.h || 7) - 5; hh += 2) emit(B, "TopAstra_Straight", ox, hh, oz, th, sz);
             emit(B, "BottomMetal_Straight", px + inward[0] * 2, 0.01, pz + inward[1] * 2, th, sz);
           }
         }
         const grp = flush(B, G);
         const mid = (a + b) / 2;
-        grp.userData.wall = { p: axis === "x" ? [mid, fixed] : [fixed, mid], n: inward, keep: !!opt.keep };
+        grp.userData.wall = { p: axis === "x" ? [mid, fixed] : [fixed, mid], n: inward, keep: !!opt.keep, axis, a, b, fixed };
         return st.walls.push(grp), grp;
       }
       function floor(r, kind) {
@@ -20278,14 +20281,14 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
         const R = ROOMS;
         // Ankunftshalle
         wallRun(R.hub.x0, R.hub.x1, R.hub.z0, "x", [0, 1], [[-2, 2]]);
-        wallRun(R.hub.x0, R.hub.x1, R.hub.z1, "x", [0, -1], [[-2.4, 2.4]]);
         wallRun(R.hub.z0, R.hub.z1, R.hub.x0, "z", [1, 0], [[2, 6]]);
         wallRun(R.hub.z0, R.hub.z1, R.hub.x1, "z", [-1, 0], [[2, 6]]);
         // Tageshalle (Urkundenwand im Norden)
         wallRun(R.tag.x0, R.tag.x1, R.tag.z0, "x", [0, 1], [], { flat: true, keep: true });
         wallRun(R.tag.x0, R.tag.x1, R.tag.z1, "x", [0, -1], [[-2, 2]]);
         wallRun(R.tag.z0, R.tag.z1, R.tag.x0, "z", [1, 0], []);
-        wallRun(R.tag.z0, R.tag.z1, R.tag.x1, "z", [-1, 0], []);
+        wallRun(R.tag.z0, R.tag.z1, R.tag.x1, "z", [-1, 0], [[-18, -14]]);
+        buildEntrance(), buildJoy();
         // Wochenhalle (Wand im Westen)
         wallRun(R.woche.z0, R.woche.z1, R.woche.x0, "z", [1, 0], [], { flat: true, keep: true });
         wallRun(R.woche.z0, R.woche.z1, R.woche.x1, "z", [-1, 0], [[2, 6]]);
@@ -20306,8 +20309,6 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
         emit(B, "Door_Frame_SquareTall", 0, 0, -4, 0, 1, 1.3), emit(B, "Door_Frame_SquareTall", 0, 0, -8, 0, 1, 1.3);
         emit(B, "Door_Frame_SquareTall", -8, 0, 4, Math.PI / 2, 1, 1.3), emit(B, "Door_Frame_SquareTall", -12, 0, 4, Math.PI / 2, 1, 1.3);
         emit(B, "Door_Frame_SquareTall", 8, 0, 4, Math.PI / 2, 1, 1.3), emit(B, "Door_Frame_SquareTall", 12, 0, 4, Math.PI / 2, 1, 1.3);
-        // Aufzug in der Südwand der Ankunftshalle (wird wie die Wand ausgeblendet, wenn die Kamera davor ist)
-        { const BL = {}; emit(BL, "Door_Frame_SquareTall", 0, 0, 12, 0, 1, 1.3), emit(BL, "Door_DarkMetal", 0, 0, 12.15, 0), emit(BL, "Door_DarkMetal", 0, 0, 12.15, Math.PI); const lg = flush(BL, G); lg.userData.wall = { p: [0, 12], n: [0, -1] }, st.walls.push(lg); }
         // Ankunftshalle: Plattform mit Hologramm, Konsolen, Lichtlinien zu den Gängen
         emit(B, "Platform_Round1", 0, 0.03, 3.2, 0);
         emit(B, "Prop_Computer", -5.6, 0, 9.6, Math.PI * 0.75), emit(B, "Prop_Computer", 5.6, 0, 9.6, -Math.PI * 0.75);
@@ -20332,11 +20333,11 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
         const logo = plane(3.6, 1.0, basic(signTex("\u{1F31F}", "BELOHNUNGS-ZENTRALE", "#45f0d0"), { depthWrite: false }));
         logo.position.set(0, 3.6, 3.2), G.add(logo), st.holo.push(logo);
         // Schilder über den Durchgängen und in den Hallen
-        const sign = (txt, icon, css, x, y, z, ry, w = 6) => { const m = plane(w, w * 160 / 1024, basic(signTex(icon, txt, css))); m.position.set(x, y, z), m.rotation.y = ry, G.add(m); };
+        const sign = (txt, icon, css, x, y, z, ry, w = 6) => { const m = plane(w, w * 160 / 1024, basic(signTex(icon, txt, css), { side: 0 })); m.position.set(x, y, z), m.rotation.y = ry, G.add(m); };
         sign("TAGE", "\u{1F4C5}", R.tag.css, 0, 5.9, -3.9, 0, 5);
         sign("WOCHEN", "\u{1F3C5}", R.woche.css, -7.9, 5.9, 4, Math.PI / 2, 5);
         sign("MONATE", "\u{1F3C6}", R.monat.css, 7.9, 5.9, 4, -Math.PI / 2, 5);
-        sign("AUFZUG NACH OBEN", "⬆", "#45f0d0", 0, 5.9, 11.9, Math.PI, 5);
+        sign("FIGUREN-AUSSTELLUNG", "\u{1F3AD}", "#8ff0ff", 0, 5.9, 11.9, Math.PI, 5), sign("GLÜCKSHALLE", "\u{1F381}", "#ffb347", 15.9, 5.9, -16, -Math.PI / 2, 5);
         sign(R.tag.title, R.tag.icon, R.tag.css, 0, 6.1, -23.85, 0, 9);
         sign(R.woche.title, R.woche.icon, R.woche.css, -31.85, 6.1, 4, Math.PI / 2, 9);
         sign(R.monat.title, R.monat.icon, R.monat.css, 31.85, 6.1, 4, -Math.PI / 2, 9);
@@ -20370,6 +20371,154 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
         return g.globalAlpha = 0.5, g.fillStyle = gr, g.fillRect(0, 0, 256, 64), tex(c);
       }
 
+      // ---------- Eingangshalle: Figuren-Ausstellung (13 m hoch, Figuren ca. 2,3 m auf Podesten) ----------
+      const PODS = [];
+      for (const z of [21, 29]) for (const x of [-5, 5, -9.5, 9.5, -14, 14]) PODS.push([x, z]);
+      const WHEEL = [39.4, -18];
+      function blockedProp(lx, lz) {
+        for (const [x, z] of PODS) if (Math.hypot(lx - x, lz - z) < 1.7) return true;
+        if (lx > 37.5 && lz > -21 && lz < -15) return true;
+        return false;
+      }
+      function buildEntrance() {
+        const R = ROOMS.ein, H = { h: 13 };
+        wallRun(R.x0, R.x1, R.z0, "x", [0, 1], [[-2.4, 2.4]], H);
+        wallRun(R.x0, R.x1, R.z1, "x", [0, -1], [[-2.4, 2.4]], H);
+        wallRun(R.z0, R.z1, R.x0, "z", [1, 0], [], H);
+        wallRun(R.z0, R.z1, R.x1, "z", [-1, 0], [], H);
+        { const BL = {}; emit(BL, "Door_Frame_SquareTall", 0, 0, 40, 0, 1, 1.3), emit(BL, "Door_DarkMetal", 0, 0, 40.15, 0), emit(BL, "Door_DarkMetal", 0, 0, 40.15, Math.PI); const lg = flush(BL, G); lg.userData.wall = { p: [0, 40], n: [0, -1] }, st.walls.push(lg); }
+        const B = {};
+        for (let z = 13.5; z < 38; z += 4) emit(B, "Decal_Line_Straight", 0, 0.045, z, 0);
+        for (const x of [-17.5, 17.5]) for (const z of [16, 26, 36]) emit(B, "Column_Round", x, 0, z, 0, 1, 2.6);
+        for (const [x, z] of PODS) { B.__pod || (B.__pod = new Ot()); B.__pod.box(x, 0.31, z, 2.6, 0.62, 2.6, 0, [0.16, 0.2, 0.24]); }
+        const pod = B.__pod; delete B.__pod;
+        flush(B, G);
+        const pm = new zt(pod.toGeometry(), new ae({ vertexColors: true, roughness: 0.35, metalness: 0.6 })); G.add(pm);
+        const rt = holoRing();
+        for (const [x, z] of PODS) { const r2 = new zt(new Ke(2.9, 2.9), basic(rt, { opacity: 0.7, depthWrite: false, blending: 2 })); r2.rotation.x = -Math.PI / 2, r2.position.set(x, 0.64, z), G.add(r2); }
+        const sg = (txt, icon, css, x, y, z, ry, w) => { const m = plane(w, w * 160 / 1024, basic(signTex(icon, txt, css), { side: 0 })); m.position.set(x, y, z), m.rotation.y = ry, G.add(m); };
+        sg(R.title, R.icon, R.css, 0, 8.5, 12.2, 0, 13), sg("AUFZUG NACH OBEN", "⬆", "#45f0d0", 0, 5.9, 39.85, Math.PI, 5), sg("BELOHNUNGS-HALLEN", "➜", "#45f0d0", 0, 5.9, 12.2, Math.PI, 5);
+        const L = new cn(0xfff2dc, 1400, 46, 1.6); L.position.set(0, 12, 26), G.add(L);
+      }
+      // ---------- Glückshalle: hell, warm, Ballons, Schatztruhen, Glücksrad ----------
+      function emojiTex(e) { const [c, g] = mk(256, 256); g.font = "200px serif", g.textAlign = "center", g.textBaseline = "middle", g.fillText(e, 128, 140); return tex(c); }
+      function buildJoy() {
+        const R = ROOMS.glueck, H = { h: 9 };
+        wallRun(R.x0, R.x1, R.z0, "x", [0, 1], [], H);
+        wallRun(R.x0, R.x1, R.z1, "x", [0, -1], [], H);
+        wallRun(R.z0, R.z1, R.x0, "z", [1, 0], [[-18, -14]], H);
+        wallRun(R.z0, R.z1, R.x1, "z", [-1, 0], [], H);
+        wallRun(16, 20, -18, "x", [0, 1], []), wallRun(16, 20, -14, "x", [0, -1], []);
+        const B = {};
+        emit(B, "Door_Frame_SquareTall", 16, 0, -16, Math.PI / 2, 1, 1.3), emit(B, "Door_Frame_SquareTall", 20, 0, -16, Math.PI / 2, 1, 1.3);
+        for (const [x, z, r] of [[22, -28, 0.4], [24.5, -28.4, -0.2], [38, -28, -0.5], [38, -9, 3.6], [21.5, -27, 2.8]]) emit(B, "Prop_Chest", x, 0, z, r);
+        flush(B, G);
+        // warmer Boden-Glanz und Lichtkreis vor dem Glücksrad
+        const fl = plane(18, 22, basic(stripTex("#ffcf6b"), { depthWrite: false, blending: 2, opacity: 0.35 })); fl.rotation.x = -Math.PI / 2, fl.position.set(30, 0.06, -18), G.add(fl);
+        const ring = new zt(new Ke(7, 7), basic(holoRing(), { opacity: 0.9, depthWrite: false, blending: 2, color: 0xffd27a })); ring.rotation.x = -Math.PI / 2, ring.position.set(36.5, 0.07, -18), G.add(ring), st.holo2 = ring;
+        // Ballons, Sterne und Geschenke schweben
+        st.bob = [];
+        const items = ["\u{1F388}", "⭐", "\u{1F381}", "\u{1F388}", "✨", "\u{1F31F}", "\u{1F388}", "\u{1F381}"];
+        items.forEach((e, k) => { const m = plane(1.6, 1.6, basic(emojiTex(e), { depthWrite: false })); m.position.set(22 + (k % 4) * 5, 0, -27 + Math.floor(k / 4) * 17), m.userData.y0 = 5.2 + (k % 3) * 0.9, G.add(m), st.bob.push(m); });
+        const sg = (txt, icon, css, x, y, z, ry, w) => { const m = plane(w, w * 160 / 1024, basic(signTex(icon, txt, css))); m.position.set(x, y, z), m.rotation.y = ry, G.add(m); };
+        sg("GLÜCKSHALLE", "\u{1F381}", "#ffb347", 30, 7.6, -6.2, Math.PI, 10), sg("GLÜCKSRAD", "\u{1F3A1}", "#ff8fd0", 39.8, 8.2, -18, -Math.PI / 2, 7);
+        const L1x = new cn(0xffd59a, 1100, 34, 1.5); L1x.position.set(30, 8, -18), G.add(L1x);
+        const L2 = new cn(0xff9ad5, 380, 20, 1.6); L2.position.set(37, 5, -18), G.add(L2);
+      }
+      function wheelTex() {
+        const L = (() => { try { return RW_list("tag"); } catch (er) { return []; } })(), n2 = Math.max(6, L.length), [c, g] = mk(1024, 1024), cols = ["#ff6b6b", "#ffb347", "#ffe066", "#7bdc65", "#5cc8ff", "#b48cff", "#ff8fd0", "#45f0d0"];
+        g.translate(512, 512);
+        for (let k = 0; k < n2; k++) {
+          const a0 = k / n2 * Math.PI * 2, a1 = (k + 1) / n2 * Math.PI * 2, it = L.length ? L[k % L.length] : ["\u{1F381}", "Überraschung"];
+          g.beginPath(), g.moveTo(0, 0), g.arc(0, 0, 500, a0, a1), g.closePath(), g.fillStyle = cols[k % cols.length], g.fill(), g.strokeStyle = "#fff", g.lineWidth = 6, g.stroke();
+          g.save(), g.rotate((a0 + a1) / 2), g.fillStyle = "#2a1600", g.font = "700 30px system-ui,sans-serif", g.textAlign = "right", g.textBaseline = "middle";
+          let t2 = String(it[1] || ""); t2.length > 22 && (t2 = t2.slice(0, 21) + "…"), g.fillText(t2, 470, 0), g.font = "56px serif", g.textAlign = "center", g.fillText(it[0] || "\u{1F381}", 150, 0), g.restore();
+        }
+        g.beginPath(), g.arc(0, 0, 70, 0, 7), g.fillStyle = "#fff", g.fill(), g.font = "80px serif", g.textAlign = "center", g.textBaseline = "middle", g.fillText("\u{1F381}", 0, 6);
+        return tex(c);
+      }
+      function buildJoyDyn(g) {
+        // Tägliche Belohnungen: Vorgestern, Gestern, Heute groß an der Nordwand
+        const d = slotsDays().slice(-3);
+        d.forEach((sl, k) => addSlot(g, "g", (k - 1) * 5.2, sl, ROOMS.glueck));
+        // Glücksrad an der Ostwand
+        const w = plane(6.4, 6.4, basic(wheelTex(), { transparent: true })); w.position.set(39.5, 4.6, -18), w.rotation.y = -Math.PI / 2, g.add(w), st.spin = [w];
+        const ptr = plane(1.2, 1.2, basic(emojiTex("\u{1F53B}"))); ptr.position.set(39.4, 8.1, -18), ptr.rotation.y = -Math.PI / 2, g.add(ptr);
+        const [c2, gg] = mk(512, 120); rrect(gg, 6, 6, 500, 108, 30), gg.fillStyle = "#ff8fd0", gg.fill(), gg.fillStyle = "#2a0018", gg.font = "800 50px system-ui,sans-serif", gg.textAlign = "center", gg.textBaseline = "middle", gg.fillText("\u{1F3A1} Belohnung ziehen", 256, 64);
+        const bt = plane(3.4, 0.8, basic(tex(c2))); bt.position.set(39.3, 0.7, -18), bt.rotation.y = -Math.PI / 2, g.add(bt), st.pulse.push(bt);
+        const hit = plane(7, 8.5, new se({ transparent: true, opacity: 0, depthWrite: false, side: 2 })); hit.position.set(39.2, 4.2, -18), hit.rotation.y = -Math.PI / 2, hit.userData.joy = openJoy, g.add(hit), st.hits.push(hit);
+      }
+      // Glücksrad-Fenster: zeigt, was gezogen werden darf (gleiche Regeln wie überall: Server prüft Ziel und "schon gezogen")
+      function openJoy() {
+        const kinds = [["tag", "Tagesbelohnung"], ["trost", "Trostpreis"], ["woche", "Wochenbelohnung"], ["monat", "Monatsbelohnung"]], kids = [];
+        if (!RW.d) kids.push(K("p", { class: "qmsg" }, "Zum Ziehen brauchst du Internet und ein Spieler-Konto."));
+        else {
+          let any = false;
+          for (const [kind, nm] of kinds) for (const e of RW.d[kind] || []) {
+            const s2 = entryState(e);
+            if (s2 !== "abholen" && s2 !== "neu" && s2 !== "wartet") continue;
+            any = true;
+            kids.push(K("div", { class: "kx-joy" }, K("h3", {}, (RW_IC[kind] || "\u{1F381}") + " " + nm + " – " + RW_label(kind, e)), rewardBlock(kind, e)));
+          }
+          any || kids.push(K("p", { class: "qmsg" }, "Gerade gibt es nichts zu ziehen. Schaffe heute deine Lernzeit – dann darfst du am Glücksrad drehen!"));
+        }
+        const L = (() => { try { return RW_list("tag"); } catch (er) { return []; } })();
+        L.length && kids.push(K("details", { class: "kx-more" }, K("summary", {}, "Was kann ich gewinnen?"), K("div", { class: "kx-chips" }, L.map((x) => K("span", {}, x[0] + " " + x[1])))));
+        ln().append(KO_box("wide kx-box", K("div", { class: "qhead" }, K("h2", {}, "\u{1F3A1} Glücksrad"), K("button", { class: "qx", onclick: Ys }, "✕")), ...kids));
+      }
+      // ---------- Figuren aufstellen ----------
+      function figList() {
+        const out = [], own = (CH && CH.list) || [];
+        const online = !!(Ae && !Ae.offline && navigator.onLine !== false);
+        out.push({ name: "Standardfigur", look: null, rec: CH_STD, pack: "Standard" });
+        for (const pk of CH_PACKS.values()) {
+          if (pk.builtin) continue;
+          for (const c of pk.characters) {
+            if (!pk.models || !pk.models[c.body]) continue;
+            const look = { v: 1, pack: pk.id, packVersion: pk.version, char: c.id, body: c.body, parts: Object.assign({}, c.parts) };
+            const mine = own.find((r) => r.data && r.data.pack === pk.id && r.data.char === c.id);
+            out.push({ name: mine ? mine.name : c.name, look: mine ? CH_lookOf(mine) : look, rec: mine || null, preset: { pk, c, look }, pack: pk.name });
+          }
+        }
+        for (const r of own) if (!out.some((f) => f.rec === r)) out.push({ name: r.name, look: CH_lookOf(r), rec: r, pack: "Eigene Figur" });
+        for (const f of out) f.active = f.rec ? (f.rec.id || null) === (CH.active || null) : false, f.locked = !f.active && !online && CH.server !== false;
+        return out.slice(0, PODS.length);
+      }
+      function buildFigures(g) {
+        st.figs = [];
+        let list = [];
+        try { list = figList(); } catch (er) { console.warn(er); }
+        list.forEach((f, k) => {
+          const [x, z] = PODS[k];
+          try {
+            const before = new Set(g.children), rig = Wu(WORLD, g, { remote: true }), obj = g.children.find((c) => !before.has(c));
+            rig.setLook(f.look || null), obj && obj.scale.setScalar(1.3);
+            st.figs.push({ rig, obj, x, z, yaw: 0 });
+            obj && L1(obj);
+          } catch (er) { console.warn("Figur", er); }
+          const css = f.active ? "#59ff5a" : f.locked ? "#8a96a0" : "#8ff0ff";
+          const lb = plane(2.6, 0.5, basic(labelTexture((f.active ? "✓ " : f.locked ? "\u{1F512} " : "") + f.name, css))); lb.position.set(x, 3.55, z), g.add(lb);
+          if (f.active) { const r2 = new zt(new Ke(3.2, 3.2), basic(holoRing(), { opacity: 1, depthWrite: false, blending: 2, color: 0x59ff5a })); r2.rotation.x = -Math.PI / 2, r2.position.set(x, 0.66, z), g.add(r2); }
+          const hit = plane(2.6, 3.6, new se({ transparent: true, opacity: 0, depthWrite: false, side: 2 })); hit.position.set(x, 1.9, z), hit.userData.fig = f, g.add(hit), st.hits.push(hit);
+        });
+      }
+      function openFig(f) {
+        const m = K("p", { class: "qmsg" });
+        const btn = K("button", { class: "qbtn go kx-big", disabled: f.active || f.locked }, f.active ? "✅ Du spielst gerade mit dieser Figur" : f.locked ? "\u{1F512} Wechseln geht nur mit Internet" : "✓ Mit dieser Figur spielen");
+        btn.onclick = async () => {
+          btn.disabled = true, m.textContent = "Einen Moment …";
+          try {
+            let ok;
+            if (f.rec) ok = await CH_select(f.rec.id || null);
+            else ok = !!(await CH_save({ name: f.preset.c.name, pack: f.preset.pk.id, data: f.preset.look }, true));
+            if (ok) { Ys(), buildWalls(), L1(PLAYER.root), Zs("\u{1F389} Du spielst jetzt als " + f.name + "!"); return; }
+            m.textContent = "Das hat nicht geklappt.";
+          } catch (er) { m.textContent = "Keine Verbindung."; }
+          btn.disabled = false;
+        };
+        let pv = null; try { pv = CH_view(f.look || null); } catch (er) {}
+        ln().append(KO_box("kx-box", K("div", { class: "qhead" }, K("h2", {}, "\u{1F3AD} " + f.name), K("button", { class: "qx", onclick: Ys }, "✕")), pv || "", K("p", { class: "ko-small" }, f.pack), btn, m));
+      }
       // ---------- Daten für die Wände ----------
       const wdName = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
       function entryState(e) {
@@ -20449,6 +20598,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
       function at(mesh, side, u2, y, off) {
         if (side === "n") mesh.position.set(u2, y, ROOMS.tag.z0 + 0.45 + off), mesh.rotation.y = 0;
         else if (side === "w") mesh.position.set(ROOMS.woche.x0 + 0.45 + off, y, -u2 + 4), mesh.rotation.y = Math.PI / 2;
+        else if (side === "g") mesh.position.set(30 - u2, y, ROOMS.glueck.z1 - 0.45 - off), mesh.rotation.y = Math.PI;
         else mesh.position.set(ROOMS.monat.x1 - 0.45 - off, y, u2 + 4), mesh.rotation.y = -Math.PI / 2;
         return mesh;
       }
@@ -20466,6 +20616,8 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
       }
       function disposeDyn() {
         if (!st.dyn) return;
+        for (const f of st.figs || []) try { f.rig.dispose(); } catch (er) {}
+        st.figs = [];
         st.dyn.traverse((m) => { m.geometry && m.geometry.dispose(), m.material && (m.material.map && m.material.map.dispose(), m.material.dispose()); });
         G.remove(st.dyn), st.dyn = null, st.hits = [], st.pulse = [];
       }
@@ -20480,6 +20632,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
           const [c, gg] = mk(1024, 200); gg.fillStyle = "#fff", gg.font = "700 52px system-ui,sans-serif", gg.textAlign = "center", gg.fillText("Wochen und Monate brauchen", 512, 80), gg.fillText("Internet und ein Spieler-Konto", 512, 150);
           const m = plane(8, 1.56, basic(tex(c))); at(m, side, 0, 3.4, 0.05), g.add(m);
         }
+        buildFigures(g), buildJoyDyn(g);
         G.add(g), L1(g);
       }
       function refresh() {
@@ -20564,7 +20717,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
       }
       window.__hsTap = (ev) => {
         if (window.__quizOpen) return false;
-        if (st.mode === "in") { const r = st.hits.length && pick(ev, st.hits); if (r && r.object.userData.hs) return openSlot(r.object.userData.hs), true; return false; }
+        if (st.mode === "in") { const r = st.hits.length && pick(ev, st.hits); if (r && r.object.userData.hs) return openSlot(r.object.userData.hs), true; if (r && r.object.userData.fig) return openFig(r.object.userData.fig), true; if (r && r.object.userData.joy) return r.object.userData.joy(), true; return false; }
         if (st.mode === "out" && pick(ev, WORLD.homeMain)) return askEnter(), true;
         return st.mode === "entering" && !!pick(ev, WORLD.homeMain);
       };
@@ -20572,17 +20725,17 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
       // ---------- Lauf-Raster tauschen ----------
       const wk = WORLD.walk;
       const freeAt = (lx, lz) => {
-        for (const k in ROOMS) { const r = ROOMS[k]; if (lx > r.x0 + 0.8 && lx < r.x1 - 0.8 && lz > r.z0 + 0.8 && lz < r.z1 - 0.8) return !(k === "hub" && Math.hypot(lx, lz - 3.2) < 1.4) && !(k === "hub" && Math.abs(lx) < 2.6 && lz > 10.6); }
+        for (const k in ROOMS) { const r = ROOMS[k]; if (lx > r.x0 + 0.8 && lx < r.x1 - 0.8 && lz > r.z0 + 0.8 && lz < r.z1 - 0.8) return !(k === "hub" && Math.hypot(lx, lz - 3.2) < 1.4) && !blockedProp(lx, lz); }
         for (const c of CORR) { const alongZ = c.ax === "z"; if (alongZ ? lx > c.x0 + 0.7 && lx < c.x1 - 0.7 && lz > c.z0 - 1 && lz < c.z1 + 1 : lz > c.z0 + 0.7 && lz < c.z1 - 0.7 && lx > c.x0 - 1 && lx < c.x1 + 1) return true; }
         return false;
       };
       function gridIn() {
-        const cs = [toW(-34, -27), toW(34, -27), toW(-34, 15), toW(34, 15)], xs = cs.map((p) => p[0]), zs = cs.map((p) => p[1]);
+        const cs = [toW(RX0, RZ0), toW(RX1, RZ0), toW(RX0, RZ1), toW(RX1, RZ1)], xs = cs.map((p) => p[0]), zs = cs.map((p) => p[1]);
         const x0 = Math.max(0, Math.floor(Math.min(...xs) - wk.g0x)), x1 = Math.min(wk.GW - 1, Math.ceil(Math.max(...xs) - wk.g0x)), z0 = Math.max(0, Math.floor(Math.min(...zs) - wk.g0z)), z1 = Math.min(wk.GH - 1, Math.ceil(Math.max(...zs) - wk.g0z));
         const save = [];
         for (let gz = z0; gz <= z1; gz++) for (let gx = x0; gx <= x1; gx++) {
           const [lx, lz] = toL(wk.g0x + gx + 0.5, wk.g0z + gz + 0.5);
-          if (lx < -34 || lx > 34 || lz < -27 || lz > 15) continue;
+          if (lx < RX0 || lx > RX1 || lz < RZ0 || lz > RZ1) continue;
           const i2 = gz * wk.GW + gx, f = freeAt(lx, lz);
           save.push(i2, wk.blocked[i2], wk.reach ? wk.reach[i2] : 0);
           wk.blocked[i2] = f ? 0 : 1, wk.reach && (wk.reach[i2] = f ? 1 : 0);
@@ -20596,7 +20749,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
       }
       // Drinnen ist alles im Komplex sicher (Monster kommen nicht hinein)
       const safe0 = ZONES.safeAt.bind(ZONES);
-      ZONES.safeAt = (x, z) => { if (st.mode === "in") { const [lx, lz] = toL(x, z); if (lx > -34 && lx < 34 && lz > -27 && lz < 15) return true; } return safe0(x, z); };
+      ZONES.safeAt = (x, z) => { if (st.mode === "in") { const [lx, lz] = toL(x, z); if (lx > RX0 && lx < RX1 && lz > RZ0 && lz < RZ1) return true; } return safe0(x, z); };
 
       // ---------- Betreten / Verlassen ----------
       const fade = K("div", { id: "kx-fade" }, K("div", { class: "kx-lift" }, K("b"), K("span")));
@@ -20606,7 +20759,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
       sty.textContent = "#kx-fade{position:fixed;inset:0;z-index:60;background:#02060a;opacity:0;pointer-events:none;transition:opacity .35s;display:flex;align-items:center;justify-content:center}#kx-fade.on{opacity:1;pointer-events:auto}.kx-lift{text-align:center;color:#bff6ff;font:700 18px/1.4 system-ui,sans-serif;letter-spacing:.08em}.kx-lift b{display:block;font-size:46px;color:#45f0d0;text-shadow:0 0 18px #45f0d0;animation:kxl 1s ease-in-out infinite alternate}@keyframes kxl{to{transform:translateY(10px)}}"
         + "#hs-dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(8px + env(safe-area-inset-bottom));z-index:30;display:none;gap:8px;padding:6px;border-radius:18px;background:rgba(4,12,16,.72);border:1px solid rgba(69,240,208,.35);backdrop-filter:blur(6px);max-width:calc(100vw - 24px)}#hs-dock.show{display:flex}#hs-dock .chip{min-height:48px;min-width:48px;padding:0 14px;border-radius:14px;border:1px solid rgba(69,240,208,.35);background:rgba(10,24,30,.9);color:#e8fbff;font:700 15px system-ui,sans-serif;white-space:nowrap}#hs-dock .chip.on{background:#0f3a40;border-color:#45f0d0;box-shadow:0 0 12px rgba(69,240,208,.5)}"
         + "body.kx-in #chips,body.kx-in #presets,body.kx-in #hint,body.kx-in #card,body.kx-in #pins,body.kx-in #hud-dist,body.kx-in #hud-goal{display:none!important}"
-        + ".qbox.kx-box{width:min(880px,100%)!important;max-width:none!important}.kx-grid{display:grid;grid-template-columns:minmax(150px,38%) minmax(0,1fr);gap:14px;align-items:start;text-align:left}.kx-grid.one{grid-template-columns:1fr}.kx-side .kx-row{justify-content:stretch}.kx-side .kx-row .qbtn{flex:1 1 180px;min-height:48px}@media (orientation:portrait){.kx-grid{grid-template-columns:1fr}}.kx-certwrap{display:flex;justify-content:center}.kx-cert{width:100%;height:auto;max-height:none;border-radius:10px;box-shadow:0 6px 24px #000c;cursor:zoom-in}.kx-row{justify-content:center;flex-wrap:wrap}.kx-rw{margin-top:10px;padding:12px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}.kx-pick{font:700 17px/1.35 system-ui,sans-serif;margin:4px 0 10px;color:#fff}.kx-big{width:100%;min-height:54px;font-size:17px}.kx-done{background:#3c4248!important;color:#cfd4d8!important;opacity:1!important;filter:grayscale(1)}.kx-state{padding:10px;border-radius:10px;font-weight:700;margin-bottom:8px}.kx-state.wait{background:rgba(255,154,31,.15);color:#ffb35a}.kx-parent{margin-top:6px;padding:10px;border-radius:12px;border:1px dashed rgba(255,255,255,.3)}.kx-ptitle{margin:0 0 4px;font-weight:800}.kx-more{margin-top:10px;text-align:left}.kx-more summary{cursor:pointer;color:#9fb0bb}"
+        + ".qbox.kx-box{width:min(880px,100%)!important;max-width:none!important}.kx-grid{display:grid;grid-template-columns:minmax(150px,38%) minmax(0,1fr);gap:14px;align-items:start;text-align:left}.kx-grid.one{grid-template-columns:1fr}.kx-side .kx-row{justify-content:stretch}.kx-side .kx-row .qbtn{flex:1 1 180px;min-height:48px}@media (orientation:portrait){.kx-grid{grid-template-columns:1fr}}.kx-certwrap{display:flex;justify-content:center}.kx-cert{width:100%;height:auto;max-height:none;border-radius:10px;box-shadow:0 6px 24px #000c;cursor:zoom-in}.kx-row{justify-content:center;flex-wrap:wrap}.kx-rw{margin-top:10px;padding:12px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}.kx-pick{font:700 17px/1.35 system-ui,sans-serif;margin:4px 0 10px;color:#fff}.kx-big{width:100%;min-height:54px;font-size:17px}.kx-done{background:#3c4248!important;color:#cfd4d8!important;opacity:1!important;filter:grayscale(1)}.kx-state{padding:10px;border-radius:10px;font-weight:700;margin-bottom:8px}.kx-state.wait{background:rgba(255,154,31,.15);color:#ffb35a}.kx-parent{margin-top:6px;padding:10px;border-radius:12px;border:1px dashed rgba(255,255,255,.3)}.kx-ptitle{margin:0 0 4px;font-weight:800}.kx-more{margin-top:10px;text-align:left}.kx-more summary{cursor:pointer;color:#9fb0bb}.kx-joy{margin:10px 0;text-align:left}.kx-joy h3{margin:0 0 6px;font-size:16px}.kx-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.kx-chips span{padding:6px 10px;border-radius:999px;background:rgba(255,179,71,.15);border:1px solid rgba(255,179,71,.4);font-size:14px}"
         + "@media (max-width:560px),(max-height:520px){#hs-dock .chip{padding:0 10px;font-size:14px}#hs-dock .chip i{display:none}}";
       document.head.append(sty);
       function lift(text, mid, after) {
@@ -20617,12 +20770,14 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
         const go = (k) => () => walkTo(k);
         dock.replaceChildren(
           K("button", { class: "chip", onclick: leave }, "⬆", K("i", {}, " Nach oben")),
+          K("button", { class: "chip", "data-r": "ein", onclick: go("ein") }, "\u{1F3AD}", K("i", {}, " Figuren")),
           K("button", { class: "chip", "data-r": "tag", onclick: go("tag") }, "\u{1F4C5}", K("i", {}, " Tage")),
           K("button", { class: "chip", "data-r": "woche", onclick: go("woche") }, "\u{1F3C5}", K("i", {}, " Wochen")),
           K("button", { class: "chip", "data-r": "monat", onclick: go("monat") }, "\u{1F3C6}", K("i", {}, " Monate")),
+          K("button", { class: "chip", "data-r": "glueck", onclick: go("glueck") }, "\u{1F381}", K("i", {}, " Glück")),
           K("button", { class: "chip", onclick: () => UKX.archive() }, "\u{1F4DC}", K("i", {}, " Meine Urkunden")));
       }
-      const SPOT = { tag: [0, -13], woche: [-20.5, 4], monat: [20.5, 4], hub: [0, 6] };
+      const SPOT = { tag: [0, -13], woche: [-20.5, 4], monat: [20.5, 4], hub: [0, 6], ein: [0, 26], glueck: [27, -12] };
       function walkTo(k) {
         const [x, z] = toW(...SPOT[k]);
         PLAYER.goTo(x, z) || Zs("Da komme ich gerade nicht hin.");
@@ -20673,7 +20828,7 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
       function roomAt(lx, lz) { for (const k in ROOMS) { const r = ROOMS[k]; if (lx > r.x0 && lx < r.x1 && lz > r.z0 && lz < r.z1) return k; } return "gang"; }
       const tv = new Y();
       return {
-        enter, leave, askEnter, refresh, openSlot, toW, toL, st, G, P: PLAYER, W: WORLD, walkTo, roomAt, inside: () => st.mode === "in",
+        enter, leave, askEnter, refresh, openSlot, openFig, openJoy, toW, toL, st, G, P: PLAYER, W: WORLD, walkTo, roomAt, inside: () => st.mode === "in",
         update(dt, t) {
           if (st.mode === "entering") {
             st.tm += dt;
@@ -20689,6 +20844,10 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
             return;
           }
           for (const m of st.pulse) { const k = 1 + 0.05 * Math.sin(t * 5); m.scale.set(k, k, 1); }
+          (st.l1t = (st.l1t || 0) + dt) > 0.5 && (st.l1t = 0, L1(PLAYER.root), MONS.root && L1(MONS.root));
+          for (const f of st.figs || []) { try { f.rig.pose(f.x, f.z, f.yaw + Math.sin(t * 0.4 + f.x) * 0.35, 0, dt, 8); } catch (er) {} f.obj && (f.obj.position.y = 0.62); }
+          for (const m of st.spin || []) m.rotation.z = -t * 0.25;
+          for (const m of st.bob || []) m.position.y = m.userData.y0 + Math.sin(t * 1.3 + m.userData.y0 * 3) * 0.25;
           if (st.holo[0]) st.holo[0].rotation.z = t * 0.5, st.holo[2].rotation.y = Math.sin(t * 0.4) * 0.6;
           const qo = !!window.__quizOpen;
           st.qwas && !qo && st.dirty && (st.dirty = false, buildWalls()), st.qwas = qo;
@@ -20705,11 +20864,22 @@ void main(){ vec3 c=texture2D(uTex,vUv).rgb; float l=dot(c,vec3(0.3,0.59,0.11));
             const r = ROOMS[room];
             if (r && r.wall) C.yaw = (r.wall === "n" ? 0 : r.wall === "w" ? Math.PI / 2 : -Math.PI / 2) + HD.rot, C.pitch = 0.45, C.dist = ph ? 16 : 18;
             else if (room === "hub") C.pitch = 0.9, C.dist = ph ? 20 : 22;
+            else if (room === "ein") C.yaw = HD.rot, C.pitch = 0.5, C.dist = ph ? 17 : 19;
+            else if (room === "glueck") C.yaw = HD.rot + Math.PI, C.pitch = 0.5, C.dist = ph ? 18 : 20;
           }
           // Wände zwischen Kamera und Figur ausblenden
           CAMERA.getWorldPosition(tv);
           const [cx, cz] = toL(tv.x, tv.z);
-          for (const w of st.walls) { const d = w.userData.wall; w.visible = d.keep || (cx - d.p[0]) * d.n[0] + (cz - d.p[1]) * d.n[1] > -0.5; }
+          for (const w of st.walls) {
+            const d = w.userData.wall;
+            let vis = d.keep || (cx - d.p[0]) * d.n[0] + (cz - d.p[1]) * d.n[1] > -0.5;
+            if (vis && !d.keep && d.axis) {
+              // Wand liegt zwischen Kamera und Figur? Dann ausblenden.
+              const c1 = d.axis === "x" ? cz : cx, p1 = d.axis === "x" ? lz : lx;
+              if ((c1 - d.fixed) * (p1 - d.fixed) < 0) { const tt = (d.fixed - c1) / (p1 - c1), o1 = d.axis === "x" ? cx + tt * (lx - cx) : cz + tt * (lz - cz); o1 > d.a - 1 && o1 < d.b + 1 && (vis = false); }
+            }
+            w.visible = vis;
+          }
         }
       };
     })();

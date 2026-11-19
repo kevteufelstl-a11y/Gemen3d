@@ -50,3 +50,6 @@ Speichern in Dokumente/Urkunden (App) bzw. Download (Browser), Erfolg nur nach g
 BEDIENUNG (hud.js, patch_ui.py): ein Entfernungs-Knopf, Ziel-Menü (Kompass), Stationsnamen nur fürs Ziel,
 Boden-Pfeile entlang der Wegfindung, Vollbild blendet Knöpfe aus, eigenes Handy-Layout (Tablet unverändert).
 server/09_urkunden_schutz.sql: optionaler Schutz, dass Lerntage beim Speichern nie gelöscht werden (noch nicht eingespielt).
+ERWEITERUNG 19.11.: Aufzug kommt jetzt in der FIGUREN-AUSSTELLUNG an (13 m hoch, 12 Podeste, Figuren aus dem
+Charakter-System, Antippen -> Vorschau + "Mit dieser Figur spielen" über CH_select/CH_save). Von dort geht es in die
+bisherigen Hallen. Neue GLÜCKSHALLE östlich der Tageshalle: tägliche Karten + Glücksrad (nutzt rewardPick/RW_list).
