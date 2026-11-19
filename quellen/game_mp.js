@@ -16292,9 +16292,9 @@ startxref
     b || (b = K("div", { id: "lzbar", onclick: LZ_barTap }, K("div", {}), K("div", { class: "lzb" }, K("i")), K("div", { class: "lze" }), K("div", { class: "shl", style: "display:none" }, K("span"), K("div", { class: "lzb sh" }, K("i")))), document.body.append(b));
     b.style.display = "", document.body.classList.add("lzon");
     let d = Li(), need = Ai(), done = Math.min(d.sec, need), rest = Math.max(0, Math.ceil((need - d.sec) / 60));
-    b.children[0].textContent = "⏱ " + Math.floor(done / 60) + " von " + je.dailyMinutes + " Minuten geschafft";
+    b.children[0].textContent = "⏱ " + oa(done) + " von " + je.dailyMinutes + ":00 Minuten geschafft";
     b.children[1].firstChild.style.width = done / need * 100 + "%";
-    b.children[2].textContent = d.ex ? "✅ Tagespr\xFCfung geschafft! Tippen = Urkunde" : window.__tpRun ? "\u{1F3C1} Tagespr\xFCfung l\xE4uft …" : d.sec >= need ? "\u{1F3C1} Die Tagespr\xFCfung ist bereit! Hier tippen." : "\u{1F3C1} Noch " + rest + (rest === 1 ? " Minute" : " Minuten") + " bis zur Tagespr\xFCfung";
+    b.children[2].textContent = d.ex ? "✅ Tagespr\xFCfung geschafft! Tippen = Urkunde" : window.__tpRun ? "\u{1F3C1} Tagespr\xFCfung l\xE4uft …" : d.sec >= need ? "\u{1F3C1} Die Tagespr\xFCfung ist bereit! Hier tippen." : "\u{1F3C1} Noch " + oa(Math.max(0, Math.ceil(need - d.sec))) + " bis zur Tagespr\xFCfung";
     b.classList.toggle("done", d.sec >= need);
   }
   function LZ_barTap() {
