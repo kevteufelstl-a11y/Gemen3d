@@ -87,7 +87,7 @@
     if (kind === "tag" && !x.reached) kids.push(K("p", { class: "ko-small" }, "Schaffe die Tagesprüfung (nach " + je.dailyMinutes + " Minuten lernen) mit mindestens Note 4, dann darfst du eine Belohnung ziehen."));
     if (pick) kids.push(K("p", { class: "qmsg", style: "margin:4px 0" }, RW_IC[kind] + " Du hast gezogen: " + pick.choice), RW_status(pick));
     if (pick && (pick.status === "offen" || pick.status === "bestaetigt")) kids.push(K("button", { class: "qbtn", onclick: () => RW_parentSet(kind, x) }, "\u{1F468}‍\u{1F469} Eltern: Status ändern"));
-    if (un) kids.push(K("p", { class: "qmsg", style: "color:#ffd54a" }, "\u{1F513} Freigeschaltet! Lass das Glück entscheiden:"), K("button", { class: "qbtn go", onclick: (e) => RW_draw(kind, x, e.target) }, "\u{1F3B2} Belohnung ziehen"));
+    if (un) kids.push(K("p", { class: "qmsg", style: "color:#ffd54a" }, "\u{1F513} Freigeschaltet! Lass das Glück entscheiden:"), K("p", { class: "ko-small" }, "Noch " + RW_avail(kind).left + " von " + RW_avail(kind).total + " Belohnungen in dieser Runde – jede kommt einmal dran."), K("button", { class: "qbtn go", onclick: (e) => RW_draw(kind, x, e.target) }, "\u{1F3B2} Belohnung ziehen"));
     else if (!pick) kids.push(...RW_cards(kind, x, true));
     return K("div", { class: "rwsec" + (un ? " un" : "") }, K("h3", {}, (x.reached ? "✅ " : x.lost ? "❌ " : "\u{1F512} ") + RW_label(kind, x)), ...kids);
   }
@@ -112,9 +112,18 @@
   function RW_ask(kind, x, ic, t) {
     ln().append(KO_box("", K("h2", {}, "\u{1F381} Das wählst du:"), K("p", { class: "qbig" }, ic + " " + t), K("p", { class: "qmsg" }, "Die Eltern bekommen deine Belohnung und bestätigen sie."), K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: (e) => RW_pick(kind, x, t, e.target) }, "Ja, das nehme ich"), K("button", { class: "qbtn", onclick: () => RW_open() }, "Zurück"))));
   }
+  // Jede Belohnung wird erst einmal gezogen; sind alle durch, beginnt die Liste von vorn
+  function RW_avail(kind) {
+    let seen = new Set(), L = RW_list(kind).filter((c) => (c = c[1].slice(0, 140), !seen.has(c) && seen.add(c))), names = L.map((c) => c[1].slice(0, 140)), used = new Set();
+    for (let t of ((RW.d && RW.d.hist && RW.d.hist[kind]) || [])) {
+      names.includes(t) && !used.has(t) && used.add(t), used.size >= names.length && used.clear();
+    }
+    let rest = L.filter((c) => !used.has(c[1].slice(0, 140)));
+    return { rest: rest.length ? rest : L, total: L.length, left: rest.length || L.length };
+  }
   function RW_draw(kind, x, btn) {
     if (RW.busy) return;
-    let l = RW_list(kind), c = l[Math.floor(Math.random() * l.length)];
+    let l = RW_avail(kind).rest, c = l[Math.floor(Math.random() * l.length)];
     btn.disabled = true;
     RW_pick(kind, x, c[1], btn, c[0]);
   }

@@ -85,7 +85,7 @@ begin
         'lost', jsonb_array_length(missed) > 0, 'reached', tot > 0 and okc = tot, 'pick', pk);
     end if;
   end loop;
-  return jsonb_build_object('today', today::text, 'weekNeed', wdays, 'tag', r, 'trost', tp, 'woche', w, 'monat', m);
+  return jsonb_build_object('today', today::text, 'weekNeed', wdays, 'tag', r, 'trost', tp, 'hist', coalesce((select jsonb_object_agg(z.kind, z.arr) from (select q.kind, jsonb_agg(q.choice order by q.chosen_at) arr from (select kind, choice, chosen_at from rewards where profile_id = pid and status <> 'abgelehnt' order by chosen_at desc limit 400) q group by q.kind) z), '{}'::jsonb), 'woche', w, 'monat', m);
 end $$;
 
 create or replace function public.milo_rewards(ses sessions, p jsonb, a text) returns jsonb language plpgsql security definer set search_path = public, extensions as $$
