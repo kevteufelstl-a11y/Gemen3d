@@ -13017,25 +13017,60 @@ void main() {
     }
     return best && bd < 60 ? best : null;
   }
-  // Tor an eine Stelle legen, an der man auf beiden Seiten (bzw. auf der eigenen Seite) laufen kann, z. B. eine Strasse
+  // Zusammenhaengende Laufflaechen (mit Mauern, ohne Tore) beschriften: so findet man Stellen, die von der
+  // ganzen Klasse aus erreichbar sind (nicht in einer Flussschleife oder hinter Felsen eingeschlossen)
+  function KL_comps() {
+    KL.comp = KL_grids().map((g) => {
+      const lab = new Int32Array(g.GW * g.GH), size = [0];
+      let id = 0;
+      for (let st = 0; st < lab.length; st++) {
+        if (lab[st] || g.blocked[st]) continue;
+        id++;
+        const q = [st];
+        lab[st] = id;
+        for (let k = 0; k < q.length; k++) {
+          const c = q[k], ci = c % g.GW, cj = c / g.GW | 0;
+          ci > 0 && !lab[c - 1] && !g.blocked[c - 1] && (lab[c - 1] = id, q.push(c - 1));
+          ci < g.GW - 1 && !lab[c + 1] && !g.blocked[c + 1] && (lab[c + 1] = id, q.push(c + 1));
+          cj > 0 && !lab[c - g.GW] && !g.blocked[c - g.GW] && (lab[c - g.GW] = id, q.push(c - g.GW));
+          cj < g.GH - 1 && !lab[c + g.GW] && !g.blocked[c + g.GW] && (lab[c + g.GW] = id, q.push(c + g.GW));
+        }
+        size[id] = q.length;
+      }
+      return { g, lab, size };
+    });
+  }
+  // Groesse der Laufflaeche an einem Punkt (0 = gesperrt)
+  function KL_reach(x, z) {
+    let best = 0;
+    for (const C of KL.comp || []) {
+      const g = C.g, i = Math.floor(x - g.g0x), j = Math.floor(z - g.g0z);
+      if (i < 0 || j < 0 || i >= g.GW || j >= g.GH) continue;
+      const l = C.lab[j * g.GW + i];
+      l && (best = Math.max(best, C.size[l]));
+    }
+    return best;
+  }
+  // Tor an eine Stelle legen, an der man auf beiden Seiten (bzw. auf der eigenen Seite) gut hinkommt
   function KL_cross(p, pair, sides) {
-    const ok = (x, z) => {
+    const big = (KL_cfg().tor && KL_cfg().tor.minFlaeche) || 25e3;
+    const ok = (x, z) => KL.comp ? KL_reach(x, z) >= big : (() => {
       try {
         return ZN.o.walk.ok(x, z);
       } catch {
         return false;
       }
-    };
+    })();
     let best = null, bd = 1e9;
     for (const r of KL.runs) {
       if (r.pair[0] !== Math.min(pair[0], pair[1]) || r.pair[1] !== Math.max(pair[0], pair[1])) continue;
       for (let i = 0; i < r.pts.length; i += 2) {
         const q = r.pts[i], d = Math.hypot(q[0] - p[0], q[1] - p[1]);
-        if (d >= bd || d > 140) continue;
+        if (d >= bd || d > (KL.comp ? 900 : 140)) continue;
         let good = true;
         for (const k of sides) {
           const n = KL_side(q, r.t, k);
-          for (const off of [1.6, 3, 5]) for (const s of [-2.2, 0, 2.2]) good = good && ok(q[0] + n[0] * off + r.t[0] * s, q[1] + n[1] * off + r.t[1] * s);
+          for (const off of [2, 4, 7]) for (const s of [-3, 0, 3]) good = good && ok(q[0] + n[0] * off + r.t[0] * s, q[1] + n[1] * off + r.t[1] * s);
           if (!good) break;
         }
         good && (bd = d, best = { c: q, t: r.t });
@@ -13186,63 +13221,141 @@ void main() {
     lines[1] && (x.font = "bold 30px system-ui, sans-serif", x.fillText(lines[1], 256, 98));
     return new wn(cv);
   }
-  function KL_gateMesh(g) {
-    const cf = KL_cfg().tor || {}, w = g.w, H = cf.hoehe || 6.5, grp = new pe(), B = new Ot(), st = [0.56, 0.53, 0.49], dk = [0.44, 0.41, 0.38];
-    for (const s of [-1, 1]) {
-      const x = s * (w / 2 + 1.2);
-      B.box(x, H / 2, 0, 2.4, H, 2.8, 0, st), B.box(x, H + 0.3, 0, 2.8, 0.6, 3.2, 0, dk);
-      for (const q of [-0.9, 0.9]) B.box(x + q, H + 0.95, 0, 0.6, 0.8, 3.2, 0, st);
+  // Klassenfarbe (Leuchten, Dach, Lichtsaeule)
+  function KL_col(k) {
+    return { 3: [1, 0.8, 0.25], 4: [0.25, 0.85, 1], 5: [0.45, 1, 0.4], 6: [0.9, 0.45, 1] }[k] || [1, 0.8, 0.3];
+  }
+  function KL_glowTex(kind) {
+    const cv = document.createElement("canvas");
+    cv.width = 64, cv.height = 256;
+    const x = cv.getContext("2d");
+    if (kind === "ring") {
+      cv.width = cv.height = 128;
+      const r = x.createRadialGradient(64, 64, 10, 64, 64, 64);
+      r.addColorStop(0, "rgba(255,255,255,0)"), r.addColorStop(0.62, "rgba(255,255,255,0.15)"), r.addColorStop(0.8, "rgba(255,255,255,0.9)"), r.addColorStop(1, "rgba(255,255,255,0)");
+      x.fillStyle = r, x.fillRect(0, 0, 128, 128);
+    } else {
+      const h = x.createLinearGradient(0, 0, 64, 0);
+      h.addColorStop(0, "rgba(255,255,255,0)"), h.addColorStop(0.5, "rgba(255,255,255,1)"), h.addColorStop(1, "rgba(255,255,255,0)");
+      x.fillStyle = h, x.fillRect(0, 0, 64, 256);
+      x.globalCompositeOperation = "destination-in";
+      const v = x.createLinearGradient(0, 256, 0, 0);
+      v.addColorStop(0, "rgba(0,0,0,1)"), v.addColorStop(0.15, "rgba(0,0,0,0.85)"), v.addColorStop(1, "rgba(0,0,0,0)");
+      x.fillStyle = v, x.fillRect(0, 0, 64, 256);
     }
-    B.box(0, H - 0.8, 0, w + 0.2, 1.6, 2.6, 0, st), B.box(0, H + 0.1, 0, w + 0.6, 0.3, 3, 0, dk);
-    const body = new zt(B.toGeometry(), new ae({ vertexColors: true, roughness: 0.9 }));
-    grp.add(body);
-    // Torfluegel (drehen sich beim Oeffnen)
-    const doors = [], dm = new ae({ vertexColors: true, roughness: 0.8 });
+    return new wn(cv);
+  }
+  function KL_bigNum(txt, col) {
+    const cv = document.createElement("canvas");
+    cv.width = cv.height = 256;
+    const x = cv.getContext("2d"), c = "rgb(" + col.map((v) => Math.round(v * 255)).join(",") + ")";
+    x.fillStyle = "#1b1208", x.beginPath(), x.arc(128, 128, 120, 0, 7), x.fill();
+    x.lineWidth = 14, x.strokeStyle = "#ffd25e", x.stroke();
+    x.lineWidth = 5, x.strokeStyle = c, x.beginPath(), x.arc(128, 128, 98, 0, 7), x.stroke();
+    x.fillStyle = c, x.textAlign = "center", x.textBaseline = "middle", x.font = "900 150px system-ui, sans-serif";
+    x.shadowColor = c, x.shadowBlur = 24, x.fillText(txt, 128, 138);
+    return new wn(cv);
+  }
+  function KL_gateMesh(g) {
+    const cf = KL_cfg().tor || {}, w = g.w, H = cf.hoehe || 11, grp = new pe(), B = new Ot(), E = new Ot();
+    const kc = KL_col(Math.max(g.von, g.nach)), st = [0.5, 0.47, 0.44], dk = [0.36, 0.33, 0.31], gold = [1, 0.78, 0.3];
+    const TW = 3.4, TD = 4, TH = H + 4, tx0 = w / 2 + TW / 2, AD = 3.4;
+    // zwei Tuerme mit Zinnen, Spitzdach in Klassenfarbe und leuchtender Kugel
     for (const s of [-1, 1]) {
-      // Gitterfluegel: man sieht durch das geschlossene Tor schon die naechste Welt
-      const piv = new pe(), D = new Ot(), dw = w / 2, dh = H - 1.6, ir = [0.16, 0.15, 0.15], gd = [0.72, 0.56, 0.2];
-      for (let x = 0.15; x < dw - 0.05; x += 0.42) D.box(-s * x, dh / 2, 0, 0.09, dh, 0.09, 0, ir), D.box(-s * x, dh + 0.12, 0, 0.16, 0.3, 0.16, 0, gd);
-      for (const y of [0.45, dh * 0.5, dh - 0.25]) D.box(-s * dw / 2, y, 0, dw - 0.05, 0.14, 0.16, 0, ir);
-      D.box(-s * (dw - 0.08), dh / 2, 0, 0.16, dh, 0.2, 0, ir);
+      const x = s * tx0;
+      B.box(x, 0.4, 0, TW + 0.8, 0.8, TD + 0.8, 0, dk), B.box(x, TH / 2, 0, TW, TH, TD, 0, st);
+      for (const y of [H * 0.35, H * 0.7]) B.box(x, y, 0, TW + 0.25, 0.35, TD + 0.25, 0, dk);
+      B.box(x, TH + 0.25, 0, TW + 0.7, 0.5, TD + 0.7, 0, dk);
+      for (const q of [-1, 1]) for (const r of [-1, 1]) B.box(x + q * (TW / 2), TH + 0.95, r * (TD / 2), 0.7, 0.9, 0.7, 0, st);
+      // Spitzdach (vier Dreiecke)
+      const y0 = TH + 0.5, y1 = TH + 5.2, a = TW / 2 + 0.35, d = TD / 2 + 0.35, top = [x, y1, 0], c = [[x - a, y0, -d], [x + a, y0, -d], [x + a, y0, d], [x - a, y0, d]];
+      for (let i = 0; i < 4; i++) E.tri(c[i], c[(i + 1) % 4], top, [0, 0], [1, 0], [0.5, 1], kc.map((v, j) => v * (0.75 + 0.25 * (i % 2))), [c[i][0] + c[(i + 1) % 4][0] - 2 * x, 1, c[i][2] + c[(i + 1) % 4][2]]);
+      E.box(x, y1 + 0.55, 0, 0.9, 0.9, 0.9, Math.PI / 4, [1, 0.95, 0.7], 1, false);
+      // Fackeln vorne und hinten
+      for (const r of [-1, 1]) B.box(x - s * 0.6, H * 0.55, r * (TD / 2 + 0.25), 0.25, 0.9, 0.25, 0, [0.25, 0.18, 0.1]);
+    }
+    // Torbogen mit Giebel
+    B.box(0, H - 1, 0, w + 0.4, 2, AD, 0, st), B.box(0, H + 0.15, 0, w + 1, 0.4, AD + 0.4, 0, dk);
+    for (let i = 0; i < 5; i++) B.box(0, H + 0.6 + i * 0.5, 0, w * (1 - i * 0.19), 0.5, AD - 0.4, 0, i % 2 ? st : dk);
+    E.box(0, H - 2.05, AD / 2 + 0.05, w + 0.2, 0.18, 0.1, 0, gold, 1, false), E.box(0, H - 2.05, -AD / 2 - 0.05, w + 0.2, 0.18, 0.1, 0, gold, 1, false);
+    grp.add(new zt(B.toGeometry(), new ae({ vertexColors: true, roughness: 0.85 })));
+    const em = new se({ vertexColors: true, fog: false });
+    grp.add(new zt(E.toGeometry(), em));
+    // Flammen (flackern)
+    const flames = [], fm = new se({ color: 16750640, transparent: true, opacity: 0.95, blending: Ee, depthWrite: false });
+    for (const s of [-1, 1]) for (const r of [-1, 1]) {
+      const F = new Ot();
+      F.box(0, 0.35, 0, 0.45, 0.7, 0.45, 0, [1, 1, 1], 1, false), F.box(0, 0.75, 0, 0.25, 0.4, 0.25, 0, [1, 1, 1], 1, false);
+      const f = new zt(F.toGeometry(), fm);
+      f.position.set(s * tx0 - s * 0.6, H * 0.55 + 0.45, r * (TD / 2 + 0.25)), grp.add(f), flames.push(f);
+    }
+    // Torfluegel (Gitter, drehen sich beim Oeffnen)
+    const doors = [], dm = new ae({ vertexColors: true, roughness: 0.6, metalness: 0.3 });
+    for (const s of [-1, 1]) {
+      const piv = new pe(), D = new Ot(), dw = w / 2, dh = H - 2.1, ir = [0.16, 0.15, 0.15], gd = [0.85, 0.65, 0.2];
+      for (let x = 0.2; x < dw - 0.05; x += 0.5) D.box(-s * x, dh / 2, 0, 0.12, dh, 0.12, 0, ir), D.box(-s * x, dh + 0.18, 0, 0.22, 0.4, 0.22, 0, gd);
+      for (const y of [0.5, dh * 0.33, dh * 0.66, dh - 0.3]) D.box(-s * dw / 2, y, 0, dw - 0.05, 0.18, 0.2, 0, ir);
+      D.box(-s * (dw - 0.1), dh / 2, 0, 0.22, dh, 0.26, 0, ir);
+      D.box(-s * dw * 0.5, dh * 0.5, 0, 0.9, 0.9, 0.3, Math.PI / 4, gd);
       piv.add(new zt(D.toGeometry(), dm)), piv.position.set(s * w / 2, 0, 0), grp.add(piv), doors.push({ piv, s });
     }
     // magischer Lichtschleier im geschlossenen Tor
     const cv = document.createElement("canvas");
     cv.width = 64, cv.height = 128;
     const cx = cv.getContext("2d"), gr = cx.createLinearGradient(0, 128, 0, 0);
-    gr.addColorStop(0, "rgba(255,215,94,0.55)"), gr.addColorStop(0.6, "rgba(150,200,255,0.25)"), gr.addColorStop(1, "rgba(150,200,255,0)"), cx.fillStyle = gr, cx.fillRect(0, 0, 64, 128);
-    for (let i = 0; i < 40; i++) cx.fillStyle = "rgba(255,255,255," + (0.2 + Math.random() * 0.5) + ")", cx.fillRect(Math.random() * 64, Math.random() * 128, 1.5, 1.5);
+    gr.addColorStop(0, "rgba(255,215,94,0.6)"), gr.addColorStop(0.6, "rgba(150,200,255,0.3)"), gr.addColorStop(1, "rgba(150,200,255,0)"), cx.fillStyle = gr, cx.fillRect(0, 0, 64, 128);
+    for (let i = 0; i < 50; i++) cx.fillStyle = "rgba(255,255,255," + (0.2 + Math.random() * 0.6) + ")", cx.fillRect(Math.random() * 64, Math.random() * 128, 1.5, 1.5);
     const ctex = new wn(cv);
     ctex.wrapS = ctex.wrapT = 1e3;
-    const CG = new Ot(), hw2 = w / 2 - 0.1, ch = H - 1.7;
+    const CG = new Ot(), hw2 = w / 2 - 0.1, ch = H - 2.2;
     for (const z of [-0.35, 0.35]) CG.quad([-hw2, 0, z], [hw2, 0, z], [hw2, ch, z], [-hw2, ch, z], [0, 0], [2, 0], [2, 1], [0, 1], [1, 1, 1], [0, 0, z > 0 ? 1 : -1]);
-    const cm = new se({ map: ctex, transparent: true, depthWrite: false, side: Ue, blending: Ee, opacity: 0.55 }), curtain = new zt(CG.toGeometry(), cm);
+    const cm = new se({ map: ctex, transparent: true, depthWrite: false, side: Ue, blending: Ee, opacity: 0.6, color: new Xt(kc[0], kc[1], kc[2]) }), curtain = new zt(CG.toGeometry(), cm);
     curtain.renderOrder = 7, grp.add(curtain), grp.userData.curtain = curtain, grp.userData.ctex = ctex;
     // Leuchten beim Oeffnen
     const GG = new Ot();
-    GG.quad([-w, 0, 0], [w, 0, 0], [w, H + 3, 0], [-w, H + 3, 0], [0, 0], [1, 0], [1, 1], [0, 1], [1, 1, 1], [0, 0, 1]);
+    GG.quad([-w, 0, 0], [w, 0, 0], [w, H + 4, 0], [-w, H + 4, 0], [0, 0], [1, 0], [1, 1], [0, 1], [1, 1, 1], [0, 0, 1]);
     const gm = new se({ map: ctex, transparent: true, depthWrite: false, side: Ue, blending: Ee, opacity: 0, color: 16767839 });
     const halo = new zt(GG.toGeometry(), gm);
     halo.renderOrder = 8, grp.add(halo), grp.userData.halo = halo, grp.userData.gm = gm;
-    // Schilder auf beiden Seiten: wohin fuehrt das Tor?
-    const nA = KL_side(g.c, g.t, g.bridge ? g.side : g.von), front = [g.von, g.nach];
+    // Lichtsaeule bis in den Himmel: man sieht das Tor schon von weitem
+    const bt = KL_glowTex("beam"), BG = new Ot(), BW = 2.6, BH = 90;
+    for (let i = 0; i < 3; i++) {
+      const a = i * Math.PI / 3, c = Math.cos(a) * BW, d = Math.sin(a) * BW;
+      BG.quad([-c, 0, -d], [c, 0, d], [c, BH, d], [-c, BH, -d], [0, 0], [1, 0], [1, 1], [0, 1], [1, 1, 1], [-d, 0, c]);
+    }
+    const bm = new se({ map: bt, transparent: true, depthWrite: false, side: Ue, blending: Ee, opacity: 0.5, fog: false, color: new Xt(kc[0], kc[1], kc[2]) }), beam = new zt(BG.toGeometry(), bm);
+    beam.renderOrder = 6, beam.frustumCulled = false, grp.add(beam);
+    // leuchtender Kreis am Boden auf beiden Seiten
+    const rt = KL_glowTex("ring"), RG = new Ot(), R = w * 0.75;
     for (const s of [1, -1]) {
-      // s = 1: Seite in Richtung nA (dort steht man in Klasse "von" bzw. "side") -> Ziel ist die andere Klasse
+      const z = s * (AD / 2 + R * 0.75);
+      RG.quad([-R, 0.08, z - R], [R, 0.08, z - R], [R, 0.08, z + R], [-R, 0.08, z + R], [0, 0], [1, 0], [1, 1], [0, 1], [1, 1, 1], [0, 1, 0]);
+    }
+    const rm = new se({ map: rt, transparent: true, depthWrite: false, side: Ue, blending: Ee, opacity: 0.7, color: new Xt(kc[0], kc[1], kc[2]) }), ring = new zt(RG.toGeometry(), rm);
+    ring.renderOrder = 5, grp.add(ring);
+    // schwebendes Klassen-Wappen ueber dem Tor (dreht sich)
+    const crest = new zt((() => {
+      const C = new Ot(), r = 2.7;
+      C.quad([-r, -r, 0], [r, -r, 0], [r, r, 0], [-r, r, 0], [0, 0], [1, 0], [1, 1], [0, 1], [1, 1, 1], [0, 0, 1]);
+      return C.toGeometry();
+    })(), new se({ map: KL_bigNum(String(Math.max(g.von, g.nach)), kc), transparent: true, side: Ue, fog: false }));
+    crest.position.set(0, H + 5.8, 0), crest.renderOrder = 9, grp.add(crest);
+    // Schilder auf beiden Seiten: wohin fuehrt das Tor?
+    const nA = KL_side(g.c, g.t, g.bridge ? g.side : g.von);
+    for (const s of [1, -1]) {
       const here = g.bridge ? g.side : g.von, there = g.bridge ? (g.side === g.von ? g.nach : g.von) : g.nach;
       const from = s === 1 ? here : there, to = s === 1 ? there : here;
       const tx = KL_label(["Klasse " + to, g.bridge ? "Brücke · Abschlussprüfung " + Math.min(from, to) : from < to ? "Abschlussprüfung Klasse " + from : "zurück"]);
-      const G = new Ot(), z0 = 1.32 * s, y0 = H - 1.5, y1 = H - 0.1, hw = w / 2 - 0.2;
+      const G = new Ot(), z0 = (AD / 2 + 0.03) * s, y0 = H - 1.9, y1 = H - 0.1, hw = w / 2 - 0.1;
       G.quad([-hw, y0, z0], [hw, y0, z0], [hw, y1, z0], [-hw, y1, z0], [s > 0 ? 0 : 1, 0], [s > 0 ? 1 : 0, 0], [s > 0 ? 1 : 0, 1], [s > 0 ? 0 : 1, 1], [1, 1, 1], [0, 0, s]);
-      const sg = new zt(G.toGeometry(), new se({ map: tx }));
-      grp.add(sg);
-      front.push(nA);
+      grp.add(new zt(G.toGeometry(), new se({ map: tx })));
     }
     // Ausrichtung: lokale x-Achse = Mauerrichtung, lokale +z zeigt in Richtung nA
     const th = Math.atan2(-g.t[1], g.t[0]);
     grp.rotation.y = th, grp.position.set(g.c[0], 0, g.c[1]);
     const lz = [Math.sin(th), Math.cos(th)];
     lz[0] * nA[0] + lz[1] * nA[1] < 0 && (grp.rotation.y = th + Math.PI);
-    grp.userData.doors = doors, grp.userData.ang = 0;
+    Object.assign(grp.userData, { doors, ang: 0, flames, bm, rm, crest, kc });
     return grp;
   }
   function KL_doors(g, dt) {
@@ -13250,10 +13363,18 @@ void main() {
     const want = g.open ? 1.55 : 0, u = g.mesh.userData;
     u.ang += Math.max(-dt * (u.glowT > 0 ? 0.5 : 1.4), Math.min(dt * (u.glowT > 0 ? 0.5 : 1.4), want - u.ang));
     for (const d of u.doors) d.piv.rotation.y = d.s * u.ang;
-    const t = performance.now() / 1e3;
+    const t = performance.now() / 1e3, ph = g.c[0] * 0.13;
     u.curtain && (u.curtain.visible = u.ang < 0.2, u.ctex.offset.set(Math.sin(t * 0.3) * 0.2, -t * 0.12));
     if (u.glowT > 0) u.glowT -= dt, u.gm.opacity = Math.min(1, u.glowT / 2) * (0.6 + 0.4 * Math.sin(t * 6));
     else u.gm && u.gm.opacity && (u.gm.opacity = 0);
+    // offen = goldene Saeule, zu = Klassenfarbe
+    const c = g.open || u.glowT > 0 ? [1, 0.82, 0.35] : u.kc;
+    u.bm && (u.bm.color.setRGB(c[0], c[1], c[2]), u.bm.opacity = 0.38 + 0.14 * Math.sin(t * 1.6 + ph), u.rm.opacity = 0.5 + 0.3 * Math.sin(t * 2.2 + ph), u.rm.color.setRGB(c[0], c[1], c[2]));
+    u.crest && (u.crest.rotation.y = t * 0.8, u.crest.position.y = (KL_cfg().tor && KL_cfg().tor.hoehe || 11) + 5.8 + Math.sin(t * 1.3 + ph) * 0.35);
+    for (let i = 0; u.flames && i < u.flames.length; i++) {
+      const f = u.flames[i], k = 0.8 + 0.25 * Math.sin(t * 13 + i * 2.1) + 0.1 * Math.sin(t * 29 + i);
+      f.scale.set(1, k, 1);
+    }
   }
   // Tor zur Klasse k leuchtet und oeffnet sich langsam (nach bestandener Pruefung)
   function KL_glow(k) {
@@ -13261,7 +13382,10 @@ void main() {
   }
   function KL_build() {
     KL.built = true;
-    KL_lines(), KL_mkGates(), KL_raster();
+    KL_lines();
+    const G = KL_grids(), keep = G.map((g) => g.blocked.slice());
+    KL.gates = [], KL_raster(), KL_comps(), G.forEach((g, i) => g.blocked.set(keep[i]));
+    KL_mkGates(), KL_raster(), KL.comp = null;
     const root = new pe();
     root.name = "klassen-zonen", root.add(KL_wallMesh());
     for (const g of KL.gates) g.mesh = KL_gateMesh(g), root.add(g.mesh);

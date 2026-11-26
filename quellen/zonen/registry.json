@@ -269,8 +269,8 @@
       "block": 0.95
     },
     "tor": {
-      "breite": 7,
-      "hoehe": 6.5
+      "breite": 10,
+      "hoehe": 11
     },
     "pruefung": {
       "note": "Abschlusspruefungen werden spaeter erstellt. Bis dahin: Tor zu (nur Admin bzw. Freischaltung durch den Admin)."
