@@ -114,6 +114,7 @@ exec(open(D + '/patch_natur.py', encoding='utf8').read())
 exec(open(D + '/patch_weg.py', encoding='utf8').read())
 exec(open(D + '/patch_haus.py', encoding='utf8').read())
 exec(open(D + '/patch_ui.py', encoding='utf8').read())
+exec(open(D + '/patch_klassen.py', encoding='utf8').read())
 open(D + '/game_mp.js', 'w', encoding='utf8').write(s)
 
 # ---------------- HTML zusammensetzen ----------------
@@ -136,6 +137,6 @@ if mini:
 # Schutz fuer den Update-Knopf: wird diese Datei als Update in eine laufende alte Version
 # geschrieben, darf der Rest der alten Datei nicht mehr starten (sonst laeuft das Spiel doppelt)
 UPD_GUARD = '<script>if(window.__upd&&document.readyState==="loading"){document.write(\'<plaintext style="display:none">\');}</script>\n'
-out = head + '<script>' + ZONE_SCRIPT + '</script>\n<script>' + NATUR_SCRIPT + '</script>\n<script>' + net + '</script>\n<script>' + game + '\n</script>\n' + UPD_GUARD + tail
+out = head + '<script>' + ZONE_SCRIPT + KLASSEN_SCRIPT + '</script>\n<script>' + NATUR_SCRIPT + '</script>\n<script>' + net + '</script>\n<script>' + game + '\n</script>\n' + UPD_GUARD + tail
 open(D + '/index.html', 'w', encoding='utf8').write(out)
 print('OK', n_ok, 'Patches,', len(out), 'Bytes')

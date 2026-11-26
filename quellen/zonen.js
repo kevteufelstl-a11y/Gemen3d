@@ -452,6 +452,11 @@
       requestAnimationFrame(tick);
     })();
     ZN.ready = true, setTimeout(ZN_apply, 2500);
+    try {
+      KL_init();
+    } catch (e) {
+      console.warn("Klassen-Zonen:", e);
+    }
     setInterval(ZN_check, 1500), ZN_check();
     window.__zones = { list: () => ZN_zones().map((z) => ({ id: z.id, name: z.name, status: z.status, allowed: !!z.allowed, built: !!z.o2, guards: z.guardCount || 0 })), apply: ZN_apply, inPoly: ZN_inPoly };
   }

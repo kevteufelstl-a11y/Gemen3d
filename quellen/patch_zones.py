@@ -14,7 +14,7 @@ for z in reg['zones']:
 ZONE_SCRIPT = 'window.GEMEN_ZONES=' + json.dumps(reg, ensure_ascii=False, separators=(',', ':')) + ';'
 
 # Modul einbauen (gleicher Gueltigkeitsbereich wie der Kartenbauer)
-rep('  async function Du(i, t, e) {', open(D + '/zonen.js', encoding='utf8').read() + '  async function Du(i, t, e) {', 'ZN-Einbau')
+rep('  async function Du(i, t, e) {', open(D + '/zonen.js', encoding='utf8').read() + open(D + '/klassen.js', encoding='utf8').read() + '  async function Du(i, t, e) {', 'ZN-Einbau')
 # Boden nur einmal (Zone 1 liefert die grosse Bodenplatte)
 rep('    {\n      let D = (o.bounds.x0 + o.bounds.x1) / 2, G = (o.bounds.z0 + o.bounds.z1) / 2, y = new Ke(4e3, 4e3);',
     '    if (!i.zoneId) {\n      let D = (o.bounds.x0 + o.bounds.x1) / 2, G = (o.bounds.z0 + o.bounds.z1) / 2, y = new Ke(4e3, 4e3);', 'ZN-Boden')

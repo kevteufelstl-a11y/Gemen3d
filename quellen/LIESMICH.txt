@@ -53,3 +53,23 @@ server/09_urkunden_schutz.sql: optionaler Schutz, dass Lerntage beim Speichern n
 ERWEITERUNG 19.11.: Aufzug kommt jetzt in der FIGUREN-AUSSTELLUNG an (13 m hoch, 12 Podeste, Figuren aus dem
 Charakter-System, Antippen -> Vorschau + "Mit dieser Figur spielen" über CH_select/CH_save). Von dort geht es in die
 bisherigen Hallen. Neue GLÜCKSHALLE östlich der Tageshalle: tägliche Karten + Glücksrad (nutzt rewardPick/RW_list).
+
+KLASSEN-ZONEN (26.11.2026, klassen.js, patch_klassen.py, zonen/registry.json -> "klassen", server/11_klassen_zonen.sql)
+- Zone 1 = Klasse 3 (immer offen). Zone 2 ist geteilt: Klasse 4 = Gemen-Sued, Klasse 5 = Neumuehle (Gesamtschule),
+  Klasse 6 = Aa-Wiesen. Polygone in Pixeln von zonen/z2/geo.json (registry -> klassen.zonen).
+- Die Monster-Waechterkette an Zone 2 ist entfernt (alte Werte unter z2.vorher_barrier). Zone 2 wird fuer alle gebaut.
+- Zwischen zwei Klassen steht eine niedrige Steinmauer. Sie ist im Lauf-Raster gesperrt (beide Raster: Zone 1 und Zone 2).
+- Tore (registry -> klassen.tore): t34 (3->4), t45 (4->5, Bruecke ueber Klasse 6), t56 (5->6). Die Tore werden automatisch
+  an eine begehbare Stelle der Mauer (Strasse) in der Naehe des Registry-Punkts gelegt.
+  Tor offen = beide Klassen frei. Zu = Knopf "Tor zu Klasse X" -> Hinweis "Abschlusspruefung kommt bald".
+  Spaeter: window.__klassenExam = ({gate, von, nach}) => {...} wird beim Antippen eines geschlossenen Tors aufgerufen.
+- Bruecke: Tor t45 auf der Seite von Klasse 4 bzw. t45b auf der Seite von Klasse 5 antippen -> Bruecke baut sich
+  Stueck fuer Stueck auf, Figur laeuft darueber, danach baut sie sich wieder ab. Spieler-Patch: x.script / x.y (patch_klassen.py).
+- Freischaltung: Server-Zonen k4, k5, k6 (status locked). Admin -> Eltern & Spieler -> Knopf "Klassen" beim Kind
+  (Aktionen zonePlayer, zoneGrant, zoneRevoke). Admin selbst darf ueberall hin.
+  Wer in einer gesperrten Klasse steht, wird zum Start gesetzt.
+- Neue Faecher (hinten an MILO_Q angehaengt, alte Fragen-IDs bleiben gleich): Psychologie (Klasse 3) und alle Faecher
+  der Klasse 5 (Kennzeichen "k": 5) aus ../fragen_klasse5.json. Neue Station: Klasse wird aus dem Ort bestimmt,
+  es werden nur die Faecher dieser Klasse angeboten (Klasse 4/6: noch keine eigenen Fragen -> alle Faecher).
+- Test im Browser: window.__klassen.info(), __klasseAt(x, z), __klassen.bridge("t45"),
+  window.__klTestAlle = true (alle Klassen frei, nur zum Testen).

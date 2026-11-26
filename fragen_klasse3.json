@@ -10881,7 +10881,1211 @@
      ]
     }
    ]
+  },
+  {
+   "name": "Psychologie",
+   "kategorien": [
+    {
+     "id": "gefuehle",
+     "name": "Meine Gefühle",
+     "anzahl": 20,
+     "fragen": [
+      {
+       "id": "psychologie-gefuehle-001",
+       "frage": "Welches Gefühl hat man oft, wenn etwas Unfaires passiert?",
+       "optionen": [
+        "Wut",
+        "Langeweile",
+        "Hunger",
+        "Müdigkeit"
+       ],
+       "richtig": 0,
+       "antwort": "Wut",
+       "erklaerung": "Wut ist ein normales Gefühl. Wichtig ist, was man damit macht."
+      },
+      {
+       "id": "psychologie-gefuehle-002",
+       "frage": "Ist es in Ordnung, wütend zu sein?",
+       "optionen": [
+        "Nein, Wut ist verboten.",
+        "Nur Erwachsene dürfen wütend sein.",
+        "Ja, und dann darf man Sachen kaputt machen.",
+        "Ja, alle Gefühle sind erlaubt – aber man darf niemandem wehtun."
+       ],
+       "richtig": 3,
+       "antwort": "Ja, alle Gefühle sind erlaubt – aber man darf niemandem wehtun.",
+       "erklaerung": "Gefühle sind erlaubt. Verhalten, das anderen schadet, nicht."
+      },
+      {
+       "id": "psychologie-gefuehle-003",
+       "frage": "Was hilft, wenn die Wut ganz groß wird?",
+       "optionen": [
+        "jemanden schubsen",
+        "Türen knallen",
+        "tief durchatmen und langsam bis zehn zählen",
+        "Sachen werfen"
+       ],
+       "richtig": 2,
+       "antwort": "tief durchatmen und langsam bis zehn zählen",
+       "erklaerung": "Atmen beruhigt den Körper. Danach kann man besser reden."
+      },
+      {
+       "id": "psychologie-gefuehle-004",
+       "frage": "Woran merkst du im Körper, dass du aufgeregt bist?",
+       "optionen": [
+        "Die Haare wachsen schneller.",
+        "Gar nicht.",
+        "Die Augen werden blau.",
+        "Herzklopfen und Kribbeln im Bauch"
+       ],
+       "richtig": 3,
+       "antwort": "Herzklopfen und Kribbeln im Bauch",
+       "erklaerung": "Gefühle spürt man auch im Körper."
+      },
+      {
+       "id": "psychologie-gefuehle-005",
+       "frage": "Du bist traurig. Was kann helfen?",
+       "optionen": [
+        "so tun, als wäre nichts",
+        "dich für immer verstecken",
+        "alles in dich hineinfressen",
+        "mit jemandem reden, dem du vertraust"
+       ],
+       "richtig": 3,
+       "antwort": "mit jemandem reden, dem du vertraust",
+       "erklaerung": "Geteilter Kummer ist oft nur noch halb so schwer."
+      },
+      {
+       "id": "psychologie-gefuehle-006",
+       "frage": "Dürfen Jungen weinen?",
+       "optionen": [
+        "Nur heimlich.",
+        "Nein, niemals.",
+        "Ja, Weinen ist für alle Menschen normal.",
+        "Nur Babys."
+       ],
+       "richtig": 2,
+       "antwort": "Ja, Weinen ist für alle Menschen normal.",
+       "erklaerung": "Weinen hilft dem Körper, Traurigkeit loszulassen."
+      },
+      {
+       "id": "psychologie-gefuehle-007",
+       "frage": "Was ist Angst?",
+       "optionen": [
+        "ein Gefühl, das nie wieder weggeht",
+        "ein Zeichen, dass man schwach ist",
+        "ein Gefühl, das uns vor Gefahr warnen will",
+        "etwas, das nur kleine Kinder haben"
+       ],
+       "richtig": 2,
+       "antwort": "ein Gefühl, das uns vor Gefahr warnen will",
+       "erklaerung": "Angst hat jeder. Darüber reden hilft."
+      },
+      {
+       "id": "psychologie-gefuehle-008",
+       "frage": "Du hast eine schlechte Note. Welcher Gedanke hilft dir weiter?",
+       "optionen": [
+        "„Ich kann daraus lernen und es nächstes Mal besser machen.“",
+        "„Ich bin dumm.“",
+        "„Ich lerne nie wieder.“",
+        "„Ich schaffe nie etwas.“"
+       ],
+       "richtig": 0,
+       "antwort": "„Ich kann daraus lernen und es nächstes Mal besser machen.“",
+       "erklaerung": "Eine Note sagt etwas über eine Arbeit, nicht über deinen Wert."
+      },
+      {
+       "id": "psychologie-gefuehle-009",
+       "frage": "Was bedeutet „enttäuscht“ sein?",
+       "optionen": [
+        "Man hatte sich etwas erhofft, und es ist nicht passiert.",
+        "Man ist sehr froh.",
+        "Man hat Hunger.",
+        "Man ist müde."
+       ],
+       "richtig": 0,
+       "antwort": "Man hatte sich etwas erhofft, und es ist nicht passiert.",
+       "erklaerung": "Enttäuschung tut weh und darf gefühlt werden."
+      },
+      {
+       "id": "psychologie-gefuehle-010",
+       "frage": "Was ist Eifersucht?",
+       "optionen": [
+        "Angst vor Spinnen",
+        "Freude über ein Geschenk",
+        "Langeweile",
+        "das Gefühl, dass jemand anderes mehr Aufmerksamkeit oder Liebe bekommt"
+       ],
+       "richtig": 3,
+       "antwort": "das Gefühl, dass jemand anderes mehr Aufmerksamkeit oder Liebe bekommt",
+       "erklaerung": "Eifersucht ist normal, besonders unter Geschwistern."
+      },
+      {
+       "id": "psychologie-gefuehle-011",
+       "frage": "Du bist eifersüchtig auf dein Geschwisterkind. Was hilft?",
+       "optionen": [
+        "den Eltern sagen, dass du dir mehr Zeit mit ihnen wünschst",
+        "das Geschwisterkind ärgern",
+        "gar nicht mehr reden",
+        "sein Spielzeug verstecken"
+       ],
+       "richtig": 0,
+       "antwort": "den Eltern sagen, dass du dir mehr Zeit mit ihnen wünschst",
+       "erklaerung": "Eltern können nur helfen, wenn sie wissen, was in dir los ist."
+      },
+      {
+       "id": "psychologie-gefuehle-012",
+       "frage": "Wie kannst du dich beruhigen, wenn alles zu viel ist?",
+       "optionen": [
+        "laut schreien",
+        "in eine ruhige Ecke gehen, atmen und etwas trinken",
+        "das Handy werfen",
+        "jemanden beleidigen"
+       ],
+       "richtig": 1,
+       "antwort": "in eine ruhige Ecke gehen, atmen und etwas trinken",
+       "erklaerung": "Eine kleine Pause hilft oft, wieder klar zu denken."
+      },
+      {
+       "id": "psychologie-gefuehle-013",
+       "frage": "Was ist ein „Gefühlsthermometer“?",
+       "optionen": [
+        "eine Skala, mit der man zeigt, wie stark ein Gefühl gerade ist",
+        "ein Wetterbericht",
+        "ein Spiel",
+        "ein Fieberthermometer"
+       ],
+       "richtig": 0,
+       "antwort": "eine Skala, mit der man zeigt, wie stark ein Gefühl gerade ist",
+       "erklaerung": "Zum Beispiel: Wut auf einer Skala von 1 bis 10."
+      },
+      {
+       "id": "psychologie-gefuehle-014",
+       "frage": "Du hast etwas falsch gemacht und schämst dich. Was ist gut?",
+       "optionen": [
+        "jemand anderem die Schuld geben",
+        "weglaufen",
+        "lügen",
+        "es zugeben und dich entschuldigen"
+       ],
+       "richtig": 3,
+       "antwort": "es zugeben und dich entschuldigen",
+       "erklaerung": "Fehler zugeben ist mutig."
+      },
+      {
+       "id": "psychologie-gefuehle-015",
+       "frage": "Kann man zwei Gefühle gleichzeitig haben, zum Beispiel Freude und Traurigkeit?",
+       "optionen": [
+        "Ja, das ist ganz normal.",
+        "Nein, nie.",
+        "Nur im Traum.",
+        "Nur Erwachsene."
+       ],
+       "richtig": 0,
+       "antwort": "Ja, das ist ganz normal.",
+       "erklaerung": "Gemischte Gefühle kennt jeder Mensch."
+      },
+      {
+       "id": "psychologie-gefuehle-016",
+       "frage": "Was hilft gegen Aufregung vor einem Vortrag?",
+       "optionen": [
+        "ganz schnell reden",
+        "gut üben und vorher ruhig atmen",
+        "gar nicht vorbereiten",
+        "sich krank stellen"
+       ],
+       "richtig": 1,
+       "antwort": "gut üben und vorher ruhig atmen",
+       "erklaerung": "Übung gibt Sicherheit."
+      },
+      {
+       "id": "psychologie-gefuehle-017",
+       "frage": "Was ist gesunder Stolz?",
+       "optionen": [
+        "Ärger",
+        "Angst",
+        "Freude über etwas, das man selbst geschafft hat",
+        "Langeweile"
+       ],
+       "richtig": 2,
+       "antwort": "Freude über etwas, das man selbst geschafft hat",
+       "erklaerung": "Du darfst stolz auf dich sein."
+      },
+      {
+       "id": "psychologie-gefuehle-018",
+       "frage": "Was kannst du tun, wenn dich etwas lange belastet?",
+       "optionen": [
+        "so tun, als sei alles gut",
+        "niemandem mehr vertrauen",
+        "es für immer geheim halten",
+        "einer Vertrauensperson davon erzählen"
+       ],
+       "richtig": 3,
+       "antwort": "einer Vertrauensperson davon erzählen",
+       "erklaerung": "Vertrauenspersonen sind z. B. Eltern, Großeltern, Lehrkräfte oder die Schulsozialarbeit."
+      },
+      {
+       "id": "psychologie-gefuehle-019",
+       "frage": "Wie heißt die kostenlose Nummer gegen Kummer für Kinder?",
+       "optionen": [
+        "115",
+        "112",
+        "110",
+        "116 111"
+       ],
+       "richtig": 3,
+       "antwort": "116 111",
+       "erklaerung": "Dort kannst du anonym und kostenlos mit jemandem reden."
+      },
+      {
+       "id": "psychologie-gefuehle-020",
+       "frage": "Ist man ein schlechter Mensch, wenn man einen schlechten Tag hat?",
+       "optionen": [
+        "Nur montags.",
+        "Ja, für immer.",
+        "Ja.",
+        "Nein, jeder hat mal schlechte Tage."
+       ],
+       "richtig": 3,
+       "antwort": "Nein, jeder hat mal schlechte Tage.",
+       "erklaerung": "Morgen ist ein neuer Tag."
+      }
+     ]
+    },
+    {
+     "id": "empathie",
+     "name": "Auf die Gefühle anderer achten",
+     "anzahl": 16,
+     "fragen": [
+      {
+       "id": "psychologie-empathie-001",
+       "frage": "Was bedeutet Empathie?",
+       "optionen": [
+        "sehr schnell rennen",
+        "gut rechnen",
+        "immer gewinnen",
+        "sich in andere hineinfühlen können"
+       ],
+       "richtig": 3,
+       "antwort": "sich in andere hineinfühlen können",
+       "erklaerung": "Empathie heißt: spüren, wie es dem anderen geht."
+      },
+      {
+       "id": "psychologie-empathie-002",
+       "frage": "Ein Kind sitzt in der Pause allein und schaut traurig. Was kannst du tun?",
+       "optionen": [
+        "dich mit anderen über es lustig machen",
+        "wegschauen",
+        "lachen",
+        "hingehen und fragen, ob es mitspielen möchte"
+       ],
+       "richtig": 3,
+       "antwort": "hingehen und fragen, ob es mitspielen möchte",
+       "erklaerung": "Eine kleine Frage kann für jemanden den ganzen Tag verändern."
+      },
+      {
+       "id": "psychologie-empathie-003",
+       "frage": "Woran erkennst du, dass jemand traurig ist?",
+       "optionen": [
+        "hängende Schultern, leise Stimme oder Tränen",
+        "lautes Lachen",
+        "Pfeifen",
+        "Hüpfen"
+       ],
+       "richtig": 0,
+       "antwort": "hängende Schultern, leise Stimme oder Tränen",
+       "erklaerung": "Körpersprache verrät viel über Gefühle."
+      },
+      {
+       "id": "psychologie-empathie-004",
+       "frage": "Dein Freund hat verloren und ist enttäuscht. Was sagst du?",
+       "optionen": [
+        "„Du bist ein Verlierer.“",
+        "„Ich hab gewonnen, haha!“",
+        "„Stell dich nicht so an.“",
+        "„Das ist echt blöd gelaufen. Nächstes Mal klappt es vielleicht.“"
+       ],
+       "richtig": 3,
+       "antwort": "„Das ist echt blöd gelaufen. Nächstes Mal klappt es vielleicht.“",
+       "erklaerung": "Trösten zeigt, dass dir der andere wichtig ist."
+      },
+      {
+       "id": "psychologie-empathie-005",
+       "frage": "Mama kommt sehr müde von der Arbeit. Was ist eine nette Idee?",
+       "optionen": [
+        "einen Streit anfangen",
+        "ungefragt helfen, z. B. den Tisch decken",
+        "sofort um Süßigkeiten betteln",
+        "laut toben"
+       ],
+       "richtig": 1,
+       "antwort": "ungefragt helfen, z. B. den Tisch decken",
+       "erklaerung": "Kleine Hilfen zeigen, dass du an andere denkst."
+      },
+      {
+       "id": "psychologie-empathie-006",
+       "frage": "Was ist ein „Ich-Satz“?",
+       "optionen": [
+        "„Ihr seid alle gemein.“",
+        "„Du bist doof!“",
+        "„Immer machst du …“",
+        "„Ich bin traurig, weil …“ – man sagt, wie es einem selbst geht"
+       ],
+       "richtig": 3,
+       "antwort": "„Ich bin traurig, weil …“ – man sagt, wie es einem selbst geht",
+       "erklaerung": "Ich-Sätze greifen niemanden an und werden besser verstanden."
+      },
+      {
+       "id": "psychologie-empathie-007",
+       "frage": "Jemand erzählt dir etwas Trauriges. Was ist gutes Zuhören?",
+       "optionen": [
+        "gleich von dir selbst erzählen",
+        "lachen",
+        "zuhören, nicht unterbrechen und nachfragen",
+        "aufs Handy schauen"
+       ],
+       "richtig": 2,
+       "antwort": "zuhören, nicht unterbrechen und nachfragen",
+       "erklaerung": "Wer zuhört, zeigt: Du bist mir wichtig."
+      },
+      {
+       "id": "psychologie-empathie-008",
+       "frage": "Warum reagieren Menschen auf dasselbe unterschiedlich?",
+       "optionen": [
+        "Weil manche falsch fühlen",
+        "Weil sie lügen",
+        "Jeder fühlt und erlebt Dinge anders.",
+        "Weil es Zufall ist"
+       ],
+       "richtig": 2,
+       "antwort": "Jeder fühlt und erlebt Dinge anders.",
+       "erklaerung": "Es gibt kein falsches Gefühl."
+      },
+      {
+       "id": "psychologie-empathie-009",
+       "frage": "Deine kleine Schwester weint, weil ihr Turm umgefallen ist. Was ist richtig?",
+       "optionen": [
+        "sie auslachen",
+        "sie ignorieren",
+        "Für sie ist es gerade schlimm – trösten hilft.",
+        "sagen, dass das albern ist"
+       ],
+       "richtig": 2,
+       "antwort": "Für sie ist es gerade schlimm – trösten hilft.",
+       "erklaerung": "Was für dich klein ist, kann für andere groß sein."
+      },
+      {
+       "id": "psychologie-empathie-010",
+       "frage": "Was bedeutet „Rücksicht nehmen“?",
+       "optionen": [
+        "nach hinten schauen",
+        "immer der Erste sein",
+        "nur an sich denken",
+        "auf andere achten, z. B. leise sein, wenn jemand schläft"
+       ],
+       "richtig": 3,
+       "antwort": "auf andere achten, z. B. leise sein, wenn jemand schläft",
+       "erklaerung": "Rücksicht macht das Zusammenleben leichter."
+      },
+      {
+       "id": "psychologie-empathie-011",
+       "frage": "Ein neues Kind kommt in die Klasse. Was hilft ihm?",
+       "optionen": [
+        "es anstarren",
+        "über es tuscheln",
+        "es ignorieren",
+        "es begrüßen und ihm die Schule zeigen"
+       ],
+       "richtig": 3,
+       "antwort": "es begrüßen und ihm die Schule zeigen",
+       "erklaerung": "Neu sein ist schwer. Freundlichkeit hilft sehr."
+      },
+      {
+       "id": "psychologie-empathie-012",
+       "frage": "Du hast jemanden aus Versehen verletzt. Was tust du?",
+       "optionen": [
+        "so tun, als wäre nichts",
+        "dich entschuldigen und fragen, ob alles okay ist",
+        "weglaufen",
+        "sagen, er sei selbst schuld"
+       ],
+       "richtig": 1,
+       "antwort": "dich entschuldigen und fragen, ob alles okay ist",
+       "erklaerung": "Auch ohne Absicht ist eine Entschuldigung wichtig."
+      },
+      {
+       "id": "psychologie-empathie-013",
+       "frage": "Was ist eine echte Entschuldigung?",
+       "optionen": [
+        "gar nichts sagen",
+        "„Tschuldigung“ sagen und lachen",
+        "„Es tut mir leid, dass ich dich geschubst habe. Ich mache das nicht wieder.“",
+        "„Sorry, aber du warst selbst schuld.“"
+       ],
+       "richtig": 2,
+       "antwort": "„Es tut mir leid, dass ich dich geschubst habe. Ich mache das nicht wieder.“",
+       "erklaerung": "Eine echte Entschuldigung nennt, was falsch war."
+      },
+      {
+       "id": "psychologie-empathie-014",
+       "frage": "Ein Freund will gerade nicht mitspielen. Was tust du?",
+       "optionen": [
+        "ihn beleidigen",
+        "fragen, was los ist, und seine Entscheidung respektieren",
+        "ihn zwingen",
+        "nie wieder mit ihm reden"
+       ],
+       "richtig": 1,
+       "antwort": "fragen, was los ist, und seine Entscheidung respektieren",
+       "erklaerung": "Jeder darf mal Nein sagen."
+      },
+      {
+       "id": "psychologie-empathie-015",
+       "frage": "Was bedeutet „Nein heißt Nein“?",
+       "optionen": [
+        "Nein heißt vielleicht.",
+        "Wenn jemand Nein sagt, hört man auf – z. B. beim Kitzeln oder Raufen.",
+        "Nur Erwachsene dürfen Nein sagen.",
+        "Nein gilt nur in der Schule."
+       ],
+       "richtig": 1,
+       "antwort": "Wenn jemand Nein sagt, hört man auf – z. B. beim Kitzeln oder Raufen.",
+       "erklaerung": "Das gilt für alle – auch für dich, wenn du Nein sagst."
+      },
+      {
+       "id": "psychologie-empathie-016",
+       "frage": "Oma freut sich über einen Anruf von dir. Warum?",
+       "optionen": [
+        "weil sie Geld bekommt",
+        "weil es nichts kostet",
+        "weil es Pflicht ist",
+        "Weil Zeit und Aufmerksamkeit Menschen glücklich machen"
+       ],
+       "richtig": 3,
+       "antwort": "Weil Zeit und Aufmerksamkeit Menschen glücklich machen",
+       "erklaerung": "Zeit ist eines der schönsten Geschenke."
+      }
+     ]
+    },
+    {
+     "id": "patchwork",
+     "name": "Patchwork-Familie und Stiefpapa",
+     "anzahl": 14,
+     "fragen": [
+      {
+       "id": "psychologie-patchwork-001",
+       "frage": "Was ist eine Patchwork-Familie?",
+       "optionen": [
+        "eine Familie im Urlaub",
+        "eine Familie, in der Kinder aus früheren Beziehungen mit einem neuen Partner zusammenleben",
+        "eine Familie ohne Kinder",
+        "eine Familie, die gern näht"
+       ],
+       "richtig": 1,
+       "antwort": "eine Familie, in der Kinder aus früheren Beziehungen mit einem neuen Partner zusammenleben",
+       "erklaerung": "Patchwork-Familien sind heute ganz normal."
+      },
+      {
+       "id": "psychologie-patchwork-002",
+       "frage": "Was ist ein Stiefvater?",
+       "optionen": [
+        "der Partner oder Ehemann der Mutter, der nicht der leibliche Vater ist",
+        "der Onkel",
+        "der Nachbar",
+        "der Opa"
+       ],
+       "richtig": 0,
+       "antwort": "der Partner oder Ehemann der Mutter, der nicht der leibliche Vater ist",
+       "erklaerung": "Ein Stiefvater lebt mit dir und deiner Mama zusammen."
+      },
+      {
+       "id": "psychologie-patchwork-003",
+       "frage": "Kann ein Stiefvater für ein Kind wichtig werden?",
+       "optionen": [
+        "Nur, wenn er reich ist.",
+        "Ja, er kann ein wichtiger Mensch werden, der sich kümmert.",
+        "Nur am Wochenende.",
+        "Nein, niemals."
+       ],
+       "richtig": 1,
+       "antwort": "Ja, er kann ein wichtiger Mensch werden, der sich kümmert.",
+       "erklaerung": "Familie entsteht auch durch Zeit und Fürsorge."
+      },
+      {
+       "id": "psychologie-patchwork-004",
+       "frage": "Muss man den Stiefvater sofort lieb haben?",
+       "optionen": [
+        "Nein, Vertrauen darf langsam wachsen.",
+        "Nein, man darf ihn nie lieb haben.",
+        "Nur, wenn Mama es sagt.",
+        "Ja, sofort."
+       ],
+       "richtig": 0,
+       "antwort": "Nein, Vertrauen darf langsam wachsen.",
+       "erklaerung": "Gefühle brauchen Zeit – das ist in Ordnung."
+      },
+      {
+       "id": "psychologie-patchwork-005",
+       "frage": "Wie nennt man den Stiefvater?",
+       "optionen": [
+        "Nur mit dem Nachnamen.",
+        "Immer „Papa“, das ist Pflicht.",
+        "So, wie es sich für alle gut anfühlt – das kann man gemeinsam besprechen.",
+        "Gar nicht."
+       ],
+       "richtig": 2,
+       "antwort": "So, wie es sich für alle gut anfühlt – das kann man gemeinsam besprechen.",
+       "erklaerung": "Viele Kinder nennen ihn beim Vornamen, andere sagen auch Papa."
+      },
+      {
+       "id": "psychologie-patchwork-006",
+       "frage": "Darf man den leiblichen Papa und den Stiefpapa gleichzeitig mögen?",
+       "optionen": [
+        "Ja, im Herzen ist Platz für beide.",
+        "Nein, man muss sich entscheiden.",
+        "Man darf nur einen mögen.",
+        "Das ist verboten."
+       ],
+       "richtig": 0,
+       "antwort": "Ja, im Herzen ist Platz für beide.",
+       "erklaerung": "Liebe wird nicht weniger, wenn man sie teilt."
+      },
+      {
+       "id": "psychologie-patchwork-007",
+       "frage": "Gelten die Regeln zu Hause auch, wenn der Stiefpapa sie sagt?",
+       "optionen": [
+        "Regeln gelten nie.",
+        "Nur die leibliche Familie zählt.",
+        "Ja, die Erwachsenen im Haus machen die Regeln zusammen.",
+        "Nein, nur Mama darf Regeln machen."
+       ],
+       "richtig": 2,
+       "antwort": "Ja, die Erwachsenen im Haus machen die Regeln zusammen.",
+       "erklaerung": "Mama und Stiefpapa sind ein Team."
+      },
+      {
+       "id": "psychologie-patchwork-008",
+       "frage": "Du findest eine Regel vom Stiefpapa unfair. Was tust du?",
+       "optionen": [
+        "Mama gegen ihn aufhetzen",
+        "ruhig sagen, warum, und gemeinsam darüber reden",
+        "heimlich dagegen verstoßen",
+        "„Du bist nicht mein Papa!“ schreien"
+       ],
+       "richtig": 1,
+       "antwort": "ruhig sagen, warum, und gemeinsam darüber reden",
+       "erklaerung": "Böse Sätze tun weh. Über Regeln kann man reden."
+      },
+      {
+       "id": "psychologie-patchwork-009",
+       "frage": "Was sind Halbgeschwister?",
+       "optionen": [
+        "Kinder, die halb so groß sind",
+        "Kinder, die einen gemeinsamen Elternteil haben",
+        "Kinder, die gar nicht verwandt sind",
+        "Kinder, die nur halb zusammen wohnen"
+       ],
+       "richtig": 1,
+       "antwort": "Kinder, die einen gemeinsamen Elternteil haben",
+       "erklaerung": "Halbgeschwister sind echte Geschwister."
+      },
+      {
+       "id": "psychologie-patchwork-010",
+       "frage": "In der Patchwork-Familie kommt ein Baby. Was stimmt?",
+       "optionen": [
+        "Du musst ausziehen.",
+        "Du darfst nicht mehr spielen.",
+        "Du bist jetzt unwichtig.",
+        "Die Eltern haben dich genauso lieb wie vorher."
+       ],
+       "richtig": 3,
+       "antwort": "Die Eltern haben dich genauso lieb wie vorher.",
+       "erklaerung": "Ein Baby braucht viel Zeit – aber die Liebe zu dir bleibt."
+      },
+      {
+       "id": "psychologie-patchwork-011",
+       "frage": "Was hilft, wenn in der neuen Familie noch alles ungewohnt ist?",
+       "optionen": [
+        "streiten",
+        "Zeit, Geduld und gemeinsame Erlebnisse",
+        "weglaufen",
+        "schweigen"
+       ],
+       "richtig": 1,
+       "antwort": "Zeit, Geduld und gemeinsame Erlebnisse",
+       "erklaerung": "Gemeinsame Erlebnisse machen eine Familie stark."
+      },
+      {
+       "id": "psychologie-patchwork-012",
+       "frage": "Was ist ein Familienrat?",
+       "optionen": [
+        "eine Party",
+        "ein Gericht",
+        "ein Treffen, bei dem alle mitreden und gemeinsam Lösungen suchen",
+        "eine Fernsehsendung"
+       ],
+       "richtig": 2,
+       "antwort": "ein Treffen, bei dem alle mitreden und gemeinsam Lösungen suchen",
+       "erklaerung": "Im Familienrat wird jeder gehört – auch Kinder."
+      },
+      {
+       "id": "psychologie-patchwork-013",
+       "frage": "Wenn sich Eltern trennen – wessen Schuld ist das?",
+       "optionen": [
+        "die des Kindes",
+        "die der Lehrkräfte",
+        "die des Haustiers",
+        "Niemals die Schuld der Kinder"
+       ],
+       "richtig": 3,
+       "antwort": "Niemals die Schuld der Kinder",
+       "erklaerung": "Trennungen sind Sache der Erwachsenen."
+      },
+      {
+       "id": "psychologie-patchwork-014",
+       "frage": "Du möchtest Zeit nur mit Mama haben. Ist das okay?",
+       "optionen": [
+        "Nein, das ist gemein.",
+        "Ja, das darfst du dir wünschen und sagen.",
+        "Nur heimlich.",
+        "Nur einmal im Jahr."
+       ],
+       "richtig": 1,
+       "antwort": "Ja, das darfst du dir wünschen und sagen.",
+       "erklaerung": "Auch Zeit zu zweit ist in Patchwork-Familien wichtig."
+      }
+     ]
+    },
+    {
+     "id": "papa",
+     "name": "Wenn Papa woanders wohnt",
+     "anzahl": 12,
+     "fragen": [
+      {
+       "id": "psychologie-papa-001",
+       "frage": "Papa wohnt woanders. Darfst du ihn trotzdem lieb haben?",
+       "optionen": [
+        "Ja, natürlich.",
+        "Nein.",
+        "Nur heimlich.",
+        "Nur, wenn er Geschenke mitbringt."
+       ],
+       "richtig": 0,
+       "antwort": "Ja, natürlich.",
+       "erklaerung": "Ein Kind darf beide Eltern lieb haben."
+      },
+      {
+       "id": "psychologie-papa-002",
+       "frage": "Papa hat versprochen, dich abzuholen, kommt aber nicht. Was darfst du fühlen?",
+       "optionen": [
+        "nur Freude",
+        "gar nichts",
+        "nur Schuld",
+        "Traurigkeit, Enttäuschung oder Wut – alles ist erlaubt"
+       ],
+       "richtig": 3,
+       "antwort": "Traurigkeit, Enttäuschung oder Wut – alles ist erlaubt",
+       "erklaerung": "Deine Gefühle sind richtig, so wie sie sind."
+      },
+      {
+       "id": "psychologie-papa-003",
+       "frage": "Wessen Schuld ist es, wenn ein Erwachsener sein Versprechen nicht hält?",
+       "optionen": [
+        "Darüber darf man nicht nachdenken.",
+        "Das ist die Schuld des Kindes.",
+        "Das ist die Schuld der Geschwister.",
+        "Das liegt beim Erwachsenen, nicht beim Kind."
+       ],
+       "richtig": 3,
+       "antwort": "Das liegt beim Erwachsenen, nicht beim Kind.",
+       "erklaerung": "Du bist nicht schuld, wenn Erwachsene etwas nicht schaffen."
+      },
+      {
+       "id": "psychologie-papa-004",
+       "frage": "Kann man jemanden lieb haben und trotzdem von ihm enttäuscht sein?",
+       "optionen": [
+        "Nur bei Haustieren.",
+        "Ja, beides geht gleichzeitig.",
+        "Nur bei Freunden.",
+        "Nein, das geht nicht."
+       ],
+       "richtig": 1,
+       "antwort": "Ja, beides geht gleichzeitig.",
+       "erklaerung": "Liebe und Enttäuschung können nebeneinander da sein."
+      },
+      {
+       "id": "psychologie-papa-005",
+       "frage": "Papa redet viel von sich und fragt wenig nach dir. Was kannst du tun?",
+       "optionen": [
+        "ihm sagen, was dir wichtig ist, und mit einer Vertrauensperson reden, wenn es dich traurig macht",
+        "nie wieder etwas erzählen",
+        "denken, dass du unwichtig bist",
+        "dich ganz zurückziehen"
+       ],
+       "richtig": 0,
+       "antwort": "ihm sagen, was dir wichtig ist, und mit einer Vertrauensperson reden, wenn es dich traurig macht",
+       "erklaerung": "Du bist wichtig – auch wenn es sich manchmal anders anfühlt."
+      },
+      {
+       "id": "psychologie-papa-006",
+       "frage": "Ein Elternteil redet schlecht über den anderen. Was ist wichtig zu wissen?",
+       "optionen": [
+        "Du musst dich nicht für eine Seite entscheiden.",
+        "Du musst es weitererzählen.",
+        "Du musst den anderen jetzt auch doof finden.",
+        "Du musst zustimmen."
+       ],
+       "richtig": 0,
+       "antwort": "Du musst dich nicht für eine Seite entscheiden.",
+       "erklaerung": "Streit zwischen Erwachsenen ist nicht deine Aufgabe."
+      },
+      {
+       "id": "psychologie-papa-007",
+       "frage": "Du sollst zwischen Mama und Papa Nachrichten überbringen. Was stimmt?",
+       "optionen": [
+        "Erwachsene sollen Dinge direkt miteinander klären – du bist kein Bote.",
+        "Du musst für sie lügen.",
+        "Du musst alles weitersagen.",
+        "Du musst Geheimnisse sammeln."
+       ],
+       "richtig": 0,
+       "antwort": "Erwachsene sollen Dinge direkt miteinander klären – du bist kein Bote.",
+       "erklaerung": "Du darfst sagen: „Bitte klärt das selbst.“"
+      },
+      {
+       "id": "psychologie-papa-008",
+       "frage": "Du bewunderst Papa sehr. Ist das okay?",
+       "optionen": [
+        "Nur, wenn alle zustimmen.",
+        "Ja. Du darfst ihn bewundern und trotzdem selbst entscheiden, was du richtig findest.",
+        "Nur, wenn er perfekt ist.",
+        "Nein, das ist verboten."
+       ],
+       "richtig": 1,
+       "antwort": "Ja. Du darfst ihn bewundern und trotzdem selbst entscheiden, was du richtig findest.",
+       "erklaerung": "Du darfst eigene Gedanken haben – auch über Menschen, die du liebst."
+      },
+      {
+       "id": "psychologie-papa-009",
+       "frage": "Was bedeutet: „Niemand ist perfekt – auch Eltern nicht“?",
+       "optionen": [
+        "Eltern machen nie Fehler.",
+        "Wer Fehler macht, ist böse.",
+        "Auch Eltern machen Fehler, und man kann sie trotzdem lieb haben.",
+        "Kinder sind an allen Fehlern schuld."
+       ],
+       "richtig": 2,
+       "antwort": "Auch Eltern machen Fehler, und man kann sie trotzdem lieb haben.",
+       "erklaerung": "Fehler gehören zum Menschsein dazu."
+      },
+      {
+       "id": "psychologie-papa-010",
+       "frage": "Nach dem Besuch bei Papa bist du oft durcheinander. Was hilft?",
+       "optionen": [
+        "sofort fröhlich tun",
+        "alles in dich hineinfressen",
+        "darüber reden und dir Zeit zum Ankommen lassen",
+        "allen die Schuld geben"
+       ],
+       "richtig": 2,
+       "antwort": "darüber reden und dir Zeit zum Ankommen lassen",
+       "erklaerung": "Der Wechsel zwischen zwei Zuhause ist anstrengend – das ist normal."
+      },
+      {
+       "id": "psychologie-papa-011",
+       "frage": "Darfst du zu Hause erzählen, dass es bei Papa schön war?",
+       "optionen": [
+        "Nein, das ist verboten.",
+        "Nur, wenn niemand zuhört.",
+        "Ja, du darfst dich über schöne Zeiten freuen und davon erzählen.",
+        "Nur ganz leise."
+       ],
+       "richtig": 2,
+       "antwort": "Ja, du darfst dich über schöne Zeiten freuen und davon erzählen.",
+       "erklaerung": "Schöne Erlebnisse darfst du teilen."
+      },
+      {
+       "id": "psychologie-papa-012",
+       "frage": "Du machst dir Sorgen wegen Papa. Wem kannst du das sagen?",
+       "optionen": [
+        "Mama, dem Stiefpapa, Oma oder Opa, einer Lehrkraft oder der Schulsozialarbeit",
+        "Fremden im Internet",
+        "niemandem",
+        "nur dem Haustier"
+       ],
+       "richtig": 0,
+       "antwort": "Mama, dem Stiefpapa, Oma oder Opa, einer Lehrkraft oder der Schulsozialarbeit",
+       "erklaerung": "Mit Sorgen musst du nicht allein bleiben."
+      }
+     ]
+    },
+    {
+     "id": "haushalt",
+     "name": "Pflichten im Haushalt",
+     "anzahl": 19,
+     "fragen": [
+      {
+       "id": "psychologie-haushalt-001",
+       "frage": "Warum helfen Kinder im Haushalt mit?",
+       "optionen": [
+        "nur als Strafe",
+        "Weil alle in der Familie zusammen wohnen und gemeinsam anpacken",
+        "nur für Geld",
+        "weil die Eltern faul sind"
+       ],
+       "richtig": 1,
+       "antwort": "Weil alle in der Familie zusammen wohnen und gemeinsam anpacken",
+       "erklaerung": "Ein Zuhause ist Teamarbeit."
+      },
+      {
+       "id": "psychologie-haushalt-002",
+       "frage": "Welche Aufgabe kann ein Schulkind gut übernehmen?",
+       "optionen": [
+        "Stromkabel verlegen",
+        "das eigene Zimmer aufräumen",
+        "das Auto reparieren",
+        "die Steuererklärung machen"
+       ],
+       "richtig": 1,
+       "antwort": "das eigene Zimmer aufräumen",
+       "erklaerung": "Aufgaben sollen zum Alter passen."
+      },
+      {
+       "id": "psychologie-haushalt-003",
+       "frage": "Was gehört nach dem Essen zu deinen Aufgaben?",
+       "optionen": [
+        "den Tisch dreckig lassen",
+        "sofort zum Handy rennen",
+        "alles stehen lassen",
+        "den eigenen Teller abräumen"
+       ],
+       "richtig": 3,
+       "antwort": "den eigenen Teller abräumen",
+       "erklaerung": "Wenn jeder seinen Teller wegräumt, geht es schnell."
+      },
+      {
+       "id": "psychologie-haushalt-004",
+       "frage": "Was machst du mit schmutziger Wäsche?",
+       "optionen": [
+        "auf den Boden werfen",
+        "unters Bett schieben",
+        "in den Wäschekorb legen",
+        "in den Schrank stopfen"
+       ],
+       "richtig": 2,
+       "antwort": "in den Wäschekorb legen",
+       "erklaerung": "So kann sie gewaschen werden."
+      },
+      {
+       "id": "psychologie-haushalt-005",
+       "frage": "Was gehört in die gelbe Tonne oder den gelben Sack?",
+       "optionen": [
+        "Verpackungen aus Plastik und Metall",
+        "Glasflaschen",
+        "Essensreste",
+        "Zeitungen"
+       ],
+       "richtig": 0,
+       "antwort": "Verpackungen aus Plastik und Metall",
+       "erklaerung": "Glas kommt in den Glascontainer."
+      },
+      {
+       "id": "psychologie-haushalt-006",
+       "frage": "Was gehört in die Biotonne?",
+       "optionen": [
+        "Batterien",
+        "Obst- und Gemüsereste",
+        "Plastiktüten",
+        "Glas"
+       ],
+       "richtig": 1,
+       "antwort": "Obst- und Gemüsereste",
+       "erklaerung": "Aus Bioabfall wird Kompost."
+      },
+      {
+       "id": "psychologie-haushalt-007",
+       "frage": "Was gehört in die Papiertonne?",
+       "optionen": [
+        "Joghurtbecher",
+        "Essensreste",
+        "Zeitungen und Kartons",
+        "Batterien"
+       ],
+       "richtig": 2,
+       "antwort": "Zeitungen und Kartons",
+       "erklaerung": "Papier kann man wiederverwerten."
+      },
+      {
+       "id": "psychologie-haushalt-008",
+       "frage": "Wohin gehören alte Batterien?",
+       "optionen": [
+        "in den Garten",
+        "in die Biotonne",
+        "in eine Batterie-Sammelbox",
+        "in den Restmüll"
+       ],
+       "richtig": 2,
+       "antwort": "in eine Batterie-Sammelbox",
+       "erklaerung": "Batterien enthalten giftige Stoffe."
+      },
+      {
+       "id": "psychologie-haushalt-009",
+       "frage": "Ihr habt ein Haustier. Wer kümmert sich darum?",
+       "optionen": [
+        "niemand",
+        "Du hilfst regelmäßig mit, z. B. beim Füttern oder Gassigehen.",
+        "nur die Eltern",
+        "nur an Geburtstagen"
+       ],
+       "richtig": 1,
+       "antwort": "Du hilfst regelmäßig mit, z. B. beim Füttern oder Gassigehen.",
+       "erklaerung": "Ein Haustier braucht jeden Tag Pflege."
+      },
+      {
+       "id": "psychologie-haushalt-010",
+       "frage": "Was ist ein Ämterplan in der Familie?",
+       "optionen": [
+        "ein Bauplan",
+        "ein Stundenplan",
+        "ein Plan, wer welche Aufgabe im Haushalt übernimmt",
+        "ein Urlaubsplan"
+       ],
+       "richtig": 2,
+       "antwort": "ein Plan, wer welche Aufgabe im Haushalt übernimmt",
+       "erklaerung": "So weiß jeder, was er zu tun hat."
+      },
+      {
+       "id": "psychologie-haushalt-011",
+       "frage": "Warum ist es gut, Aufgaben ohne ständiges Erinnern zu erledigen?",
+       "optionen": [
+        "weil man sonst Geld verliert",
+        "um Ärger zu bekommen",
+        "So zeigst du Verantwortung, und die Familie kann sich auf dich verlassen.",
+        "weil es egal ist"
+       ],
+       "richtig": 2,
+       "antwort": "So zeigst du Verantwortung, und die Familie kann sich auf dich verlassen.",
+       "erklaerung": "Verlässlichkeit schafft Vertrauen – und oft mehr Freiheiten."
+      },
+      {
+       "id": "psychologie-haushalt-012",
+       "frage": "Du hast keine Lust zum Aufräumen. Was ist ein guter Tipp?",
+       "optionen": [
+        "alles in den Schrank stopfen",
+        "jemand anderen dafür bezahlen",
+        "Timer stellen und in 10 Minuten so viel wie möglich schaffen",
+        "nie anfangen"
+       ],
+       "richtig": 2,
+       "antwort": "Timer stellen und in 10 Minuten so viel wie möglich schaffen",
+       "erklaerung": "Mit einem Timer wird Aufräumen zum Wettrennen."
+      },
+      {
+       "id": "psychologie-haushalt-013",
+       "frage": "Was solltest du vor dem Essen tun?",
+       "optionen": [
+        "fernsehen",
+        "Schuhe anziehen",
+        "Hausaufgaben verstecken",
+        "Hände waschen"
+       ],
+       "richtig": 3,
+       "antwort": "Hände waschen",
+       "erklaerung": "Händewaschen schützt vor Krankheiten."
+      },
+      {
+       "id": "psychologie-haushalt-014",
+       "frage": "Wie lange sollte man die Hände waschen?",
+       "optionen": [
+        "2 Sekunden",
+        "gar nicht",
+        "5 Minuten",
+        "etwa 20 bis 30 Sekunden mit Seife"
+       ],
+       "richtig": 3,
+       "antwort": "etwa 20 bis 30 Sekunden mit Seife",
+       "erklaerung": "Das ist ungefähr zweimal „Happy Birthday“ singen."
+      },
+      {
+       "id": "psychologie-haushalt-015",
+       "frage": "Was ist beim Schneiden mit einem Messer wichtig?",
+       "optionen": [
+        "im Dunkeln schneiden",
+        "vorsichtig sein und vom Körper weg schneiden",
+        "damit herumfuchteln",
+        "dabei rennen"
+       ],
+       "richtig": 1,
+       "antwort": "vorsichtig sein und vom Körper weg schneiden",
+       "erklaerung": "So passieren weniger Unfälle."
+      },
+      {
+       "id": "psychologie-haushalt-016",
+       "frage": "Was ist beim Herd wichtig?",
+       "optionen": [
+        "immer anlassen",
+        "Wasser in heißes Fett gießen",
+        "Topflappen weglassen",
+        "nur mit Erlaubnis benutzen und danach ausschalten"
+       ],
+       "richtig": 3,
+       "antwort": "nur mit Erlaubnis benutzen und danach ausschalten",
+       "erklaerung": "Wasser in heißem Fett kann gefährlich spritzen."
+      },
+      {
+       "id": "psychologie-haushalt-017",
+       "frage": "Wie kann man Strom sparen?",
+       "optionen": [
+        "alle Lampen anlassen",
+        "den Fernseher laufen lassen",
+        "das Licht ausmachen, wenn man den Raum verlässt",
+        "den Kühlschrank offen lassen"
+       ],
+       "richtig": 2,
+       "antwort": "das Licht ausmachen, wenn man den Raum verlässt",
+       "erklaerung": "Strom sparen schont Umwelt und Geldbeutel."
+      },
+      {
+       "id": "psychologie-haushalt-018",
+       "frage": "Wie kann man Wasser sparen?",
+       "optionen": [
+        "beim Zähneputzen den Wasserhahn zudrehen",
+        "den Gartenschlauch anlassen",
+        "das Wasser laufen lassen",
+        "jeden Tag lange baden"
+       ],
+       "richtig": 0,
+       "antwort": "beim Zähneputzen den Wasserhahn zudrehen",
+       "erklaerung": "So spart man viele Liter am Tag."
+      },
+      {
+       "id": "psychologie-haushalt-019",
+       "frage": "Wer ist in einer Familie für den Haushalt zuständig?",
+       "optionen": [
+        "nur die Kinder",
+        "nur Mama",
+        "alle gemeinsam, je nach Alter",
+        "nur Papa"
+       ],
+       "richtig": 2,
+       "antwort": "alle gemeinsam, je nach Alter",
+       "erklaerung": "Jeder trägt einen Teil bei."
+      }
+     ]
+    },
+    {
+     "id": "streit",
+     "name": "Streit lösen und schwierige Momente",
+     "anzahl": 8,
+     "fragen": [
+      {
+       "id": "psychologie-streit-001",
+       "frage": "Wie löst man einen Streit fair?",
+       "optionen": [
+        "Man redet nie wieder miteinander.",
+        "Wer lauter schreit, gewinnt.",
+        "Wer stärker ist, gewinnt.",
+        "Beide erzählen nacheinander, dann sucht man gemeinsam eine Lösung."
+       ],
+       "richtig": 3,
+       "antwort": "Beide erzählen nacheinander, dann sucht man gemeinsam eine Lösung.",
+       "erklaerung": "Zuhören ist der erste Schritt zur Lösung."
+      },
+      {
+       "id": "psychologie-streit-002",
+       "frage": "Was ist die Stopp-Regel?",
+       "optionen": [
+        "Man stoppt die Zeit.",
+        "Wenn jemand „Stopp“ sagt, hört man sofort auf.",
+        "Man darf nicht mehr reden.",
+        "Man bleibt beim Rennen stehen."
+       ],
+       "richtig": 1,
+       "antwort": "Wenn jemand „Stopp“ sagt, hört man sofort auf.",
+       "erklaerung": "Die Stopp-Regel schützt alle."
+      },
+      {
+       "id": "psychologie-streit-003",
+       "frage": "Du wirst beleidigt. Was ist eine gute Reaktion?",
+       "optionen": [
+        "ruhig sagen „Hör auf, das will ich nicht“ und Hilfe holen, wenn es nicht aufhört",
+        "zurückschlagen",
+        "noch schlimmer zurückbeleidigen",
+        "Sachen kaputt machen"
+       ],
+       "richtig": 0,
+       "antwort": "ruhig sagen „Hör auf, das will ich nicht“ und Hilfe holen, wenn es nicht aufhört",
+       "erklaerung": "Hilfe holen ist stark, nicht feige."
+      },
+      {
+       "id": "psychologie-streit-004",
+       "frage": "Was ist ein Kompromiss beim Spielen?",
+       "optionen": [
+        "Man streitet einfach weiter.",
+        "Einer bestimmt alles.",
+        "Keiner spielt mehr.",
+        "Erst spielt man das eine Spiel, dann das andere."
+       ],
+       "richtig": 3,
+       "antwort": "Erst spielt man das eine Spiel, dann das andere.",
+       "erklaerung": "Bei einem Kompromiss bekommen beide etwas."
+      },
+      {
+       "id": "psychologie-streit-005",
+       "frage": "Du streitest mit deinem Geschwisterkind um die Fernbedienung. Was hilft?",
+       "optionen": [
+        "lügen und petzen",
+        "schubsen",
+        "sich abwechseln oder einen Plan machen",
+        "die Fernbedienung verstecken"
+       ],
+       "richtig": 2,
+       "antwort": "sich abwechseln oder einen Plan machen",
+       "erklaerung": "Ein Plan verhindert, dass der Streit immer wieder kommt."
+      },
+      {
+       "id": "psychologie-streit-006",
+       "frage": "Welcher Weg ist KEIN guter Weg, einen Streit zu lösen?",
+       "optionen": [
+        "Gewalt",
+        "zuhören",
+        "Hilfe holen",
+        "reden"
+       ],
+       "richtig": 0,
+       "antwort": "Gewalt",
+       "erklaerung": "Gewalt macht alles schlimmer."
+      },
+      {
+       "id": "psychologie-streit-007",
+       "frage": "Was hilft nach einem Streit, sich wieder zu vertragen?",
+       "optionen": [
+        "sich entschuldigen und etwas Schönes zusammen machen",
+        "nachtragend sein",
+        "den anderen ignorieren",
+        "Rache planen"
+       ],
+       "richtig": 0,
+       "antwort": "sich entschuldigen und etwas Schönes zusammen machen",
+       "erklaerung": "Versöhnung tut beiden gut."
+      },
+      {
+       "id": "psychologie-streit-008",
+       "frage": "Ein Erwachsener schreit dich an. Was kannst du tun?",
+       "optionen": [
+        "ruhig bleiben und später sagen, wie es dir damit ging",
+        "Sachen werfen",
+        "zurückschreien",
+        "auf die Straße weglaufen"
+       ],
+       "richtig": 0,
+       "antwort": "ruhig bleiben und später sagen, wie es dir damit ging",
+       "erklaerung": "Auch Erwachsene sollen hören, wie es dir geht."
+      }
+     ]
+    }
+   ]
   }
  ],
- "anzahl": 825
+ "anzahl": 914
 }
