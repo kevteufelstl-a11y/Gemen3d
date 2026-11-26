@@ -258,7 +258,7 @@
       ["\u{1F4DD}", S.nQuestions + " Fragen, bunt gemischt aus " + S.subjects + " Fächern (" + S.perSubject + " pro Fach)"],
       ["⏱", "Deine Zeit: zusammen " + min + " Minuten (mindestens 40), etwa " + S.secPerQ + " Sekunden pro Frage."],
       ["\u{1F512}", "Eine Antwort zählt sofort und kann nicht mehr geändert werden."],
-      ["⏸", "Die Uhr läuft nur, solange eine Frage zu sehen ist."],
+      ["⏸", "Die Uhr läuft nur, solange eine Frage zu sehen ist. Pausieren geht nicht: Die Prüfung wird in einem Rutsch geschrieben. Bist du länger als 5 Minuten weg, wird sie beendet und zählt mit dem, was du bis dahin beantwortet hast."],
       ["\u{1F3C5}", "Bestanden ab Note 3 – das sind " + Math.ceil(S.nQuestions * 0.65) + " richtige Antworten."],
       ["✍️", "Danach kommen " + T.tasks.length + " praktische Aufgaben auf Papier, die deine Eltern kontrollieren."]].map(([i, t]) => K("li", {}, K("span", {}, i), K("span", {}, t))))),
       K("button", { class: "pr-btn go", onclick: async (e) => {
@@ -274,7 +274,7 @@
     const b = PR_open(), Q = ex.questions || [], st = { ex, idx: ex.answered, rem: ex.remainingMs, t0: 0, q: null, lock: false, iv: null };
     PR.run = st;
     const head = K("div", { class: "pr-head" }), clock = K("div", { class: "pr-clock" }), bar = K("div", { class: "pr-bar" }, K("i", {})), body = K("div", { class: "pr-card pr-gold", style: "display:flex;flex-direction:column;gap:12px" });
-    b.append(K("h1", { style: "font-size:24px" }, "\u{1F4DC} ABSCHLUSSPRÜFUNG KLASSE " + ex.klasse), head, bar, body, K("button", { class: "pr-btn", onclick: () => (clearInterval(st.iv), PR.run = null, PR_close(), Zs("⏸ Pausiert. Am Tor kannst du weitermachen – deine Zeit ist gespeichert.")) }, "⏸ Pause – später weitermachen"));
+    b.append(K("h1", { style: "font-size:24px" }, "\u{1F4DC} ABSCHLUSSPRÜFUNG KLASSE " + ex.klasse), head, bar, body);
     const tick = () => {
       const left = st.rem - (st.t0 ? performance.now() - st.t0 : 0);
       clock.textContent = PR_mmss(left), clock.classList.toggle("low", left < 6e4);

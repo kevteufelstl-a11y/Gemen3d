@@ -4,6 +4,7 @@
 -- Eltern/Admin koennen das Nachlernen erlassen (examRetry). Die 3-Tage-Wartezeit entfaellt.
 -- Sicherung der alten Funktionen: backup_20261126.funcs_20261126b
 -- Rueckgaengig: die Definitionen aus der Sicherung wieder ausfuehren.
+-- Nachtrag (Migration pruefung_ein_durchgang_20261126): Pruefung in einem Durchgang, keine Pause; ohne Aktivitaet seit 5 Minuten wird sie beendet (unbeantwortet = falsch).
 
 create table if not exists backup_20261126.funcs_20261126b (name text primary key, def text, saved_at timestamptz default now());
 insert into backup_20261126.funcs_20261126b (name, def)
