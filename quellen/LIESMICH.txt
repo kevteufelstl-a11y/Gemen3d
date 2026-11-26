@@ -97,3 +97,5 @@ ABSCHLUSSPRUEFUNG (26.11.2026, pruefung.js, patch_pruefung.py, server/12_abschlu
   python3 quellen/werkzeuge/exam_keys.py  ->  server/12b_exam_keys.sql in Supabase ausfuehren.
 - Servertest: server/test_abschlusspruefung.sql (Szenarien A-H, legt ein Test-Kind "Pruefungstest" an; danach loeschen).
 - Browser-Test: window.__pr (info, run, result, practical, cert, tasks, subjects, parent, level, rw).
+
+- Updates: Die App prueft bei jedem Start selbst (nur die ersten 4 KB, spart Daten), ob es eine neuere Version gibt, und fragt "Jetzt aktualisieren / Spaeter". Waehrend einer Abschlusspruefung wird erst danach gefragt. Der Knopf im Menue bleibt.

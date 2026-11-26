@@ -259,56 +259,96 @@
         };
       }
 
+      // ---- Update: gemeinsame Logik fuer Knopf und automatische Pruefung beim Start ----
+      const UPD_SOURCES = ["https://raw.githubusercontent.com/kevteufelstl-a11y/gemen3d/main/index.html", "https://milos-lern-app.netlify.app/"];
+      const updNative = () => { const cap = window.Capacitor; return !!(cap && ((cap.isNativePlatform && cap.isNativePlatform()) || location.hostname === "localhost")); };
+      const updGet = async (base, range) => {
+        const cap = window.Capacitor, http = cap && cap.Plugins && cap.Plugins.CapacitorHttp;
+        const url = base + "?nocache=" + Date.now(), hd = { "Cache-Control": "no-cache" };
+        if (range) hd.Range = "bytes=0-4095";
+        if (http && http.get) { const r = await http.get({ url, responseType: "text", headers: hd }); if (r.status && r.status !== 200 && r.status !== 206) throw new Error("Status " + r.status); return typeof r.data === "string" ? r.data : ""; }
+        const r = await fetch(url, { cache: "no-store", headers: hd }); return await r.text();
+      };
+      const updStamp = (t) => { const m = /window\.__BUILD="([^"]+)"/.exec(t.slice(0, 4000)); return m ? m[1] : null; };
+      const updCur = () => { const b = localStorage.getItem("milo_upd_build"); return b && b > window.__BUILD ? b : window.__BUILD; };
+      // Nur den Anfang der Datei laden (spart Datenvolumen): welche Version liegt online?
+      const updPeek = async () => {
+        let best = null, err = null;
+        for (const base of UPD_SOURCES) { try { const st = updStamp(await updGet(base, true)); if (st && (!best || st > best.st)) best = { st, base }; } catch (e) { err = e; } }
+        if (!best && err) throw err;
+        return best;
+      };
+      const idbPut = (k, v) => new Promise((res, rej) => {
+        const o = indexedDB.open("milo_upd", 1);
+        o.onupgradeneeded = () => o.result.createObjectStore("f");
+        o.onerror = () => rej(o.error);
+        o.onsuccess = () => { const tx = o.result.transaction("f", "readwrite"); tx.objectStore("f").put(v, k); tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error); tx.onabort = () => rej(tx.error); };
+      });
+      // Ganze neue Version laden, speichern, neu starten
+      const updInstall = async (say) => {
+        let txt = "", st = null, err = null;
+        for (const base of UPD_SOURCES) {
+          try { const t3 = await updGet(base, false), s3 = updStamp(t3); if (s3 && t3.length >= 500000 && (!st || s3 > st)) { txt = t3; st = s3; } } catch (e4) { err = e4; }
+        }
+        if (!st) throw err || new Error("Keine gültige Version gefunden");
+        if (st <= updCur()) return false;
+        try { await idbPut("html", txt); try { localStorage.removeItem("milo_upd_html"); } catch (e5) { } localStorage.setItem("milo_upd_build", st); }
+        catch (e3) { throw new Error("Zu wenig Speicher auf dem Handy (" + Math.round(txt.length / 1e6) + " MB)"); }
+        say && say("✅ Neue Version geladen. Starte neu …");
+        setTimeout(() => location.reload(), 900);
+        return true;
+      };
       window.__updRow = (body) => {
         if (body.querySelector("#upd-row")) return;
-        // Neue Versionen kommen direkt aus GitHub (jeder Push), Netlify bleibt Ersatz
-        const SOURCES = ["https://raw.githubusercontent.com/kevteufelstl-a11y/gemen3d/main/index.html", "https://milos-lern-app.netlify.app/"];
         const row = document.createElement("div");
         row.id = "upd-row";
         row.style.cssText = "margin:12px 0;padding:10px;border:1px solid rgba(125,255,122,.4);border-radius:10px;text-align:center";
-        row.innerHTML = '<div style="font-size:13px;opacity:.85">Version: ' + esc((window.__BUILD || "?").replace("T", " ")) + '</div><button id="upd-btn" class="btn" style="margin-top:8px;min-height:42px;width:100%">\u{1F504} Nach Update suchen</button><div id="upd-msg" style="margin-top:6px;font-size:13px"></div>';
+        row.innerHTML = '<div style="font-size:13px;opacity:.85">Version: ' + esc((window.__BUILD || "?").replace("T", " ")) + '</div><button id="upd-btn" class="btn" style="margin-top:8px;min-height:42px;width:100%">\u{1F504} Nach Update suchen</button><div id="upd-msg" style="margin-top:6px;font-size:13px"></div><div style="margin-top:4px;font-size:12px;opacity:.6">Die App sucht auch bei jedem Start selbst nach Updates.</div>';
         body.appendChild(row);
         const msg = row.querySelector("#upd-msg"), btn = row.querySelector("#upd-btn");
         const say = (m) => { msg.textContent = m; };
         btn.onclick = async () => {
-          const cap = window.Capacitor, native = !!(cap && ((cap.isNativePlatform && cap.isNativePlatform()) || location.hostname === "localhost"));
-          if (!native) { say("Lade neu \u2026"); setTimeout(() => location.reload(), 300); return; }
-          btn.disabled = true; say("Suche \u2026");
+          if (!updNative()) { say("Lade neu …"); setTimeout(() => location.reload(), 300); return; }
+          btn.disabled = true; say("Suche …");
           try {
-            const http = cap.Plugins && cap.Plugins.CapacitorHttp;
-            const load = async (base) => {
-              const url = base + "?nocache=" + Date.now();
-              let t3 = "";
-              if (http && http.get) { const r = await http.get({ url, responseType: "text", headers: { "Cache-Control": "no-cache" } }); t3 = typeof r.data === "string" ? r.data : ""; if (r.status && r.status !== 200) throw new Error("Status " + r.status); }
-              else { const r = await fetch(url, { cache: "no-store" }); t3 = await r.text(); }
-              const m3 = /window\.__BUILD="([^"]+)"/.exec(t3.slice(0, 2000));
-              if (!m3 || t3.length < 500000) throw new Error("Keine g\u00FCltige Version gefunden");
-              return [t3, m3];
-            };
-            let txt = "", m = null, err = null;
-            for (const base of SOURCES) {
-              try { const [t3, m3] = await load(base); if (!m || m3[1] > m[1]) { txt = t3; m = m3; } } catch (e4) { err = e4; }
-            }
-            if (!m) throw err || new Error("keine Verbindung");
-            const cur = localStorage.getItem("milo_upd_build") > window.__BUILD ? localStorage.getItem("milo_upd_build") : window.__BUILD;
-            if (m[1] <= cur) { say("\u2705 Du hast schon die neueste Version."); btn.disabled = false; return; }
-            // Große Versionen passen nicht in localStorage (ca. 5 MB) -> IndexedDB
-            const idbPut = (k, v) => new Promise((res, rej) => {
-              const o = indexedDB.open("milo_upd", 1);
-              o.onupgradeneeded = () => o.result.createObjectStore("f");
-              o.onerror = () => rej(o.error);
-              o.onsuccess = () => { const tx = o.result.transaction("f", "readwrite"); tx.objectStore("f").put(v, k); tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error); tx.onabort = () => rej(tx.error); };
-            });
-            try { await idbPut("html", txt); try { localStorage.removeItem("milo_upd_html"); } catch (e5) { } localStorage.setItem("milo_upd_build", m[1]); }
-            catch (e3) { throw new Error("Zu wenig Speicher auf dem Handy (" + Math.round(txt.length / 1e6) + " MB)"); }
-            say("\u2705 Neue Version geladen. Starte neu \u2026");
-            setTimeout(() => location.reload(), 900);
+            const ok = await updInstall(say);
+            if (!ok) { say("✅ Du hast schon die neueste Version."); btn.disabled = false; }
           } catch (e2) {
-            say("\u274C Kein Update m\u00F6glich: " + (e2 && e2.message ? e2.message : "keine Verbindung"));
+            say("❌ Kein Update möglich: " + (e2 && e2.message ? e2.message : "keine Verbindung"));
             btn.disabled = false;
           }
         };
       };
+      // ---- Beim Start automatisch pruefen, Spieler muss bestaetigen ----
+      window.__updAuto = async (force) => {
+        if (window.__updAutoDone && !force) return;
+        window.__updAutoDone = 1;
+        if (!updNative() && !force) return;
+        if (navigator.onLine === false) return;
+        let info = null;
+        try { info = await updPeek(); } catch (e) { return; }
+        if (!info || info.st <= updCur()) return;
+        let tries = 0;
+        const ask = () => {
+          // Nicht mitten in eine Pruefung oder ein Quiz platzen
+          if (document.getElementById("pr-wrap") && tries++ < 360) { setTimeout(ask, 5000); return; }
+          if (document.getElementById("upd-ask")) return;
+          const ov = document.createElement("div");
+          ov.id = "upd-ask";
+          ov.style.cssText = "position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;padding:20px";
+          ov.innerHTML = '<div style="background:#14202b;color:#fff;border:2px solid #7dff7a;border-radius:16px;padding:20px;max-width:360px;width:100%;text-align:center;font-family:inherit"><div style="font-size:42px">\u{1F381}</div><b style="font-size:19px">Neue Version da!</b><p style="font-size:14px;opacity:.85;margin:10px 0">Neu vom ' + esc(info.st.replace("T", " um ")) + ' Uhr.<br>Deine Version: ' + esc(String(window.__BUILD).replace("T", " ")) + '<br>Dein Fortschritt bleibt erhalten.</p><button id="upd-yes" class="btn go" style="width:100%;min-height:48px;font-size:16px">\u{1F504} Jetzt aktualisieren</button><button id="upd-no" class="btn" style="width:100%;min-height:42px;margin-top:8px">Später</button><div id="upd-amsg" style="margin-top:8px;font-size:13px"></div></div>';
+          document.body.appendChild(ov);
+          const am = ov.querySelector("#upd-amsg"), yes = ov.querySelector("#upd-yes"), no = ov.querySelector("#upd-no");
+          no.onclick = () => ov.remove();
+          yes.onclick = async () => {
+            yes.disabled = no.disabled = true; am.textContent = "Lade neue Version … (bitte warten)";
+            try { const ok = await updInstall((m) => { am.textContent = m; }); if (!ok) { am.textContent = "✅ Schon aktuell."; setTimeout(() => ov.remove(), 1200); } }
+            catch (e2) { am.textContent = "❌ " + (e2 && e2.message ? e2.message : "keine Verbindung"); yes.disabled = no.disabled = false; }
+          };
+        };
+        ask();
+      };
+      setTimeout(() => { try { window.__updAuto(); } catch (e) { } }, 2500);
       function startCompetition(st) {
         if (!st || !xn[st.id]) { toast("Hier gibt es keinen Wettbewerb."); return; }
         if (!net.inRoom) { toast("Erst einen Raum erstellen: oben auf \u{1F465} tippen."); return; }
