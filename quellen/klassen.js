@@ -44,10 +44,11 @@
     }
     return k3 && ZN_inPoly(x, z, k3.poly) ? 3 : 0;
   }
+  // Neue Klasse nur ueber die bestandene Abschlusspruefung (Server: zone_unlocks mit via = 'exam'). Admin darf ueberall hin.
   function KL_ok(k) {
     if (!k || k === 3) return true;
     if (Ae && Ae.admin || window.__klTestAlle) return true;
-    return ZN.srv.includes("k" + k);
+    return (ZN.exam || []).includes("k" + k);
   }
   window.__klasseAt = (x, z) => KL.on ? KL_at(x, z) : 3;
   window.__klasseOk = (k) => KL_ok(k);

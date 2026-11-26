@@ -65,8 +65,9 @@ KLASSEN-ZONEN (26.11.2026, klassen.js, patch_klassen.py, zonen/registry.json -> 
   Spaeter: window.__klassenExam = ({gate, von, nach}) => {...} wird beim Antippen eines geschlossenen Tors aufgerufen.
 - Bruecke: Tor t45 auf der Seite von Klasse 4 bzw. t45b auf der Seite von Klasse 5 antippen -> Bruecke baut sich
   Stueck fuer Stueck auf, Figur laeuft darueber, danach baut sie sich wieder ab. Spieler-Patch: x.script / x.y (patch_klassen.py).
-- Freischaltung: Server-Zonen k4, k5, k6 (status locked). Admin -> Eltern & Spieler -> Knopf "Klassen" beim Kind
-  (Aktionen zonePlayer, zoneGrant, zoneRevoke). Admin selbst darf ueberall hin.
+- Freischaltung NUR ueber die Abschlusspruefung (Wunsch des Nutzers, kein Knopf zum Freischalten von Hand):
+  zoneAccess liefert "exam" = Eintraege in zone_unlocks mit via = 'exam'. Solange es die Pruefungen nicht gibt,
+  kommt kein Kind in Klasse 4, 5 oder 6. Nur der Admin darf ueberall hin.
   Wer in einer gesperrten Klasse steht, wird zum Start gesetzt.
 - Neue Faecher (hinten an MILO_Q angehaengt, alte Fragen-IDs bleiben gleich): Psychologie (Klasse 3) und alle Faecher
   der Klasse 5 (Kennzeichen "k": 5) aus ../fragen_klasse5.json. Neue Station: Klasse wird aus dem Ort bestimmt,

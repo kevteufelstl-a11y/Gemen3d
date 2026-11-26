@@ -1,6 +1,7 @@
 -- Klassen-Zonen (26.11.2026): Zone 1 = Klasse 3, Zone 2 geteilt in Klasse 4, 5 und 6.
--- Rein additiv: drei neue Zeilen in zones (k4, k5, k6, alle gesperrt) und eine neue Admin-Aktion "zonePlayer"
--- (welche Zonen hat ein Spieler frei?). Freischalten/Sperren laeuft ueber die bestehenden Aktionen zoneGrant/zoneRevoke.
+-- Rein additiv: drei neue Zeilen in zones (k4, k5, k6, alle gesperrt), Admin-Aktion "zonePlayer".
+-- zoneAccess liefert zusaetzlich "exam": Zonen, die durch eine bestandene Abschlusspruefung frei sind (via = 'exam').
+-- Nur diese zaehlen in der App fuer Klasse 4-6. Eine Freischaltung von Hand gibt es fuer Klassen nicht (Wunsch des Nutzers).
 
 insert into public.zones(id, name, color, status, unlock_rule) values
   ('k4', 'Klasse 4 – Gemen-Süd', '#ffb020', 'locked', '{"type":"exam","exam":null,"tor":"t34"}'),
@@ -24,7 +25,8 @@ begin
     return jsonb_build_object('s', 200, 'b', jsonb_build_object('ok', true,
       'zones', coalesce((select jsonb_agg(z.id order by z.id) from zones z
         where z.status in ('active', 'open')
-           or (z.status = 'locked' and exists (select 1 from zone_unlocks u where u.zone_id = z.id and u.profile_id = me.id))), '[]'::jsonb)));
+           or (z.status = 'locked' and exists (select 1 from zone_unlocks u where u.zone_id = z.id and u.profile_id = me.id))), '[]'::jsonb),
+      'exam', coalesce((select jsonb_agg(u.zone_id order by u.zone_id) from zone_unlocks u where u.profile_id = me.id and u.via = 'exam'), '[]'::jsonb)));
   end if;
 
   if ses.kind <> 'admin' then return jsonb_build_object('s', 403, 'b', jsonb_build_object('error', 'forbidden')); end if;
@@ -34,7 +36,7 @@ begin
       'zones', coalesce((select jsonb_agg(to_jsonb(z) || jsonb_build_object('unlocked', (select count(*) from zone_unlocks u where u.zone_id = z.id)) order by z.id) from zones z), '[]'::jsonb)));
   end if;
 
-  -- Neu 26.11.: freigeschaltete Zonen eines Spielers (fuer den Admin-Knopf "Klassen")
+  -- Neu 26.11.: freigeschaltete Zonen eines Spielers (nur zum Nachsehen; Klassen werden nicht von Hand freigeschaltet)
   if a = 'zonePlayer' then
     begin pid := (p->>'profileId')::uuid; exception when others then return jsonb_build_object('s', 400, 'b', jsonb_build_object('error', 'bad')); end;
     return jsonb_build_object('s', 200, 'b', jsonb_build_object('ok', true,

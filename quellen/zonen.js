@@ -265,19 +265,21 @@
   async function ZN_check() {
     const key = Ae ? (Ae.admin ? "A:" : "K:") + (Ae.token || Ae.name || "") : "";
     if (key === ZN.key) return;
-    ZN.key = key, ZN.srv = [];
+    ZN.key = key, ZN.srv = [], ZN.exam = [];
     if (Ae && !Ae.admin) {
       const ck = "milo3d_zonen_" + (Ae.name || "");
       try {
-        ZN.srv = JSON.parse(localStorage.getItem(ck) || "[]");
+        const c = JSON.parse(localStorage.getItem(ck) || "{}");
+        Array.isArray(c) ? ZN.srv = c : (ZN.srv = c.zones || [], ZN.exam = c.exam || []);
       } catch {
       }
       if (!Ae.offline && Ae.token) {
         const r = await KO_call("zoneAccess", {});
         if (r && r.j && Array.isArray(r.j.zones)) {
-          ZN.srv = r.j.zones;
+          // exam = Klassen, die durch eine bestandene Abschlusspruefung frei sind (nur die zaehlen fuer Klasse 4-6)
+          ZN.srv = r.j.zones, ZN.exam = Array.isArray(r.j.exam) ? r.j.exam : [];
           try {
-            localStorage.setItem(ck, JSON.stringify(ZN.srv));
+            localStorage.setItem(ck, JSON.stringify({ zones: ZN.srv, exam: ZN.exam }));
           } catch {
           }
         }

@@ -33,16 +33,5 @@ rep('subj: [...subs].sort(), exam: ex.checked,', 'subj: [...subs].sort((u, v) =>
 rep('K("h3", {}, (c.off ? "⛔ " : "\\u{1F4CD} ") + (c.name || s.name))',
     'K("h3", {}, (c.off ? "⛔ " : "\\u{1F4CD} ") + (c.name || s.name) + " \\xB7 Klasse " + (window.__klasseAt ? window.__klasseAt(s.x, s.z) || 3 : 3))', 'KL-Station-Liste')
 
-# ---- Admin: Klassen-Freischaltung je Spieler ----
-rep('K("b", {}, Math.round(c.learnSec / 60) + " Min."))',
-    'K("b", {}, Math.round(c.learnSec / 60) + " Min."), K("button", { class: "qbtn", style: "padding:4px 9px;margin-left:6px", onclick: () => KL_admChild(c) }, "\\u{1F9F1} Klassen"))', 'KL-Admin-Knopf')
-rep('  async function KO_admFam() {', '''  async function KL_admChild(c) {
-    let r = await KO_call("zonePlayer", { profileId: c.id }, "a");
-    if (!r.j || !r.j.ok) return Zs(KO_msg(r));
-    let have = new Set(r.j.zones || []), set = async (k, on) => {
-      let x = await KO_call(on ? "zoneGrant" : "zoneRevoke", { zone: "k" + k, profileId: c.id }, "a");
-      x.j && x.j.ok ? (Zs(on ? "Klasse " + k + " für " + c.name + " freigeschaltet." : "Klasse " + k + " für " + c.name + " wieder gesperrt."), KL_admChild(c)) : Zs(KO_msg(x));
-    };
-    KO_admBox("\\u{1F9F1} Klassen für " + c.name, K("p", { class: "qmsg" }, "Klasse 3 ist immer offen. Weitere Klassen öffnen sich später durch die Abschlussprüfung am Tor. Bis dahin kannst du sie hier von Hand freischalten."), K("div", { class: "ko-sec" }, K("div", { class: "ko-row" }, K("span", {}, "\\u{1F3EB} Klasse 3 – Gemen Ortskern"), K("b", {}, "immer offen")), ...[4, 5, 6].map((k) => K("div", { class: "ko-row" }, K("span", {}, (have.has("k" + k) ? "\\u{1F513} " : "\\u{1F512} ") + "Klasse " + k + " – " + ({ 4: "Gemen-Süd", 5: "Neumühle", 6: "Aa-Wiesen" })[k]), K("button", { class: "qbtn" + (have.has("k" + k) ? "" : " go"), onclick: () => set(k, !have.has("k" + k)) }, have.has("k" + k) ? "Sperren" : "Freischalten")))), K("button", { class: "qbtn big", onclick: KO_admFam }, "← Zurück"));
-  }
-  async function KO_admFam() {''', 'KL-Admin-Kind')
+# Keine Freischaltung von Hand (26.11.): Neue Klassen gibt es nur ueber die Abschlusspruefung am Tor.
+# Bis die Pruefungen fertig sind, kommt kein Kind in Klasse 4, 5 oder 6. Nur der Admin darf ueberall hin.

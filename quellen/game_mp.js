@@ -12714,19 +12714,21 @@ void main() {
   async function ZN_check() {
     const key = Ae ? (Ae.admin ? "A:" : "K:") + (Ae.token || Ae.name || "") : "";
     if (key === ZN.key) return;
-    ZN.key = key, ZN.srv = [];
+    ZN.key = key, ZN.srv = [], ZN.exam = [];
     if (Ae && !Ae.admin) {
       const ck = "milo3d_zonen_" + (Ae.name || "");
       try {
-        ZN.srv = JSON.parse(localStorage.getItem(ck) || "[]");
+        const c = JSON.parse(localStorage.getItem(ck) || "{}");
+        Array.isArray(c) ? ZN.srv = c : (ZN.srv = c.zones || [], ZN.exam = c.exam || []);
       } catch {
       }
       if (!Ae.offline && Ae.token) {
         const r = await KO_call("zoneAccess", {});
         if (r && r.j && Array.isArray(r.j.zones)) {
-          ZN.srv = r.j.zones;
+          // exam = Klassen, die durch eine bestandene Abschlusspruefung frei sind (nur die zaehlen fuer Klasse 4-6)
+          ZN.srv = r.j.zones, ZN.exam = Array.isArray(r.j.exam) ? r.j.exam : [];
           try {
-            localStorage.setItem(ck, JSON.stringify(ZN.srv));
+            localStorage.setItem(ck, JSON.stringify({ zones: ZN.srv, exam: ZN.exam }));
           } catch {
           }
         }
@@ -12955,10 +12957,11 @@ void main() {
     }
     return k3 && ZN_inPoly(x, z, k3.poly) ? 3 : 0;
   }
+  // Neue Klasse nur ueber die bestandene Abschlusspruefung (Server: zone_unlocks mit via = 'exam'). Admin darf ueberall hin.
   function KL_ok(k) {
     if (!k || k === 3) return true;
     if (Ae && Ae.admin || window.__klTestAlle) return true;
-    return ZN.srv.includes("k" + k);
+    return (ZN.exam || []).includes("k" + k);
   }
   window.__klasseAt = (x, z) => KL.on ? KL_at(x, z) : 3;
   window.__klasseOk = (k) => KL_ok(k);
@@ -18437,15 +18440,6 @@ startxref
     let s = r.j.stats, row = (a, b) => K("div", { class: "ko-row" }, K("span", {}, a), K("b", {}, String(b)));
     KO_admBox("\u{1F4CA} Statistik", K("div", { class: "ko-sec" }, row("Elternkonten", s.families), row("Kinder", s.children), row("Gerade online", s.online), row("Beantwortete Fragen (verschiedene)", s.answers), row("Elternbestätigungen", s.confirmations), row("Freundschaften", s.friendships), row("Lernzeit insgesamt", s.learnMinutes + " Minuten")));
   }
-  async function KL_admChild(c) {
-    let r = await KO_call("zonePlayer", { profileId: c.id }, "a");
-    if (!r.j || !r.j.ok) return Zs(KO_msg(r));
-    let have = new Set(r.j.zones || []), set = async (k, on) => {
-      let x = await KO_call(on ? "zoneGrant" : "zoneRevoke", { zone: "k" + k, profileId: c.id }, "a");
-      x.j && x.j.ok ? (Zs(on ? "Klasse " + k + " für " + c.name + " freigeschaltet." : "Klasse " + k + " für " + c.name + " wieder gesperrt."), KL_admChild(c)) : Zs(KO_msg(x));
-    };
-    KO_admBox("\u{1F9F1} Klassen für " + c.name, K("p", { class: "qmsg" }, "Klasse 3 ist immer offen. Weitere Klassen öffnen sich später durch die Abschlussprüfung am Tor. Bis dahin kannst du sie hier von Hand freischalten."), K("div", { class: "ko-sec" }, K("div", { class: "ko-row" }, K("span", {}, "\u{1F3EB} Klasse 3 – Gemen Ortskern"), K("b", {}, "immer offen")), ...[4, 5, 6].map((k) => K("div", { class: "ko-row" }, K("span", {}, (have.has("k" + k) ? "\u{1F513} " : "\u{1F512} ") + "Klasse " + k + " – " + ({ 4: "Gemen-Süd", 5: "Neumühle", 6: "Aa-Wiesen" })[k]), K("button", { class: "qbtn" + (have.has("k" + k) ? "" : " go"), onclick: () => set(k, !have.has("k" + k)) }, have.has("k" + k) ? "Sperren" : "Freischalten")))), K("button", { class: "qbtn big", onclick: KO_admFam }, "← Zurück"));
-  }
   async function KO_admFam() {
     let r = await KO_call("adminOverview", {}, "a");
     if (!r.j.ok) return Zs(KO_msg(r));
@@ -18453,7 +18447,7 @@ startxref
       let x = await KO_call("adminFamily", b, "a");
       x.j.ok ? (Zs(ok), KO_admFam()) : Zs(KO_msg(x));
     };
-    KO_admBox("\u{1F46A} Eltern & Spieler", K("button", { class: "qbtn go", onclick: () => KO_parentRegister(KO_admFam) }, "➕ Neues Elternkonto"), fams.length ? null : K("p", { class: "qmsg" }, "Noch keine Elternkonten."), ...fams.map((f) => K("div", { class: "ko-sec" }, K("h3", {}, (f.active ? "" : "⛔ ") + f.name + " (" + f.login + ")"), f.children.map((c) => K("div", { class: "ko-row" }, K("span", {}, K("span", { class: "ko-dot" + (c.online ? " on" : "") }), (c.figure || "\u{1F642}") + " " + c.name + (c.active ? "" : " (gesperrt)")), K("b", {}, Math.round(c.learnSec / 60) + " Min."), K("button", { class: "qbtn", style: "padding:4px 9px;margin-left:6px", onclick: () => KL_admChild(c) }, "\u{1F9F1} Klassen"))), K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: () => (KO.par = { token: KO.adm.token, familyId: f.id, back: KO_admFam }, KO_parentHome()) }, "Öffnen"), K("button", { class: "qbtn", onclick: () => {
+    KO_admBox("\u{1F46A} Eltern & Spieler", K("button", { class: "qbtn go", onclick: () => KO_parentRegister(KO_admFam) }, "➕ Neues Elternkonto"), fams.length ? null : K("p", { class: "qmsg" }, "Noch keine Elternkonten."), ...fams.map((f) => K("div", { class: "ko-sec" }, K("h3", {}, (f.active ? "" : "⛔ ") + f.name + " (" + f.login + ")"), f.children.map((c) => K("div", { class: "ko-row" }, K("span", {}, K("span", { class: "ko-dot" + (c.online ? " on" : "") }), (c.figure || "\u{1F642}") + " " + c.name + (c.active ? "" : " (gesperrt)")), K("b", {}, Math.round(c.learnSec / 60) + " Min."))), K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: () => (KO.par = { token: KO.adm.token, familyId: f.id, back: KO_admFam }, KO_parentHome()) }, "Öffnen"), K("button", { class: "qbtn", onclick: () => {
       let p = prompt("Neues Eltern-Passwort für " + f.login + " (mind. 6 Zeichen):");
       p && act({ familyId: f.id, newPassword: p }, "Passwort geändert.");
     } }, "\u{1F511} Passwort"), K("button", { class: "qbtn", onclick: () => act({ familyId: f.id, active: !f.active }, f.active ? "Gesperrt." : "Freigegeben.") }, f.active ? "⏸ Sperren" : "▶ Freigeben"), K("button", { class: "qbtn boss", onclick: () => {
