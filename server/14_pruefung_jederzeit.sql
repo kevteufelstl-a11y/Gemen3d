@@ -83,3 +83,7 @@ $a$, '');
   d := pg_temp.rep(d, $a$update exams set retry_after = now(), retry_by = ses.kind,$a$, $b$update exams set remedial_ok = true, retry_after = now(), retry_by = ses.kind,$b$);
   execute d;
 end $mig$;
+
+-- Nachtrag (Migration pruefung_klasse4_ueberspringen_20261126): Klasse 4 hat keine Fragen und wird uebersprungen.
+-- Die Klasse-3-Pruefung oeffnet k4 UND k5 (zone_next = naechste Klasse mit Fragen). Status/Start fuer Klasse 4 (Tor 4 nach 5)
+-- gilt als Pruefung der Klasse 3. Elternansicht zeigt die Zielzone.

@@ -13784,7 +13784,7 @@ void main() {
     const S = await PR_call("examStatus", { klasse: kl });
     PR.busy = false;
     if (!S.ok) return Zs("Die Prüfung ist gerade nicht erreichbar. Versuch es gleich noch einmal.");
-    PR_info(S, kl, next);
+    PR_info(S, S.klasse || kl, S.zone ? +String(S.zone).slice(1) || next : next);
     Ae && Ae.admin && PR.wrap && PR.wrap.firstChild.prepend(K("div", { class: "pr-card", style: "background:#ffb02033;border-color:#ffb020;text-align:center;font-weight:800" }, "\u{1F9EA} Admin-Probelauf: Du kannst die Prüfung jederzeit testen. Das Nachlernen nach einer nicht bestandenen Prüfung gilt hier nicht, es öffnet sich kein Tor und kein Lernstand wird verändert."));
   }
   window.__prTest = (g) => PR_gate(g);
@@ -14019,18 +14019,19 @@ void main() {
     } catch {
     }
     const ck = "milo3d_tor_gesehen_" + (Ae.name || ""), seen = JSON.parse(localStorage.getItem(ck) || "[]");
-    for (const z of ZN.exam) if (!seen.includes(z)) {
-      seen.push(z), localStorage.setItem(ck, JSON.stringify(seen));
-      const k = +z.slice(1);
+    const fresh = ZN.exam.filter((z) => !seen.includes(z));
+    if (fresh.length) {
+      const k = Math.max(...fresh.map((z) => +z.slice(1)));
+      for (const z of fresh) seen.push(z);
+      localStorage.setItem(ck, JSON.stringify(seen));
       try {
         KL_applyGates(), KL_glow(k);
       } catch {
       }
-      const S = await PR_call("examStatus", { klasse: k - 1 });
+      const S = await PR_call("examStatus", { klasse: 3 });
       const b = PR_open();
-      b.append(K("h1", {}, "\u{1F389}\u{1F3F0} DAS TOR ZU KLASSE " + k + " IST OFFEN!"), K("div", { class: "pr-card pr-gold" }, K("p", {}, "Deine Eltern haben alle praktischen Aufgaben bestätigt. Du hast die Abschlussprüfung der Klasse " + (k - 1) + " bestanden!"), K("p", { style: "margin-top:8px" }, "Ab jetzt gelten deine Belohnungen der Klasse " + k + ".")),
+      b.append(K("h1", {}, "\u{1F389}\u{1F3F0} DAS TOR ZU KLASSE " + k + " IST OFFEN!"), K("div", { class: "pr-card pr-gold" }, K("p", {}, "Deine Eltern haben alle praktischen Aufgaben bestätigt. Du hast die Abschlussprüfung bestanden!"), K("p", { style: "margin-top:8px" }, "Ab jetzt gelten deine Belohnungen der Klasse " + k + ".")),
         S.exam ? K("button", { class: "pr-btn go", onclick: () => PR_cert(S.exam) }, "\u{1F4DC} Abschlussurkunde ansehen") : null, K("button", { class: "pr-btn", onclick: () => PR_close() }, "Zum Tor!"));
-      break;
     }
     before.size !== ZN.exam.length && KL_applyGates();
   }
@@ -14047,7 +14048,7 @@ void main() {
     const D = r.j, row = (a, v) => K("div", { class: "ko-row" }, K("span", {}, a), K("b", {}, v)), yn = (v) => v ? "Ja" : "Nein", kids = [K("h3", {}, "\u{1F393} ABSCHLUSSPRÜFUNG – ELTERNKONTROLLE")];
     for (const k of D.klassen) {
       const E = D.exams.filter((e) => e.klasse === k.klasse), ex = E[0], pr = ex ? ex.practical : [], prOk = pr.filter((t) => t.status === "bestanden").length, theoOk = ex && ex.grade <= 3 && ex.status !== "laeuft";
-      kids.push(K("p", { class: "qmsg" }, "Klasse " + k.klasse + " → Tor zu Klasse " + (k.klasse + 1)),
+      kids.push(K("p", { class: "qmsg" }, "Klasse " + k.klasse + " → Tor zu Klasse " + (+String(k.zone).slice(1) || k.klasse + 1)),
         row("Lernfortschritt", k.progress.pct + " % (" + k.progress.right + " von " + k.progress.total + ")"),
         row("Theoretische Prüfung abgeschlossen", yn(ex && ex.status !== "laeuft")),
         ex && ex.status !== "laeuft" ? row("Theoretisches Ergebnis", ex.right + " von " + ex.n + " richtig (" + ex.pct + " %) · Note " + ex.grade) : null,
@@ -14082,7 +14083,7 @@ void main() {
     }
     const x = await KO_call("examPractical", { examId: ex.id, taskId: t.id, passed: ok, note }, "p");
     if (!x.j || !x.j.ok) return Zs(KO_msg(x));
-    Zs(x.j.unlocked ? "\u{1F389} Alles bestanden – das Tor zu Klasse " + (ex.klasse + 1) + " ist jetzt offen!" : ok ? "Als bestanden gespeichert." : "Gespeichert. Das Kind sieht euren Hinweis.");
+    Zs(x.j.unlocked ? "\u{1F389} Alles bestanden – das Tor zu Klasse " + (+String(ex.zone || "").slice(1) || ex.klasse + 1) + " ist jetzt offen!" : ok ? "Als bestanden gespeichert." : "Gespeichert. Das Kind sieht euren Hinweis.");
     KO_kidView(main, c);
   }
   // Testzugang im Browser (aendert nichts am Server: alle Pruefungsentscheidungen trifft der Server)
