@@ -1,0 +1,111 @@
+# Musik Klasse 3 (neu, 26.11.2026)
+
+## instrumente | Instrumente
+Welches Instrument hat Tasten? | das Klavier | die Geige | die Trommel | die Flöte | Beim Klavier drückst du Tasten, dann schlagen kleine Hämmer auf Saiten.
+Welches Instrument wird mit einem Bogen gestrichen? | die Geige | die Trompete | die Gitarre | das Xylophon | Der Bogen hat Haare vom Pferdeschweif, die über die Saiten streichen.
+Wie viele Saiten hat eine normale Gitarre? | 6 | 4 | 10 | 2 | Die Gitarre hat sechs Saiten, die man zupft oder schlägt.
+Welches Instrument ist ein Blasinstrument? | die Blockflöte | die Trommel | das Klavier | die Geige | Bei Blasinstrumenten bringt die Luft aus deinem Mund den Ton hervor.
+Welches Instrument gehört zu den Schlaginstrumenten? | die Trommel | die Flöte | die Geige | die Trompete | Schlaginstrumente klingen, wenn man auf sie schlägt.
+Welches Instrument ist das größte Streichinstrument im Orchester? | der Kontrabass | die Geige | die Bratsche | die Flöte | Der Kontrabass ist so groß, dass man beim Spielen steht oder auf einem hohen Hocker sitzt.
+Was ist ein Xylophon? | ein Instrument mit Holzplatten, auf die man schlägt | eine Flöte | ein Klavier ohne Tasten | ein Lautsprecher | Kurze Platten klingen hoch, lange Platten klingen tief.
+Welches Instrument klingt höher: eine kleine oder eine große Flöte? | die kleine Flöte | die große Flöte | beide gleich | keine von beiden | Kleine Instrumente klingen meist höher, große tiefer.
+Welches Instrument ist aus Blech und hat Ventile? | die Trompete | die Blockflöte | die Harfe | die Rassel | Mit den Ventilen ändert man die Tonhöhe.
+Was ist eine Rassel? | ein Instrument, das man schüttelt | ein Saiteninstrument | ein Tasteninstrument | ein Lautsprecher | In einer Rassel sind kleine Körner oder Kugeln.
+Was ist ein Triangel? | ein Metallstab in Dreiecksform, auf den man schlägt | eine Trommel | eine Flöte | eine Geige | Triangel heißt Dreieck. Es klingt hell und klar.
+Welches Instrument hat viele Saiten und wird mit den Fingern gezupft, oft sehr groß? | die Harfe | die Trompete | das Schlagzeug | die Mundharmonika | Die Konzertharfe hat fast 50 Saiten.
+Wie heißt das Instrument, das man in den Mund nimmt und durch das man atmet, mit kleinen Kanälen? | die Mundharmonika | die Pauke | die Gitarre | das Klavier | Beim Ein- und Ausatmen klingen verschiedene Töne.
+Was gehört zu einem Schlagzeug? | Trommeln und Becken | Saiten und Bogen | Tasten und Pedale | Ventile und Mundstück | Ein Schlagzeug besteht aus mehreren Trommeln und Becken.
+Welches Instrument ist ein Zupfinstrument? | die Gitarre | die Trompete | die Pauke | die Querflöte | Bei Zupfinstrumenten zupft man die Saiten mit den Fingern.
+Wie entsteht der Ton bei einer Trommel? | Das Fell schwingt, wenn man draufschlägt. | Durch Wasser | Durch Strom | Durch Luft aus dem Mund | Alles, was klingt, schwingt.
+Was ist ein Keyboard? | ein elektronisches Tasteninstrument | eine Trommel | eine Flöte | ein Notenständer | Ein Keyboard braucht Strom und kann viele Klänge nachmachen.
+Welches Instrument spielt man mit Schlägeln und hat einen großen Kessel? | die Pauke | die Geige | die Flöte | die Gitarre | Die Pauke ist eine große Kesseltrommel im Orchester.
+Was ist ein Akkordeon? | ein Instrument mit Tasten und einem Balg, den man auseinanderzieht | eine Trommel | ein Saiteninstrument | eine Flöte aus Holz | Der Balg pumpt Luft durch kleine Metallzungen.
+Welches Instrument hat jeder Mensch immer dabei? | die eigene Stimme | die Triangel | das Klavier | die Gitarre | Mit der Stimme kann jeder Musik machen.
+
+## rhythmus | Rhythmus und Takt
+Was ist ein Rhythmus? | ein Muster aus langen und kurzen Tönen | ein sehr lauter Ton | eine Tonleiter | ein Instrument | Rhythmus kannst du klatschen, stampfen oder trommeln.
+Was ist der Takt in der Musik? | die regelmäßige Einteilung in Zählzeiten | ein Instrument | ein Lied | ein Notenschlüssel | Beim 4/4-Takt zählt man immer 1, 2, 3, 4.
+Wie zählt man im 3/4-Takt? | 1, 2, 3 – 1, 2, 3 | 1, 2 – 1, 2 | 1, 2, 3, 4 | 1, 2, 3, 4, 5 | Der Walzer ist ein bekannter Tanz im 3/4-Takt.
+Was ist ein Metronom? | ein Gerät, das gleichmäßig den Takt schlägt | eine Trommel | ein Notenheft | ein Mikrofon | Es tickt im gewünschten Tempo und hilft beim Üben.
+Was bedeutet Tempo in der Musik? | wie schnell oder langsam die Musik ist | wie laut die Musik ist | wie hoch die Musik ist | welches Instrument spielt | Schnelle Musik hat ein hohes Tempo.
+Wie heißt der gleichmäßige Herzschlag in einem Lied, zu dem man klatschen kann? | Grundschlag oder Puls | Melodie | Refrain | Pause | Der Grundschlag läuft immer gleichmäßig weiter.
+Wie viele Schläge dauert eine ganze Note im 4/4-Takt? | 4 | 1 | 2 | 3 | Eine ganze Note füllt einen ganzen 4/4-Takt.
+Wie viele Viertelnoten passen in einen 4/4-Takt? | 4 | 2 | 8 | 3 | Vier Viertel ergeben ein Ganzes.
+Wie viele Halbe Noten passen in einen 4/4-Takt? | 2 | 4 | 1 | 3 | Eine halbe Note dauert 2 Schläge. 2 + 2 = 4.
+Was ist eine Pause in den Noten? | ein Zeichen, dass man still ist | ein besonders lauter Ton | das Ende des Liedes | ein Instrument | Auch Pausen gehören zur Musik und werden mitgezählt.
+Was passiert bei einem Echo-Spiel im Musikunterricht? | Einer klatscht etwas vor, alle klatschen es nach. | Alle singen durcheinander. | Alle sind still. | Man spielt nur Klavier. | So trainiert man Hören und Rhythmus.
+Was ist Bodypercussion? | Musik mit dem eigenen Körper, zum Beispiel Klatschen und Stampfen | eine Trommel | ein Lied | eine Gitarre | Body heißt Körper, Percussion heißt Schlagwerk.
+Wenn ein Lied schneller wird, nennt man das … | accelerando | piano | forte | pause | Accelerando ist Italienisch und heißt schneller werden.
+Was bedeutet „ritardando“? | langsamer werden | lauter werden | leiser werden | höher werden | Oft wird ein Lied am Ende langsamer.
+
+## noten | Noten und Töne
+Wie viele Linien hat ein Notensystem? | 5 | 4 | 6 | 3 | Fünf Linien und vier Zwischenräume – darauf stehen die Noten.
+Wie heißt der Schlüssel am Anfang der Noten für hohe Töne? | Violinschlüssel | Hausschlüssel | Bassschlüssel | Autoschlüssel | Er heißt auch G-Schlüssel, weil er um die G-Linie kringelt.
+Wie heißen die Töne der C-Dur-Tonleiter? | c, d, e, f, g, a, h, c | a, b, c, d, e, f, g | c, e, g, c | do, mi, so | Im Deutschen heißt der Ton nach a nicht b, sondern h.
+Wie viele verschiedene Notennamen gibt es in einer Tonleiter von c bis h? | 7 | 5 | 8 | 12 | c, d, e, f, g, a, h – danach beginnt es wieder mit c.
+Steht eine Note höher im Notensystem, klingt sie … | höher | tiefer | lauter | leiser | Oben im Notensystem stehen die hohen Töne.
+Was ist eine Melodie? | eine Folge von Tönen, die man singen kann | ein Instrument | ein Takt | eine Pause | Die Melodie ist das, was man vom Lied mitsummt.
+Was bedeutet „forte“ oder „f“? | laut | leise | schnell | langsam | Forte ist Italienisch für stark.
+Was bedeutet „piano“ oder „p“? | leise | laut | schnell | hoch | Piano heißt leise. Daher kommt auch der Name Pianoforte für das Klavier.
+Was bedeutet „crescendo“? | lauter werden | leiser werden | aufhören | schneller werden | Das Zeichen sieht aus wie eine Gabel, die sich öffnet.
+Was bedeutet „decrescendo“? | leiser werden | lauter werden | schneller werden | höher werden | Das Zeichen sieht aus wie eine Gabel, die sich schließt.
+Was ist eine Achtelnote? | eine kurze Note mit einem Fähnchen | eine sehr lange Note | eine Pause | ein Schlüssel | Zwei Achtel dauern so lang wie eine Viertel.
+Wie sieht eine ganze Note aus? | ein leerer Kreis ohne Hals | ein schwarzer Punkt mit Hals | ein Punkt mit Fähnchen | ein Strich | Die ganze Note ist hohl und hat keinen Notenhals.
+Was macht ein Punkt hinter einer Note? | Die Note wird um die Hälfte länger. | Die Note wird leiser. | Die Note fällt weg. | Die Note wird höher. | Eine punktierte Halbe dauert 3 Schläge.
+Was ist ein Ton? | ein Klang mit einer bestimmten Höhe | ein Bild | ein Wort | eine Pause | Töne können hoch oder tief, lang oder kurz sein.
+Was ist ein Geräusch? | ein Klang ohne klare Tonhöhe, zum Beispiel Rascheln | eine Melodie | ein Lied | ein Akkord | Musik besteht aus Tönen, aber auch Geräusche können Musik sein.
+Was ist ein Akkord? | mehrere Töne, die gleichzeitig klingen | ein einzelner Ton | eine Pause | ein Instrument | Auf der Gitarre greift man oft Akkorde.
+Was bedeutet hoch und tief in der Musik? | die Tonhöhe, wie bei einem Vogel und einem Bären | laut und leise | schnell und langsam | lang und kurz | Ein Piepen ist hoch, ein Brummen tief.
+
+## lieder | Singen und Lieder
+Was ist der Refrain eines Liedes? | der Teil, der immer wiederkommt | die erste Zeile | das Ende | der Titel | Den Refrain können meist alle mitsingen.
+Was ist eine Strophe? | ein Liedteil mit immer neuem Text | der Teil, der immer gleich bleibt | ein Instrument | eine Pause | Zwischen den Strophen kommt oft der Refrain.
+Was ist ein Kanon? | Alle singen dasselbe Lied, aber zeitversetzt. | Alle singen gleichzeitig dasselbe. | Ein Instrument | Ein Tanz | Bekannt ist „Bruder Jakob“ als Kanon.
+Was ist ein Chor? | eine Gruppe, die zusammen singt | ein Instrument | ein Lied | ein Notenschlüssel | Im Chor singen oft verschiedene Stimmen.
+Warum wärmt man sich vor dem Singen auf? | damit die Stimme geschont wird und besser klingt | damit man schneller rennen kann | weil es kalt ist | weil es Pflicht ist | Summen und Lockern schützen die Stimmbänder.
+Was hilft beim Singen? | aufrecht stehen und gut atmen | krumm sitzen | Kaugummi kauen | ganz leise flüstern | Eine gute Haltung gibt der Stimme Platz.
+Wie heißt ein Lied, das man Babys zum Einschlafen singt? | Schlaflied oder Wiegenlied | Kampflied | Tanzlied | Marsch | Wiegenlieder sind ruhig und langsam.
+Was ist die Nationalhymne? | das offizielle Lied eines Landes | ein Kinderlied | ein Werbelied | ein Weihnachtslied | Die deutsche Hymne ist das „Lied der Deutschen“, gesungen wird die dritte Strophe.
+Was ist ein Duett? | Zwei singen oder spielen zusammen. | Eine Person singt allein. | Ein großer Chor | Ein Orchester | Duo heißt zwei.
+Was ist ein Solo? | Eine Person singt oder spielt allein. | Alle singen | Zwei singen | Niemand singt | Solo heißt allein.
+Welches Lied ist ein bekanntes Weihnachtslied? | „Stille Nacht“ | „Alle Vögel sind schon da“ | „Bruder Jakob“ | „Hänschen klein“ | „Stille Nacht“ stammt aus Österreich und ist weltweit bekannt.
+Welches Lied ist ein Frühlingslied? | „Alle Vögel sind schon da“ | „Stille Nacht“ | „Laterne, Laterne“ | „O Tannenbaum“ | Im Frühling kommen die Zugvögel zurück.
+Wann singt man „Laterne, Laterne“? | beim Laternenumzug an Sankt Martin | an Ostern | im Sommerurlaub | an Silvester | Sankt Martin ist am 11. November.
+Was ist ein Rap? | schneller Sprechgesang im Rhythmus | ein leises Schlaflied | ein Instrument | eine Oper | Rap gehört zum Hip-Hop.
+Was macht man bei Karaoke? | zu Musik mitsingen, der Text steht auf dem Bildschirm | nur zuhören | tanzen ohne Musik | Instrumente reparieren | Karaoke kommt aus Japan.
+
+## musikwelt | Musik hören und erleben
+Was ist ein Orchester? | eine große Gruppe von Musikern mit vielen Instrumenten | ein einzelnes Instrument | ein Lied | ein Chor ohne Instrumente | Im Orchester spielen Streicher, Bläser und Schlagwerk zusammen.
+Wer leitet ein Orchester? | der Dirigent oder die Dirigentin | der Schlagzeuger | das Publikum | der Hausmeister | Mit dem Taktstock zeigt er Tempo und Lautstärke.
+Was ist ein Konzert? | eine Aufführung, bei der Musik live gespielt wird | ein Film | ein Buch | ein Sportspiel | Bei einem Konzert hört man Musik direkt vor Ort.
+Wer komponiert Musik? | ein Komponist oder eine Komponistin | ein Bäcker | ein Maler | ein Arzt | Komponieren heißt: Musik erfinden und aufschreiben.
+Welcher berühmte Komponist schrieb schon als Kind Musik und hieß Wolfgang Amadeus? | Mozart | Beethoven | Bach | Elvis | Mozart lebte in Salzburg und Wien.
+Welcher Komponist wurde taub und komponierte trotzdem weiter? | Ludwig van Beethoven | Mozart | Bach | Vivaldi | Beethoven wurde in Bonn geboren.
+Was ist eine Oper? | ein Theaterstück, in dem gesungen wird | ein Fußballspiel | ein Bild | ein Kochrezept | In der Oper singen die Darsteller ihre Rollen.
+Wie nennt man Musik ohne Gesang? | Instrumentalmusik | Chormusik | Rap | Schlaflied | Hier spielen nur Instrumente.
+Was ist ein Musical? | eine Bühnenshow mit Gesang, Tanz und Schauspiel | ein Instrument | ein Notenblatt | ein Lautsprecher | Bekannte Musicals sind zum Beispiel „König der Löwen“.
+Was ist Lautstärke? | wie laut oder leise etwas klingt | wie hoch ein Ton ist | wie schnell ein Lied ist | wie lang ein Ton ist | Lautstärke misst man in Dezibel.
+Warum soll Musik über Kopfhörer nicht zu laut sein? | Sehr laute Musik kann das Gehör schädigen. | Weil der Kopfhörer sonst platzt. | Weil die Musik sonst falsch ist. | Gar nicht, laut ist immer gut. | Ein Gehörschaden bleibt oft für immer.
+Wie kann Musik auf Menschen wirken? | Sie kann fröhlich, traurig, ruhig oder aufgeregt machen. | Gar nicht. | Nur müde. | Nur wütend. | Filmmusik nutzt das, um Spannung zu erzeugen.
+Was ist Filmmusik? | Musik, die Gefühle in einem Film verstärkt | Musik ohne Töne | ein Hörspiel | ein Kinoticket | Bei gruseligen Szenen klingt die Musik oft tief und spannend.
+Welche Musik passt am besten zu einer Gruselszene? | tiefe, langsame, spannende Töne | fröhliche Kinderlieder | ein Geburtstagslied | Stille Nacht | Tiefe, unheimliche Klänge machen Spannung.
+Was ist ein Tanz? | Bewegung im Rhythmus der Musik | ein Instrument | eine Note | ein Lied ohne Musik | Tänze gibt es auf der ganzen Welt.
+Was ist eine Band? | eine kleinere Gruppe, die zum Beispiel Rock oder Pop spielt | ein großes Orchester | ein Chor | ein Instrument | Oft gehören Gitarre, Bass, Schlagzeug und Gesang dazu.
+Was ist Popmusik? | beliebte, moderne Musik, die man oft im Radio hört | sehr alte Klostermusik | Musik nur mit Trommeln | Musik ohne Melodie | Pop kommt von populär, also beliebt.
+Was macht ein DJ? | Er legt Musik auf und mischt Lieder | Er spielt Geige im Orchester | Er schreibt Bücher | Er baut Klaviere | DJs spielen auf Partys und mischen Übergänge zwischen Liedern.
+Was ist ein Hörspiel? | eine Geschichte zum Anhören mit Stimmen und Geräuschen | ein Film | ein Bild | ein Brettspiel | Geräusche machen Hörspiele lebendig.
+Wie heißt der Mensch, der Instrumente baut? | Instrumentenbauer, zum Beispiel Geigenbauer | Bäcker | Gärtner | Pilot | Eine Geige zu bauen dauert oft viele Wochen.
+Was ist Hip-Hop? | eine Musikrichtung mit Rap und Beats | ein Tanz nur für Babys | ein Instrument | eine Oper | Hip-Hop entstand in den USA in New York.
+Was ist ein Beat? | der Rhythmus, oft vom Schlagzeug oder Computer | eine Melodie aus Flöten | ein Notenschlüssel | ein Liedtext | Zu einem Beat kann man gut tanzen oder rappen.
+Was ist Jazz? | eine Musikrichtung, in der oft frei improvisiert wird | ein Kinderlied | ein Instrument | eine Notenlinie | Improvisieren heißt: beim Spielen spontan Neues erfinden.
+Was ist Rockmusik? | Musik mit E-Gitarre, Bass und Schlagzeug, oft laut | leise Harfenmusik | Musik nur zum Einschlafen | ein Chorlied | Rock entstand in den 1950er-Jahren aus dem Rock’n’Roll.
+Was ist klassische Musik? | Musik von Komponisten wie Mozart oder Beethoven, oft vom Orchester gespielt | nur neue Popmusik | Musik nur mit Computern | Werbemusik | Klassische Musik wird seit vielen hundert Jahren gespielt.
+Was ist eine E-Gitarre? | eine Gitarre, deren Klang über einen Verstärker kommt | eine Gitarre aus Eis | eine Gitarre ohne Saiten | eine Flöte | E steht für elektrisch.
+Was macht ein Verstärker? | Er macht leise Klänge laut. | Er stimmt die Gitarre. | Er schreibt Noten. | Er nimmt Fotos auf. | Ohne Verstärker hört man eine E-Gitarre kaum.
+Was bedeutet es, ein Instrument zu stimmen? | die Töne so einstellen, dass sie richtig klingen | es abwaschen | es anmalen | es verpacken | Bei der Gitarre dreht man dazu an den Wirbeln.
+Was ist Elektronische Musik? | Musik, die mit Computern und Synthesizern gemacht wird | Musik nur mit Holzinstrumenten | ein Kinderlied | ein Chor | Techno oder House sind elektronische Musik.
+Was ist ein Flügel in der Musik? | ein großes Klavier mit liegenden Saiten | ein Vogelflügel aus Holz | eine Flöte | eine Trommel | Flügel stehen oft in Konzertsälen.
+Was ist eine Blockflöte? | eine Flöte aus Holz oder Kunststoff, die man vorne anbläst | eine Trommel | eine Gitarre | eine Geige | Viele Kinder lernen sie als erstes Instrument.
+Wie viele Tasten hat ein normales Klavier? | 88 | 20 | 50 | 200 | 52 weiße und 36 schwarze Tasten.
+Was ist ein Cello? | ein großes Streichinstrument, das man zwischen den Knien hält | eine Trommel | eine Flöte | ein Klavier | Das Cello klingt warm und tief.
+Was ist ein Notenständer? | ein Gestell, auf das man die Noten legt | ein Instrument | ein Taktstock | ein Lautsprecher | So hat man beim Spielen die Hände frei.

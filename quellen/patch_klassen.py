@@ -9,20 +9,12 @@ rep('    }, x.update = (R, w, T, U) => {\n      let M = 0, S = 0, q = 0;\n',
 rep('n.position.set(x.x, 0, x.z), s.rotation.y = x.yaw;', 'n.position.set(x.x, x.y || 0, x.z), s.rotation.y = x.yaw;', 'KL-Spieler-Hoehe')
 
 # ---- Neue Faecher: werden HINTEN an MILO_Q angehaengt, damit alle bisherigen Fragen-IDs gleich bleiben ----
-def _conv(fach, name, k=None):
-    out = {'f': name, 'b': [{'n': kat['name'], 'q': [[q['frage'], q['optionen'], q['richtig'], q['erklaerung']] for q in kat['fragen']]} for kat in fach['kategorien']]}
-    if k: out['k'] = k
-    return out
+import sys as _sys
+_sys.path.insert(0, D + '/werkzeuge')
+import milo_q as _mq
 _k3 = json.load(open(D + '/../fragen_klasse3.json', encoding='utf8'))
 _k5 = json.load(open(D + '/../fragen_klasse5.json', encoding='utf8'))
-_extra = []
-for f in _k3['faecher']:
-    if f['name'] == 'Psychologie':
-        _extra.append(_conv(f, 'Psychologie'))
-for f in _k5['faecher']:
-    _extra.append(_conv(f, f['name'] + ' · Klasse 5', 5))
-KLASSEN_SCRIPT = ('\n(function(){var Q=window.MILO_Q||(window.MILO_Q=[]),E=' + json.dumps(_extra, ensure_ascii=False, separators=(',', ':')) +
-                  ';E.forEach(function(f){Q.some(function(x){return x.f===f.f})||Q.push(f)});})();')
+KLASSEN_SCRIPT = _mq.script(D)
 
 # ---- Admin: neue Station bekommt die Klasse des Ortes und zeigt nur die passenden Faecher ----
 rep('subs = new Set([0]), need = KO_in("0", "number"), col = K("input", { type: "color", value: "#ffd34d" })',

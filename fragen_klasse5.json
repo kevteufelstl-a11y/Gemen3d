@@ -11,7 +11,7 @@
     {
      "id": "grosse-zahlen",
      "name": "Große Zahlen und Stellenwerte",
-     "anzahl": 45,
+     "anzahl": 85,
      "fragen": [
       {
        "id": "mathe-grosse-zahlen-001",
@@ -597,13 +597,533 @@
        "richtig": 0,
        "antwort": "3.400.856",
        "erklaerung": "Vergleiche die Stellen von links nach rechts: Millionen, Hunderttausender, Zehntausender …"
+      },
+      {
+       "id": "mathe-grosse-zahlen-046",
+       "frage": "Rechne: 1.000.000 + 200.000 = ?",
+       "optionen": [
+        "3.000.000",
+        "10.200.000",
+        "1.020.000",
+        "1.200.000"
+       ],
+       "richtig": 3,
+       "antwort": "1.200.000",
+       "erklaerung": "Stellengerecht addieren: 1.000.000 + 200.000 = 1.200.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-047",
+       "frage": "Runde 910.050.000 auf Hunderttausender.",
+       "optionen": [
+        "910.010.000",
+        "910.100.000",
+        "910.000.000",
+        "910.200.000"
+       ],
+       "richtig": 1,
+       "antwort": "910.100.000",
+       "erklaerung": "Entscheidend ist die Stelle rechts neben den Hunderttausendern: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 910.100.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-048",
+       "frage": "Rechne: 6.000.000 + 600.000 = ?",
+       "optionen": [
+        "6.060.000",
+        "60.600.000",
+        "6.600.000",
+        "12.000.000"
+       ],
+       "richtig": 2,
+       "antwort": "6.600.000",
+       "erklaerung": "Stellengerecht addieren: 6.000.000 + 600.000 = 6.600.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-049",
+       "frage": "Welche Zahl ist die römische Zahl MMMCDXLVI?",
+       "optionen": [
+        "3447",
+        "3546",
+        "3446",
+        "3456"
+       ],
+       "richtig": 2,
+       "antwort": "3446",
+       "erklaerung": "Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. MMMCDXLVI = 3446."
+      },
+      {
+       "id": "mathe-grosse-zahlen-050",
+       "frage": "Wie viele Nullen hat die Zahl 7.004.000 am Ende?",
+       "optionen": [
+        "6",
+        "7",
+        "3",
+        "2"
+       ],
+       "richtig": 2,
+       "antwort": "3",
+       "erklaerung": "Zähle die Nullen von rechts in 7.004.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-051",
+       "frage": "Runde 23.010.000 auf Hunderttausender.",
+       "optionen": [
+        "23.010.000",
+        "22.900.000",
+        "23.000.000",
+        "23.100.000"
+       ],
+       "richtig": 2,
+       "antwort": "23.000.000",
+       "erklaerung": "Entscheidend ist die Stelle rechts neben den Hunderttausendern: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 23.000.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-052",
+       "frage": "Rechne: 8.000.000 + 800.000 = ?",
+       "optionen": [
+        "16.000.000",
+        "8.080.000",
+        "80.800.000",
+        "8.800.000"
+       ],
+       "richtig": 3,
+       "antwort": "8.800.000",
+       "erklaerung": "Stellengerecht addieren: 8.000.000 + 800.000 = 8.800.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-053",
+       "frage": "Rechne: 2.000.000 + 400.000 = ?",
+       "optionen": [
+        "2.400.000",
+        "20.400.000",
+        "2.040.000",
+        "6.000.000"
+       ],
+       "richtig": 0,
+       "antwort": "2.400.000",
+       "erklaerung": "Stellengerecht addieren: 2.000.000 + 400.000 = 2.400.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-054",
+       "frage": "Rechne: 6.000.000 + 300.000 = ?",
+       "optionen": [
+        "9.000.000",
+        "6.300.000",
+        "60.300.000",
+        "6.030.000"
+       ],
+       "richtig": 1,
+       "antwort": "6.300.000",
+       "erklaerung": "Stellengerecht addieren: 6.000.000 + 300.000 = 6.300.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-055",
+       "frage": "Wie viele Tausender sind 7 Milliarden?",
+       "optionen": [
+        "7.000",
+        "700.000",
+        "7.000.000",
+        "70.000.000"
+       ],
+       "richtig": 2,
+       "antwort": "7.000.000",
+       "erklaerung": "7 Milliarden = 7.000.000.000. Durch 1.000 geteilt: 7.000.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-056",
+       "frage": "Rechne: 6.000.000 + 900.000 = ?",
+       "optionen": [
+        "15.000.000",
+        "60.900.000",
+        "6.900.000",
+        "6.090.000"
+       ],
+       "richtig": 2,
+       "antwort": "6.900.000",
+       "erklaerung": "Stellengerecht addieren: 6.000.000 + 900.000 = 6.900.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-057",
+       "frage": "Welche Zahl ist die römische Zahl MCMVIII?",
+       "optionen": [
+        "1918",
+        "1908",
+        "1909",
+        "2008"
+       ],
+       "richtig": 1,
+       "antwort": "1908",
+       "erklaerung": "Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. MCMVIII = 1908."
+      },
+      {
+       "id": "mathe-grosse-zahlen-058",
+       "frage": "Wie viele Tausender sind 4 Milliarden?",
+       "optionen": [
+        "40.000.000",
+        "4.000",
+        "4.000.000",
+        "400.000"
+       ],
+       "richtig": 2,
+       "antwort": "4.000.000",
+       "erklaerung": "4 Milliarden = 4.000.000.000. Durch 1.000 geteilt: 4.000.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-059",
+       "frage": "Runde 32.080.000 auf Millionen.",
+       "optionen": [
+        "32.000.000",
+        "32.100.000",
+        "33.000.000",
+        "31.000.000"
+       ],
+       "richtig": 0,
+       "antwort": "32.000.000",
+       "erklaerung": "Entscheidend ist die Stelle rechts neben den Millionen: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 32.000.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-060",
+       "frage": "Rechne: 4.000.000 + 500.000 = ?",
+       "optionen": [
+        "40.500.000",
+        "9.000.000",
+        "4.050.000",
+        "4.500.000"
+       ],
+       "richtig": 3,
+       "antwort": "4.500.000",
+       "erklaerung": "Stellengerecht addieren: 4.000.000 + 500.000 = 4.500.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-061",
+       "frage": "Runde 4.770.000 auf Hunderttausender.",
+       "optionen": [
+        "4.700.000",
+        "4.900.000",
+        "4.800.000",
+        "4.710.000"
+       ],
+       "richtig": 2,
+       "antwort": "4.800.000",
+       "erklaerung": "Entscheidend ist die Stelle rechts neben den Hunderttausendern: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 4.800.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-062",
+       "frage": "Wie viele Nullen hat die Zahl 5.004.000 am Ende?",
+       "optionen": [
+        "2",
+        "3",
+        "6",
+        "7"
+       ],
+       "richtig": 1,
+       "antwort": "3",
+       "erklaerung": "Zähle die Nullen von rechts in 5.004.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-063",
+       "frage": "Runde 870.000 auf Hunderttausender.",
+       "optionen": [
+        "900.000",
+        "800.000",
+        "1.000.000",
+        "810.000"
+       ],
+       "richtig": 0,
+       "antwort": "900.000",
+       "erklaerung": "Entscheidend ist die Stelle rechts neben den Hunderttausendern: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 900.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-064",
+       "frage": "Wie viele Tausender sind 9 Milliarden?",
+       "optionen": [
+        "900.000",
+        "9.000.000",
+        "90.000.000",
+        "9.000"
+       ],
+       "richtig": 1,
+       "antwort": "9.000.000",
+       "erklaerung": "9 Milliarden = 9.000.000.000. Durch 1.000 geteilt: 9.000.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-065",
+       "frage": "Runde 8.610.000 auf Millionen.",
+       "optionen": [
+        "8.100.000",
+        "8.000.000",
+        "10.000.000",
+        "9.000.000"
+       ],
+       "richtig": 3,
+       "antwort": "9.000.000",
+       "erklaerung": "Entscheidend ist die Stelle rechts neben den Millionen: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 9.000.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-066",
+       "frage": "Welche Zahl ist die römische Zahl CM?",
+       "optionen": [
+        "901",
+        "900",
+        "1000",
+        "910"
+       ],
+       "richtig": 1,
+       "antwort": "900",
+       "erklaerung": "Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. CM = 900."
+      },
+      {
+       "id": "mathe-grosse-zahlen-067",
+       "frage": "Welche Zahl ist die römische Zahl CCCLXXIX?",
+       "optionen": [
+        "378",
+        "479",
+        "379",
+        "389"
+       ],
+       "richtig": 2,
+       "antwort": "379",
+       "erklaerung": "Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. CCCLXXIX = 379."
+      },
+      {
+       "id": "mathe-grosse-zahlen-068",
+       "frage": "Wie viele Nullen hat die Zahl 8.004.000 am Ende?",
+       "optionen": [
+        "2",
+        "6",
+        "3",
+        "7"
+       ],
+       "richtig": 2,
+       "antwort": "3",
+       "erklaerung": "Zähle die Nullen von rechts in 8.004.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-069",
+       "frage": "Welche Zahl ist die römische Zahl MDXXXVII?",
+       "optionen": [
+        "1537",
+        "1637",
+        "1538",
+        "1547"
+       ],
+       "richtig": 0,
+       "antwort": "1537",
+       "erklaerung": "Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. MDXXXVII = 1537."
+      },
+      {
+       "id": "mathe-grosse-zahlen-070",
+       "frage": "Wie viele Nullen hat die Zahl 2.002.000 am Ende?",
+       "optionen": [
+        "6",
+        "7",
+        "2",
+        "3"
+       ],
+       "richtig": 3,
+       "antwort": "3",
+       "erklaerung": "Zähle die Nullen von rechts in 2.002.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-071",
+       "frage": "Runde 90.000.000 auf Hunderttausender.",
+       "optionen": [
+        "90.000.000",
+        "89.900.000",
+        "90.010.000",
+        "90.100.000"
+       ],
+       "richtig": 0,
+       "antwort": "90.000.000",
+       "erklaerung": "Entscheidend ist die Stelle rechts neben den Hunderttausendern: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 90.000.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-072",
+       "frage": "Rechne: 4.000.000 + 100.000 = ?",
+       "optionen": [
+        "40.100.000",
+        "4.100.000",
+        "5.000.000",
+        "4.010.000"
+       ],
+       "richtig": 1,
+       "antwort": "4.100.000",
+       "erklaerung": "Stellengerecht addieren: 4.000.000 + 100.000 = 4.100.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-073",
+       "frage": "Runde 5.120.000 auf Millionen.",
+       "optionen": [
+        "4.000.000",
+        "6.000.000",
+        "5.100.000",
+        "5.000.000"
+       ],
+       "richtig": 3,
+       "antwort": "5.000.000",
+       "erklaerung": "Entscheidend ist die Stelle rechts neben den Millionen: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 5.000.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-074",
+       "frage": "Wie viele Nullen hat die Zahl 9.001.000 am Ende?",
+       "optionen": [
+        "2",
+        "3",
+        "7",
+        "6"
+       ],
+       "richtig": 1,
+       "antwort": "3",
+       "erklaerung": "Zähle die Nullen von rechts in 9.001.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-075",
+       "frage": "Rechne: 5.000.000 + 700.000 = ?",
+       "optionen": [
+        "12.000.000",
+        "50.700.000",
+        "5.070.000",
+        "5.700.000"
+       ],
+       "richtig": 3,
+       "antwort": "5.700.000",
+       "erklaerung": "Stellengerecht addieren: 5.000.000 + 700.000 = 5.700.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-076",
+       "frage": "Welche Zahl ist die römische Zahl MMCDXV?",
+       "optionen": [
+        "2416",
+        "2425",
+        "2415",
+        "2515"
+       ],
+       "richtig": 2,
+       "antwort": "2415",
+       "erklaerung": "Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. MMCDXV = 2415."
+      },
+      {
+       "id": "mathe-grosse-zahlen-077",
+       "frage": "Wie viele Nullen hat die Zahl 8.008.000 am Ende?",
+       "optionen": [
+        "6",
+        "7",
+        "2",
+        "3"
+       ],
+       "richtig": 3,
+       "antwort": "3",
+       "erklaerung": "Zähle die Nullen von rechts in 8.008.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-078",
+       "frage": "Wie viele Nullen hat die Zahl 6.001.000 am Ende?",
+       "optionen": [
+        "6",
+        "7",
+        "2",
+        "3"
+       ],
+       "richtig": 3,
+       "antwort": "3",
+       "erklaerung": "Zähle die Nullen von rechts in 6.001.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-079",
+       "frage": "Welche Zahl ist die römische Zahl DCCXLIV?",
+       "optionen": [
+        "745",
+        "844",
+        "754",
+        "744"
+       ],
+       "richtig": 3,
+       "antwort": "744",
+       "erklaerung": "Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. DCCXLIV = 744."
+      },
+      {
+       "id": "mathe-grosse-zahlen-080",
+       "frage": "Rechne: 1.000.000 + 600.000 = ?",
+       "optionen": [
+        "7.000.000",
+        "1.060.000",
+        "1.600.000",
+        "10.600.000"
+       ],
+       "richtig": 2,
+       "antwort": "1.600.000",
+       "erklaerung": "Stellengerecht addieren: 1.000.000 + 600.000 = 1.600.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-081",
+       "frage": "Welche Zahl ist die römische Zahl CDXX?",
+       "optionen": [
+        "421",
+        "420",
+        "520",
+        "430"
+       ],
+       "richtig": 1,
+       "antwort": "420",
+       "erklaerung": "Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. CDXX = 420."
+      },
+      {
+       "id": "mathe-grosse-zahlen-082",
+       "frage": "Wie viele Nullen hat die Zahl 5.003.000 am Ende?",
+       "optionen": [
+        "6",
+        "3",
+        "7",
+        "2"
+       ],
+       "richtig": 1,
+       "antwort": "3",
+       "erklaerung": "Zähle die Nullen von rechts in 5.003.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-083",
+       "frage": "Rechne: 4.000.000 + 800.000 = ?",
+       "optionen": [
+        "4.080.000",
+        "4.800.000",
+        "40.800.000",
+        "12.000.000"
+       ],
+       "richtig": 1,
+       "antwort": "4.800.000",
+       "erklaerung": "Stellengerecht addieren: 4.000.000 + 800.000 = 4.800.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-084",
+       "frage": "Rechne: 8.000.000 + 700.000 = ?",
+       "optionen": [
+        "8.070.000",
+        "80.700.000",
+        "15.000.000",
+        "8.700.000"
+       ],
+       "richtig": 3,
+       "antwort": "8.700.000",
+       "erklaerung": "Stellengerecht addieren: 8.000.000 + 700.000 = 8.700.000."
+      },
+      {
+       "id": "mathe-grosse-zahlen-085",
+       "frage": "Welche Zahl ist die römische Zahl MMMDCCXCIV?",
+       "optionen": [
+        "3804",
+        "3795",
+        "3794",
+        "3894"
+       ],
+       "richtig": 2,
+       "antwort": "3794",
+       "erklaerung": "Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. MMMDCCXCIV = 3794."
       }
      ]
     },
     {
      "id": "rechnen",
      "name": "Rechnen und Rechengesetze",
-     "anzahl": 62,
+     "anzahl": 112,
      "fragen": [
       {
        "id": "mathe-rechnen-001",
@@ -1410,13 +1930,663 @@
        "richtig": 2,
        "antwort": "Quotient",
        "erklaerung": "Summe (+), Differenz (−), Produkt (·), Quotient (:)."
+      },
+      {
+       "id": "mathe-rechnen-063",
+       "frage": "Was ist 5²?",
+       "optionen": [
+        "30",
+        "50",
+        "10",
+        "25"
+       ],
+       "richtig": 3,
+       "antwort": "25",
+       "erklaerung": "5² bedeutet 5 · 5 = 25."
+      },
+      {
+       "id": "mathe-rechnen-064",
+       "frage": "Rechne: 545 : 5 = ?",
+       "optionen": [
+        "109",
+        "108",
+        "119",
+        "110"
+       ],
+       "richtig": 0,
+       "antwort": "109",
+       "erklaerung": "Probe: 109 · 5 = 545."
+      },
+      {
+       "id": "mathe-rechnen-065",
+       "frage": "Rechne: 6 + 8 · 2 = ?",
+       "optionen": [
+        "16",
+        "28",
+        "50",
+        "22"
+       ],
+       "richtig": 3,
+       "antwort": "22",
+       "erklaerung": "Punkt vor Strich: erst 8 · 2 = 16, dann 6 + 16 = 22."
+      },
+      {
+       "id": "mathe-rechnen-066",
+       "frage": "Rechne schriftlich: 87 · 60 = ?",
+       "optionen": [
+        "5.133",
+        "5.230",
+        "5.280",
+        "5.220"
+       ],
+       "richtig": 3,
+       "antwort": "5.220",
+       "erklaerung": "87 · 60 = 87 · 60 + 87 · 0 = 5220 + 0 = 5.220."
+      },
+      {
+       "id": "mathe-rechnen-067",
+       "frage": "Rechne: 2 + 6 · 10 = ?",
+       "optionen": [
+        "80",
+        "62",
+        "18",
+        "22"
+       ],
+       "richtig": 1,
+       "antwort": "62",
+       "erklaerung": "Punkt vor Strich: erst 6 · 10 = 60, dann 2 + 60 = 62."
+      },
+      {
+       "id": "mathe-rechnen-068",
+       "frage": "Rechne schriftlich: 57 · 98 = ?",
+       "optionen": [
+        "5.596",
+        "5.684",
+        "5.529",
+        "5.586"
+       ],
+       "richtig": 3,
+       "antwort": "5.586",
+       "erklaerung": "57 · 98 = 57 · 90 + 57 · 8 = 5130 + 456 = 5.586."
+      },
+      {
+       "id": "mathe-rechnen-069",
+       "frage": "Was ist 13²?",
+       "optionen": [
+        "182",
+        "130",
+        "169",
+        "26"
+       ],
+       "richtig": 2,
+       "antwort": "169",
+       "erklaerung": "13² bedeutet 13 · 13 = 169."
+      },
+      {
+       "id": "mathe-rechnen-070",
+       "frage": "Rechne: 1.224 : 12 = ?",
+       "optionen": [
+        "101",
+        "102",
+        "103",
+        "112"
+       ],
+       "richtig": 1,
+       "antwort": "102",
+       "erklaerung": "Probe: 102 · 12 = 1.224."
+      },
+      {
+       "id": "mathe-rechnen-071",
+       "frage": "Was ist 12³?",
+       "optionen": [
+        "120",
+        "1728",
+        "36",
+        "1740"
+       ],
+       "richtig": 1,
+       "antwort": "1728",
+       "erklaerung": "12³ bedeutet 12 · 12 · 12 = 1728."
+      },
+      {
+       "id": "mathe-rechnen-072",
+       "frage": "Rechne: (5 + 3) · 7 = ?",
+       "optionen": [
+        "26",
+        "38",
+        "56",
+        "63"
+       ],
+       "richtig": 2,
+       "antwort": "56",
+       "erklaerung": "Klammer zuerst: 5 + 3 = 8, dann · 7 = 56."
+      },
+      {
+       "id": "mathe-rechnen-073",
+       "frage": "Rechne: (11 + 3) · 8 = ?",
+       "optionen": [
+        "35",
+        "91",
+        "120",
+        "112"
+       ],
+       "richtig": 3,
+       "antwort": "112",
+       "erklaerung": "Klammer zuerst: 11 + 3 = 14, dann · 8 = 112."
+      },
+      {
+       "id": "mathe-rechnen-074",
+       "frage": "Rechne: (5 + 2) · 5 = ?",
+       "optionen": [
+        "27",
+        "15",
+        "40",
+        "35"
+       ],
+       "richtig": 3,
+       "antwort": "35",
+       "erklaerung": "Klammer zuerst: 5 + 2 = 7, dann · 5 = 35."
+      },
+      {
+       "id": "mathe-rechnen-075",
+       "frage": "Rechne geschickt: 200 · 33 · 4 = ?",
+       "optionen": [
+        "26.400",
+        "330",
+        "33.000",
+        "3.325"
+       ],
+       "richtig": 0,
+       "antwort": "26.400",
+       "erklaerung": "Vertauschungsgesetz: erst 200 · 4 = 800, dann · 33."
+      },
+      {
+       "id": "mathe-rechnen-076",
+       "frage": "Rechne: (5 + 12) · 7 = ?",
+       "optionen": [
+        "126",
+        "89",
+        "47",
+        "119"
+       ],
+       "richtig": 3,
+       "antwort": "119",
+       "erklaerung": "Klammer zuerst: 5 + 12 = 17, dann · 7 = 119."
+      },
+      {
+       "id": "mathe-rechnen-077",
+       "frage": "Rechne geschickt: 25 · 41 · 4 = ?",
+       "optionen": [
+        "4.100",
+        "410",
+        "41.000",
+        "4.125"
+       ],
+       "richtig": 0,
+       "antwort": "4.100",
+       "erklaerung": "Vertauschungsgesetz: erst 25 · 4 = 100, dann · 41."
+      },
+      {
+       "id": "mathe-rechnen-078",
+       "frage": "Rechne geschickt: 25 · 37 · 4 = ?",
+       "optionen": [
+        "37.000",
+        "3.700",
+        "370",
+        "3.725"
+       ],
+       "richtig": 1,
+       "antwort": "3.700",
+       "erklaerung": "Vertauschungsgesetz: erst 25 · 4 = 100, dann · 37."
+      },
+      {
+       "id": "mathe-rechnen-079",
+       "frage": "Rechne: 11 + 7 · 6 = ?",
+       "optionen": [
+        "83",
+        "24",
+        "108",
+        "53"
+       ],
+       "richtig": 3,
+       "antwort": "53",
+       "erklaerung": "Punkt vor Strich: erst 7 · 6 = 42, dann 11 + 42 = 53."
+      },
+      {
+       "id": "mathe-rechnen-080",
+       "frage": "Rechne: 603 : 9 = ?",
+       "optionen": [
+        "68",
+        "77",
+        "66",
+        "67"
+       ],
+       "richtig": 3,
+       "antwort": "67",
+       "erklaerung": "Probe: 67 · 9 = 603."
+      },
+      {
+       "id": "mathe-rechnen-081",
+       "frage": "Was ist 15²?",
+       "optionen": [
+        "30",
+        "150",
+        "240",
+        "225"
+       ],
+       "richtig": 3,
+       "antwort": "225",
+       "erklaerung": "15² bedeutet 15 · 15 = 225."
+      },
+      {
+       "id": "mathe-rechnen-082",
+       "frage": "Rechne: 8 + 12 · 5 = ?",
+       "optionen": [
+        "101",
+        "25",
+        "100",
+        "68"
+       ],
+       "richtig": 3,
+       "antwort": "68",
+       "erklaerung": "Punkt vor Strich: erst 12 · 5 = 60, dann 8 + 60 = 68."
+      },
+      {
+       "id": "mathe-rechnen-083",
+       "frage": "Rechne: 7 + 10 · 4 = ?",
+       "optionen": [
+        "21",
+        "47",
+        "68",
+        "74"
+       ],
+       "richtig": 1,
+       "antwort": "47",
+       "erklaerung": "Punkt vor Strich: erst 10 · 4 = 40, dann 7 + 40 = 47."
+      },
+      {
+       "id": "mathe-rechnen-084",
+       "frage": "Rechne: 1.539 : 9 = ?",
+       "optionen": [
+        "172",
+        "171",
+        "181",
+        "170"
+       ],
+       "richtig": 1,
+       "antwort": "171",
+       "erklaerung": "Probe: 171 · 9 = 1.539."
+      },
+      {
+       "id": "mathe-rechnen-085",
+       "frage": "Rechne: (4 + 12) · 3 = ?",
+       "optionen": [
+        "40",
+        "24",
+        "48",
+        "51"
+       ],
+       "richtig": 2,
+       "antwort": "48",
+       "erklaerung": "Klammer zuerst: 4 + 12 = 16, dann · 3 = 48."
+      },
+      {
+       "id": "mathe-rechnen-086",
+       "frage": "Rechne geschickt: 25 · 24 · 4 = ?",
+       "optionen": [
+        "2.425",
+        "2.400",
+        "24.000",
+        "240"
+       ],
+       "richtig": 1,
+       "antwort": "2.400",
+       "erklaerung": "Vertauschungsgesetz: erst 25 · 4 = 100, dann · 24."
+      },
+      {
+       "id": "mathe-rechnen-087",
+       "frage": "Was ist 11³?",
+       "optionen": [
+        "110",
+        "1342",
+        "33",
+        "1331"
+       ],
+       "richtig": 3,
+       "antwort": "1331",
+       "erklaerung": "11³ bedeutet 11 · 11 · 11 = 1331."
+      },
+      {
+       "id": "mathe-rechnen-088",
+       "frage": "Rechne: (5 + 3) · 6 = ?",
+       "optionen": [
+        "23",
+        "48",
+        "54",
+        "33"
+       ],
+       "richtig": 1,
+       "antwort": "48",
+       "erklaerung": "Klammer zuerst: 5 + 3 = 8, dann · 6 = 48."
+      },
+      {
+       "id": "mathe-rechnen-089",
+       "frage": "Rechne schriftlich: 96 · 53 = ?",
+       "optionen": [
+        "4.992",
+        "5.098",
+        "5.088",
+        "5.141"
+       ],
+       "richtig": 2,
+       "antwort": "5.088",
+       "erklaerung": "96 · 53 = 96 · 50 + 96 · 3 = 4800 + 288 = 5.088."
+      },
+      {
+       "id": "mathe-rechnen-090",
+       "frage": "Rechne schriftlich: 85 · 21 = ?",
+       "optionen": [
+        "1.785",
+        "1.700",
+        "1.795",
+        "1.806"
+       ],
+       "richtig": 0,
+       "antwort": "1.785",
+       "erklaerung": "85 · 21 = 85 · 20 + 85 · 1 = 1700 + 85 = 1.785."
+      },
+      {
+       "id": "mathe-rechnen-091",
+       "frage": "Was ist 4³?",
+       "optionen": [
+        "68",
+        "64",
+        "40",
+        "12"
+       ],
+       "richtig": 1,
+       "antwort": "64",
+       "erklaerung": "4³ bedeutet 4 · 4 · 4 = 64."
+      },
+      {
+       "id": "mathe-rechnen-092",
+       "frage": "Rechne: 304 : 4 = ?",
+       "optionen": [
+        "86",
+        "75",
+        "76",
+        "77"
+       ],
+       "richtig": 2,
+       "antwort": "76",
+       "erklaerung": "Probe: 76 · 4 = 304."
+      },
+      {
+       "id": "mathe-rechnen-093",
+       "frage": "Rechne schriftlich: 84 · 14 = ?",
+       "optionen": [
+        "1.190",
+        "1.186",
+        "1.176",
+        "1.092"
+       ],
+       "richtig": 2,
+       "antwort": "1.176",
+       "erklaerung": "84 · 14 = 84 · 10 + 84 · 4 = 840 + 336 = 1.176."
+      },
+      {
+       "id": "mathe-rechnen-094",
+       "frage": "Was ist 6²?",
+       "optionen": [
+        "12",
+        "42",
+        "36",
+        "60"
+       ],
+       "richtig": 2,
+       "antwort": "36",
+       "erklaerung": "6² bedeutet 6 · 6 = 36."
+      },
+      {
+       "id": "mathe-rechnen-095",
+       "frage": "Rechne geschickt: 200 · 41 · 4 = ?",
+       "optionen": [
+        "410",
+        "41.000",
+        "32.800",
+        "4.125"
+       ],
+       "richtig": 2,
+       "antwort": "32.800",
+       "erklaerung": "Vertauschungsgesetz: erst 200 · 4 = 800, dann · 41."
+      },
+      {
+       "id": "mathe-rechnen-096",
+       "frage": "Rechne: (9 + 10) · 9 = ?",
+       "optionen": [
+        "99",
+        "91",
+        "180",
+        "171"
+       ],
+       "richtig": 3,
+       "antwort": "171",
+       "erklaerung": "Klammer zuerst: 9 + 10 = 19, dann · 9 = 171."
+      },
+      {
+       "id": "mathe-rechnen-097",
+       "frage": "Rechne: 6 + 10 · 7 = ?",
+       "optionen": [
+        "23",
+        "76",
+        "112",
+        "67"
+       ],
+       "richtig": 1,
+       "antwort": "76",
+       "erklaerung": "Punkt vor Strich: erst 10 · 7 = 70, dann 6 + 70 = 76."
+      },
+      {
+       "id": "mathe-rechnen-098",
+       "frage": "Rechne: 696 : 8 = ?",
+       "optionen": [
+        "97",
+        "87",
+        "86",
+        "88"
+       ],
+       "richtig": 1,
+       "antwort": "87",
+       "erklaerung": "Probe: 87 · 8 = 696."
+      },
+      {
+       "id": "mathe-rechnen-099",
+       "frage": "Rechne: 10 + 9 · 4 = ?",
+       "optionen": [
+        "76",
+        "94",
+        "46",
+        "23"
+       ],
+       "richtig": 2,
+       "antwort": "46",
+       "erklaerung": "Punkt vor Strich: erst 9 · 4 = 36, dann 10 + 36 = 46."
+      },
+      {
+       "id": "mathe-rechnen-100",
+       "frage": "Rechne: 1.272 : 12 = ?",
+       "optionen": [
+        "105",
+        "106",
+        "107",
+        "116"
+       ],
+       "richtig": 1,
+       "antwort": "106",
+       "erklaerung": "Probe: 106 · 12 = 1.272."
+      },
+      {
+       "id": "mathe-rechnen-101",
+       "frage": "Rechne: 900 : 12 = ?",
+       "optionen": [
+        "76",
+        "75",
+        "85",
+        "74"
+       ],
+       "richtig": 1,
+       "antwort": "75",
+       "erklaerung": "Probe: 75 · 12 = 900."
+      },
+      {
+       "id": "mathe-rechnen-102",
+       "frage": "Rechne: 910 : 10 = ?",
+       "optionen": [
+        "101",
+        "90",
+        "92",
+        "91"
+       ],
+       "richtig": 3,
+       "antwort": "91",
+       "erklaerung": "Probe: 91 · 10 = 910."
+      },
+      {
+       "id": "mathe-rechnen-103",
+       "frage": "Rechne geschickt: 25 · 49 · 4 = ?",
+       "optionen": [
+        "4.900",
+        "49.000",
+        "490",
+        "4.925"
+       ],
+       "richtig": 0,
+       "antwort": "4.900",
+       "erklaerung": "Vertauschungsgesetz: erst 25 · 4 = 100, dann · 49."
+      },
+      {
+       "id": "mathe-rechnen-104",
+       "frage": "Rechne: (6 + 10) · 7 = ?",
+       "optionen": [
+        "52",
+        "76",
+        "112",
+        "119"
+       ],
+       "richtig": 2,
+       "antwort": "112",
+       "erklaerung": "Klammer zuerst: 6 + 10 = 16, dann · 7 = 112."
+      },
+      {
+       "id": "mathe-rechnen-105",
+       "frage": "Rechne geschickt: 25 · 25 · 4 = ?",
+       "optionen": [
+        "25.000",
+        "250",
+        "2.500",
+        "2.525"
+       ],
+       "richtig": 2,
+       "antwort": "2.500",
+       "erklaerung": "Vertauschungsgesetz: erst 25 · 4 = 100, dann · 25."
+      },
+      {
+       "id": "mathe-rechnen-106",
+       "frage": "Rechne schriftlich: 28 · 89 = ?",
+       "optionen": [
+        "2.581",
+        "2.502",
+        "2.492",
+        "2.464"
+       ],
+       "richtig": 2,
+       "antwort": "2.492",
+       "erklaerung": "28 · 89 = 28 · 80 + 28 · 9 = 2240 + 252 = 2.492."
+      },
+      {
+       "id": "mathe-rechnen-107",
+       "frage": "Was ist 8²?",
+       "optionen": [
+        "64",
+        "80",
+        "16",
+        "72"
+       ],
+       "richtig": 0,
+       "antwort": "64",
+       "erklaerung": "8² bedeutet 8 · 8 = 64."
+      },
+      {
+       "id": "mathe-rechnen-108",
+       "frage": "Rechne geschickt: 100 · 40 · 4 = ?",
+       "optionen": [
+        "40.000",
+        "4.025",
+        "400",
+        "16.000"
+       ],
+       "richtig": 3,
+       "antwort": "16.000",
+       "erklaerung": "Vertauschungsgesetz: erst 100 · 4 = 400, dann · 40."
+      },
+      {
+       "id": "mathe-rechnen-109",
+       "frage": "Rechne: 12 + 7 · 4 = ?",
+       "optionen": [
+        "40",
+        "23",
+        "88",
+        "76"
+       ],
+       "richtig": 0,
+       "antwort": "40",
+       "erklaerung": "Punkt vor Strich: erst 7 · 4 = 28, dann 12 + 28 = 40."
+      },
+      {
+       "id": "mathe-rechnen-110",
+       "frage": "Rechne: (8 + 7) · 4 = ?",
+       "optionen": [
+        "60",
+        "36",
+        "64",
+        "39"
+       ],
+       "richtig": 0,
+       "antwort": "60",
+       "erklaerung": "Klammer zuerst: 8 + 7 = 15, dann · 4 = 60."
+      },
+      {
+       "id": "mathe-rechnen-111",
+       "frage": "Was ist 6³?",
+       "optionen": [
+        "222",
+        "216",
+        "60",
+        "18"
+       ],
+       "richtig": 1,
+       "antwort": "216",
+       "erklaerung": "6³ bedeutet 6 · 6 · 6 = 216."
+      },
+      {
+       "id": "mathe-rechnen-112",
+       "frage": "Rechne: 816 : 12 = ?",
+       "optionen": [
+        "69",
+        "68",
+        "67",
+        "78"
+       ],
+       "richtig": 1,
+       "antwort": "68",
+       "erklaerung": "Probe: 68 · 12 = 816."
       }
      ]
     },
     {
      "id": "teilbarkeit",
      "name": "Teiler, Vielfache und Primzahlen",
-     "anzahl": 41,
+     "anzahl": 86,
      "fragen": [
       {
        "id": "mathe-teilbarkeit-001",
@@ -1950,13 +3120,598 @@
        "richtig": 3,
        "antwort": "21",
        "erklaerung": "4 + 7 + 2 + 8 = 21."
+      },
+      {
+       "id": "mathe-teilbarkeit-042",
+       "frage": "Was ist das kleinste gemeinsame Vielfache (kgV) von 15 und 12?",
+       "optionen": [
+        "60",
+        "15",
+        "180",
+        "75"
+       ],
+       "richtig": 0,
+       "antwort": "60",
+       "erklaerung": "Vielfache von 15 prüfen, bis eines auch durch 12 teilbar ist: 60."
+      },
+      {
+       "id": "mathe-teilbarkeit-043",
+       "frage": "Welche dieser Zahlen ist eine Primzahl?",
+       "optionen": [
+        "43",
+        "39",
+        "51",
+        "50"
+       ],
+       "richtig": 0,
+       "antwort": "43",
+       "erklaerung": "43 hat nur zwei Teiler: 1 und 43. Die anderen Zahlen haben weitere Teiler."
+      },
+      {
+       "id": "mathe-teilbarkeit-044",
+       "frage": "Was ist der größte gemeinsame Teiler (ggT) von 69 und 66?",
+       "optionen": [
+        "66",
+        "3",
+        "6",
+        "1"
+       ],
+       "richtig": 1,
+       "antwort": "3",
+       "erklaerung": "3 teilt 69 und 66. Eine größere Zahl, die beide teilt, gibt es nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-045",
+       "frage": "Wie viele Teiler hat 42?",
+       "optionen": [
+        "7",
+        "9",
+        "8",
+        "10"
+       ],
+       "richtig": 2,
+       "antwort": "8",
+       "erklaerung": "Teiler von 42: 1, 2, 3, 6, 7, 14, 21, 42. Das sind 8."
+      },
+      {
+       "id": "mathe-teilbarkeit-046",
+       "frage": "Was ist das kleinste gemeinsame Vielfache (kgV) von 13 und 3?",
+       "optionen": [
+        "78",
+        "52",
+        "13",
+        "39"
+       ],
+       "richtig": 3,
+       "antwort": "39",
+       "erklaerung": "Vielfache von 13 prüfen, bis eines auch durch 3 teilbar ist: 39."
+      },
+      {
+       "id": "mathe-teilbarkeit-047",
+       "frage": "Ist 3.047 durch 9 teilbar?",
+       "optionen": [
+        "ja",
+        "nein",
+        "das kann man nicht prüfen",
+        "nur durch 2"
+       ],
+       "richtig": 1,
+       "antwort": "nein",
+       "erklaerung": "Quersumme: 3 + 0 + 4 + 7 = 14. 14 ist nicht durch 9 teilbar, also auch 3.047 nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-048",
+       "frage": "Wie viele Teiler hat 84?",
+       "optionen": [
+        "13",
+        "14",
+        "11",
+        "12"
+       ],
+       "richtig": 3,
+       "antwort": "12",
+       "erklaerung": "Teiler von 84: 1, 2, 3, 4, 6, 7, 12, 14, 21, 28, 42, 84. Das sind 12."
+      },
+      {
+       "id": "mathe-teilbarkeit-049",
+       "frage": "Wie viele Teiler hat 80?",
+       "optionen": [
+        "12",
+        "9",
+        "11",
+        "10"
+       ],
+       "richtig": 3,
+       "antwort": "10",
+       "erklaerung": "Teiler von 80: 1, 2, 4, 5, 8, 10, 16, 20, 40, 80. Das sind 10."
+      },
+      {
+       "id": "mathe-teilbarkeit-050",
+       "frage": "Was ist das kleinste gemeinsame Vielfache (kgV) von 9 und 6?",
+       "optionen": [
+        "54",
+        "9",
+        "18",
+        "27"
+       ],
+       "richtig": 2,
+       "antwort": "18",
+       "erklaerung": "Vielfache von 9 prüfen, bis eines auch durch 6 teilbar ist: 18."
+      },
+      {
+       "id": "mathe-teilbarkeit-051",
+       "frage": "Ist 9.675 durch 9 teilbar?",
+       "optionen": [
+        "nein",
+        "das kann man nicht prüfen",
+        "ja",
+        "nur durch 2"
+       ],
+       "richtig": 2,
+       "antwort": "ja",
+       "erklaerung": "Quersumme: 9 + 6 + 7 + 5 = 27. 27 ist durch 9 teilbar, also auch 9.675 ."
+      },
+      {
+       "id": "mathe-teilbarkeit-052",
+       "frage": "Ist 5.103 durch 9 teilbar?",
+       "optionen": [
+        "nein",
+        "nur durch 2",
+        "ja",
+        "das kann man nicht prüfen"
+       ],
+       "richtig": 2,
+       "antwort": "ja",
+       "erklaerung": "Quersumme: 5 + 1 + 0 + 3 = 9. 9 ist durch 9 teilbar, also auch 5.103 ."
+      },
+      {
+       "id": "mathe-teilbarkeit-053",
+       "frage": "Wie viele Teiler hat 45?",
+       "optionen": [
+        "7",
+        "8",
+        "6",
+        "5"
+       ],
+       "richtig": 2,
+       "antwort": "6",
+       "erklaerung": "Teiler von 45: 1, 3, 5, 9, 15, 45. Das sind 6."
+      },
+      {
+       "id": "mathe-teilbarkeit-054",
+       "frage": "Was ist der größte gemeinsame Teiler (ggT) von 28 und 38?",
+       "optionen": [
+        "2",
+        "28",
+        "4",
+        "3"
+       ],
+       "richtig": 0,
+       "antwort": "2",
+       "erklaerung": "2 teilt 28 und 38. Eine größere Zahl, die beide teilt, gibt es nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-055",
+       "frage": "Ist 2.281 durch 9 teilbar?",
+       "optionen": [
+        "das kann man nicht prüfen",
+        "ja",
+        "nur durch 2",
+        "nein"
+       ],
+       "richtig": 3,
+       "antwort": "nein",
+       "erklaerung": "Quersumme: 2 + 2 + 8 + 1 = 13. 13 ist nicht durch 9 teilbar, also auch 2.281 nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-056",
+       "frage": "Was ist der größte gemeinsame Teiler (ggT) von 5 und 25?",
+       "optionen": [
+        "10",
+        "5",
+        "8",
+        "2"
+       ],
+       "richtig": 1,
+       "antwort": "5",
+       "erklaerung": "5 teilt 5 und 25. Eine größere Zahl, die beide teilt, gibt es nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-057",
+       "frage": "Wie viele Teiler hat 36?",
+       "optionen": [
+        "11",
+        "9",
+        "8",
+        "10"
+       ],
+       "richtig": 1,
+       "antwort": "9",
+       "erklaerung": "Teiler von 36: 1, 2, 3, 4, 6, 9, 12, 18, 36. Das sind 9."
+      },
+      {
+       "id": "mathe-teilbarkeit-058",
+       "frage": "Ist 5.177 durch 9 teilbar?",
+       "optionen": [
+        "nein",
+        "ja",
+        "nur durch 2",
+        "das kann man nicht prüfen"
+       ],
+       "richtig": 0,
+       "antwort": "nein",
+       "erklaerung": "Quersumme: 5 + 1 + 7 + 7 = 20. 20 ist nicht durch 9 teilbar, also auch 5.177 nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-059",
+       "frage": "Was ist der größte gemeinsame Teiler (ggT) von 15 und 18?",
+       "optionen": [
+        "3",
+        "15",
+        "1",
+        "6"
+       ],
+       "richtig": 0,
+       "antwort": "3",
+       "erklaerung": "3 teilt 15 und 18. Eine größere Zahl, die beide teilt, gibt es nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-060",
+       "frage": "Was ist das kleinste gemeinsame Vielfache (kgV) von 15 und 8?",
+       "optionen": [
+        "135",
+        "120",
+        "15",
+        "240"
+       ],
+       "richtig": 1,
+       "antwort": "120",
+       "erklaerung": "Vielfache von 15 prüfen, bis eines auch durch 8 teilbar ist: 120."
+      },
+      {
+       "id": "mathe-teilbarkeit-061",
+       "frage": "Was ist das kleinste gemeinsame Vielfache (kgV) von 13 und 7?",
+       "optionen": [
+        "91",
+        "182",
+        "13",
+        "104"
+       ],
+       "richtig": 0,
+       "antwort": "91",
+       "erklaerung": "Vielfache von 13 prüfen, bis eines auch durch 7 teilbar ist: 91."
+      },
+      {
+       "id": "mathe-teilbarkeit-062",
+       "frage": "Was ist der größte gemeinsame Teiler (ggT) von 57 und 27?",
+       "optionen": [
+        "1",
+        "3",
+        "27",
+        "6"
+       ],
+       "richtig": 1,
+       "antwort": "3",
+       "erklaerung": "3 teilt 57 und 27. Eine größere Zahl, die beide teilt, gibt es nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-063",
+       "frage": "Wie viele Teiler hat 12?",
+       "optionen": [
+        "8",
+        "5",
+        "7",
+        "6"
+       ],
+       "richtig": 3,
+       "antwort": "6",
+       "erklaerung": "Teiler von 12: 1, 2, 3, 4, 6, 12. Das sind 6."
+      },
+      {
+       "id": "mathe-teilbarkeit-064",
+       "frage": "Was ist das kleinste gemeinsame Vielfache (kgV) von 5 und 8?",
+       "optionen": [
+        "80",
+        "45",
+        "40",
+        "8"
+       ],
+       "richtig": 2,
+       "antwort": "40",
+       "erklaerung": "Vielfache von 8 prüfen, bis eines auch durch 5 teilbar ist: 40."
+      },
+      {
+       "id": "mathe-teilbarkeit-065",
+       "frage": "Was ist das kleinste gemeinsame Vielfache (kgV) von 5 und 2?",
+       "optionen": [
+        "20",
+        "5",
+        "15",
+        "10"
+       ],
+       "richtig": 3,
+       "antwort": "10",
+       "erklaerung": "Vielfache von 5 prüfen, bis eines auch durch 2 teilbar ist: 10."
+      },
+      {
+       "id": "mathe-teilbarkeit-066",
+       "frage": "Was ist der größte gemeinsame Teiler (ggT) von 72 und 90?",
+       "optionen": [
+        "72",
+        "18",
+        "36",
+        "9"
+       ],
+       "richtig": 1,
+       "antwort": "18",
+       "erklaerung": "18 teilt 72 und 90. Eine größere Zahl, die beide teilt, gibt es nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-067",
+       "frage": "Was ist das kleinste gemeinsame Vielfache (kgV) von 8 und 3?",
+       "optionen": [
+        "48",
+        "24",
+        "32",
+        "8"
+       ],
+       "richtig": 1,
+       "antwort": "24",
+       "erklaerung": "Vielfache von 8 prüfen, bis eines auch durch 3 teilbar ist: 24."
+      },
+      {
+       "id": "mathe-teilbarkeit-068",
+       "frage": "Ist 5.613 durch 9 teilbar?",
+       "optionen": [
+        "ja",
+        "nur durch 2",
+        "das kann man nicht prüfen",
+        "nein"
+       ],
+       "richtig": 3,
+       "antwort": "nein",
+       "erklaerung": "Quersumme: 5 + 6 + 1 + 3 = 15. 15 ist nicht durch 9 teilbar, also auch 5.613 nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-069",
+       "frage": "Ist 7.711 durch 3 teilbar?",
+       "optionen": [
+        "nein",
+        "ja",
+        "das kann man nicht prüfen",
+        "nur durch 2"
+       ],
+       "richtig": 0,
+       "antwort": "nein",
+       "erklaerung": "Quersumme: 7 + 7 + 1 + 1 = 16. 16 ist nicht durch 3 teilbar, also auch 7.711 nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-070",
+       "frage": "Wie viele Teiler hat 50?",
+       "optionen": [
+        "5",
+        "8",
+        "7",
+        "6"
+       ],
+       "richtig": 3,
+       "antwort": "6",
+       "erklaerung": "Teiler von 50: 1, 2, 5, 10, 25, 50. Das sind 6."
+      },
+      {
+       "id": "mathe-teilbarkeit-071",
+       "frage": "Ist 1.162 durch 3 teilbar?",
+       "optionen": [
+        "ja",
+        "nein",
+        "das kann man nicht prüfen",
+        "nur durch 2"
+       ],
+       "richtig": 1,
+       "antwort": "nein",
+       "erklaerung": "Quersumme: 1 + 1 + 6 + 2 = 10. 10 ist nicht durch 3 teilbar, also auch 1.162 nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-072",
+       "frage": "Ist 5.648 durch 3 teilbar?",
+       "optionen": [
+        "das kann man nicht prüfen",
+        "nein",
+        "ja",
+        "nur durch 2"
+       ],
+       "richtig": 1,
+       "antwort": "nein",
+       "erklaerung": "Quersumme: 5 + 6 + 4 + 8 = 23. 23 ist nicht durch 3 teilbar, also auch 5.648 nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-073",
+       "frage": "Wie viele Teiler hat 48?",
+       "optionen": [
+        "10",
+        "11",
+        "9",
+        "12"
+       ],
+       "richtig": 0,
+       "antwort": "10",
+       "erklaerung": "Teiler von 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48. Das sind 10."
+      },
+      {
+       "id": "mathe-teilbarkeit-074",
+       "frage": "Ist 4.977 durch 3 teilbar?",
+       "optionen": [
+        "nur durch 2",
+        "nein",
+        "ja",
+        "das kann man nicht prüfen"
+       ],
+       "richtig": 2,
+       "antwort": "ja",
+       "erklaerung": "Quersumme: 4 + 9 + 7 + 7 = 27. 27 ist durch 3 teilbar, also auch 4.977 ."
+      },
+      {
+       "id": "mathe-teilbarkeit-075",
+       "frage": "Was ist der größte gemeinsame Teiler (ggT) von 60 und 12?",
+       "optionen": [
+        "12",
+        "24",
+        "15",
+        "6"
+       ],
+       "richtig": 0,
+       "antwort": "12",
+       "erklaerung": "12 teilt 60 und 12. Eine größere Zahl, die beide teilt, gibt es nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-076",
+       "frage": "Was ist das kleinste gemeinsame Vielfache (kgV) von 14 und 9?",
+       "optionen": [
+        "252",
+        "126",
+        "14",
+        "140"
+       ],
+       "richtig": 1,
+       "antwort": "126",
+       "erklaerung": "Vielfache von 14 prüfen, bis eines auch durch 9 teilbar ist: 126."
+      },
+      {
+       "id": "mathe-teilbarkeit-077",
+       "frage": "Wie viele Teiler hat 54?",
+       "optionen": [
+        "7",
+        "9",
+        "10",
+        "8"
+       ],
+       "richtig": 3,
+       "antwort": "8",
+       "erklaerung": "Teiler von 54: 1, 2, 3, 6, 9, 18, 27, 54. Das sind 8."
+      },
+      {
+       "id": "mathe-teilbarkeit-078",
+       "frage": "Ist 969 durch 9 teilbar?",
+       "optionen": [
+        "das kann man nicht prüfen",
+        "nein",
+        "nur durch 2",
+        "ja"
+       ],
+       "richtig": 1,
+       "antwort": "nein",
+       "erklaerung": "Quersumme: 9 + 6 + 9 = 24. 24 ist nicht durch 9 teilbar, also auch 969 nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-079",
+       "frage": "Wie viele Teiler hat 72?",
+       "optionen": [
+        "14",
+        "13",
+        "11",
+        "12"
+       ],
+       "richtig": 3,
+       "antwort": "12",
+       "erklaerung": "Teiler von 72: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72. Das sind 12."
+      },
+      {
+       "id": "mathe-teilbarkeit-080",
+       "frage": "Ist 7.408 durch 9 teilbar?",
+       "optionen": [
+        "nein",
+        "nur durch 2",
+        "ja",
+        "das kann man nicht prüfen"
+       ],
+       "richtig": 0,
+       "antwort": "nein",
+       "erklaerung": "Quersumme: 7 + 4 + 0 + 8 = 19. 19 ist nicht durch 9 teilbar, also auch 7.408 nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-081",
+       "frage": "Ist 5.629 durch 3 teilbar?",
+       "optionen": [
+        "nur durch 2",
+        "das kann man nicht prüfen",
+        "nein",
+        "ja"
+       ],
+       "richtig": 2,
+       "antwort": "nein",
+       "erklaerung": "Quersumme: 5 + 6 + 2 + 9 = 22. 22 ist nicht durch 3 teilbar, also auch 5.629 nicht."
+      },
+      {
+       "id": "mathe-teilbarkeit-082",
+       "frage": "Ist 7.968 durch 3 teilbar?",
+       "optionen": [
+        "das kann man nicht prüfen",
+        "ja",
+        "nein",
+        "nur durch 2"
+       ],
+       "richtig": 1,
+       "antwort": "ja",
+       "erklaerung": "Quersumme: 7 + 9 + 6 + 8 = 30. 30 ist durch 3 teilbar, also auch 7.968 ."
+      },
+      {
+       "id": "mathe-teilbarkeit-083",
+       "frage": "Ist 5.832 durch 3 teilbar?",
+       "optionen": [
+        "nur durch 2",
+        "das kann man nicht prüfen",
+        "ja",
+        "nein"
+       ],
+       "richtig": 2,
+       "antwort": "ja",
+       "erklaerung": "Quersumme: 5 + 8 + 3 + 2 = 18. 18 ist durch 3 teilbar, also auch 5.832 ."
+      },
+      {
+       "id": "mathe-teilbarkeit-084",
+       "frage": "Was ist das kleinste gemeinsame Vielfache (kgV) von 11 und 13?",
+       "optionen": [
+        "286",
+        "143",
+        "154",
+        "13"
+       ],
+       "richtig": 1,
+       "antwort": "143",
+       "erklaerung": "Vielfache von 13 prüfen, bis eines auch durch 11 teilbar ist: 143."
+      },
+      {
+       "id": "mathe-teilbarkeit-085",
+       "frage": "Was ist das kleinste gemeinsame Vielfache (kgV) von 6 und 13?",
+       "optionen": [
+        "13",
+        "84",
+        "78",
+        "156"
+       ],
+       "richtig": 2,
+       "antwort": "78",
+       "erklaerung": "Vielfache von 13 prüfen, bis eines auch durch 6 teilbar ist: 78."
+      },
+      {
+       "id": "mathe-teilbarkeit-086",
+       "frage": "Was ist das kleinste gemeinsame Vielfache (kgV) von 9 und 13?",
+       "optionen": [
+        "117",
+        "126",
+        "234",
+        "13"
+       ],
+       "richtig": 0,
+       "antwort": "117",
+       "erklaerung": "Vielfache von 13 prüfen, bis eines auch durch 9 teilbar ist: 117."
       }
      ]
     },
     {
      "id": "groessen",
      "name": "Größen und Sachaufgaben",
-     "anzahl": 40,
+     "anzahl": 85,
      "fragen": [
       {
        "id": "mathe-groessen-001",
@@ -2477,13 +4232,598 @@
        "richtig": 3,
        "antwort": "12 km",
        "erklaerung": "3 · 4 km = 12 km."
+      },
+      {
+       "id": "mathe-groessen-041",
+       "frage": "Eine Bahnfahrt startet um 10:40 Uhr und dauert 86 Minuten. Wann kommt der Zug an?",
+       "optionen": [
+        "12:06 Uhr",
+        "12:16 Uhr",
+        "12:46 Uhr",
+        "11:06 Uhr"
+       ],
+       "richtig": 0,
+       "antwort": "12:06 Uhr",
+       "erklaerung": "86 Minuten = 1 h 26 min. 10:40 Uhr + 1 h 26 min = 12:06 Uhr."
+      },
+      {
+       "id": "mathe-groessen-042",
+       "frage": "Wie viele Sekunden sind 11 Minuten?",
+       "optionen": [
+        "720",
+        "1100",
+        "660",
+        "264"
+       ],
+       "richtig": 2,
+       "antwort": "660",
+       "erklaerung": "1 min = 60 s, also 11 · 60 = 660 s."
+      },
+      {
+       "id": "mathe-groessen-043",
+       "frage": "Eine Bahnfahrt startet um 12:10 Uhr und dauert 70 Minuten. Wann kommt der Zug an?",
+       "optionen": [
+        "12:20 Uhr",
+        "14:00 Uhr",
+        "13:20 Uhr",
+        "13:30 Uhr"
+       ],
+       "richtig": 2,
+       "antwort": "13:20 Uhr",
+       "erklaerung": "70 Minuten = 1 h 10 min. 12:10 Uhr + 1 h 10 min = 13:20 Uhr."
+      },
+      {
+       "id": "mathe-groessen-044",
+       "frage": "Eine Bahnfahrt startet um 12:35 Uhr und dauert 142 Minuten. Wann kommt der Zug an?",
+       "optionen": [
+        "13:57 Uhr",
+        "15:07 Uhr",
+        "15:37 Uhr",
+        "14:57 Uhr"
+       ],
+       "richtig": 3,
+       "antwort": "14:57 Uhr",
+       "erklaerung": "142 Minuten = 2 h 22 min. 12:35 Uhr + 2 h 22 min = 14:57 Uhr."
+      },
+      {
+       "id": "mathe-groessen-045",
+       "frage": "Eine Bahnfahrt startet um 7:10 Uhr und dauert 111 Minuten. Wann kommt der Zug an?",
+       "optionen": [
+        "9:11 Uhr",
+        "8:01 Uhr",
+        "9:41 Uhr",
+        "9:01 Uhr"
+       ],
+       "richtig": 3,
+       "antwort": "9:01 Uhr",
+       "erklaerung": "111 Minuten = 1 h 51 min. 7:10 Uhr + 1 h 51 min = 9:01 Uhr."
+      },
+      {
+       "id": "mathe-groessen-046",
+       "frage": "Wie viel Gramm sind 1 kg 200 g?",
+       "optionen": [
+        "3.000 g",
+        "1.200 g",
+        "300 g",
+        "1200 g"
+       ],
+       "richtig": 1,
+       "antwort": "1.200 g",
+       "erklaerung": "1 kg = 1.000 g. 1 kg = 1.000 g, plus 200 g = 1.200 g."
+      },
+      {
+       "id": "mathe-groessen-047",
+       "frage": "Maßstab 1 : 50.000: Auf der Karte sind es 5 cm. Wie weit ist es in Wirklichkeit?",
+       "optionen": [
+        "250 m",
+        "2,5 km",
+        "50 m",
+        "25000 m"
+       ],
+       "richtig": 1,
+       "antwort": "2,5 km",
+       "erklaerung": "5 cm · 50.000 = 250.000 cm = 2,5 km."
+      },
+      {
+       "id": "mathe-groessen-048",
+       "frage": "Ein Heft kostet 4,50 €. Wie viel kosten 4 Hefte?",
+       "optionen": [
+        "18,00 €",
+        "8,50 €",
+        "17,00 €",
+        "22,50 €"
+       ],
+       "richtig": 0,
+       "antwort": "18,00 €",
+       "erklaerung": "4 · 4,50 € = 18,00 €."
+      },
+      {
+       "id": "mathe-groessen-049",
+       "frage": "Wie viele Zentimeter sind 0,51 m?",
+       "optionen": [
+        "510 cm",
+        "151 cm",
+        "5 cm",
+        "51 cm"
+       ],
+       "richtig": 3,
+       "antwort": "51 cm",
+       "erklaerung": "1 m = 100 cm, also 0,51 m = 51 cm."
+      },
+      {
+       "id": "mathe-groessen-050",
+       "frage": "Wie viele Sekunden sind 5 Minuten?",
+       "optionen": [
+        "120",
+        "360",
+        "300",
+        "500"
+       ],
+       "richtig": 2,
+       "antwort": "300",
+       "erklaerung": "1 min = 60 s, also 5 · 60 = 300 s."
+      },
+      {
+       "id": "mathe-groessen-051",
+       "frage": "Wie viel Gramm sind 2 kg 200 g?",
+       "optionen": [
+        "2.200 g",
+        "400 g",
+        "4.000 g",
+        "2200 g"
+       ],
+       "richtig": 0,
+       "antwort": "2.200 g",
+       "erklaerung": "1 kg = 1.000 g. 2 kg = 2.000 g, plus 200 g = 2.200 g."
+      },
+      {
+       "id": "mathe-groessen-052",
+       "frage": "Wie viele Zentimeter sind 0,93 m?",
+       "optionen": [
+        "930 cm",
+        "193 cm",
+        "93 cm",
+        "9 cm"
+       ],
+       "richtig": 2,
+       "antwort": "93 cm",
+       "erklaerung": "1 m = 100 cm, also 0,93 m = 93 cm."
+      },
+      {
+       "id": "mathe-groessen-053",
+       "frage": "Wie viel Gramm sind 7 kg 350 g?",
+       "optionen": [
+        "7350 g",
+        "7.350 g",
+        "1.050 g",
+        "10.500 g"
+       ],
+       "richtig": 1,
+       "antwort": "7.350 g",
+       "erklaerung": "1 kg = 1.000 g. 7 kg = 7.000 g, plus 350 g = 7.350 g."
+      },
+      {
+       "id": "mathe-groessen-054",
+       "frage": "Maßstab 1 : 25.000: Auf der Karte sind es 4 cm. Wie weit ist es in Wirklichkeit?",
+       "optionen": [
+        "10000 m",
+        "40 m",
+        "100 m",
+        "1 km"
+       ],
+       "richtig": 3,
+       "antwort": "1 km",
+       "erklaerung": "4 cm · 25.000 = 100.000 cm = 1 km."
+      },
+      {
+       "id": "mathe-groessen-055",
+       "frage": "Eine Bahnfahrt startet um 8:10 Uhr und dauert 185 Minuten. Wann kommt der Zug an?",
+       "optionen": [
+        "11:25 Uhr",
+        "10:15 Uhr",
+        "11:15 Uhr",
+        "11:55 Uhr"
+       ],
+       "richtig": 2,
+       "antwort": "11:15 Uhr",
+       "erklaerung": "185 Minuten = 3 h 5 min. 8:10 Uhr + 3 h 5 min = 11:15 Uhr."
+      },
+      {
+       "id": "mathe-groessen-056",
+       "frage": "Wie viel Gramm sind 1 kg 100 g?",
+       "optionen": [
+        "2.000 g",
+        "1100 g",
+        "200 g",
+        "1.100 g"
+       ],
+       "richtig": 3,
+       "antwort": "1.100 g",
+       "erklaerung": "1 kg = 1.000 g. 1 kg = 1.000 g, plus 100 g = 1.100 g."
+      },
+      {
+       "id": "mathe-groessen-057",
+       "frage": "Eine Bahnfahrt startet um 10:05 Uhr und dauert 154 Minuten. Wann kommt der Zug an?",
+       "optionen": [
+        "13:19 Uhr",
+        "12:39 Uhr",
+        "11:39 Uhr",
+        "12:49 Uhr"
+       ],
+       "richtig": 1,
+       "antwort": "12:39 Uhr",
+       "erklaerung": "154 Minuten = 2 h 34 min. 10:05 Uhr + 2 h 34 min = 12:39 Uhr."
+      },
+      {
+       "id": "mathe-groessen-058",
+       "frage": "Wie viele Zentimeter sind 0,37 m?",
+       "optionen": [
+        "370 cm",
+        "4 cm",
+        "37 cm",
+        "137 cm"
+       ],
+       "richtig": 2,
+       "antwort": "37 cm",
+       "erklaerung": "1 m = 100 cm, also 0,37 m = 37 cm."
+      },
+      {
+       "id": "mathe-groessen-059",
+       "frage": "Wie viel Gramm sind 1 kg 150 g?",
+       "optionen": [
+        "250 g",
+        "1150 g",
+        "1.150 g",
+        "2.500 g"
+       ],
+       "richtig": 2,
+       "antwort": "1.150 g",
+       "erklaerung": "1 kg = 1.000 g. 1 kg = 1.000 g, plus 150 g = 1.150 g."
+      },
+      {
+       "id": "mathe-groessen-060",
+       "frage": "Wie viele Sekunden sind 12 Minuten?",
+       "optionen": [
+        "1200",
+        "720",
+        "288",
+        "780"
+       ],
+       "richtig": 1,
+       "antwort": "720",
+       "erklaerung": "1 min = 60 s, also 12 · 60 = 720 s."
+      },
+      {
+       "id": "mathe-groessen-061",
+       "frage": "Eine Bahnfahrt startet um 13:05 Uhr und dauert 176 Minuten. Wann kommt der Zug an?",
+       "optionen": [
+        "16:11 Uhr",
+        "16:41 Uhr",
+        "15:01 Uhr",
+        "16:01 Uhr"
+       ],
+       "richtig": 3,
+       "antwort": "16:01 Uhr",
+       "erklaerung": "176 Minuten = 2 h 56 min. 13:05 Uhr + 2 h 56 min = 16:01 Uhr."
+      },
+      {
+       "id": "mathe-groessen-062",
+       "frage": "Ein Heft kostet 9,50 €. Wie viel kosten 5 Hefte?",
+       "optionen": [
+        "46,50 €",
+        "14,50 €",
+        "47,50 €",
+        "57,00 €"
+       ],
+       "richtig": 2,
+       "antwort": "47,50 €",
+       "erklaerung": "5 · 9,50 € = 47,50 €."
+      },
+      {
+       "id": "mathe-groessen-063",
+       "frage": "Wie viel Gramm sind 7 kg 400 g?",
+       "optionen": [
+        "1.100 g",
+        "7400 g",
+        "11.000 g",
+        "7.400 g"
+       ],
+       "richtig": 3,
+       "antwort": "7.400 g",
+       "erklaerung": "1 kg = 1.000 g. 7 kg = 7.000 g, plus 400 g = 7.400 g."
+      },
+      {
+       "id": "mathe-groessen-064",
+       "frage": "Maßstab 1 : 50.000: Auf der Karte sind es 2 cm. Wie weit ist es in Wirklichkeit?",
+       "optionen": [
+        "10000 m",
+        "100 m",
+        "20 m",
+        "1 km"
+       ],
+       "richtig": 3,
+       "antwort": "1 km",
+       "erklaerung": "2 cm · 50.000 = 100.000 cm = 1 km."
+      },
+      {
+       "id": "mathe-groessen-065",
+       "frage": "Ein Heft kostet 4,00 €. Wie viel kosten 6 Hefte?",
+       "optionen": [
+        "24,00 €",
+        "23,00 €",
+        "10,00 €",
+        "28,00 €"
+       ],
+       "richtig": 0,
+       "antwort": "24,00 €",
+       "erklaerung": "6 · 4,00 € = 24,00 €."
+      },
+      {
+       "id": "mathe-groessen-066",
+       "frage": "Ein Heft kostet 8,50 €. Wie viel kosten 7 Hefte?",
+       "optionen": [
+        "15,50 €",
+        "58,50 €",
+        "68,00 €",
+        "59,50 €"
+       ],
+       "richtig": 3,
+       "antwort": "59,50 €",
+       "erklaerung": "7 · 8,50 € = 59,50 €."
+      },
+      {
+       "id": "mathe-groessen-067",
+       "frage": "Maßstab 1 : 25.000: Auf der Karte sind es 7 cm. Wie weit ist es in Wirklichkeit?",
+       "optionen": [
+        "175 m",
+        "17500 m",
+        "70 m",
+        "1,75 km"
+       ],
+       "richtig": 3,
+       "antwort": "1,75 km",
+       "erklaerung": "7 cm · 25.000 = 175.000 cm = 1,75 km."
+      },
+      {
+       "id": "mathe-groessen-068",
+       "frage": "Wie viel Gramm sind 3 kg 100 g?",
+       "optionen": [
+        "400 g",
+        "4.000 g",
+        "3100 g",
+        "3.100 g"
+       ],
+       "richtig": 3,
+       "antwort": "3.100 g",
+       "erklaerung": "1 kg = 1.000 g. 3 kg = 3.000 g, plus 100 g = 3.100 g."
+      },
+      {
+       "id": "mathe-groessen-069",
+       "frage": "Maßstab 1 : 100.000: Auf der Karte sind es 6 cm. Wie weit ist es in Wirklichkeit?",
+       "optionen": [
+        "6 km",
+        "60000 m",
+        "60 m",
+        "600 m"
+       ],
+       "richtig": 0,
+       "antwort": "6 km",
+       "erklaerung": "6 cm · 100.000 = 600.000 cm = 6 km."
+      },
+      {
+       "id": "mathe-groessen-070",
+       "frage": "Wie viele Sekunden sind 10 Minuten?",
+       "optionen": [
+        "600",
+        "240",
+        "660",
+        "1000"
+       ],
+       "richtig": 0,
+       "antwort": "600",
+       "erklaerung": "1 min = 60 s, also 10 · 60 = 600 s."
+      },
+      {
+       "id": "mathe-groessen-071",
+       "frage": "Wie viel Gramm sind 5 kg 300 g?",
+       "optionen": [
+        "5300 g",
+        "8.000 g",
+        "800 g",
+        "5.300 g"
+       ],
+       "richtig": 3,
+       "antwort": "5.300 g",
+       "erklaerung": "1 kg = 1.000 g. 5 kg = 5.000 g, plus 300 g = 5.300 g."
+      },
+      {
+       "id": "mathe-groessen-072",
+       "frage": "Wie viel Gramm sind 4 kg 350 g?",
+       "optionen": [
+        "4350 g",
+        "7.500 g",
+        "4.350 g",
+        "750 g"
+       ],
+       "richtig": 2,
+       "antwort": "4.350 g",
+       "erklaerung": "1 kg = 1.000 g. 4 kg = 4.000 g, plus 350 g = 4.350 g."
+      },
+      {
+       "id": "mathe-groessen-073",
+       "frage": "Ein Heft kostet 4,50 €. Wie viel kosten 5 Hefte?",
+       "optionen": [
+        "21,50 €",
+        "22,50 €",
+        "9,50 €",
+        "27,00 €"
+       ],
+       "richtig": 1,
+       "antwort": "22,50 €",
+       "erklaerung": "5 · 4,50 € = 22,50 €."
+      },
+      {
+       "id": "mathe-groessen-074",
+       "frage": "Wie viele Zentimeter sind 0,47 m?",
+       "optionen": [
+        "470 cm",
+        "147 cm",
+        "47 cm",
+        "5 cm"
+       ],
+       "richtig": 2,
+       "antwort": "47 cm",
+       "erklaerung": "1 m = 100 cm, also 0,47 m = 47 cm."
+      },
+      {
+       "id": "mathe-groessen-075",
+       "frage": "Wie viele Zentimeter sind 0,69 m?",
+       "optionen": [
+        "69 cm",
+        "169 cm",
+        "7 cm",
+        "690 cm"
+       ],
+       "richtig": 0,
+       "antwort": "69 cm",
+       "erklaerung": "1 m = 100 cm, also 0,69 m = 69 cm."
+      },
+      {
+       "id": "mathe-groessen-076",
+       "frage": "Wie viel Gramm sind 8 kg 350 g?",
+       "optionen": [
+        "1.150 g",
+        "8.350 g",
+        "8350 g",
+        "11.500 g"
+       ],
+       "richtig": 1,
+       "antwort": "8.350 g",
+       "erklaerung": "1 kg = 1.000 g. 8 kg = 8.000 g, plus 350 g = 8.350 g."
+      },
+      {
+       "id": "mathe-groessen-077",
+       "frage": "Wie viele Zentimeter sind 0,34 m?",
+       "optionen": [
+        "34 cm",
+        "340 cm",
+        "134 cm",
+        "3 cm"
+       ],
+       "richtig": 0,
+       "antwort": "34 cm",
+       "erklaerung": "1 m = 100 cm, also 0,34 m = 34 cm."
+      },
+      {
+       "id": "mathe-groessen-078",
+       "frage": "Wie viele Zentimeter sind 0,27 m?",
+       "optionen": [
+        "27 cm",
+        "270 cm",
+        "3 cm",
+        "127 cm"
+       ],
+       "richtig": 0,
+       "antwort": "27 cm",
+       "erklaerung": "1 m = 100 cm, also 0,27 m = 27 cm."
+      },
+      {
+       "id": "mathe-groessen-079",
+       "frage": "Maßstab 1 : 50.000: Auf der Karte sind es 9 cm. Wie weit ist es in Wirklichkeit?",
+       "optionen": [
+        "450 m",
+        "90 m",
+        "4,5 km",
+        "45000 m"
+       ],
+       "richtig": 2,
+       "antwort": "4,5 km",
+       "erklaerung": "9 cm · 50.000 = 450.000 cm = 4,5 km."
+      },
+      {
+       "id": "mathe-groessen-080",
+       "frage": "Wie viele Sekunden sind 7 Minuten?",
+       "optionen": [
+        "168",
+        "420",
+        "480",
+        "700"
+       ],
+       "richtig": 1,
+       "antwort": "420",
+       "erklaerung": "1 min = 60 s, also 7 · 60 = 420 s."
+      },
+      {
+       "id": "mathe-groessen-081",
+       "frage": "Wie viele Sekunden sind 2 Minuten?",
+       "optionen": [
+        "180",
+        "48",
+        "120",
+        "200"
+       ],
+       "richtig": 2,
+       "antwort": "120",
+       "erklaerung": "1 min = 60 s, also 2 · 60 = 120 s."
+      },
+      {
+       "id": "mathe-groessen-082",
+       "frage": "Ein Heft kostet 3,00 €. Wie viel kosten 8 Hefte?",
+       "optionen": [
+        "27,00 €",
+        "24,00 €",
+        "11,00 €",
+        "23,00 €"
+       ],
+       "richtig": 1,
+       "antwort": "24,00 €",
+       "erklaerung": "8 · 3,00 € = 24,00 €."
+      },
+      {
+       "id": "mathe-groessen-083",
+       "frage": "Wie viel Gramm sind 4 kg 200 g?",
+       "optionen": [
+        "600 g",
+        "4.200 g",
+        "4200 g",
+        "6.000 g"
+       ],
+       "richtig": 1,
+       "antwort": "4.200 g",
+       "erklaerung": "1 kg = 1.000 g. 4 kg = 4.000 g, plus 200 g = 4.200 g."
+      },
+      {
+       "id": "mathe-groessen-084",
+       "frage": "Wie viel Gramm sind 4 kg 300 g?",
+       "optionen": [
+        "7.000 g",
+        "700 g",
+        "4.300 g",
+        "4300 g"
+       ],
+       "richtig": 2,
+       "antwort": "4.300 g",
+       "erklaerung": "1 kg = 1.000 g. 4 kg = 4.000 g, plus 300 g = 4.300 g."
+      },
+      {
+       "id": "mathe-groessen-085",
+       "frage": "Wie viele Sekunden sind 9 Minuten?",
+       "optionen": [
+        "600",
+        "216",
+        "900",
+        "540"
+       ],
+       "richtig": 3,
+       "antwort": "540",
+       "erklaerung": "1 min = 60 s, also 9 · 60 = 540 s."
       }
      ]
     },
     {
      "id": "geometrie",
      "name": "Geometrie: Flächen, Körper und Winkel",
-     "anzahl": 47,
+     "anzahl": 87,
      "fragen": [
       {
        "id": "mathe-geometrie-001",
@@ -3095,13 +5435,533 @@
        "richtig": 2,
        "antwort": "rechts oben (1. Quadrant)",
        "erklaerung": "Erst 3 nach rechts (x), dann 5 nach oben (y)."
+      },
+      {
+       "id": "mathe-geometrie-048",
+       "frage": "Ein Quader ist 10 cm lang, 3 cm breit und 6 cm hoch. Wie groß ist sein Volumen?",
+       "optionen": [
+        "216 cm³",
+        "180 cm³",
+        "19 cm³",
+        "36 cm³"
+       ],
+       "richtig": 1,
+       "antwort": "180 cm³",
+       "erklaerung": "Volumen = Länge · Breite · Höhe = 10 · 3 · 6 = 180 cm³."
+      },
+      {
+       "id": "mathe-geometrie-049",
+       "frage": "Was für ein Winkel ist 117°?",
+       "optionen": [
+        "ein stumpfer Winkel",
+        "ein rechter Winkel",
+        "ein gestreckter Winkel",
+        "ein spitzer Winkel"
+       ],
+       "richtig": 0,
+       "antwort": "ein stumpfer Winkel",
+       "erklaerung": "Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°."
+      },
+      {
+       "id": "mathe-geometrie-050",
+       "frage": "Ein Rechteck ist 13 m lang und 7 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "20 m²",
+        "104 m²",
+        "91 m²",
+        "40 m²"
+       ],
+       "richtig": 2,
+       "antwort": "91 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 13 · 7 = 91 m²."
+      },
+      {
+       "id": "mathe-geometrie-051",
+       "frage": "Ein Rechteck ist 18 m lang und 17 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "324 m²",
+        "70 m²",
+        "306 m²",
+        "35 m²"
+       ],
+       "richtig": 2,
+       "antwort": "306 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 18 · 17 = 306 m²."
+      },
+      {
+       "id": "mathe-geometrie-052",
+       "frage": "Ein Rechteck ist 8 m lang und 9 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "80 m²",
+        "72 m²",
+        "34 m²",
+        "17 m²"
+       ],
+       "richtig": 1,
+       "antwort": "72 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 8 · 9 = 72 m²."
+      },
+      {
+       "id": "mathe-geometrie-053",
+       "frage": "Ein Quadrat hat einen Flächeninhalt von 361 cm². Wie lang ist eine Seite?",
+       "optionen": [
+        "19 cm",
+        "20 cm",
+        "90 cm",
+        "38 cm"
+       ],
+       "richtig": 0,
+       "antwort": "19 cm",
+       "erklaerung": "19 · 19 = 361. Die Seite ist also 19 cm lang."
+      },
+      {
+       "id": "mathe-geometrie-054",
+       "frage": "Ein Quader ist 7 cm lang, 7 cm breit und 6 cm hoch. Wie groß ist sein Volumen?",
+       "optionen": [
+        "294 cm³",
+        "20 cm³",
+        "55 cm³",
+        "266 cm³"
+       ],
+       "richtig": 0,
+       "antwort": "294 cm³",
+       "erklaerung": "Volumen = Länge · Breite · Höhe = 7 · 7 · 6 = 294 cm³."
+      },
+      {
+       "id": "mathe-geometrie-055",
+       "frage": "Ein Rechteck ist 21 m lang und 11 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "32 m²",
+        "231 m²",
+        "252 m²",
+        "64 m²"
+       ],
+       "richtig": 1,
+       "antwort": "231 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 21 · 11 = 231 m²."
+      },
+      {
+       "id": "mathe-geometrie-056",
+       "frage": "Ein Quader ist 5 cm lang, 8 cm breit und 4 cm hoch. Wie groß ist sein Volumen?",
+       "optionen": [
+        "160 cm³",
+        "184 cm³",
+        "44 cm³",
+        "17 cm³"
+       ],
+       "richtig": 0,
+       "antwort": "160 cm³",
+       "erklaerung": "Volumen = Länge · Breite · Höhe = 5 · 8 · 4 = 160 cm³."
+      },
+      {
+       "id": "mathe-geometrie-057",
+       "frage": "Was für ein Winkel ist 114°?",
+       "optionen": [
+        "ein spitzer Winkel",
+        "ein stumpfer Winkel",
+        "ein gestreckter Winkel",
+        "ein rechter Winkel"
+       ],
+       "richtig": 1,
+       "antwort": "ein stumpfer Winkel",
+       "erklaerung": "Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°."
+      },
+      {
+       "id": "mathe-geometrie-058",
+       "frage": "Ein Rechteck ist 9 m lang und 24 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "216 m²",
+        "225 m²",
+        "66 m²",
+        "33 m²"
+       ],
+       "richtig": 0,
+       "antwort": "216 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 9 · 24 = 216 m²."
+      },
+      {
+       "id": "mathe-geometrie-059",
+       "frage": "Ein Rechteck ist 25 m lang und 22 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "550 m²",
+        "575 m²",
+        "47 m²",
+        "94 m²"
+       ],
+       "richtig": 0,
+       "antwort": "550 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 25 · 22 = 550 m²."
+      },
+      {
+       "id": "mathe-geometrie-060",
+       "frage": "Ein Quader ist 3 cm lang, 9 cm breit und 2 cm hoch. Wie groß ist sein Volumen?",
+       "optionen": [
+        "29 cm³",
+        "14 cm³",
+        "54 cm³",
+        "102 cm³"
+       ],
+       "richtig": 2,
+       "antwort": "54 cm³",
+       "erklaerung": "Volumen = Länge · Breite · Höhe = 3 · 9 · 2 = 54 cm³."
+      },
+      {
+       "id": "mathe-geometrie-061",
+       "frage": "Ein Quadrat hat einen Flächeninhalt von 169 cm². Wie lang ist eine Seite?",
+       "optionen": [
+        "14 cm",
+        "26 cm",
+        "13 cm",
+        "42 cm"
+       ],
+       "richtig": 2,
+       "antwort": "13 cm",
+       "erklaerung": "13 · 13 = 169. Die Seite ist also 13 cm lang."
+      },
+      {
+       "id": "mathe-geometrie-062",
+       "frage": "Was für ein Winkel ist 158°?",
+       "optionen": [
+        "ein stumpfer Winkel",
+        "ein gestreckter Winkel",
+        "ein spitzer Winkel",
+        "ein rechter Winkel"
+       ],
+       "richtig": 0,
+       "antwort": "ein stumpfer Winkel",
+       "erklaerung": "Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°."
+      },
+      {
+       "id": "mathe-geometrie-063",
+       "frage": "Ein Quadrat hat einen Flächeninhalt von 196 cm². Wie lang ist eine Seite?",
+       "optionen": [
+        "28 cm",
+        "15 cm",
+        "14 cm",
+        "49 cm"
+       ],
+       "richtig": 2,
+       "antwort": "14 cm",
+       "erklaerung": "14 · 14 = 196. Die Seite ist also 14 cm lang."
+      },
+      {
+       "id": "mathe-geometrie-064",
+       "frage": "Ein Rechteck ist 22 m lang und 6 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "28 m²",
+        "56 m²",
+        "132 m²",
+        "154 m²"
+       ],
+       "richtig": 2,
+       "antwort": "132 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 22 · 6 = 132 m²."
+      },
+      {
+       "id": "mathe-geometrie-065",
+       "frage": "Was für ein Winkel ist 141°?",
+       "optionen": [
+        "ein rechter Winkel",
+        "ein gestreckter Winkel",
+        "ein spitzer Winkel",
+        "ein stumpfer Winkel"
+       ],
+       "richtig": 3,
+       "antwort": "ein stumpfer Winkel",
+       "erklaerung": "Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°."
+      },
+      {
+       "id": "mathe-geometrie-066",
+       "frage": "Ein Rechteck ist 19 m lang und 25 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "475 m²",
+        "88 m²",
+        "44 m²",
+        "494 m²"
+       ],
+       "richtig": 0,
+       "antwort": "475 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 19 · 25 = 475 m²."
+      },
+      {
+       "id": "mathe-geometrie-067",
+       "frage": "Ein Quadrat hat einen Flächeninhalt von 100 cm². Wie lang ist eine Seite?",
+       "optionen": [
+        "10 cm",
+        "11 cm",
+        "25 cm",
+        "20 cm"
+       ],
+       "richtig": 0,
+       "antwort": "10 cm",
+       "erklaerung": "10 · 10 = 100. Die Seite ist also 10 cm lang."
+      },
+      {
+       "id": "mathe-geometrie-068",
+       "frage": "Ein Quader ist 9 cm lang, 2 cm breit und 2 cm hoch. Wie groß ist sein Volumen?",
+       "optionen": [
+        "80 cm³",
+        "36 cm³",
+        "13 cm³",
+        "20 cm³"
+       ],
+       "richtig": 1,
+       "antwort": "36 cm³",
+       "erklaerung": "Volumen = Länge · Breite · Höhe = 9 · 2 · 2 = 36 cm³."
+      },
+      {
+       "id": "mathe-geometrie-069",
+       "frage": "Ein Rechteck ist 10 m lang und 8 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "36 m²",
+        "80 m²",
+        "90 m²",
+        "18 m²"
+       ],
+       "richtig": 1,
+       "antwort": "80 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 10 · 8 = 80 m²."
+      },
+      {
+       "id": "mathe-geometrie-070",
+       "frage": "Ein Quader ist 10 cm lang, 5 cm breit und 9 cm hoch. Wie groß ist sein Volumen?",
+       "optionen": [
+        "59 cm³",
+        "450 cm³",
+        "24 cm³",
+        "370 cm³"
+       ],
+       "richtig": 1,
+       "antwort": "450 cm³",
+       "erklaerung": "Volumen = Länge · Breite · Höhe = 10 · 5 · 9 = 450 cm³."
+      },
+      {
+       "id": "mathe-geometrie-071",
+       "frage": "Was für ein Winkel ist 16°?",
+       "optionen": [
+        "ein spitzer Winkel",
+        "ein stumpfer Winkel",
+        "ein gestreckter Winkel",
+        "ein rechter Winkel"
+       ],
+       "richtig": 0,
+       "antwort": "ein spitzer Winkel",
+       "erklaerung": "Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°."
+      },
+      {
+       "id": "mathe-geometrie-072",
+       "frage": "Was für ein Winkel ist 68°?",
+       "optionen": [
+        "ein gestreckter Winkel",
+        "ein stumpfer Winkel",
+        "ein spitzer Winkel",
+        "ein rechter Winkel"
+       ],
+       "richtig": 2,
+       "antwort": "ein spitzer Winkel",
+       "erklaerung": "Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°."
+      },
+      {
+       "id": "mathe-geometrie-073",
+       "frage": "Was für ein Winkel ist 87°?",
+       "optionen": [
+        "ein spitzer Winkel",
+        "ein rechter Winkel",
+        "ein gestreckter Winkel",
+        "ein stumpfer Winkel"
+       ],
+       "richtig": 0,
+       "antwort": "ein spitzer Winkel",
+       "erklaerung": "Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°."
+      },
+      {
+       "id": "mathe-geometrie-074",
+       "frage": "Ein Rechteck ist 10 m lang und 24 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "34 m²",
+        "250 m²",
+        "68 m²",
+        "240 m²"
+       ],
+       "richtig": 3,
+       "antwort": "240 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 10 · 24 = 240 m²."
+      },
+      {
+       "id": "mathe-geometrie-075",
+       "frage": "Ein Quadrat hat einen Flächeninhalt von 324 cm². Wie lang ist eine Seite?",
+       "optionen": [
+        "36 cm",
+        "18 cm",
+        "19 cm",
+        "81 cm"
+       ],
+       "richtig": 1,
+       "antwort": "18 cm",
+       "erklaerung": "18 · 18 = 324. Die Seite ist also 18 cm lang."
+      },
+      {
+       "id": "mathe-geometrie-076",
+       "frage": "Ein Quader ist 5 cm lang, 4 cm breit und 2 cm hoch. Wie groß ist sein Volumen?",
+       "optionen": [
+        "76 cm³",
+        "22 cm³",
+        "11 cm³",
+        "40 cm³"
+       ],
+       "richtig": 3,
+       "antwort": "40 cm³",
+       "erklaerung": "Volumen = Länge · Breite · Höhe = 5 · 4 · 2 = 40 cm³."
+      },
+      {
+       "id": "mathe-geometrie-077",
+       "frage": "Ein Rechteck ist 24 m lang und 22 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "92 m²",
+        "46 m²",
+        "528 m²",
+        "552 m²"
+       ],
+       "richtig": 2,
+       "antwort": "528 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 24 · 22 = 528 m²."
+      },
+      {
+       "id": "mathe-geometrie-078",
+       "frage": "Ein Rechteck ist 12 m lang und 9 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "21 m²",
+        "42 m²",
+        "120 m²",
+        "108 m²"
+       ],
+       "richtig": 3,
+       "antwort": "108 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 12 · 9 = 108 m²."
+      },
+      {
+       "id": "mathe-geometrie-079",
+       "frage": "Was für ein Winkel ist 47°?",
+       "optionen": [
+        "ein gestreckter Winkel",
+        "ein rechter Winkel",
+        "ein stumpfer Winkel",
+        "ein spitzer Winkel"
+       ],
+       "richtig": 3,
+       "antwort": "ein spitzer Winkel",
+       "erklaerung": "Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°."
+      },
+      {
+       "id": "mathe-geometrie-080",
+       "frage": "Was für ein Winkel ist 146°?",
+       "optionen": [
+        "ein stumpfer Winkel",
+        "ein spitzer Winkel",
+        "ein gestreckter Winkel",
+        "ein rechter Winkel"
+       ],
+       "richtig": 0,
+       "antwort": "ein stumpfer Winkel",
+       "erklaerung": "Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°."
+      },
+      {
+       "id": "mathe-geometrie-081",
+       "frage": "Ein Quader ist 9 cm lang, 5 cm breit und 3 cm hoch. Wie groß ist sein Volumen?",
+       "optionen": [
+        "17 cm³",
+        "48 cm³",
+        "174 cm³",
+        "135 cm³"
+       ],
+       "richtig": 3,
+       "antwort": "135 cm³",
+       "erklaerung": "Volumen = Länge · Breite · Höhe = 9 · 5 · 3 = 135 cm³."
+      },
+      {
+       "id": "mathe-geometrie-082",
+       "frage": "Ein Rechteck ist 19 m lang und 10 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "190 m²",
+        "29 m²",
+        "58 m²",
+        "209 m²"
+       ],
+       "richtig": 0,
+       "antwort": "190 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 19 · 10 = 190 m²."
+      },
+      {
+       "id": "mathe-geometrie-083",
+       "frage": "Was für ein Winkel ist 166°?",
+       "optionen": [
+        "ein stumpfer Winkel",
+        "ein spitzer Winkel",
+        "ein gestreckter Winkel",
+        "ein rechter Winkel"
+       ],
+       "richtig": 0,
+       "antwort": "ein stumpfer Winkel",
+       "erklaerung": "Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°."
+      },
+      {
+       "id": "mathe-geometrie-084",
+       "frage": "Ein Rechteck ist 9 m lang und 25 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "225 m²",
+        "34 m²",
+        "68 m²",
+        "234 m²"
+       ],
+       "richtig": 0,
+       "antwort": "225 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 9 · 25 = 225 m²."
+      },
+      {
+       "id": "mathe-geometrie-085",
+       "frage": "Ein Rechteck ist 3 m lang und 5 m breit. Wie groß ist der Flächeninhalt?",
+       "optionen": [
+        "18 m²",
+        "8 m²",
+        "15 m²",
+        "16 m²"
+       ],
+       "richtig": 2,
+       "antwort": "15 m²",
+       "erklaerung": "Flächeninhalt = Länge · Breite = 3 · 5 = 15 m²."
+      },
+      {
+       "id": "mathe-geometrie-086",
+       "frage": "Ein Würfel hat die Kantenlänge 9 cm. Wie groß ist sein Volumen?",
+       "optionen": [
+        "486 cm³",
+        "729 cm³",
+        "108 cm³",
+        "81 cm³"
+       ],
+       "richtig": 1,
+       "antwort": "729 cm³",
+       "erklaerung": "Volumen = a · a · a = 9 · 9 · 9 = 729 cm³."
+      },
+      {
+       "id": "mathe-geometrie-087",
+       "frage": "Was für ein Winkel ist 88°?",
+       "optionen": [
+        "ein rechter Winkel",
+        "ein spitzer Winkel",
+        "ein stumpfer Winkel",
+        "ein gestreckter Winkel"
+       ],
+       "richtig": 1,
+       "antwort": "ein spitzer Winkel",
+       "erklaerung": "Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°."
       }
      ]
     },
     {
      "id": "brueche",
      "name": "Brüche: erste Schritte",
-     "anzahl": 34,
+     "anzahl": 79,
      "fragen": [
       {
        "id": "mathe-brueche-001",
@@ -3544,6 +6404,988 @@
        "richtig": 2,
        "antwort": "3/4",
        "erklaerung": "Zähler und Nenner durch 2 teilen: 6 : 2 = 3, 8 : 2 = 4."
+      },
+      {
+       "id": "mathe-brueche-035",
+       "frage": "Welcher Bruch ist gleich groß wie 3/4?",
+       "optionen": [
+        "8/9",
+        "15/20",
+        "3/20",
+        "15/4"
+       ],
+       "richtig": 1,
+       "antwort": "15/20",
+       "erklaerung": "Erweitern: Zähler und Nenner mit 5 multiplizieren."
+      },
+      {
+       "id": "mathe-brueche-036",
+       "frage": "Wie viel sind 3/5 von 60?",
+       "optionen": [
+        "20",
+        "36",
+        "24",
+        "12"
+       ],
+       "richtig": 1,
+       "antwort": "36",
+       "erklaerung": "Erst durch den Nenner teilen: 60 : 5 = 12. Dann mal den Zähler: 12 · 3 = 36."
+      },
+      {
+       "id": "mathe-brueche-037",
+       "frage": "Welcher Bruch ist gleich groß wie 1/3?",
+       "optionen": [
+        "2/3",
+        "3/5",
+        "1/6",
+        "2/6"
+       ],
+       "richtig": 3,
+       "antwort": "2/6",
+       "erklaerung": "Erweitern: Zähler und Nenner mit 2 multiplizieren."
+      },
+      {
+       "id": "mathe-brueche-038",
+       "frage": "Wie viel Prozent sind 6/10?",
+       "optionen": [
+        "65 %",
+        "60 %",
+        "70 %",
+        "10 %"
+       ],
+       "richtig": 1,
+       "antwort": "60 %",
+       "erklaerung": "6/10 = 60/100 = 60 %."
+      },
+      {
+       "id": "mathe-brueche-039",
+       "frage": "Rechne: 4/12 + 7/12 = ?",
+       "optionen": [
+        "11/12",
+        "12/12",
+        "28/12",
+        "11/24"
+       ],
+       "richtig": 0,
+       "antwort": "11/12",
+       "erklaerung": "Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich."
+      },
+      {
+       "id": "mathe-brueche-040",
+       "frage": "Welcher Bruch ist gleich groß wie 1/6?",
+       "optionen": [
+        "1/24",
+        "5/10",
+        "4/24",
+        "4/6"
+       ],
+       "richtig": 2,
+       "antwort": "4/24",
+       "erklaerung": "Erweitern: Zähler und Nenner mit 4 multiplizieren."
+      },
+      {
+       "id": "mathe-brueche-041",
+       "frage": "Kürze so weit wie möglich: 6/18",
+       "optionen": [
+        "3/1",
+        "3/9",
+        "1/4",
+        "1/3"
+       ],
+       "richtig": 3,
+       "antwort": "1/3",
+       "erklaerung": "Zähler und Nenner durch 6 teilen: 1/3."
+      },
+      {
+       "id": "mathe-brueche-042",
+       "frage": "Rechne: 4/9 + 1/9 = ?",
+       "optionen": [
+        "5/18",
+        "6/9",
+        "5/9",
+        "4/9"
+       ],
+       "richtig": 2,
+       "antwort": "5/9",
+       "erklaerung": "Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich."
+      },
+      {
+       "id": "mathe-brueche-043",
+       "frage": "Welcher Bruch ist gleich groß wie 5/6?",
+       "optionen": [
+        "5/18",
+        "15/18",
+        "15/6",
+        "8/9"
+       ],
+       "richtig": 1,
+       "antwort": "15/18",
+       "erklaerung": "Erweitern: Zähler und Nenner mit 3 multiplizieren."
+      },
+      {
+       "id": "mathe-brueche-044",
+       "frage": "Rechne: 2/3 + 1/3 = ?",
+       "optionen": [
+        "4/3",
+        "2/3",
+        "3/6",
+        "3/3"
+       ],
+       "richtig": 3,
+       "antwort": "3/3",
+       "erklaerung": "Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich."
+      },
+      {
+       "id": "mathe-brueche-045",
+       "frage": "Welcher Bruch ist größer: 1/4 oder 2/3?",
+       "optionen": [
+        "1/4",
+        "2/3",
+        "das kann man nicht vergleichen",
+        "beide sind gleich"
+       ],
+       "richtig": 1,
+       "antwort": "2/3",
+       "erklaerung": "Gleichnamig machen (Nenner 24): 3/24 und 8/24."
+      },
+      {
+       "id": "mathe-brueche-046",
+       "frage": "Welcher Bruch ist größer: 5/8 oder 5/6?",
+       "optionen": [
+        "das kann man nicht vergleichen",
+        "5/8",
+        "beide sind gleich",
+        "5/6"
+       ],
+       "richtig": 3,
+       "antwort": "5/6",
+       "erklaerung": "Gleichnamig machen (Nenner 24): 15/24 und 20/24."
+      },
+      {
+       "id": "mathe-brueche-047",
+       "frage": "Welcher Bruch ist größer: 3/4 oder 1/3?",
+       "optionen": [
+        "das kann man nicht vergleichen",
+        "1/3",
+        "beide sind gleich",
+        "3/4"
+       ],
+       "richtig": 3,
+       "antwort": "3/4",
+       "erklaerung": "Gleichnamig machen (Nenner 24): 9/24 und 4/24."
+      },
+      {
+       "id": "mathe-brueche-048",
+       "frage": "Welcher Bruch ist gleich groß wie 4/5?",
+       "optionen": [
+        "16/20",
+        "4/20",
+        "16/5",
+        "8/9"
+       ],
+       "richtig": 0,
+       "antwort": "16/20",
+       "erklaerung": "Erweitern: Zähler und Nenner mit 4 multiplizieren."
+      },
+      {
+       "id": "mathe-brueche-049",
+       "frage": "Rechne: 6/12 + 2/12 = ?",
+       "optionen": [
+        "8/12",
+        "12/12",
+        "8/24",
+        "9/12"
+       ],
+       "richtig": 0,
+       "antwort": "8/12",
+       "erklaerung": "Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich."
+      },
+      {
+       "id": "mathe-brueche-050",
+       "frage": "Welcher Bruch ist gleich groß wie 1/2?",
+       "optionen": [
+        "3/4",
+        "2/4",
+        "1/4",
+        "2/2"
+       ],
+       "richtig": 1,
+       "antwort": "2/4",
+       "erklaerung": "Erweitern: Zähler und Nenner mit 2 multiplizieren."
+      },
+      {
+       "id": "mathe-brueche-051",
+       "frage": "Rechne: 3/8 + 1/8 = ?",
+       "optionen": [
+        "4/8",
+        "5/8",
+        "4/16",
+        "3/8"
+       ],
+       "richtig": 0,
+       "antwort": "4/8",
+       "erklaerung": "Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich."
+      },
+      {
+       "id": "mathe-brueche-052",
+       "frage": "Wie viel Prozent sind 2/5?",
+       "optionen": [
+        "5 %",
+        "20 %",
+        "40 %",
+        "50 %"
+       ],
+       "richtig": 2,
+       "antwort": "40 %",
+       "erklaerung": "2/5 = 40/100 = 40 %."
+      },
+      {
+       "id": "mathe-brueche-053",
+       "frage": "Wie viel sind 5/10 von 30?",
+       "optionen": [
+        "15",
+        "3",
+        "6",
+        "25"
+       ],
+       "richtig": 0,
+       "antwort": "15",
+       "erklaerung": "Erst durch den Nenner teilen: 30 : 10 = 3. Dann mal den Zähler: 3 · 5 = 15."
+      },
+      {
+       "id": "mathe-brueche-054",
+       "frage": "Rechne: 1/8 + 3/8 = ?",
+       "optionen": [
+        "5/8",
+        "4/8",
+        "4/16",
+        "3/8"
+       ],
+       "richtig": 1,
+       "antwort": "4/8",
+       "erklaerung": "Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich."
+      },
+      {
+       "id": "mathe-brueche-055",
+       "frage": "Welcher Bruch ist gleich groß wie 2/5?",
+       "optionen": [
+        "5/8",
+        "6/5",
+        "6/15",
+        "2/15"
+       ],
+       "richtig": 2,
+       "antwort": "6/15",
+       "erklaerung": "Erweitern: Zähler und Nenner mit 3 multiplizieren."
+      },
+      {
+       "id": "mathe-brueche-056",
+       "frage": "Welcher Bruch ist größer: 7/8 oder 1/6?",
+       "optionen": [
+        "1/6",
+        "beide sind gleich",
+        "das kann man nicht vergleichen",
+        "7/8"
+       ],
+       "richtig": 3,
+       "antwort": "7/8",
+       "erklaerung": "Gleichnamig machen (Nenner 24): 21/24 und 4/24."
+      },
+      {
+       "id": "mathe-brueche-057",
+       "frage": "Kürze so weit wie möglich: 14/70",
+       "optionen": [
+        "1/5",
+        "7/35",
+        "5/1",
+        "1/6"
+       ],
+       "richtig": 0,
+       "antwort": "1/5",
+       "erklaerung": "Zähler und Nenner durch 14 teilen: 1/5."
+      },
+      {
+       "id": "mathe-brueche-058",
+       "frage": "Wie viel Prozent sind 19/20?",
+       "optionen": [
+        "105 %",
+        "95 %",
+        "190 %",
+        "20 %"
+       ],
+       "richtig": 1,
+       "antwort": "95 %",
+       "erklaerung": "19/20 = 95/100 = 95 %."
+      },
+      {
+       "id": "mathe-brueche-059",
+       "frage": "Welcher Bruch ist größer: 7/8 oder 2/3?",
+       "optionen": [
+        "2/3",
+        "beide sind gleich",
+        "7/8",
+        "das kann man nicht vergleichen"
+       ],
+       "richtig": 2,
+       "antwort": "7/8",
+       "erklaerung": "Gleichnamig machen (Nenner 24): 21/24 und 8/24."
+      },
+      {
+       "id": "mathe-brueche-060",
+       "frage": "Kürze so weit wie möglich: 13/39",
+       "optionen": [
+        "13/39",
+        "1/3",
+        "1/4",
+        "3/1"
+       ],
+       "richtig": 1,
+       "antwort": "1/3",
+       "erklaerung": "Zähler und Nenner durch 13 teilen: 1/3."
+      },
+      {
+       "id": "mathe-brueche-061",
+       "frage": "Rechne: 1/10 + 2/10 = ?",
+       "optionen": [
+        "4/10",
+        "2/10",
+        "3/10",
+        "3/20"
+       ],
+       "richtig": 2,
+       "antwort": "3/10",
+       "erklaerung": "Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich."
+      },
+      {
+       "id": "mathe-brueche-062",
+       "frage": "Welcher Bruch ist größer: 1/4 oder 1/2?",
+       "optionen": [
+        "das kann man nicht vergleichen",
+        "1/4",
+        "1/2",
+        "beide sind gleich"
+       ],
+       "richtig": 2,
+       "antwort": "1/2",
+       "erklaerung": "Gleichnamig machen (Nenner 24): 3/24 und 4/24."
+      },
+      {
+       "id": "mathe-brueche-063",
+       "frage": "Wie viel Prozent sind 1/4?",
+       "optionen": [
+        "35 %",
+        "10 %",
+        "25 %",
+        "4 %"
+       ],
+       "richtig": 2,
+       "antwort": "25 %",
+       "erklaerung": "1/4 = 25/100 = 25 %."
+      },
+      {
+       "id": "mathe-brueche-064",
+       "frage": "Rechne: 1/3 + 2/3 = ?",
+       "optionen": [
+        "3/3",
+        "3/6",
+        "4/3",
+        "2/3"
+       ],
+       "richtig": 0,
+       "antwort": "3/3",
+       "erklaerung": "Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich."
+      },
+      {
+       "id": "mathe-brueche-065",
+       "frage": "Welcher Bruch ist größer: 7/8 oder 1/3?",
+       "optionen": [
+        "das kann man nicht vergleichen",
+        "1/3",
+        "7/8",
+        "beide sind gleich"
+       ],
+       "richtig": 2,
+       "antwort": "7/8",
+       "erklaerung": "Gleichnamig machen (Nenner 24): 21/24 und 4/24."
+      },
+      {
+       "id": "mathe-brueche-066",
+       "frage": "Rechne: 5/12 + 6/12 = ?",
+       "optionen": [
+        "12/12",
+        "11/12",
+        "30/12",
+        "11/24"
+       ],
+       "richtig": 1,
+       "antwort": "11/12",
+       "erklaerung": "Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich."
+      },
+      {
+       "id": "mathe-brueche-067",
+       "frage": "Wie viel Prozent sind 7/20?",
+       "optionen": [
+        "70 %",
+        "20 %",
+        "45 %",
+        "35 %"
+       ],
+       "richtig": 3,
+       "antwort": "35 %",
+       "erklaerung": "7/20 = 35/100 = 35 %."
+      },
+      {
+       "id": "mathe-brueche-068",
+       "frage": "Welcher Bruch ist größer: 7/8 oder 5/6?",
+       "optionen": [
+        "beide sind gleich",
+        "das kann man nicht vergleichen",
+        "7/8",
+        "5/6"
+       ],
+       "richtig": 2,
+       "antwort": "7/8",
+       "erklaerung": "Gleichnamig machen (Nenner 24): 21/24 und 20/24."
+      },
+      {
+       "id": "mathe-brueche-069",
+       "frage": "Kürze so weit wie möglich: 16/80",
+       "optionen": [
+        "5/1",
+        "1/6",
+        "1/5",
+        "8/40"
+       ],
+       "richtig": 2,
+       "antwort": "1/5",
+       "erklaerung": "Zähler und Nenner durch 16 teilen: 1/5."
+      },
+      {
+       "id": "mathe-brueche-070",
+       "frage": "Rechne: 3/7 + 4/7 = ?",
+       "optionen": [
+        "7/7",
+        "8/7",
+        "7/14",
+        "12/7"
+       ],
+       "richtig": 0,
+       "antwort": "7/7",
+       "erklaerung": "Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich."
+      },
+      {
+       "id": "mathe-brueche-071",
+       "frage": "Welcher Bruch ist größer: 1/8 oder 2/3?",
+       "optionen": [
+        "beide sind gleich",
+        "1/8",
+        "2/3",
+        "das kann man nicht vergleichen"
+       ],
+       "richtig": 2,
+       "antwort": "2/3",
+       "erklaerung": "Gleichnamig machen (Nenner 24): 3/24 und 8/24."
+      },
+      {
+       "id": "mathe-brueche-072",
+       "frage": "Kürze so weit wie möglich: 29/87",
+       "optionen": [
+        "3/1",
+        "1/3",
+        "29/87",
+        "1/4"
+       ],
+       "richtig": 1,
+       "antwort": "1/3",
+       "erklaerung": "Zähler und Nenner durch 29 teilen: 1/3."
+      },
+      {
+       "id": "mathe-brueche-073",
+       "frage": "Wie viel Prozent sind 15/25?",
+       "optionen": [
+        "25 %",
+        "60 %",
+        "70 %",
+        "150 %"
+       ],
+       "richtig": 1,
+       "antwort": "60 %",
+       "erklaerung": "15/25 = 60/100 = 60 %."
+      },
+      {
+       "id": "mathe-brueche-074",
+       "frage": "Kürze so weit wie möglich: 24/96",
+       "optionen": [
+        "1/5",
+        "4/1",
+        "12/48",
+        "1/4"
+       ],
+       "richtig": 3,
+       "antwort": "1/4",
+       "erklaerung": "Zähler und Nenner durch 24 teilen: 1/4."
+      },
+      {
+       "id": "mathe-brueche-075",
+       "frage": "Wie viel sind 4/6 von 72?",
+       "optionen": [
+        "48",
+        "18",
+        "24",
+        "12"
+       ],
+       "richtig": 0,
+       "antwort": "48",
+       "erklaerung": "Erst durch den Nenner teilen: 72 : 6 = 12. Dann mal den Zähler: 12 · 4 = 48."
+      },
+      {
+       "id": "mathe-brueche-076",
+       "frage": "Kürze so weit wie möglich: 15/75",
+       "optionen": [
+        "5/1",
+        "15/75",
+        "1/6",
+        "1/5"
+       ],
+       "richtig": 3,
+       "antwort": "1/5",
+       "erklaerung": "Zähler und Nenner durch 15 teilen: 1/5."
+      },
+      {
+       "id": "mathe-brueche-077",
+       "frage": "Kürze so weit wie möglich: 11/33",
+       "optionen": [
+        "3/1",
+        "1/4",
+        "11/33",
+        "1/3"
+       ],
+       "richtig": 3,
+       "antwort": "1/3",
+       "erklaerung": "Zähler und Nenner durch 11 teilen: 1/3."
+      },
+      {
+       "id": "mathe-brueche-078",
+       "frage": "Kürze so weit wie möglich: 5/25",
+       "optionen": [
+        "1/5",
+        "1/6",
+        "5/1",
+        "5/25"
+       ],
+       "richtig": 0,
+       "antwort": "1/5",
+       "erklaerung": "Zähler und Nenner durch 5 teilen: 1/5."
+      },
+      {
+       "id": "mathe-brueche-079",
+       "frage": "Welcher Bruch ist größer: 3/8 oder 1/2?",
+       "optionen": [
+        "das kann man nicht vergleichen",
+        "3/8",
+        "beide sind gleich",
+        "1/2"
+       ],
+       "richtig": 3,
+       "antwort": "1/2",
+       "erklaerung": "Gleichnamig machen (Nenner 24): 9/24 und 4/24."
+      }
+     ]
+    },
+    {
+     "id": "daten",
+     "name": "Daten, Mittelwert und Diagramme",
+     "anzahl": 30,
+     "fragen": [
+      {
+       "id": "mathe-daten-001",
+       "frage": "Bei einer Strichliste stehen 5er-Bündel. Wie viele Bündel und Einzelstriche zeigen 42?",
+       "optionen": [
+        "8 Bündel und 2 Striche",
+        "4 Bündel und 2 Striche",
+        "2 Bündel und 8 Striche",
+        "9 Bündel und 2 Striche"
+       ],
+       "richtig": 0,
+       "antwort": "8 Bündel und 2 Striche",
+       "erklaerung": "42 = 8 · 5 + 2."
+      },
+      {
+       "id": "mathe-daten-002",
+       "frage": "Berechne den Mittelwert (Durchschnitt) von 14, 7, 2, 2, 5.",
+       "optionen": [
+        "7",
+        "30",
+        "14",
+        "6"
+       ],
+       "richtig": 3,
+       "antwort": "6",
+       "erklaerung": "Alle addieren: 30. Durch die Anzahl (5) teilen: 6."
+      },
+      {
+       "id": "mathe-daten-003",
+       "frage": "Berechne den Mittelwert (Durchschnitt) von 13, 15, 15, 13, 24.",
+       "optionen": [
+        "17",
+        "16",
+        "80",
+        "24"
+       ],
+       "richtig": 1,
+       "antwort": "16",
+       "erklaerung": "Alle addieren: 80. Durch die Anzahl (5) teilen: 16."
+      },
+      {
+       "id": "mathe-daten-004",
+       "frage": "Berechne den Mittelwert (Durchschnitt) von 1, 15, 14.",
+       "optionen": [
+        "11",
+        "30",
+        "10",
+        "15"
+       ],
+       "richtig": 2,
+       "antwort": "10",
+       "erklaerung": "Alle addieren: 30. Durch die Anzahl (3) teilen: 10."
+      },
+      {
+       "id": "mathe-daten-005",
+       "frage": "Bei einer Strichliste stehen 5er-Bündel. Wie viele Bündel und Einzelstriche zeigen 27?",
+       "optionen": [
+        "5 Bündel und 2 Striche",
+        "2 Bündel und 5 Striche",
+        "6 Bündel und 2 Striche",
+        "2 Bündel und 7 Striche"
+       ],
+       "richtig": 0,
+       "antwort": "5 Bündel und 2 Striche",
+       "erklaerung": "27 = 5 · 5 + 2."
+      },
+      {
+       "id": "mathe-daten-006",
+       "frage": "Wie groß ist die Spannweite von 30, 17, 11, 9, 47?",
+       "optionen": [
+        "17",
+        "47",
+        "38",
+        "56"
+       ],
+       "richtig": 2,
+       "antwort": "38",
+       "erklaerung": "Spannweite = größter Wert − kleinster Wert = 47 − 9 = 38."
+      },
+      {
+       "id": "mathe-daten-007",
+       "frage": "Berechne den Mittelwert (Durchschnitt) von 11, 7, 12, 10.",
+       "optionen": [
+        "10",
+        "11",
+        "12",
+        "40"
+       ],
+       "richtig": 0,
+       "antwort": "10",
+       "erklaerung": "Alle addieren: 40. Durch die Anzahl (4) teilen: 10."
+      },
+      {
+       "id": "mathe-daten-008",
+       "frage": "Berechne den Mittelwert (Durchschnitt) von 8, 12, 2, 18, 10.",
+       "optionen": [
+        "50",
+        "11",
+        "18",
+        "10"
+       ],
+       "richtig": 3,
+       "antwort": "10",
+       "erklaerung": "Alle addieren: 50. Durch die Anzahl (5) teilen: 10."
+      },
+      {
+       "id": "mathe-daten-009",
+       "frage": "Wie groß ist die Spannweite von 8, 32, 36, 43, 47?",
+       "optionen": [
+        "36",
+        "55",
+        "47",
+        "39"
+       ],
+       "richtig": 3,
+       "antwort": "39",
+       "erklaerung": "Spannweite = größter Wert − kleinster Wert = 47 − 8 = 39."
+      },
+      {
+       "id": "mathe-daten-010",
+       "frage": "Welcher Wert ist der Zentralwert (Median) von 1, 34, 19, 10, 32?",
+       "optionen": [
+        "34",
+        "19",
+        "1",
+        "10"
+       ],
+       "richtig": 1,
+       "antwort": "19",
+       "erklaerung": "Der Größe nach ordnen: 1, 10, 19, 32, 34. Der mittlere Wert ist 19."
+      },
+      {
+       "id": "mathe-daten-011",
+       "frage": "Welcher Wert ist der Zentralwert (Median) von 36, 37, 16, 6, 11?",
+       "optionen": [
+        "16",
+        "11",
+        "6",
+        "37"
+       ],
+       "richtig": 0,
+       "antwort": "16",
+       "erklaerung": "Der Größe nach ordnen: 6, 11, 16, 36, 37. Der mittlere Wert ist 16."
+      },
+      {
+       "id": "mathe-daten-012",
+       "frage": "Welcher Wert ist der Zentralwert (Median) von 14, 32, 16, 20, 10?",
+       "optionen": [
+        "32",
+        "16",
+        "14",
+        "10"
+       ],
+       "richtig": 1,
+       "antwort": "16",
+       "erklaerung": "Der Größe nach ordnen: 10, 14, 16, 20, 32. Der mittlere Wert ist 16."
+      },
+      {
+       "id": "mathe-daten-013",
+       "frage": "Berechne den Mittelwert (Durchschnitt) von 11, 10, 6, 21.",
+       "optionen": [
+        "13",
+        "21",
+        "12",
+        "48"
+       ],
+       "richtig": 2,
+       "antwort": "12",
+       "erklaerung": "Alle addieren: 48. Durch die Anzahl (4) teilen: 12."
+      },
+      {
+       "id": "mathe-daten-014",
+       "frage": "Bei einer Strichliste stehen 5er-Bündel. Wie viele Bündel und Einzelstriche zeigen 47?",
+       "optionen": [
+        "9 Bündel und 2 Striche",
+        "10 Bündel und 2 Striche",
+        "2 Bündel und 9 Striche",
+        "4 Bündel und 7 Striche"
+       ],
+       "richtig": 0,
+       "antwort": "9 Bündel und 2 Striche",
+       "erklaerung": "47 = 9 · 5 + 2."
+      },
+      {
+       "id": "mathe-daten-015",
+       "frage": "Berechne den Mittelwert (Durchschnitt) von 9, 6, 14, 19, 12.",
+       "optionen": [
+        "12",
+        "13",
+        "60",
+        "19"
+       ],
+       "richtig": 0,
+       "antwort": "12",
+       "erklaerung": "Alle addieren: 60. Durch die Anzahl (5) teilen: 12."
+      },
+      {
+       "id": "mathe-daten-016",
+       "frage": "Wie groß ist die Spannweite von 5, 25, 32, 21, 2?",
+       "optionen": [
+        "34",
+        "32",
+        "30",
+        "21"
+       ],
+       "richtig": 2,
+       "antwort": "30",
+       "erklaerung": "Spannweite = größter Wert − kleinster Wert = 32 − 2 = 30."
+      },
+      {
+       "id": "mathe-daten-017",
+       "frage": "Wie groß ist die Spannweite von 9, 33, 20, 34, 31?",
+       "optionen": [
+        "43",
+        "25",
+        "31",
+        "34"
+       ],
+       "richtig": 1,
+       "antwort": "25",
+       "erklaerung": "Spannweite = größter Wert − kleinster Wert = 34 − 9 = 25."
+      },
+      {
+       "id": "mathe-daten-018",
+       "frage": "Bei einer Strichliste stehen 5er-Bündel. Wie viele Bündel und Einzelstriche zeigen 32?",
+       "optionen": [
+        "2 Bündel und 6 Striche",
+        "7 Bündel und 2 Striche",
+        "6 Bündel und 2 Striche",
+        "3 Bündel und 2 Striche"
+       ],
+       "richtig": 2,
+       "antwort": "6 Bündel und 2 Striche",
+       "erklaerung": "32 = 6 · 5 + 2."
+      },
+      {
+       "id": "mathe-daten-019",
+       "frage": "Wie groß ist die Spannweite von 40, 37, 21, 27, 23?",
+       "optionen": [
+        "27",
+        "61",
+        "19",
+        "40"
+       ],
+       "richtig": 2,
+       "antwort": "19",
+       "erklaerung": "Spannweite = größter Wert − kleinster Wert = 40 − 21 = 19."
+      },
+      {
+       "id": "mathe-daten-020",
+       "frage": "Wie groß ist die Spannweite von 42, 10, 47, 38, 39?",
+       "optionen": [
+        "39",
+        "37",
+        "57",
+        "47"
+       ],
+       "richtig": 1,
+       "antwort": "37",
+       "erklaerung": "Spannweite = größter Wert − kleinster Wert = 47 − 10 = 37."
+      },
+      {
+       "id": "mathe-daten-021",
+       "frage": "Wie groß ist die Spannweite von 39, 21, 18, 16, 15?",
+       "optionen": [
+        "54",
+        "24",
+        "39",
+        "18"
+       ],
+       "richtig": 1,
+       "antwort": "24",
+       "erklaerung": "Spannweite = größter Wert − kleinster Wert = 39 − 15 = 24."
+      },
+      {
+       "id": "mathe-daten-022",
+       "frage": "Bei einer Strichliste stehen 5er-Bündel. Wie viele Bündel und Einzelstriche zeigen 37?",
+       "optionen": [
+        "7 Bündel und 2 Striche",
+        "8 Bündel und 2 Striche",
+        "3 Bündel und 7 Striche",
+        "2 Bündel und 7 Striche"
+       ],
+       "richtig": 0,
+       "antwort": "7 Bündel und 2 Striche",
+       "erklaerung": "37 = 7 · 5 + 2."
+      },
+      {
+       "id": "mathe-daten-023",
+       "frage": "Berechne den Mittelwert (Durchschnitt) von 14, 3, 5, 10.",
+       "optionen": [
+        "32",
+        "8",
+        "9",
+        "14"
+       ],
+       "richtig": 1,
+       "antwort": "8",
+       "erklaerung": "Alle addieren: 32. Durch die Anzahl (4) teilen: 8."
+      },
+      {
+       "id": "mathe-daten-024",
+       "frage": "Wie groß ist die Spannweite von 44, 42, 7, 29, 10?",
+       "optionen": [
+        "44",
+        "37",
+        "51",
+        "29"
+       ],
+       "richtig": 1,
+       "antwort": "37",
+       "erklaerung": "Spannweite = größter Wert − kleinster Wert = 44 − 7 = 37."
+      },
+      {
+       "id": "mathe-daten-025",
+       "frage": "Wie groß ist die Spannweite von 37, 31, 22, 7, 32?",
+       "optionen": [
+        "30",
+        "31",
+        "44",
+        "37"
+       ],
+       "richtig": 0,
+       "antwort": "30",
+       "erklaerung": "Spannweite = größter Wert − kleinster Wert = 37 − 7 = 30."
+      },
+      {
+       "id": "mathe-daten-026",
+       "frage": "Wie groß ist die Spannweite von 3, 2, 7, 13, 47?",
+       "optionen": [
+        "45",
+        "47",
+        "7",
+        "49"
+       ],
+       "richtig": 0,
+       "antwort": "45",
+       "erklaerung": "Spannweite = größter Wert − kleinster Wert = 47 − 2 = 45."
+      },
+      {
+       "id": "mathe-daten-027",
+       "frage": "Welcher Wert ist der Zentralwert (Median) von 12, 36, 30, 13, 16?",
+       "optionen": [
+        "36",
+        "30",
+        "16",
+        "12"
+       ],
+       "richtig": 2,
+       "antwort": "16",
+       "erklaerung": "Der Größe nach ordnen: 12, 13, 16, 30, 36. Der mittlere Wert ist 16."
+      },
+      {
+       "id": "mathe-daten-028",
+       "frage": "Wie groß ist die Spannweite von 9, 31, 29, 37, 10?",
+       "optionen": [
+        "29",
+        "46",
+        "28",
+        "37"
+       ],
+       "richtig": 2,
+       "antwort": "28",
+       "erklaerung": "Spannweite = größter Wert − kleinster Wert = 37 − 9 = 28."
+      },
+      {
+       "id": "mathe-daten-029",
+       "frage": "Berechne den Mittelwert (Durchschnitt) von 18, 9, 12, 13.",
+       "optionen": [
+        "18",
+        "52",
+        "13",
+        "14"
+       ],
+       "richtig": 2,
+       "antwort": "13",
+       "erklaerung": "Alle addieren: 52. Durch die Anzahl (4) teilen: 13."
+      },
+      {
+       "id": "mathe-daten-030",
+       "frage": "Berechne den Mittelwert (Durchschnitt) von 13, 14, 3.",
+       "optionen": [
+        "14",
+        "30",
+        "10",
+        "11"
+       ],
+       "richtig": 2,
+       "antwort": "10",
+       "erklaerung": "Alle addieren: 30. Durch die Anzahl (3) teilen: 10."
       }
      ]
     }
@@ -11826,5 +15668,6 @@
    ]
   }
  ],
- "anzahl": 888
+ "anzahl": 1183,
+ "erweitert": "2026-11-26"
 }

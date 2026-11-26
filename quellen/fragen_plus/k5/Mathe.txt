@@ -1,0 +1,310 @@
+# Zusaetzliche Mathe-Fragen, erzeugt von quellen/werkzeuge/mathe_plus.py
+
+## grosse-zahlen | Große Zahlen und Stellenwerte
+Rechne: 1.000.000 + 200.000 = ? | 1.200.000 | 3.000.000 | 1.020.000 | 10.200.000 | Stellengerecht addieren: 1.000.000 + 200.000 = 1.200.000.
+Runde 910.050.000 auf Hunderttausender. | 910.100.000 | 910.200.000 | 910.000.000 | 910.010.000 | Entscheidend ist die Stelle rechts neben den Hunderttausendern: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 910.100.000.
+Rechne: 6.000.000 + 600.000 = ? | 6.600.000 | 12.000.000 | 6.060.000 | 60.600.000 | Stellengerecht addieren: 6.000.000 + 600.000 = 6.600.000.
+Welche Zahl ist die römische Zahl MMMCDXLVI? | 3446 | 3456 | 3447 | 3546 | Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. MMMCDXLVI = 3446.
+Wie viele Nullen hat die Zahl 7.004.000 am Ende? | 3 | 6 | 7 | 2 | Zähle die Nullen von rechts in 7.004.000.
+Runde 23.010.000 auf Hunderttausender. | 23.000.000 | 23.100.000 | 22.900.000 | 23.010.000 | Entscheidend ist die Stelle rechts neben den Hunderttausendern: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 23.000.000.
+Rechne: 8.000.000 + 800.000 = ? | 8.800.000 | 16.000.000 | 8.080.000 | 80.800.000 | Stellengerecht addieren: 8.000.000 + 800.000 = 8.800.000.
+Rechne: 2.000.000 + 400.000 = ? | 2.400.000 | 6.000.000 | 2.040.000 | 20.400.000 | Stellengerecht addieren: 2.000.000 + 400.000 = 2.400.000.
+Rechne: 6.000.000 + 300.000 = ? | 6.300.000 | 9.000.000 | 6.030.000 | 60.300.000 | Stellengerecht addieren: 6.000.000 + 300.000 = 6.300.000.
+Wie viele Tausender sind 7 Milliarden? | 7.000.000 | 70.000.000 | 700.000 | 7.000 | 7 Milliarden = 7.000.000.000. Durch 1.000 geteilt: 7.000.000.
+Rechne: 6.000.000 + 900.000 = ? | 6.900.000 | 15.000.000 | 6.090.000 | 60.900.000 | Stellengerecht addieren: 6.000.000 + 900.000 = 6.900.000.
+Welche Zahl ist die römische Zahl MCMVIII? | 1908 | 1918 | 1909 | 2008 | Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. MCMVIII = 1908.
+Wie viele Tausender sind 4 Milliarden? | 4.000.000 | 40.000.000 | 400.000 | 4.000 | 4 Milliarden = 4.000.000.000. Durch 1.000 geteilt: 4.000.000.
+Runde 32.080.000 auf Millionen. | 32.000.000 | 33.000.000 | 31.000.000 | 32.100.000 | Entscheidend ist die Stelle rechts neben den Millionen: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 32.000.000.
+Rechne: 4.000.000 + 500.000 = ? | 4.500.000 | 9.000.000 | 4.050.000 | 40.500.000 | Stellengerecht addieren: 4.000.000 + 500.000 = 4.500.000.
+Runde 4.770.000 auf Hunderttausender. | 4.800.000 | 4.900.000 | 4.700.000 | 4.710.000 | Entscheidend ist die Stelle rechts neben den Hunderttausendern: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 4.800.000.
+Wie viele Nullen hat die Zahl 5.004.000 am Ende? | 3 | 6 | 7 | 2 | Zähle die Nullen von rechts in 5.004.000.
+Runde 870.000 auf Hunderttausender. | 900.000 | 1.000.000 | 800.000 | 810.000 | Entscheidend ist die Stelle rechts neben den Hunderttausendern: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 900.000.
+Wie viele Tausender sind 9 Milliarden? | 9.000.000 | 90.000.000 | 900.000 | 9.000 | 9 Milliarden = 9.000.000.000. Durch 1.000 geteilt: 9.000.000.
+Runde 8.610.000 auf Millionen. | 9.000.000 | 10.000.000 | 8.000.000 | 8.100.000 | Entscheidend ist die Stelle rechts neben den Millionen: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 9.000.000.
+Welche Zahl ist die römische Zahl CM? | 900 | 910 | 901 | 1000 | Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. CM = 900.
+Welche Zahl ist die römische Zahl CCCLXXIX? | 379 | 389 | 378 | 479 | Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. CCCLXXIX = 379.
+Wie viele Nullen hat die Zahl 8.004.000 am Ende? | 3 | 6 | 7 | 2 | Zähle die Nullen von rechts in 8.004.000.
+Welche Zahl ist die römische Zahl MDXXXVII? | 1537 | 1547 | 1538 | 1637 | Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. MDXXXVII = 1537.
+Wie viele Nullen hat die Zahl 2.002.000 am Ende? | 3 | 6 | 7 | 2 | Zähle die Nullen von rechts in 2.002.000.
+Runde 90.000.000 auf Hunderttausender. | 90.000.000 | 90.100.000 | 89.900.000 | 90.010.000 | Entscheidend ist die Stelle rechts neben den Hunderttausendern: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 90.000.000.
+Rechne: 4.000.000 + 100.000 = ? | 4.100.000 | 5.000.000 | 4.010.000 | 40.100.000 | Stellengerecht addieren: 4.000.000 + 100.000 = 4.100.000.
+Runde 5.120.000 auf Millionen. | 5.000.000 | 6.000.000 | 4.000.000 | 5.100.000 | Entscheidend ist die Stelle rechts neben den Millionen: 0–4 abrunden, 5–9 aufrunden. Ergebnis: 5.000.000.
+Wie viele Nullen hat die Zahl 9.001.000 am Ende? | 3 | 6 | 7 | 2 | Zähle die Nullen von rechts in 9.001.000.
+Rechne: 5.000.000 + 700.000 = ? | 5.700.000 | 12.000.000 | 5.070.000 | 50.700.000 | Stellengerecht addieren: 5.000.000 + 700.000 = 5.700.000.
+Welche Zahl ist die römische Zahl MMCDXV? | 2415 | 2425 | 2416 | 2515 | Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. MMCDXV = 2415.
+Wie viele Nullen hat die Zahl 8.008.000 am Ende? | 3 | 6 | 7 | 2 | Zähle die Nullen von rechts in 8.008.000.
+Wie viele Nullen hat die Zahl 6.001.000 am Ende? | 3 | 6 | 7 | 2 | Zähle die Nullen von rechts in 6.001.000.
+Welche Zahl ist die römische Zahl DCCXLIV? | 744 | 754 | 745 | 844 | Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. DCCXLIV = 744.
+Rechne: 1.000.000 + 600.000 = ? | 1.600.000 | 7.000.000 | 1.060.000 | 10.600.000 | Stellengerecht addieren: 1.000.000 + 600.000 = 1.600.000.
+Welche Zahl ist die römische Zahl CDXX? | 420 | 430 | 421 | 520 | Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. CDXX = 420.
+Wie viele Nullen hat die Zahl 5.003.000 am Ende? | 3 | 6 | 7 | 2 | Zähle die Nullen von rechts in 5.003.000.
+Rechne: 4.000.000 + 800.000 = ? | 4.800.000 | 12.000.000 | 4.080.000 | 40.800.000 | Stellengerecht addieren: 4.000.000 + 800.000 = 4.800.000.
+Rechne: 8.000.000 + 700.000 = ? | 8.700.000 | 15.000.000 | 8.070.000 | 80.700.000 | Stellengerecht addieren: 8.000.000 + 700.000 = 8.700.000.
+Welche Zahl ist die römische Zahl MMMDCCXCIV? | 3794 | 3804 | 3795 | 3894 | Werte addieren; steht ein kleineres Zeichen vor einem größeren, wird es abgezogen. MMMDCCXCIV = 3794.
+
+## rechnen | Rechnen und Rechengesetze
+Was ist 5²? | 25 | 10 | 30 | 50 | 5² bedeutet 5 · 5 = 25.
+Rechne: 545 : 5 = ? | 109 | 110 | 108 | 119 | Probe: 109 · 5 = 545.
+Rechne: 6 + 8 · 2 = ? | 22 | 28 | 16 | 50 | Punkt vor Strich: erst 8 · 2 = 16, dann 6 + 16 = 22.
+Rechne schriftlich: 87 · 60 = ? | 5.220 | 5.230 | 5.133 | 5.280 | 87 · 60 = 87 · 60 + 87 · 0 = 5220 + 0 = 5.220.
+Rechne: 2 + 6 · 10 = ? | 62 | 80 | 18 | 22 | Punkt vor Strich: erst 6 · 10 = 60, dann 2 + 60 = 62.
+Rechne schriftlich: 57 · 98 = ? | 5.586 | 5.596 | 5.529 | 5.684 | 57 · 98 = 57 · 90 + 57 · 8 = 5130 + 456 = 5.586.
+Was ist 13²? | 169 | 26 | 182 | 130 | 13² bedeutet 13 · 13 = 169.
+Rechne: 1.224 : 12 = ? | 102 | 103 | 101 | 112 | Probe: 102 · 12 = 1.224.
+Was ist 12³? | 1728 | 36 | 1740 | 120 | 12³ bedeutet 12 · 12 · 12 = 1728.
+Rechne: (5 + 3) · 7 = ? | 56 | 26 | 38 | 63 | Klammer zuerst: 5 + 3 = 8, dann · 7 = 56.
+Rechne: (11 + 3) · 8 = ? | 112 | 35 | 91 | 120 | Klammer zuerst: 11 + 3 = 14, dann · 8 = 112.
+Rechne: (5 + 2) · 5 = ? | 35 | 15 | 27 | 40 | Klammer zuerst: 5 + 2 = 7, dann · 5 = 35.
+Rechne geschickt: 200 · 33 · 4 = ? | 26.400 | 3.325 | 330 | 33.000 | Vertauschungsgesetz: erst 200 · 4 = 800, dann · 33.
+Rechne: (5 + 12) · 7 = ? | 119 | 89 | 47 | 126 | Klammer zuerst: 5 + 12 = 17, dann · 7 = 119.
+Rechne geschickt: 25 · 41 · 4 = ? | 4.100 | 4.125 | 410 | 41.000 | Vertauschungsgesetz: erst 25 · 4 = 100, dann · 41.
+Rechne geschickt: 25 · 37 · 4 = ? | 3.700 | 3.725 | 370 | 37.000 | Vertauschungsgesetz: erst 25 · 4 = 100, dann · 37.
+Rechne: 11 + 7 · 6 = ? | 53 | 108 | 24 | 83 | Punkt vor Strich: erst 7 · 6 = 42, dann 11 + 42 = 53.
+Rechne: 603 : 9 = ? | 67 | 68 | 66 | 77 | Probe: 67 · 9 = 603.
+Was ist 15²? | 225 | 30 | 240 | 150 | 15² bedeutet 15 · 15 = 225.
+Rechne: 8 + 12 · 5 = ? | 68 | 100 | 25 | 101 | Punkt vor Strich: erst 12 · 5 = 60, dann 8 + 60 = 68.
+Rechne: 7 + 10 · 4 = ? | 47 | 68 | 21 | 74 | Punkt vor Strich: erst 10 · 4 = 40, dann 7 + 40 = 47.
+Rechne: 1.539 : 9 = ? | 171 | 172 | 170 | 181 | Probe: 171 · 9 = 1.539.
+Rechne: (4 + 12) · 3 = ? | 48 | 40 | 24 | 51 | Klammer zuerst: 4 + 12 = 16, dann · 3 = 48.
+Rechne geschickt: 25 · 24 · 4 = ? | 2.400 | 2.425 | 240 | 24.000 | Vertauschungsgesetz: erst 25 · 4 = 100, dann · 24.
+Was ist 11³? | 1331 | 33 | 1342 | 110 | 11³ bedeutet 11 · 11 · 11 = 1331.
+Rechne: (5 + 3) · 6 = ? | 48 | 23 | 33 | 54 | Klammer zuerst: 5 + 3 = 8, dann · 6 = 48.
+Rechne schriftlich: 96 · 53 = ? | 5.088 | 5.098 | 4.992 | 5.141 | 96 · 53 = 96 · 50 + 96 · 3 = 4800 + 288 = 5.088.
+Rechne schriftlich: 85 · 21 = ? | 1.785 | 1.795 | 1.700 | 1.806 | 85 · 21 = 85 · 20 + 85 · 1 = 1700 + 85 = 1.785.
+Was ist 4³? | 64 | 12 | 68 | 40 | 4³ bedeutet 4 · 4 · 4 = 64.
+Rechne: 304 : 4 = ? | 76 | 77 | 75 | 86 | Probe: 76 · 4 = 304.
+Rechne schriftlich: 84 · 14 = ? | 1.176 | 1.186 | 1.092 | 1.190 | 84 · 14 = 84 · 10 + 84 · 4 = 840 + 336 = 1.176.
+Was ist 6²? | 36 | 12 | 42 | 60 | 6² bedeutet 6 · 6 = 36.
+Rechne geschickt: 200 · 41 · 4 = ? | 32.800 | 4.125 | 410 | 41.000 | Vertauschungsgesetz: erst 200 · 4 = 800, dann · 41.
+Rechne: (9 + 10) · 9 = ? | 171 | 99 | 91 | 180 | Klammer zuerst: 9 + 10 = 19, dann · 9 = 171.
+Rechne: 6 + 10 · 7 = ? | 76 | 112 | 23 | 67 | Punkt vor Strich: erst 10 · 7 = 70, dann 6 + 70 = 76.
+Rechne: 696 : 8 = ? | 87 | 88 | 86 | 97 | Probe: 87 · 8 = 696.
+Rechne: 10 + 9 · 4 = ? | 46 | 76 | 23 | 94 | Punkt vor Strich: erst 9 · 4 = 36, dann 10 + 36 = 46.
+Rechne: 1.272 : 12 = ? | 106 | 107 | 105 | 116 | Probe: 106 · 12 = 1.272.
+Rechne: 900 : 12 = ? | 75 | 76 | 74 | 85 | Probe: 75 · 12 = 900.
+Rechne: 910 : 10 = ? | 91 | 92 | 90 | 101 | Probe: 91 · 10 = 910.
+Rechne geschickt: 25 · 49 · 4 = ? | 4.900 | 4.925 | 490 | 49.000 | Vertauschungsgesetz: erst 25 · 4 = 100, dann · 49.
+Rechne: (6 + 10) · 7 = ? | 112 | 76 | 52 | 119 | Klammer zuerst: 6 + 10 = 16, dann · 7 = 112.
+Rechne geschickt: 25 · 25 · 4 = ? | 2.500 | 2.525 | 250 | 25.000 | Vertauschungsgesetz: erst 25 · 4 = 100, dann · 25.
+Rechne schriftlich: 28 · 89 = ? | 2.492 | 2.502 | 2.464 | 2.581 | 28 · 89 = 28 · 80 + 28 · 9 = 2240 + 252 = 2.492.
+Was ist 8²? | 64 | 16 | 72 | 80 | 8² bedeutet 8 · 8 = 64.
+Rechne geschickt: 100 · 40 · 4 = ? | 16.000 | 4.025 | 400 | 40.000 | Vertauschungsgesetz: erst 100 · 4 = 400, dann · 40.
+Rechne: 12 + 7 · 4 = ? | 40 | 76 | 23 | 88 | Punkt vor Strich: erst 7 · 4 = 28, dann 12 + 28 = 40.
+Rechne: (8 + 7) · 4 = ? | 60 | 36 | 39 | 64 | Klammer zuerst: 8 + 7 = 15, dann · 4 = 60.
+Was ist 6³? | 216 | 18 | 222 | 60 | 6³ bedeutet 6 · 6 · 6 = 216.
+Rechne: 816 : 12 = ? | 68 | 69 | 67 | 78 | Probe: 68 · 12 = 816.
+
+## teilbarkeit | Teiler, Vielfache und Primzahlen
+Was ist das kleinste gemeinsame Vielfache (kgV) von 15 und 12? | 60 | 180 | 75 | 15 | Vielfache von 15 prüfen, bis eines auch durch 12 teilbar ist: 60.
+Welche dieser Zahlen ist eine Primzahl? | 43 | 50 | 51 | 39 | 43 hat nur zwei Teiler: 1 und 43. Die anderen Zahlen haben weitere Teiler.
+Was ist der größte gemeinsame Teiler (ggT) von 69 und 66? | 3 | 6 | 1 | 66 | 3 teilt 69 und 66. Eine größere Zahl, die beide teilt, gibt es nicht.
+Wie viele Teiler hat 42? | 8 | 9 | 7 | 10 | Teiler von 42: 1, 2, 3, 6, 7, 14, 21, 42. Das sind 8.
+Was ist das kleinste gemeinsame Vielfache (kgV) von 13 und 3? | 39 | 78 | 52 | 13 | Vielfache von 13 prüfen, bis eines auch durch 3 teilbar ist: 39.
+Ist 3.047 durch 9 teilbar? | nein | ja | nur durch 2 | das kann man nicht prüfen | Quersumme: 3 + 0 + 4 + 7 = 14. 14 ist nicht durch 9 teilbar, also auch 3.047 nicht.
+Wie viele Teiler hat 84? | 12 | 13 | 11 | 14 | Teiler von 84: 1, 2, 3, 4, 6, 7, 12, 14, 21, 28, 42, 84. Das sind 12.
+Wie viele Teiler hat 80? | 10 | 11 | 9 | 12 | Teiler von 80: 1, 2, 4, 5, 8, 10, 16, 20, 40, 80. Das sind 10.
+Was ist das kleinste gemeinsame Vielfache (kgV) von 9 und 6? | 18 | 54 | 27 | 9 | Vielfache von 9 prüfen, bis eines auch durch 6 teilbar ist: 18.
+Ist 9.675 durch 9 teilbar? | ja | nein | nur durch 2 | das kann man nicht prüfen | Quersumme: 9 + 6 + 7 + 5 = 27. 27 ist durch 9 teilbar, also auch 9.675 .
+Ist 5.103 durch 9 teilbar? | ja | nein | nur durch 2 | das kann man nicht prüfen | Quersumme: 5 + 1 + 0 + 3 = 9. 9 ist durch 9 teilbar, also auch 5.103 .
+Wie viele Teiler hat 45? | 6 | 7 | 5 | 8 | Teiler von 45: 1, 3, 5, 9, 15, 45. Das sind 6.
+Was ist der größte gemeinsame Teiler (ggT) von 28 und 38? | 2 | 4 | 3 | 28 | 2 teilt 28 und 38. Eine größere Zahl, die beide teilt, gibt es nicht.
+Ist 2.281 durch 9 teilbar? | nein | ja | nur durch 2 | das kann man nicht prüfen | Quersumme: 2 + 2 + 8 + 1 = 13. 13 ist nicht durch 9 teilbar, also auch 2.281 nicht.
+Was ist der größte gemeinsame Teiler (ggT) von 5 und 25? | 5 | 10 | 2 | 8 | 5 teilt 5 und 25. Eine größere Zahl, die beide teilt, gibt es nicht.
+Wie viele Teiler hat 36? | 9 | 10 | 8 | 11 | Teiler von 36: 1, 2, 3, 4, 6, 9, 12, 18, 36. Das sind 9.
+Ist 5.177 durch 9 teilbar? | nein | ja | nur durch 2 | das kann man nicht prüfen | Quersumme: 5 + 1 + 7 + 7 = 20. 20 ist nicht durch 9 teilbar, also auch 5.177 nicht.
+Was ist der größte gemeinsame Teiler (ggT) von 15 und 18? | 3 | 6 | 1 | 15 | 3 teilt 15 und 18. Eine größere Zahl, die beide teilt, gibt es nicht.
+Was ist das kleinste gemeinsame Vielfache (kgV) von 15 und 8? | 120 | 240 | 135 | 15 | Vielfache von 15 prüfen, bis eines auch durch 8 teilbar ist: 120.
+Was ist das kleinste gemeinsame Vielfache (kgV) von 13 und 7? | 91 | 182 | 104 | 13 | Vielfache von 13 prüfen, bis eines auch durch 7 teilbar ist: 91.
+Was ist der größte gemeinsame Teiler (ggT) von 57 und 27? | 3 | 6 | 1 | 27 | 3 teilt 57 und 27. Eine größere Zahl, die beide teilt, gibt es nicht.
+Wie viele Teiler hat 12? | 6 | 7 | 5 | 8 | Teiler von 12: 1, 2, 3, 4, 6, 12. Das sind 6.
+Was ist das kleinste gemeinsame Vielfache (kgV) von 5 und 8? | 40 | 80 | 45 | 8 | Vielfache von 8 prüfen, bis eines auch durch 5 teilbar ist: 40.
+Was ist das kleinste gemeinsame Vielfache (kgV) von 5 und 2? | 10 | 20 | 15 | 5 | Vielfache von 5 prüfen, bis eines auch durch 2 teilbar ist: 10.
+Was ist der größte gemeinsame Teiler (ggT) von 72 und 90? | 18 | 36 | 9 | 72 | 18 teilt 72 und 90. Eine größere Zahl, die beide teilt, gibt es nicht.
+Was ist das kleinste gemeinsame Vielfache (kgV) von 8 und 3? | 24 | 48 | 32 | 8 | Vielfache von 8 prüfen, bis eines auch durch 3 teilbar ist: 24.
+Ist 5.613 durch 9 teilbar? | nein | ja | nur durch 2 | das kann man nicht prüfen | Quersumme: 5 + 6 + 1 + 3 = 15. 15 ist nicht durch 9 teilbar, also auch 5.613 nicht.
+Ist 7.711 durch 3 teilbar? | nein | ja | nur durch 2 | das kann man nicht prüfen | Quersumme: 7 + 7 + 1 + 1 = 16. 16 ist nicht durch 3 teilbar, also auch 7.711 nicht.
+Wie viele Teiler hat 50? | 6 | 7 | 5 | 8 | Teiler von 50: 1, 2, 5, 10, 25, 50. Das sind 6.
+Ist 1.162 durch 3 teilbar? | nein | ja | nur durch 2 | das kann man nicht prüfen | Quersumme: 1 + 1 + 6 + 2 = 10. 10 ist nicht durch 3 teilbar, also auch 1.162 nicht.
+Ist 5.648 durch 3 teilbar? | nein | ja | nur durch 2 | das kann man nicht prüfen | Quersumme: 5 + 6 + 4 + 8 = 23. 23 ist nicht durch 3 teilbar, also auch 5.648 nicht.
+Wie viele Teiler hat 48? | 10 | 11 | 9 | 12 | Teiler von 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48. Das sind 10.
+Ist 4.977 durch 3 teilbar? | ja | nein | nur durch 2 | das kann man nicht prüfen | Quersumme: 4 + 9 + 7 + 7 = 27. 27 ist durch 3 teilbar, also auch 4.977 .
+Was ist der größte gemeinsame Teiler (ggT) von 60 und 12? | 12 | 24 | 6 | 15 | 12 teilt 60 und 12. Eine größere Zahl, die beide teilt, gibt es nicht.
+Was ist das kleinste gemeinsame Vielfache (kgV) von 14 und 9? | 126 | 252 | 140 | 14 | Vielfache von 14 prüfen, bis eines auch durch 9 teilbar ist: 126.
+Wie viele Teiler hat 54? | 8 | 9 | 7 | 10 | Teiler von 54: 1, 2, 3, 6, 9, 18, 27, 54. Das sind 8.
+Ist 969 durch 9 teilbar? | nein | ja | nur durch 2 | das kann man nicht prüfen | Quersumme: 9 + 6 + 9 = 24. 24 ist nicht durch 9 teilbar, also auch 969 nicht.
+Wie viele Teiler hat 72? | 12 | 13 | 11 | 14 | Teiler von 72: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72. Das sind 12.
+Ist 7.408 durch 9 teilbar? | nein | ja | nur durch 2 | das kann man nicht prüfen | Quersumme: 7 + 4 + 0 + 8 = 19. 19 ist nicht durch 9 teilbar, also auch 7.408 nicht.
+Ist 5.629 durch 3 teilbar? | nein | ja | nur durch 2 | das kann man nicht prüfen | Quersumme: 5 + 6 + 2 + 9 = 22. 22 ist nicht durch 3 teilbar, also auch 5.629 nicht.
+Ist 7.968 durch 3 teilbar? | ja | nein | nur durch 2 | das kann man nicht prüfen | Quersumme: 7 + 9 + 6 + 8 = 30. 30 ist durch 3 teilbar, also auch 7.968 .
+Ist 5.832 durch 3 teilbar? | ja | nein | nur durch 2 | das kann man nicht prüfen | Quersumme: 5 + 8 + 3 + 2 = 18. 18 ist durch 3 teilbar, also auch 5.832 .
+Was ist das kleinste gemeinsame Vielfache (kgV) von 11 und 13? | 143 | 286 | 154 | 13 | Vielfache von 13 prüfen, bis eines auch durch 11 teilbar ist: 143.
+Was ist das kleinste gemeinsame Vielfache (kgV) von 6 und 13? | 78 | 156 | 84 | 13 | Vielfache von 13 prüfen, bis eines auch durch 6 teilbar ist: 78.
+Was ist das kleinste gemeinsame Vielfache (kgV) von 9 und 13? | 117 | 234 | 126 | 13 | Vielfache von 13 prüfen, bis eines auch durch 9 teilbar ist: 117.
+
+## groessen | Größen und Sachaufgaben
+Eine Bahnfahrt startet um 10:40 Uhr und dauert 86 Minuten. Wann kommt der Zug an? | 12:06 Uhr | 12:16 Uhr | 11:06 Uhr | 12:46 Uhr | 86 Minuten = 1 h 26 min. 10:40 Uhr + 1 h 26 min = 12:06 Uhr.
+Wie viele Sekunden sind 11 Minuten? | 660 | 1100 | 720 | 264 | 1 min = 60 s, also 11 · 60 = 660 s.
+Eine Bahnfahrt startet um 12:10 Uhr und dauert 70 Minuten. Wann kommt der Zug an? | 13:20 Uhr | 13:30 Uhr | 12:20 Uhr | 14:00 Uhr | 70 Minuten = 1 h 10 min. 12:10 Uhr + 1 h 10 min = 13:20 Uhr.
+Eine Bahnfahrt startet um 12:35 Uhr und dauert 142 Minuten. Wann kommt der Zug an? | 14:57 Uhr | 15:07 Uhr | 13:57 Uhr | 15:37 Uhr | 142 Minuten = 2 h 22 min. 12:35 Uhr + 2 h 22 min = 14:57 Uhr.
+Eine Bahnfahrt startet um 7:10 Uhr und dauert 111 Minuten. Wann kommt der Zug an? | 9:01 Uhr | 9:11 Uhr | 8:01 Uhr | 9:41 Uhr | 111 Minuten = 1 h 51 min. 7:10 Uhr + 1 h 51 min = 9:01 Uhr.
+Wie viel Gramm sind 1 kg 200 g? | 1.200 g | 300 g | 3.000 g | 1200 g | 1 kg = 1.000 g. 1 kg = 1.000 g, plus 200 g = 1.200 g.
+Maßstab 1 : 50.000: Auf der Karte sind es 5 cm. Wie weit ist es in Wirklichkeit? | 2,5 km | 250 m | 50 m | 25000 m | 5 cm · 50.000 = 250.000 cm = 2,5 km.
+Ein Heft kostet 4,50 €. Wie viel kosten 4 Hefte? | 18,00 € | 22,50 € | 17,00 € | 8,50 € | 4 · 4,50 € = 18,00 €.
+Wie viele Zentimeter sind 0,51 m? | 51 cm | 510 cm | 5 cm | 151 cm | 1 m = 100 cm, also 0,51 m = 51 cm.
+Wie viele Sekunden sind 5 Minuten? | 300 | 500 | 360 | 120 | 1 min = 60 s, also 5 · 60 = 300 s.
+Wie viel Gramm sind 2 kg 200 g? | 2.200 g | 400 g | 4.000 g | 2200 g | 1 kg = 1.000 g. 2 kg = 2.000 g, plus 200 g = 2.200 g.
+Wie viele Zentimeter sind 0,93 m? | 93 cm | 930 cm | 9 cm | 193 cm | 1 m = 100 cm, also 0,93 m = 93 cm.
+Wie viel Gramm sind 7 kg 350 g? | 7.350 g | 1.050 g | 10.500 g | 7350 g | 1 kg = 1.000 g. 7 kg = 7.000 g, plus 350 g = 7.350 g.
+Maßstab 1 : 25.000: Auf der Karte sind es 4 cm. Wie weit ist es in Wirklichkeit? | 1 km | 100 m | 40 m | 10000 m | 4 cm · 25.000 = 100.000 cm = 1 km.
+Eine Bahnfahrt startet um 8:10 Uhr und dauert 185 Minuten. Wann kommt der Zug an? | 11:15 Uhr | 11:25 Uhr | 10:15 Uhr | 11:55 Uhr | 185 Minuten = 3 h 5 min. 8:10 Uhr + 3 h 5 min = 11:15 Uhr.
+Wie viel Gramm sind 1 kg 100 g? | 1.100 g | 200 g | 2.000 g | 1100 g | 1 kg = 1.000 g. 1 kg = 1.000 g, plus 100 g = 1.100 g.
+Eine Bahnfahrt startet um 10:05 Uhr und dauert 154 Minuten. Wann kommt der Zug an? | 12:39 Uhr | 12:49 Uhr | 11:39 Uhr | 13:19 Uhr | 154 Minuten = 2 h 34 min. 10:05 Uhr + 2 h 34 min = 12:39 Uhr.
+Wie viele Zentimeter sind 0,37 m? | 37 cm | 370 cm | 4 cm | 137 cm | 1 m = 100 cm, also 0,37 m = 37 cm.
+Wie viel Gramm sind 1 kg 150 g? | 1.150 g | 250 g | 2.500 g | 1150 g | 1 kg = 1.000 g. 1 kg = 1.000 g, plus 150 g = 1.150 g.
+Wie viele Sekunden sind 12 Minuten? | 720 | 1200 | 780 | 288 | 1 min = 60 s, also 12 · 60 = 720 s.
+Eine Bahnfahrt startet um 13:05 Uhr und dauert 176 Minuten. Wann kommt der Zug an? | 16:01 Uhr | 16:11 Uhr | 15:01 Uhr | 16:41 Uhr | 176 Minuten = 2 h 56 min. 13:05 Uhr + 2 h 56 min = 16:01 Uhr.
+Ein Heft kostet 9,50 €. Wie viel kosten 5 Hefte? | 47,50 € | 57,00 € | 46,50 € | 14,50 € | 5 · 9,50 € = 47,50 €.
+Wie viel Gramm sind 7 kg 400 g? | 7.400 g | 1.100 g | 11.000 g | 7400 g | 1 kg = 1.000 g. 7 kg = 7.000 g, plus 400 g = 7.400 g.
+Maßstab 1 : 50.000: Auf der Karte sind es 2 cm. Wie weit ist es in Wirklichkeit? | 1 km | 100 m | 20 m | 10000 m | 2 cm · 50.000 = 100.000 cm = 1 km.
+Ein Heft kostet 4,00 €. Wie viel kosten 6 Hefte? | 24,00 € | 28,00 € | 23,00 € | 10,00 € | 6 · 4,00 € = 24,00 €.
+Ein Heft kostet 8,50 €. Wie viel kosten 7 Hefte? | 59,50 € | 68,00 € | 58,50 € | 15,50 € | 7 · 8,50 € = 59,50 €.
+Maßstab 1 : 25.000: Auf der Karte sind es 7 cm. Wie weit ist es in Wirklichkeit? | 1,75 km | 175 m | 70 m | 17500 m | 7 cm · 25.000 = 175.000 cm = 1,75 km.
+Wie viel Gramm sind 3 kg 100 g? | 3.100 g | 400 g | 4.000 g | 3100 g | 1 kg = 1.000 g. 3 kg = 3.000 g, plus 100 g = 3.100 g.
+Maßstab 1 : 100.000: Auf der Karte sind es 6 cm. Wie weit ist es in Wirklichkeit? | 6 km | 600 m | 60 m | 60000 m | 6 cm · 100.000 = 600.000 cm = 6 km.
+Wie viele Sekunden sind 10 Minuten? | 600 | 1000 | 660 | 240 | 1 min = 60 s, also 10 · 60 = 600 s.
+Wie viel Gramm sind 5 kg 300 g? | 5.300 g | 800 g | 8.000 g | 5300 g | 1 kg = 1.000 g. 5 kg = 5.000 g, plus 300 g = 5.300 g.
+Wie viel Gramm sind 4 kg 350 g? | 4.350 g | 750 g | 7.500 g | 4350 g | 1 kg = 1.000 g. 4 kg = 4.000 g, plus 350 g = 4.350 g.
+Ein Heft kostet 4,50 €. Wie viel kosten 5 Hefte? | 22,50 € | 27,00 € | 21,50 € | 9,50 € | 5 · 4,50 € = 22,50 €.
+Wie viele Zentimeter sind 0,47 m? | 47 cm | 470 cm | 5 cm | 147 cm | 1 m = 100 cm, also 0,47 m = 47 cm.
+Wie viele Zentimeter sind 0,69 m? | 69 cm | 690 cm | 7 cm | 169 cm | 1 m = 100 cm, also 0,69 m = 69 cm.
+Wie viel Gramm sind 8 kg 350 g? | 8.350 g | 1.150 g | 11.500 g | 8350 g | 1 kg = 1.000 g. 8 kg = 8.000 g, plus 350 g = 8.350 g.
+Wie viele Zentimeter sind 0,34 m? | 34 cm | 340 cm | 3 cm | 134 cm | 1 m = 100 cm, also 0,34 m = 34 cm.
+Wie viele Zentimeter sind 0,27 m? | 27 cm | 270 cm | 3 cm | 127 cm | 1 m = 100 cm, also 0,27 m = 27 cm.
+Maßstab 1 : 50.000: Auf der Karte sind es 9 cm. Wie weit ist es in Wirklichkeit? | 4,5 km | 450 m | 90 m | 45000 m | 9 cm · 50.000 = 450.000 cm = 4,5 km.
+Wie viele Sekunden sind 7 Minuten? | 420 | 700 | 480 | 168 | 1 min = 60 s, also 7 · 60 = 420 s.
+Wie viele Sekunden sind 2 Minuten? | 120 | 200 | 180 | 48 | 1 min = 60 s, also 2 · 60 = 120 s.
+Ein Heft kostet 3,00 €. Wie viel kosten 8 Hefte? | 24,00 € | 27,00 € | 23,00 € | 11,00 € | 8 · 3,00 € = 24,00 €.
+Wie viel Gramm sind 4 kg 200 g? | 4.200 g | 600 g | 6.000 g | 4200 g | 1 kg = 1.000 g. 4 kg = 4.000 g, plus 200 g = 4.200 g.
+Wie viel Gramm sind 4 kg 300 g? | 4.300 g | 700 g | 7.000 g | 4300 g | 1 kg = 1.000 g. 4 kg = 4.000 g, plus 300 g = 4.300 g.
+Wie viele Sekunden sind 9 Minuten? | 540 | 900 | 600 | 216 | 1 min = 60 s, also 9 · 60 = 540 s.
+
+## geometrie | Geometrie: Flächen, Körper und Winkel
+Ein Quader ist 10 cm lang, 3 cm breit und 6 cm hoch. Wie groß ist sein Volumen? | 180 cm³ | 36 cm³ | 216 cm³ | 19 cm³ | Volumen = Länge · Breite · Höhe = 10 · 3 · 6 = 180 cm³.
+Was für ein Winkel ist 117°? | ein stumpfer Winkel | ein spitzer Winkel | ein rechter Winkel | ein gestreckter Winkel | Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°.
+Ein Rechteck ist 13 m lang und 7 m breit. Wie groß ist der Flächeninhalt? | 91 m² | 40 m² | 20 m² | 104 m² | Flächeninhalt = Länge · Breite = 13 · 7 = 91 m².
+Ein Rechteck ist 18 m lang und 17 m breit. Wie groß ist der Flächeninhalt? | 306 m² | 70 m² | 35 m² | 324 m² | Flächeninhalt = Länge · Breite = 18 · 17 = 306 m².
+Ein Rechteck ist 8 m lang und 9 m breit. Wie groß ist der Flächeninhalt? | 72 m² | 34 m² | 17 m² | 80 m² | Flächeninhalt = Länge · Breite = 8 · 9 = 72 m².
+Ein Quadrat hat einen Flächeninhalt von 361 cm². Wie lang ist eine Seite? | 19 cm | 90 cm | 38 cm | 20 cm | 19 · 19 = 361. Die Seite ist also 19 cm lang.
+Ein Quader ist 7 cm lang, 7 cm breit und 6 cm hoch. Wie groß ist sein Volumen? | 294 cm³ | 55 cm³ | 266 cm³ | 20 cm³ | Volumen = Länge · Breite · Höhe = 7 · 7 · 6 = 294 cm³.
+Ein Rechteck ist 21 m lang und 11 m breit. Wie groß ist der Flächeninhalt? | 231 m² | 64 m² | 32 m² | 252 m² | Flächeninhalt = Länge · Breite = 21 · 11 = 231 m².
+Ein Quader ist 5 cm lang, 8 cm breit und 4 cm hoch. Wie groß ist sein Volumen? | 160 cm³ | 44 cm³ | 184 cm³ | 17 cm³ | Volumen = Länge · Breite · Höhe = 5 · 8 · 4 = 160 cm³.
+Was für ein Winkel ist 114°? | ein stumpfer Winkel | ein spitzer Winkel | ein rechter Winkel | ein gestreckter Winkel | Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°.
+Ein Rechteck ist 9 m lang und 24 m breit. Wie groß ist der Flächeninhalt? | 216 m² | 66 m² | 33 m² | 225 m² | Flächeninhalt = Länge · Breite = 9 · 24 = 216 m².
+Ein Rechteck ist 25 m lang und 22 m breit. Wie groß ist der Flächeninhalt? | 550 m² | 94 m² | 47 m² | 575 m² | Flächeninhalt = Länge · Breite = 25 · 22 = 550 m².
+Ein Quader ist 3 cm lang, 9 cm breit und 2 cm hoch. Wie groß ist sein Volumen? | 54 cm³ | 29 cm³ | 102 cm³ | 14 cm³ | Volumen = Länge · Breite · Höhe = 3 · 9 · 2 = 54 cm³.
+Ein Quadrat hat einen Flächeninhalt von 169 cm². Wie lang ist eine Seite? | 13 cm | 42 cm | 26 cm | 14 cm | 13 · 13 = 169. Die Seite ist also 13 cm lang.
+Was für ein Winkel ist 158°? | ein stumpfer Winkel | ein spitzer Winkel | ein rechter Winkel | ein gestreckter Winkel | Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°.
+Ein Quadrat hat einen Flächeninhalt von 196 cm². Wie lang ist eine Seite? | 14 cm | 49 cm | 28 cm | 15 cm | 14 · 14 = 196. Die Seite ist also 14 cm lang.
+Ein Rechteck ist 22 m lang und 6 m breit. Wie groß ist der Flächeninhalt? | 132 m² | 56 m² | 28 m² | 154 m² | Flächeninhalt = Länge · Breite = 22 · 6 = 132 m².
+Was für ein Winkel ist 141°? | ein stumpfer Winkel | ein spitzer Winkel | ein rechter Winkel | ein gestreckter Winkel | Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°.
+Ein Rechteck ist 19 m lang und 25 m breit. Wie groß ist der Flächeninhalt? | 475 m² | 88 m² | 44 m² | 494 m² | Flächeninhalt = Länge · Breite = 19 · 25 = 475 m².
+Ein Quadrat hat einen Flächeninhalt von 100 cm². Wie lang ist eine Seite? | 10 cm | 25 cm | 20 cm | 11 cm | 10 · 10 = 100. Die Seite ist also 10 cm lang.
+Ein Quader ist 9 cm lang, 2 cm breit und 2 cm hoch. Wie groß ist sein Volumen? | 36 cm³ | 20 cm³ | 80 cm³ | 13 cm³ | Volumen = Länge · Breite · Höhe = 9 · 2 · 2 = 36 cm³.
+Ein Rechteck ist 10 m lang und 8 m breit. Wie groß ist der Flächeninhalt? | 80 m² | 36 m² | 18 m² | 90 m² | Flächeninhalt = Länge · Breite = 10 · 8 = 80 m².
+Ein Quader ist 10 cm lang, 5 cm breit und 9 cm hoch. Wie groß ist sein Volumen? | 450 cm³ | 59 cm³ | 370 cm³ | 24 cm³ | Volumen = Länge · Breite · Höhe = 10 · 5 · 9 = 450 cm³.
+Was für ein Winkel ist 16°? | ein spitzer Winkel | ein rechter Winkel | ein stumpfer Winkel | ein gestreckter Winkel | Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°.
+Was für ein Winkel ist 68°? | ein spitzer Winkel | ein rechter Winkel | ein stumpfer Winkel | ein gestreckter Winkel | Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°.
+Was für ein Winkel ist 87°? | ein spitzer Winkel | ein rechter Winkel | ein stumpfer Winkel | ein gestreckter Winkel | Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°.
+Ein Rechteck ist 10 m lang und 24 m breit. Wie groß ist der Flächeninhalt? | 240 m² | 68 m² | 34 m² | 250 m² | Flächeninhalt = Länge · Breite = 10 · 24 = 240 m².
+Ein Quadrat hat einen Flächeninhalt von 324 cm². Wie lang ist eine Seite? | 18 cm | 81 cm | 36 cm | 19 cm | 18 · 18 = 324. Die Seite ist also 18 cm lang.
+Ein Quader ist 5 cm lang, 4 cm breit und 2 cm hoch. Wie groß ist sein Volumen? | 40 cm³ | 22 cm³ | 76 cm³ | 11 cm³ | Volumen = Länge · Breite · Höhe = 5 · 4 · 2 = 40 cm³.
+Ein Rechteck ist 24 m lang und 22 m breit. Wie groß ist der Flächeninhalt? | 528 m² | 92 m² | 46 m² | 552 m² | Flächeninhalt = Länge · Breite = 24 · 22 = 528 m².
+Ein Rechteck ist 12 m lang und 9 m breit. Wie groß ist der Flächeninhalt? | 108 m² | 42 m² | 21 m² | 120 m² | Flächeninhalt = Länge · Breite = 12 · 9 = 108 m².
+Was für ein Winkel ist 47°? | ein spitzer Winkel | ein rechter Winkel | ein stumpfer Winkel | ein gestreckter Winkel | Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°.
+Was für ein Winkel ist 146°? | ein stumpfer Winkel | ein spitzer Winkel | ein rechter Winkel | ein gestreckter Winkel | Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°.
+Ein Quader ist 9 cm lang, 5 cm breit und 3 cm hoch. Wie groß ist sein Volumen? | 135 cm³ | 48 cm³ | 174 cm³ | 17 cm³ | Volumen = Länge · Breite · Höhe = 9 · 5 · 3 = 135 cm³.
+Ein Rechteck ist 19 m lang und 10 m breit. Wie groß ist der Flächeninhalt? | 190 m² | 58 m² | 29 m² | 209 m² | Flächeninhalt = Länge · Breite = 19 · 10 = 190 m².
+Was für ein Winkel ist 166°? | ein stumpfer Winkel | ein spitzer Winkel | ein rechter Winkel | ein gestreckter Winkel | Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°.
+Ein Rechteck ist 9 m lang und 25 m breit. Wie groß ist der Flächeninhalt? | 225 m² | 68 m² | 34 m² | 234 m² | Flächeninhalt = Länge · Breite = 9 · 25 = 225 m².
+Ein Rechteck ist 3 m lang und 5 m breit. Wie groß ist der Flächeninhalt? | 15 m² | 16 m² | 8 m² | 18 m² | Flächeninhalt = Länge · Breite = 3 · 5 = 15 m².
+Ein Würfel hat die Kantenlänge 9 cm. Wie groß ist sein Volumen? | 729 cm³ | 81 cm³ | 486 cm³ | 108 cm³ | Volumen = a · a · a = 9 · 9 · 9 = 729 cm³.
+Was für ein Winkel ist 88°? | ein spitzer Winkel | ein rechter Winkel | ein stumpfer Winkel | ein gestreckter Winkel | Spitz: unter 90°. Recht: genau 90°. Stumpf: zwischen 90° und 180°. Gestreckt: 180°.
+
+## brueche | Brüche: erste Schritte
+Welcher Bruch ist gleich groß wie 3/4? | 15/20 | 8/9 | 15/4 | 3/20 | Erweitern: Zähler und Nenner mit 5 multiplizieren.
+Wie viel sind 3/5 von 60? | 36 | 12 | 20 | 24 | Erst durch den Nenner teilen: 60 : 5 = 12. Dann mal den Zähler: 12 · 3 = 36.
+Welcher Bruch ist gleich groß wie 1/3? | 2/6 | 3/5 | 2/3 | 1/6 | Erweitern: Zähler und Nenner mit 2 multiplizieren.
+Wie viel Prozent sind 6/10? | 60 % | 65 % | 10 % | 70 % | 6/10 = 60/100 = 60 %.
+Rechne: 4/12 + 7/12 = ? | 11/12 | 11/24 | 28/12 | 12/12 | Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich.
+Welcher Bruch ist gleich groß wie 1/6? | 4/24 | 5/10 | 4/6 | 1/24 | Erweitern: Zähler und Nenner mit 4 multiplizieren.
+Kürze so weit wie möglich: 6/18 | 1/3 | 3/9 | 3/1 | 1/4 | Zähler und Nenner durch 6 teilen: 1/3.
+Rechne: 4/9 + 1/9 = ? | 5/9 | 5/18 | 4/9 | 6/9 | Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich.
+Welcher Bruch ist gleich groß wie 5/6? | 15/18 | 8/9 | 15/6 | 5/18 | Erweitern: Zähler und Nenner mit 3 multiplizieren.
+Rechne: 2/3 + 1/3 = ? | 3/3 | 3/6 | 2/3 | 4/3 | Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich.
+Welcher Bruch ist größer: 1/4 oder 2/3? | 2/3 | 1/4 | beide sind gleich | das kann man nicht vergleichen | Gleichnamig machen (Nenner 24): 3/24 und 8/24.
+Welcher Bruch ist größer: 5/8 oder 5/6? | 5/6 | 5/8 | beide sind gleich | das kann man nicht vergleichen | Gleichnamig machen (Nenner 24): 15/24 und 20/24.
+Welcher Bruch ist größer: 3/4 oder 1/3? | 3/4 | 1/3 | beide sind gleich | das kann man nicht vergleichen | Gleichnamig machen (Nenner 24): 9/24 und 4/24.
+Welcher Bruch ist gleich groß wie 4/5? | 16/20 | 8/9 | 16/5 | 4/20 | Erweitern: Zähler und Nenner mit 4 multiplizieren.
+Rechne: 6/12 + 2/12 = ? | 8/12 | 8/24 | 12/12 | 9/12 | Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich.
+Welcher Bruch ist gleich groß wie 1/2? | 2/4 | 3/4 | 2/2 | 1/4 | Erweitern: Zähler und Nenner mit 2 multiplizieren.
+Rechne: 3/8 + 1/8 = ? | 4/8 | 4/16 | 3/8 | 5/8 | Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich.
+Wie viel Prozent sind 2/5? | 40 % | 20 % | 5 % | 50 % | 2/5 = 40/100 = 40 %.
+Wie viel sind 5/10 von 30? | 15 | 3 | 6 | 25 | Erst durch den Nenner teilen: 30 : 10 = 3. Dann mal den Zähler: 3 · 5 = 15.
+Rechne: 1/8 + 3/8 = ? | 4/8 | 4/16 | 3/8 | 5/8 | Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich.
+Welcher Bruch ist gleich groß wie 2/5? | 6/15 | 5/8 | 6/5 | 2/15 | Erweitern: Zähler und Nenner mit 3 multiplizieren.
+Welcher Bruch ist größer: 7/8 oder 1/6? | 7/8 | 1/6 | beide sind gleich | das kann man nicht vergleichen | Gleichnamig machen (Nenner 24): 21/24 und 4/24.
+Kürze so weit wie möglich: 14/70 | 1/5 | 7/35 | 5/1 | 1/6 | Zähler und Nenner durch 14 teilen: 1/5.
+Wie viel Prozent sind 19/20? | 95 % | 190 % | 20 % | 105 % | 19/20 = 95/100 = 95 %.
+Welcher Bruch ist größer: 7/8 oder 2/3? | 7/8 | 2/3 | beide sind gleich | das kann man nicht vergleichen | Gleichnamig machen (Nenner 24): 21/24 und 8/24.
+Kürze so weit wie möglich: 13/39 | 1/3 | 13/39 | 3/1 | 1/4 | Zähler und Nenner durch 13 teilen: 1/3.
+Rechne: 1/10 + 2/10 = ? | 3/10 | 3/20 | 2/10 | 4/10 | Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich.
+Welcher Bruch ist größer: 1/4 oder 1/2? | 1/2 | 1/4 | beide sind gleich | das kann man nicht vergleichen | Gleichnamig machen (Nenner 24): 3/24 und 4/24.
+Wie viel Prozent sind 1/4? | 25 % | 10 % | 4 % | 35 % | 1/4 = 25/100 = 25 %.
+Rechne: 1/3 + 2/3 = ? | 3/3 | 3/6 | 2/3 | 4/3 | Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich.
+Welcher Bruch ist größer: 7/8 oder 1/3? | 7/8 | 1/3 | beide sind gleich | das kann man nicht vergleichen | Gleichnamig machen (Nenner 24): 21/24 und 4/24.
+Rechne: 5/12 + 6/12 = ? | 11/12 | 11/24 | 30/12 | 12/12 | Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich.
+Wie viel Prozent sind 7/20? | 35 % | 70 % | 20 % | 45 % | 7/20 = 35/100 = 35 %.
+Welcher Bruch ist größer: 7/8 oder 5/6? | 7/8 | 5/6 | beide sind gleich | das kann man nicht vergleichen | Gleichnamig machen (Nenner 24): 21/24 und 20/24.
+Kürze so weit wie möglich: 16/80 | 1/5 | 8/40 | 5/1 | 1/6 | Zähler und Nenner durch 16 teilen: 1/5.
+Rechne: 3/7 + 4/7 = ? | 7/7 | 7/14 | 12/7 | 8/7 | Gleiche Nenner: Zähler addieren, der Nenner bleibt gleich.
+Welcher Bruch ist größer: 1/8 oder 2/3? | 2/3 | 1/8 | beide sind gleich | das kann man nicht vergleichen | Gleichnamig machen (Nenner 24): 3/24 und 8/24.
+Kürze so weit wie möglich: 29/87 | 1/3 | 29/87 | 3/1 | 1/4 | Zähler und Nenner durch 29 teilen: 1/3.
+Wie viel Prozent sind 15/25? | 60 % | 150 % | 25 % | 70 % | 15/25 = 60/100 = 60 %.
+Kürze so weit wie möglich: 24/96 | 1/4 | 12/48 | 4/1 | 1/5 | Zähler und Nenner durch 24 teilen: 1/4.
+Wie viel sind 4/6 von 72? | 48 | 12 | 18 | 24 | Erst durch den Nenner teilen: 72 : 6 = 12. Dann mal den Zähler: 12 · 4 = 48.
+Kürze so weit wie möglich: 15/75 | 1/5 | 15/75 | 5/1 | 1/6 | Zähler und Nenner durch 15 teilen: 1/5.
+Kürze so weit wie möglich: 11/33 | 1/3 | 11/33 | 3/1 | 1/4 | Zähler und Nenner durch 11 teilen: 1/3.
+Kürze so weit wie möglich: 5/25 | 1/5 | 5/25 | 5/1 | 1/6 | Zähler und Nenner durch 5 teilen: 1/5.
+Welcher Bruch ist größer: 3/8 oder 1/2? | 1/2 | 3/8 | beide sind gleich | das kann man nicht vergleichen | Gleichnamig machen (Nenner 24): 9/24 und 4/24.
+
+## daten | Daten, Mittelwert und Diagramme
+Bei einer Strichliste stehen 5er-Bündel. Wie viele Bündel und Einzelstriche zeigen 42? | 8 Bündel und 2 Striche | 9 Bündel und 2 Striche | 2 Bündel und 8 Striche | 4 Bündel und 2 Striche | 42 = 8 · 5 + 2.
+Berechne den Mittelwert (Durchschnitt) von 14, 7, 2, 2, 5. | 6 | 30 | 7 | 14 | Alle addieren: 30. Durch die Anzahl (5) teilen: 6.
+Berechne den Mittelwert (Durchschnitt) von 13, 15, 15, 13, 24. | 16 | 80 | 17 | 24 | Alle addieren: 80. Durch die Anzahl (5) teilen: 16.
+Berechne den Mittelwert (Durchschnitt) von 1, 15, 14. | 10 | 30 | 11 | 15 | Alle addieren: 30. Durch die Anzahl (3) teilen: 10.
+Bei einer Strichliste stehen 5er-Bündel. Wie viele Bündel und Einzelstriche zeigen 27? | 5 Bündel und 2 Striche | 6 Bündel und 2 Striche | 2 Bündel und 5 Striche | 2 Bündel und 7 Striche | 27 = 5 · 5 + 2.
+Wie groß ist die Spannweite von 30, 17, 11, 9, 47? | 38 | 47 | 17 | 56 | Spannweite = größter Wert − kleinster Wert = 47 − 9 = 38.
+Berechne den Mittelwert (Durchschnitt) von 11, 7, 12, 10. | 10 | 40 | 11 | 12 | Alle addieren: 40. Durch die Anzahl (4) teilen: 10.
+Berechne den Mittelwert (Durchschnitt) von 8, 12, 2, 18, 10. | 10 | 50 | 11 | 18 | Alle addieren: 50. Durch die Anzahl (5) teilen: 10.
+Wie groß ist die Spannweite von 8, 32, 36, 43, 47? | 39 | 47 | 36 | 55 | Spannweite = größter Wert − kleinster Wert = 47 − 8 = 39.
+Welcher Wert ist der Zentralwert (Median) von 1, 34, 19, 10, 32? | 19 | 10 | 1 | 34 | Der Größe nach ordnen: 1, 10, 19, 32, 34. Der mittlere Wert ist 19.
+Welcher Wert ist der Zentralwert (Median) von 36, 37, 16, 6, 11? | 16 | 11 | 6 | 37 | Der Größe nach ordnen: 6, 11, 16, 36, 37. Der mittlere Wert ist 16.
+Welcher Wert ist der Zentralwert (Median) von 14, 32, 16, 20, 10? | 16 | 14 | 10 | 32 | Der Größe nach ordnen: 10, 14, 16, 20, 32. Der mittlere Wert ist 16.
+Berechne den Mittelwert (Durchschnitt) von 11, 10, 6, 21. | 12 | 48 | 13 | 21 | Alle addieren: 48. Durch die Anzahl (4) teilen: 12.
+Bei einer Strichliste stehen 5er-Bündel. Wie viele Bündel und Einzelstriche zeigen 47? | 9 Bündel und 2 Striche | 10 Bündel und 2 Striche | 2 Bündel und 9 Striche | 4 Bündel und 7 Striche | 47 = 9 · 5 + 2.
+Berechne den Mittelwert (Durchschnitt) von 9, 6, 14, 19, 12. | 12 | 60 | 13 | 19 | Alle addieren: 60. Durch die Anzahl (5) teilen: 12.
+Wie groß ist die Spannweite von 5, 25, 32, 21, 2? | 30 | 32 | 21 | 34 | Spannweite = größter Wert − kleinster Wert = 32 − 2 = 30.
+Wie groß ist die Spannweite von 9, 33, 20, 34, 31? | 25 | 34 | 31 | 43 | Spannweite = größter Wert − kleinster Wert = 34 − 9 = 25.
+Bei einer Strichliste stehen 5er-Bündel. Wie viele Bündel und Einzelstriche zeigen 32? | 6 Bündel und 2 Striche | 7 Bündel und 2 Striche | 2 Bündel und 6 Striche | 3 Bündel und 2 Striche | 32 = 6 · 5 + 2.
+Wie groß ist die Spannweite von 40, 37, 21, 27, 23? | 19 | 40 | 27 | 61 | Spannweite = größter Wert − kleinster Wert = 40 − 21 = 19.
+Wie groß ist die Spannweite von 42, 10, 47, 38, 39? | 37 | 47 | 39 | 57 | Spannweite = größter Wert − kleinster Wert = 47 − 10 = 37.
+Wie groß ist die Spannweite von 39, 21, 18, 16, 15? | 24 | 39 | 18 | 54 | Spannweite = größter Wert − kleinster Wert = 39 − 15 = 24.
+Bei einer Strichliste stehen 5er-Bündel. Wie viele Bündel und Einzelstriche zeigen 37? | 7 Bündel und 2 Striche | 8 Bündel und 2 Striche | 2 Bündel und 7 Striche | 3 Bündel und 7 Striche | 37 = 7 · 5 + 2.
+Berechne den Mittelwert (Durchschnitt) von 14, 3, 5, 10. | 8 | 32 | 9 | 14 | Alle addieren: 32. Durch die Anzahl (4) teilen: 8.
+Wie groß ist die Spannweite von 44, 42, 7, 29, 10? | 37 | 44 | 29 | 51 | Spannweite = größter Wert − kleinster Wert = 44 − 7 = 37.
+Wie groß ist die Spannweite von 37, 31, 22, 7, 32? | 30 | 37 | 31 | 44 | Spannweite = größter Wert − kleinster Wert = 37 − 7 = 30.
+Wie groß ist die Spannweite von 3, 2, 7, 13, 47? | 45 | 47 | 7 | 49 | Spannweite = größter Wert − kleinster Wert = 47 − 2 = 45.
+Welcher Wert ist der Zentralwert (Median) von 12, 36, 30, 13, 16? | 16 | 30 | 12 | 36 | Der Größe nach ordnen: 12, 13, 16, 30, 36. Der mittlere Wert ist 16.
+Wie groß ist die Spannweite von 9, 31, 29, 37, 10? | 28 | 37 | 29 | 46 | Spannweite = größter Wert − kleinster Wert = 37 − 9 = 28.
+Berechne den Mittelwert (Durchschnitt) von 18, 9, 12, 13. | 13 | 52 | 14 | 18 | Alle addieren: 52. Durch die Anzahl (4) teilen: 13.
+Berechne den Mittelwert (Durchschnitt) von 13, 14, 3. | 10 | 30 | 11 | 14 | Alle addieren: 30. Durch die Anzahl (3) teilen: 10.

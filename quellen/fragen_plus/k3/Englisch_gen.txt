@@ -1,0 +1,216 @@
+# Englisch Klasse 3 – erzeugt von werkzeuge/englisch3_plus.py
+
+## wortschatz | Wortschatz: Tiere, Farben, Zahlen, Familie & mehr
+Wie heißt „Kopf“ auf Englisch? | head | hair | mouth | tooth | Kopf = head. Thema: Körper.
+Wie heißt „Hand“ auf Englisch? | hand | ear | leg | foot | Hand = hand. Thema: Körper.
+Wie heißt „Fuß“ auf Englisch? | foot | nose | hair | tooth | Fuß = foot. Thema: Körper.
+Wie heißt „Auge“ auf Englisch? | eye | mouth | leg | nose | Auge = eye. Thema: Körper.
+Wie heißt „Ohr“ auf Englisch? | ear | eye | mouth | hair | Ohr = ear. Thema: Körper.
+Wie heißt „Nase“ auf Englisch? | nose | eye | leg | hand | Nase = nose. Thema: Körper.
+Wie heißt „Mund“ auf Englisch? | mouth | nose | head | ear | Mund = mouth. Thema: Körper.
+Wie heißt „Bein“ auf Englisch? | leg | mouth | arm | ear | Bein = leg. Thema: Körper.
+Wie heißt „Arm“ auf Englisch? | arm | tummy | leg | eye | Arm = arm. Thema: Körper.
+Wie heißt „Haare“ auf Englisch? | hair | leg | arm | ear | Haare = hair. Thema: Körper.
+Wie heißt „Zahn“ auf Englisch? | tooth | head | ear | foot | Zahn = tooth. Thema: Körper.
+Wie heißt „Bauch“ auf Englisch? | tummy | mouth | hand | hair | Bauch = tummy. Thema: Körper.
+Wie heißt „Hose“ auf Englisch? | trousers | cap | jacket | skirt | Hose = trousers. Thema: Kleidung.
+Wie heißt „Jacke“ auf Englisch? | jacket | shoes | cap | dress | Jacke = jacket. Thema: Kleidung.
+Wie heißt „Mütze“ auf Englisch? | cap | jumper | jacket | shoes | Mütze = cap. Thema: Kleidung.
+Wie heißt „Schuhe“ auf Englisch? | shoes | trousers | jumper | jacket | Schuhe = shoes. Thema: Kleidung.
+Wie heißt „Kleid“ auf Englisch? | dress | shoes | cap | socks | Kleid = dress. Thema: Kleidung.
+Wie heißt „Socken“ auf Englisch? | socks | shoes | cap | jumper | Socken = socks. Thema: Kleidung.
+Wie heißt „Rock“ auf Englisch? | skirt | trousers | shoes | cap | Rock = skirt. Thema: Kleidung.
+Wie heißt „Pullover“ auf Englisch? | jumper | dress | skirt | socks | Pullover = jumper. Thema: Kleidung.
+Wie heißt „Brot“ auf Englisch? | bread | banana | cheese | egg | Brot = bread. Thema: Essen.
+Wie heißt „Milch“ auf Englisch? | milk | bread | carrot | egg | Milch = milk. Thema: Essen.
+Wie heißt „Käse“ auf Englisch? | cheese | water | carrot | cake | Käse = cheese. Thema: Essen.
+Wie heißt „Ei“ auf Englisch? | egg | noodles | milk | cheese | Ei = egg. Thema: Essen.
+Wie heißt „Apfel“ auf Englisch? | apple | bread | strawberry | banana | Apfel = apple. Thema: Essen.
+Wie heißt „Banane“ auf Englisch? | banana | noodles | bread | juice | Banane = banana. Thema: Essen.
+Wie heißt „Wasser“ auf Englisch? | water | milk | strawberry | juice | Wasser = water. Thema: Essen.
+Wie heißt „Saft“ auf Englisch? | juice | strawberry | carrot | apple | Saft = juice. Thema: Essen.
+Wie heißt „Kuchen“ auf Englisch? | cake | water | apple | egg | Kuchen = cake. Thema: Essen.
+Wie heißt „Nudeln“ auf Englisch? | noodles | cheese | egg | strawberry | Nudeln = noodles. Thema: Essen.
+Wie heißt „Erdbeere“ auf Englisch? | strawberry | cake | juice | apple | Erdbeere = strawberry. Thema: Essen.
+Wie heißt „Karotte“ auf Englisch? | carrot | apple | juice | strawberry | Karotte = carrot. Thema: Essen.
+Wie heißt „Lineal“ auf Englisch? | ruler | school bag | book | chair | Lineal = ruler. Thema: Schule.
+Wie heißt „Bleistift“ auf Englisch? | pencil | rubber | ruler | book | Bleistift = pencil. Thema: Schule.
+Wie heißt „Radiergummi“ auf Englisch? | rubber | school bag | board | ruler | Radiergummi = rubber. Thema: Schule.
+Wie heißt „Schultasche“ auf Englisch? | school bag | rubber | board | teacher | Schultasche = school bag. Thema: Schule.
+Wie heißt „Buch“ auf Englisch? | book | teacher | scissors | glue | Buch = book. Thema: Schule.
+Wie heißt „Tafel“ auf Englisch? | board | chair | scissors | school bag | Tafel = board. Thema: Schule.
+Wie heißt „Lehrerin“ auf Englisch? | teacher | rubber | chair | board | Lehrerin = teacher. Thema: Schule.
+Wie heißt „Klebstoff“ auf Englisch? | glue | school bag | board | rubber | Klebstoff = glue. Thema: Schule.
+Wie heißt „Schere“ auf Englisch? | scissors | chair | teacher | board | Schere = scissors. Thema: Schule.
+Wie heißt „Stuhl“ auf Englisch? | chair | board | pencil | glue | Stuhl = chair. Thema: Schule.
+Wie heißt „Küche“ auf Englisch? | kitchen | bathroom | garden | bedroom | Küche = kitchen. Thema: Zuhause.
+Wie heißt „Badezimmer“ auf Englisch? | bathroom | door | window | bed | Badezimmer = bathroom. Thema: Zuhause.
+Wie heißt „Schlafzimmer“ auf Englisch? | bedroom | bathroom | door | table | Schlafzimmer = bedroom. Thema: Zuhause.
+Wie heißt „Garten“ auf Englisch? | garden | table | bathroom | bedroom | Garten = garden. Thema: Zuhause.
+Wie heißt „Tür“ auf Englisch? | door | bed | table | bedroom | Tür = door. Thema: Zuhause.
+Wie heißt „Fenster“ auf Englisch? | window | bathroom | door | garden | Fenster = window. Thema: Zuhause.
+Wie heißt „Bett“ auf Englisch? | bed | table | garden | door | Bett = bed. Thema: Zuhause.
+Wie heißt „Tisch“ auf Englisch? | table | garden | bedroom | door | Tisch = table. Thema: Zuhause.
+Wie heißt „Sonne“ auf Englisch? | sun | hot | snow | cold | Sonne = sun. Thema: Wetter.
+Wie heißt „Regen“ auf Englisch? | rain | snow | wind | cloud | Regen = rain. Thema: Wetter.
+Wie heißt „Schnee“ auf Englisch? | snow | wind | rain | sunny | Schnee = snow. Thema: Wetter.
+Wie heißt „Wind“ auf Englisch? | wind | hot | rain | snow | Wind = wind. Thema: Wetter.
+Wie heißt „Wolke“ auf Englisch? | cloud | sunny | hot | snow | Wolke = cloud. Thema: Wetter.
+Wie heißt „sonnig“ auf Englisch? | sunny | rain | hot | wind | sonnig = sunny. Thema: Wetter.
+Wie heißt „regnerisch“ auf Englisch? | rainy | wind | sunny | cold | regnerisch = rainy. Thema: Wetter.
+Wie heißt „kalt“ auf Englisch? | cold | snow | cloud | wind | kalt = cold. Thema: Wetter.
+Wie heißt „heiß“ auf Englisch? | hot | snow | rain | cloud | heiß = hot. Thema: Wetter.
+Wie heißt „Pferd“ auf Englisch? | horse | owl | cow | frog | Pferd = horse. Thema: Tiere.
+Wie heißt „Kuh“ auf Englisch? | cow | owl | turtle | frog | Kuh = cow. Thema: Tiere.
+Wie heißt „Schaf“ auf Englisch? | sheep | duck | turtle | frog | Schaf = sheep. Thema: Tiere.
+Wie heißt „Schwein“ auf Englisch? | pig | duck | cow | horse | Schwein = pig. Thema: Tiere.
+Wie heißt „Ente“ auf Englisch? | duck | bee | horse | owl | Ente = duck. Thema: Tiere.
+Wie heißt „Frosch“ auf Englisch? | frog | duck | sheep | pig | Frosch = frog. Thema: Tiere.
+Wie heißt „Biene“ auf Englisch? | bee | frog | duck | rabbit | Biene = bee. Thema: Tiere.
+Wie heißt „Schildkröte“ auf Englisch? | turtle | bee | cow | duck | Schildkröte = turtle. Thema: Tiere.
+Wie heißt „Eule“ auf Englisch? | owl | sheep | bee | pig | Eule = owl. Thema: Tiere.
+Wie heißt „Hase“ auf Englisch? | rabbit | horse | pig | turtle | Hase = rabbit. Thema: Tiere.
+Wie heißt „glücklich“ auf Englisch? | happy | scared | sad | thirsty | glücklich = happy. Thema: Gefühle.
+Wie heißt „traurig“ auf Englisch? | sad | hungry | excited | scared | traurig = sad. Thema: Gefühle.
+Wie heißt „wütend“ auf Englisch? | angry | excited | scared | sad | wütend = angry. Thema: Gefühle.
+Wie heißt „müde“ auf Englisch? | tired | happy | scared | thirsty | müde = tired. Thema: Gefühle.
+Wie heißt „ängstlich“ auf Englisch? | scared | thirsty | sad | excited | ängstlich = scared. Thema: Gefühle.
+Wie heißt „aufgeregt“ auf Englisch? | excited | tired | scared | angry | aufgeregt = excited. Thema: Gefühle.
+Wie heißt „hungrig“ auf Englisch? | hungry | happy | scared | angry | hungrig = hungry. Thema: Gefühle.
+Wie heißt „durstig“ auf Englisch? | thirsty | hungry | scared | tired | durstig = thirsty. Thema: Gefühle.
+Wie heißt „Auto“ auf Englisch? | car | boat | train | bike | Auto = car. Thema: Verkehr.
+Wie heißt „Bus“ auf Englisch? | bus | train | street | boat | Bus = bus. Thema: Verkehr.
+Wie heißt „Zug“ auf Englisch? | train | car | street | bus | Zug = train. Thema: Verkehr.
+Wie heißt „Flugzeug“ auf Englisch? | plane | car | street | boat | Flugzeug = plane. Thema: Verkehr.
+Wie heißt „Boot“ auf Englisch? | boat | train | car | street | Boot = boat. Thema: Verkehr.
+Wie heißt „Fahrrad“ auf Englisch? | bike | street | boat | bus | Fahrrad = bike. Thema: Verkehr.
+Wie heißt „Straße“ auf Englisch? | street | bike | boat | plane | Straße = street. Thema: Verkehr.
+Wie heißt „Ampel“ auf Englisch? | traffic lights | bike | train | bus | Ampel = traffic lights. Thema: Verkehr.
+Wie heißt „Arzt“ auf Englisch? | doctor | farmer | police officer | nurse | Arzt = doctor. Thema: Berufe.
+Wie heißt „Polizist“ auf Englisch? | police officer | cook | nurse | doctor | Polizist = police officer. Thema: Berufe.
+Wie heißt „Feuerwehrmann“ auf Englisch? | firefighter | farmer | shop assistant | nurse | Feuerwehrmann = firefighter. Thema: Berufe.
+Wie heißt „Koch“ auf Englisch? | cook | firefighter | doctor | pilot | Koch = cook. Thema: Berufe.
+Wie heißt „Bauer“ auf Englisch? | farmer | shop assistant | pilot | doctor | Bauer = farmer. Thema: Berufe.
+Wie heißt „Krankenpfleger“ auf Englisch? | nurse | farmer | police officer | doctor | Krankenpfleger = nurse. Thema: Berufe.
+Wie heißt „Pilot“ auf Englisch? | pilot | firefighter | farmer | nurse | Pilot = pilot. Thema: Berufe.
+Wie heißt „Verkäufer“ auf Englisch? | shop assistant | pilot | nurse | farmer | Verkäufer = shop assistant. Thema: Berufe.
+Wie heißt „Baum“ auf Englisch? | tree | star | river | flower | Baum = tree. Thema: Natur.
+Wie heißt „Blume“ auf Englisch? | flower | moon | grass | river | Blume = flower. Thema: Natur.
+Wie heißt „Fluss“ auf Englisch? | river | star | mountain | forest | Fluss = river. Thema: Natur.
+Wie heißt „Berg“ auf Englisch? | mountain | grass | beach | star | Berg = mountain. Thema: Natur.
+Wie heißt „Meer“ auf Englisch? | sea | grass | beach | tree | Meer = sea. Thema: Natur.
+Wie heißt „Wald“ auf Englisch? | forest | tree | moon | star | Wald = forest. Thema: Natur.
+Wie heißt „Stern“ auf Englisch? | star | sea | river | grass | Stern = star. Thema: Natur.
+Wie heißt „Mond“ auf Englisch? | moon | flower | sea | star | Mond = moon. Thema: Natur.
+Wie heißt „Gras“ auf Englisch? | grass | beach | mountain | river | Gras = grass. Thema: Natur.
+Wie heißt „Strand“ auf Englisch? | beach | flower | forest | grass | Strand = beach. Thema: Natur.
+Wie heißt „Puppe“ auf Englisch? | doll | blocks | puzzle | scooter | Puppe = doll. Thema: Spielzeug.
+Wie heißt „Ball“ auf Englisch? | ball | doll | scooter | puzzle | Ball = ball. Thema: Spielzeug.
+Wie heißt „Drachen“ auf Englisch? | kite | board game | scooter | teddy bear | Drachen = kite. Thema: Spielzeug.
+Wie heißt „Teddybär“ auf Englisch? | teddy bear | puzzle | scooter | blocks | Teddybär = teddy bear. Thema: Spielzeug.
+Wie heißt „Bauklötze“ auf Englisch? | blocks | kite | board game | ball | Bauklötze = blocks. Thema: Spielzeug.
+Wie heißt „Brettspiel“ auf Englisch? | board game | scooter | kite | ball | Brettspiel = board game. Thema: Spielzeug.
+Wie heißt „Roller“ auf Englisch? | scooter | board game | blocks | teddy bear | Roller = scooter. Thema: Spielzeug.
+Wie heißt „Puzzle“ auf Englisch? | puzzle | doll | board game | scooter | Puzzle = puzzle. Thema: Spielzeug.
+Wie heißt „schwimmen“ auf Englisch? | swim | play | ride a bike | sing | schwimmen = swim. Thema: Freizeit.
+Wie heißt „tanzen“ auf Englisch? | dance | run | play | swim | tanzen = dance. Thema: Freizeit.
+Wie heißt „singen“ auf Englisch? | sing | paint | dance | jump | singen = sing. Thema: Freizeit.
+Wie heißt „lesen“ auf Englisch? | read | ride a bike | paint | cook | lesen = read. Thema: Freizeit.
+Wie heißt „spielen“ auf Englisch? | play | sing | swim | cook | spielen = play. Thema: Freizeit.
+Wie heißt „rennen“ auf Englisch? | run | dance | play | read | rennen = run. Thema: Freizeit.
+Wie heißt „springen“ auf Englisch? | jump | paint | sing | ride a bike | springen = jump. Thema: Freizeit.
+Wie heißt „malen“ auf Englisch? | paint | dance | play | cook | malen = paint. Thema: Freizeit.
+Wie heißt „kochen“ auf Englisch? | cook | jump | run | read | kochen = cook. Thema: Freizeit.
+Wie heißt „Fahrrad fahren“ auf Englisch? | ride a bike | cook | read | run | Fahrrad fahren = ride a bike. Thema: Freizeit.
+Was bedeutet „head“ auf Deutsch? | Kopf | Bein | Mund | Hand | head = Kopf.
+Was bedeutet „hand“ auf Deutsch? | Hand | Mund | Zahn | Kopf | hand = Hand.
+Was bedeutet „foot“ auf Deutsch? | Fuß | Bein | Nase | Haare | foot = Fuß.
+Was bedeutet „eye“ auf Deutsch? | Auge | Fuß | Ohr | Nase | eye = Auge.
+Was bedeutet „ear“ auf Deutsch? | Ohr | Arm | Auge | Bein | ear = Ohr.
+Was bedeutet „nose“ auf Deutsch? | Nase | Zahn | Hand | Ohr | nose = Nase.
+Was bedeutet „bread“ auf Deutsch? | Brot | Ei | Käse | Saft | bread = Brot.
+Was bedeutet „milk“ auf Deutsch? | Milch | Käse | Karotte | Banane | milk = Milch.
+Was bedeutet „cheese“ auf Deutsch? | Käse | Apfel | Erdbeere | Nudeln | cheese = Käse.
+Was bedeutet „egg“ auf Deutsch? | Ei | Erdbeere | Karotte | Saft | egg = Ei.
+Was bedeutet „apple“ auf Deutsch? | Apfel | Kuchen | Käse | Banane | apple = Apfel.
+Was bedeutet „banana“ auf Deutsch? | Banane | Milch | Wasser | Karotte | banana = Banane.
+Was bedeutet „horse“ auf Deutsch? | Pferd | Schaf | Schwein | Schildkröte | horse = Pferd.
+Was bedeutet „cow“ auf Deutsch? | Kuh | Schildkröte | Eule | Pferd | cow = Kuh.
+Was bedeutet „sheep“ auf Deutsch? | Schaf | Ente | Schildkröte | Frosch | sheep = Schaf.
+Was bedeutet „pig“ auf Deutsch? | Schwein | Eule | Schaf | Biene | pig = Schwein.
+Was bedeutet „duck“ auf Deutsch? | Ente | Pferd | Kuh | Schwein | duck = Ente.
+Was bedeutet „frog“ auf Deutsch? | Frosch | Ente | Kuh | Schildkröte | frog = Frosch.
+Was bedeutet „ruler“ auf Deutsch? | Lineal | Klebstoff | Schere | Schultasche | ruler = Lineal.
+Was bedeutet „pencil“ auf Deutsch? | Bleistift | Lineal | Tafel | Klebstoff | pencil = Bleistift.
+Was bedeutet „rubber“ auf Deutsch? | Radiergummi | Buch | Tafel | Bleistift | rubber = Radiergummi.
+Was bedeutet „school bag“ auf Deutsch? | Schultasche | Lehrerin | Lineal | Radiergummi | school bag = Schultasche.
+Was bedeutet „book“ auf Deutsch? | Buch | Bleistift | Lehrerin | Radiergummi | book = Buch.
+Was bedeutet „board“ auf Deutsch? | Tafel | Buch | Klebstoff | Lineal | board = Tafel.
+Wie schreibt man die Zahl 13 auf Englisch? | thirteen | seventy | eighty | fifteen | 13 = thirteen. Achtung: thirteen (13) und thirty (30) klingen ähnlich.
+Wie schreibt man die Zahl 15 auf Englisch? | fifteen | fifty | twenty | eleven | 15 = fifteen. Achtung: thirteen (13) und thirty (30) klingen ähnlich.
+Wie schreibt man die Zahl 18 auf Englisch? | eighteen | seventy | ninety | nineteen | 18 = eighteen. Achtung: thirteen (13) und thirty (30) klingen ähnlich.
+Wie schreibt man die Zahl 20 auf Englisch? | twenty | ninety | sixty | sixteen | 20 = twenty. Achtung: thirteen (13) und thirty (30) klingen ähnlich.
+Wie schreibt man die Zahl 30 auf Englisch? | thirty | thirteen | one hundred | ninety | 30 = thirty. Achtung: thirteen (13) und thirty (30) klingen ähnlich.
+Wie schreibt man die Zahl 40 auf Englisch? | forty | twenty | eleven | twelve | 40 = forty. Achtung: thirteen (13) und thirty (30) klingen ähnlich.
+Wie schreibt man die Zahl 50 auf Englisch? | fifty | seventy | nineteen | seventeen | 50 = fifty. Achtung: thirteen (13) und thirty (30) klingen ähnlich.
+Wie schreibt man die Zahl 80 auf Englisch? | eighty | seventeen | ninety | sixty | 80 = eighty. Achtung: thirteen (13) und thirty (30) klingen ähnlich.
+Wie schreibt man die Zahl 100 auf Englisch? | one hundred | fifteen | sixty | eighteen | 100 = one hundred. Achtung: thirteen (13) und thirty (30) klingen ähnlich.
+Wie heißt „Montag“ auf Englisch? | Monday | Tuesday | Saturday | Thursday | Montag = Monday. Wochentage schreibt man im Englischen groß.
+Wie heißt „Dienstag“ auf Englisch? | Tuesday | Thursday | Sunday | Wednesday | Dienstag = Tuesday. Wochentage schreibt man im Englischen groß.
+Wie heißt „Mittwoch“ auf Englisch? | Wednesday | Thursday | Friday | Monday | Mittwoch = Wednesday. Wochentage schreibt man im Englischen groß.
+Wie heißt „Donnerstag“ auf Englisch? | Thursday | Sunday | Friday | Tuesday | Donnerstag = Thursday. Wochentage schreibt man im Englischen groß.
+Wie heißt „Freitag“ auf Englisch? | Friday | Sunday | Tuesday | Monday | Freitag = Friday. Wochentage schreibt man im Englischen groß.
+Wie heißt „Samstag“ auf Englisch? | Saturday | Wednesday | Thursday | Friday | Samstag = Saturday. Wochentage schreibt man im Englischen groß.
+Wie heißt „Sonntag“ auf Englisch? | Sunday | Friday | Thursday | Monday | Sonntag = Sunday. Wochentage schreibt man im Englischen groß.
+Wie heißt der Monat „Januar“ auf Englisch? | January | July | December | October | Januar = January.
+Wie heißt der Monat „Februar“ auf Englisch? | February | October | May | March | Februar = February.
+Wie heißt der Monat „März“ auf Englisch? | March | January | October | June | März = March.
+Wie heißt der Monat „Mai“ auf Englisch? | May | February | December | June | Mai = May.
+Wie heißt der Monat „Juni“ auf Englisch? | June | July | January | October | Juni = June.
+Wie heißt der Monat „Juli“ auf Englisch? | July | October | January | March | Juli = July.
+Wie heißt der Monat „Oktober“ auf Englisch? | October | January | July | February | Oktober = October.
+Wie heißt der Monat „Dezember“ auf Englisch? | December | October | May | January | Dezember = December.
+
+## grammatik | Einfache Satzbausteine und Grammatik
+Wie heißt die Mehrzahl von „cat“? | cats | cates | caten | caties | one cat – two cats.
+Wie heißt die Mehrzahl von „box“? | boxes | boxs | boxen | boxies | one box – two boxes.
+Wie heißt die Mehrzahl von „bus“? | buses | buss | busen | busies | one bus – two buses.
+Wie heißt die Mehrzahl von „baby“? | babies | babys | babyes | babyen | one baby – two babies.
+Wie heißt die Mehrzahl von „child“? | children | childs | childes | childen | one child – two children.
+Wie heißt die Mehrzahl von „man“? | men | mans | manes | manen | one man – two men.
+Wie heißt die Mehrzahl von „woman“? | women | womans | womanes | womanen | one woman – two women.
+Wie heißt die Mehrzahl von „mouse“? | mice | mouses | mousees | mouseen | one mouse – two mice.
+Wie heißt die Mehrzahl von „foot“? | feet | foots | footes | footen | one foot – two feet.
+Wie heißt die Mehrzahl von „tooth“? | teeth | tooths | toothes | toothen | one tooth – two teeth.
+Wie heißt die Mehrzahl von „dog“? | dogs | doges | dogen | dogies | one dog – two dogs.
+Wie heißt die Mehrzahl von „dish“? | dishes | dishs | dishen | dishies | one dish – two dishes.
+Wie heißt die Mehrzahl von „sheep“? | sheep | sheeps | sheepes | sheepen | one sheep – two sheep.
+Wie heißt die Mehrzahl von „fish“? | fish | fishs | fishes | fishen | one fish – two fish.
+Was passt? „__ apple“ | an | a | the a | two | Vor einem Vokal-Laut (a, e, i, o, u) sagt man „an“, sonst „a“.
+Was passt? „__ banana“ | a | an | the a | two | Vor einem Vokal-Laut (a, e, i, o, u) sagt man „an“, sonst „a“.
+Was passt? „__ egg“ | an | a | the a | two | Vor einem Vokal-Laut (a, e, i, o, u) sagt man „an“, sonst „a“.
+Was passt? „__ orange“ | an | a | the a | two | Vor einem Vokal-Laut (a, e, i, o, u) sagt man „an“, sonst „a“.
+Was passt? „__ dog“ | a | an | the a | two | Vor einem Vokal-Laut (a, e, i, o, u) sagt man „an“, sonst „a“.
+Was passt? „__ elephant“ | an | a | the a | two | Vor einem Vokal-Laut (a, e, i, o, u) sagt man „an“, sonst „a“.
+Was passt? „__ umbrella“ | an | a | the a | two | Vor einem Vokal-Laut (a, e, i, o, u) sagt man „an“, sonst „a“.
+Was passt? „__ pencil“ | a | an | the a | two | Vor einem Vokal-Laut (a, e, i, o, u) sagt man „an“, sonst „a“.
+Was passt? „__ owl“ | an | a | the a | two | Vor einem Vokal-Laut (a, e, i, o, u) sagt man „an“, sonst „a“.
+Was passt? „__ house“ | a | an | the a | two | Vor einem Vokal-Laut (a, e, i, o, u) sagt man „an“, sonst „a“.
+Was passt? „I __ happy.“ | am | is | are | be | I am – Formen von „to be“: I am, you are, he/she/it is, we/they are.
+Was passt? „You __ happy.“ | are | am | is | be | You are – Formen von „to be“: I am, you are, he/she/it is, we/they are.
+Was passt? „He __ happy.“ | is | am | are | be | He is – Formen von „to be“: I am, you are, he/she/it is, we/they are.
+Was passt? „She __ happy.“ | is | am | are | be | She is – Formen von „to be“: I am, you are, he/she/it is, we/they are.
+Was passt? „It __ happy.“ | is | am | are | be | It is – Formen von „to be“: I am, you are, he/she/it is, we/they are.
+Was passt? „We __ happy.“ | are | am | is | be | We are – Formen von „to be“: I am, you are, he/she/it is, we/they are.
+Was passt? „They __ happy.“ | are | am | is | be | They are – Formen von „to be“: I am, you are, he/she/it is, we/they are.
+Was passt? „I __ a pet.“ | have got | has got | is got | am got | he, she, it: has got – alle anderen: have got.
+Was passt? „She __ a pet.“ | has got | have got | is got | am got | he, she, it: has got – alle anderen: have got.
+Was passt? „He __ a pet.“ | has got | have got | is got | am got | he, she, it: has got – alle anderen: have got.
+Was passt? „We __ a pet.“ | have got | has got | is got | am got | he, she, it: has got – alle anderen: have got.
+Was passt? „They __ a pet.“ | have got | has got | is got | am got | he, she, it: has got – alle anderen: have got.
+Was passt? „It __ a pet.“ | has got | have got | is got | am got | he, she, it: has got – alle anderen: have got.
+Welche Kurzantwort passt zu „Can you swim?“? | Yes, I can. | Yes, it is. | Yes, I am. | Yes, I have. | Die Kurzantwort nimmt das Hilfswort aus der Frage auf.
+Welche Kurzantwort passt zu „Is it a cat?“? | Yes, it is. | Yes, I can. | Yes, I am. | Yes, I have. | Die Kurzantwort nimmt das Hilfswort aus der Frage auf.
+Welche Kurzantwort passt zu „Are you hungry?“? | Yes, I am. | Yes, I can. | Yes, it is. | Yes, I have. | Die Kurzantwort nimmt das Hilfswort aus der Frage auf.
+Welche Kurzantwort passt zu „Have you got a sister?“? | Yes, I have. | Yes, I can. | Yes, it is. | Yes, I am. | Die Kurzantwort nimmt das Hilfswort aus der Frage auf.
+Welche Kurzantwort passt zu „Do you like pizza?“? | Yes, I do. | Yes, I can. | Yes, it is. | Yes, I am. | Die Kurzantwort nimmt das Hilfswort aus der Frage auf.

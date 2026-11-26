@@ -1,0 +1,111 @@
+# Informatik Klasse 3 (neu, 26.11.2026)
+
+## computer | Computer: Geräte und Teile
+Was ist ein Computer? | eine Maschine, die Daten verarbeitet | ein Spielzeug aus Holz | ein Musikinstrument | ein Fahrzeug | Ein Computer nimmt Daten auf, verarbeitet sie und gibt ein Ergebnis aus.
+Womit tippst du Buchstaben in den Computer? | mit der Tastatur | mit dem Bildschirm | mit dem Lautsprecher | mit dem Drucker | Die Tastatur ist ein Eingabegerät: Damit gibst du etwas ein.
+Womit bewegst du den Zeiger auf dem Bildschirm? | mit der Maus | mit dem Kopfhörer | mit dem Drucker | mit dem Stecker | Die Maus steuert den Mauszeiger. Mit einem Klick wählst du etwas aus.
+Was zeigt dir der Bildschirm? | Bilder, Texte und Videos | nur Musik | gar nichts | nur die Uhrzeit | Der Bildschirm ist ein Ausgabegerät: Er zeigt, was der Computer gemacht hat.
+Was macht ein Drucker? | Er bringt Texte und Bilder auf Papier. | Er spielt Musik ab. | Er lädt das Handy. | Er macht Fotos. | Der Drucker ist ein Ausgabegerät für Papier.
+Womit hörst du Töne vom Computer? | mit Lautsprechern oder Kopfhörern | mit der Maus | mit der Tastatur | mit dem Bildschirm | Lautsprecher und Kopfhörer geben Töne aus.
+Womit kann man in den Computer hineinsprechen? | mit einem Mikrofon | mit einem Drucker | mit einer Maus | mit einem Lineal | Das Mikrofon nimmt Töne und Sprache auf.
+Welches Gerät ist ein Eingabegerät? | die Tastatur | der Drucker | der Lautsprecher | der Bildschirm | Eingabegeräte geben Informationen IN den Computer hinein.
+Welches Gerät ist ein Ausgabegerät? | der Lautsprecher | die Maus | die Tastatur | das Mikrofon | Ausgabegeräte geben Informationen AUS dem Computer heraus.
+Was ist ein Tablet? | ein flacher Computer mit Touchscreen | ein Teller für Kuchen | ein Schreibheft | ein Fernseher ohne Strom | Bei einem Tablet tippst du direkt mit dem Finger auf den Bildschirm.
+Was ist ein Touchscreen? | ein Bildschirm, den man mit dem Finger bedient | ein kaputter Bildschirm | ein Bildschirm ohne Farben | eine Fernbedienung | Touch heißt Berühren. Du tippst, wischst und ziehst mit dem Finger.
+Was braucht ein Laptop, damit er ohne Kabel läuft? | einen geladenen Akku | Wasser | einen Drucker | eine Maus | Der Akku speichert Strom. Ist er leer, muss das Gerät ans Ladekabel.
+Was ist Hardware? | die Teile eines Computers, die man anfassen kann | die Programme im Computer | das Internet | ein Passwort | Hardware sind Geräte und Bauteile: Tastatur, Maus, Bildschirm.
+Was ist Software? | die Programme und Apps auf einem Gerät | die Tastatur | das Kabel | der Bildschirm | Software kann man nicht anfassen. Sie sagt dem Computer, was er tun soll.
+Was ist eine App? | ein Programm für Handy oder Tablet | ein Ladekabel | eine Handyhülle | ein Kopfhörer | App ist die Kurzform von Applikation, also Anwendung.
+Was solltest du tun, bevor du ein Gerät reinigst? | es ausschalten und vom Strom nehmen | es in Wasser tauchen | es laut einschalten | gar nichts | Strom und Wasser sind gefährlich. Erst ausschalten, dann vorsichtig mit einem Tuch reinigen.
+Warum soll man am Computer nicht essen und trinken? | Krümel und Getränke können die Tastatur kaputtmachen. | Der Computer wird dann hungrig. | Das Internet wird langsamer. | Weil der Bildschirm sonst dunkel wird. | Ein umgekipptes Glas kann das Gerät zerstören.
+Was ist ein Ordner auf dem Computer? | ein Platz, in dem man Dateien sortiert | ein Kabel | ein Spiel | ein Virus | Wie ein Ordner im Regal hilft er, Dateien wiederzufinden.
+Was ist eine Datei? | ein gespeichertes Dokument, Bild oder Lied | ein Kabel | ein Bildschirm | eine Taste | Alles, was du speicherst, liegt als Datei auf dem Gerät.
+Was bedeutet „speichern“? | Die Arbeit wird im Gerät aufbewahrt. | Die Arbeit wird gelöscht. | Das Gerät wird ausgeschaltet. | Die Arbeit wird gedruckt. | Wer speichert, kann später weiterarbeiten. Sonst ist alles weg.
+Was macht die Taste „Entf“ oder der Rückwärtspfeil beim Schreiben? | Sie löscht Buchstaben. | Sie speichert. | Sie druckt. | Sie macht den Computer aus. | Mit der Löschtaste entfernst du Tippfehler.
+Mit welcher Taste schreibst du einen Großbuchstaben? | mit der Umschalttaste (Shift) | mit der Leertaste | mit der Entertaste | mit der Löschtaste | Halte Shift gedrückt und tippe den Buchstaben.
+Welche Taste macht einen Abstand zwischen zwei Wörtern? | die Leertaste | die Entertaste | die Shifttaste | die Löschtaste | Die lange Taste unten heißt Leertaste.
+Was passiert meistens, wenn du die Entertaste drückst? | Es beginnt eine neue Zeile oder etwas wird bestätigt. | Der Computer geht aus. | Alles wird gelöscht. | Die Musik wird lauter. | Enter heißt eingeben oder bestätigen.
+
+## internet | Internet und Suchen
+Was ist das Internet? | ein Netz, das Computer auf der ganzen Welt verbindet | ein großes Buch | ein Fernsehsender | ein Spielplatz | Über das Internet können Geräte auf der ganzen Welt Daten austauschen.
+Was ist WLAN? | Internet ohne Kabel über Funk | ein Spiel | ein Ladegerät | ein Drucker | Mit WLAN verbindet sich ein Gerät drahtlos mit dem Internet.
+Was ist ein Browser? | ein Programm, mit dem man Internetseiten anschaut | ein Gerät zum Drucken | ein Virus | ein Kabel | Bekannte Browser sind zum Beispiel Chrome, Firefox oder Safari.
+Was ist eine Suchmaschine? | eine Seite, mit der man im Internet etwas sucht | eine Maschine im Garten | ein Spiel | ein Drucker | Du gibst Suchwörter ein und bekommst passende Seiten.
+Welche Suchmaschine ist extra für Kinder gemacht? | fragFINN | ein Online-Shop | ein Videoportal für Erwachsene | ein Chat für Fremde | Kindersuchmaschinen wie fragFINN oder Blinde Kuh zeigen kindgerechte Seiten.
+Was gibst du in eine Suchmaschine ein? | Suchwörter zu dem, was du wissen willst | dein Passwort | deine Adresse | deine Telefonnummer | Gute Suchwörter sind kurz, zum Beispiel: Igel Winterschlaf.
+Stimmt alles, was im Internet steht? | Nein, man sollte Informationen prüfen. | Ja, immer. | Ja, wenn es bunt ist. | Ja, wenn es lang ist. | Jeder kann etwas ins Internet schreiben. Frag nach oder vergleiche mehrere Seiten.
+Was ist eine Internetadresse, zum Beispiel www.kika.de? | die Adresse einer Internetseite | eine Hausadresse | eine Telefonnummer | ein Passwort | Damit findet der Browser die richtige Seite.
+Was ist ein Link? | ein Verweis, der zu einer anderen Seite führt | ein Kabel | eine Taste | ein Virus | Klickst du auf einen Link, öffnet sich eine andere Seite.
+Was solltest du tun, wenn eine Internetseite dir Angst macht? | sie schließen und einem Erwachsenen Bescheid sagen | weiterschauen | sie an Freunde schicken | nichts sagen | Du bist nicht schuld. Erzähl es einem Erwachsenen, dem du vertraust.
+Was ist eine E-Mail? | ein Brief, der über das Internet verschickt wird | ein Spiel | ein Foto | ein Film | E-Mail heißt elektronische Post.
+Was ist ein Video-Portal wie YouTube? | eine Seite, auf der man Videos anschauen kann | eine Suchmaschine für Bücher | ein Taschenrechner | ein Drucker | Dort laden Menschen Videos hoch. Nicht alle sind für Kinder geeignet.
+Was ist Werbung im Internet? | Anzeigen, die dir etwas verkaufen wollen | Hausaufgaben | Nachrichten von Freunden | Spielregeln | Werbung will, dass du etwas kaufst oder klickst. Lass dich nicht drängen.
+Ein Fenster blinkt: „Du hast gewonnen! Klick hier!“ Was tust du? | nicht klicken und einem Erwachsenen Bescheid geben | sofort klicken | die Adresse eintippen | das Passwort eingeben | Solche Meldungen sind fast immer Tricks, um an Daten zu kommen.
+Was ist ein Download? | Etwas wird aus dem Internet auf das Gerät geladen. | Das Gerät wird ausgeschaltet. | Etwas wird gedruckt. | Der Bildschirm wird geputzt. | Download heißt Herunterladen. Frag vorher einen Erwachsenen.
+
+## sicherheit | Sicher im Netz: Passwort und Daten
+Was ist ein Passwort? | ein geheimes Wort, das ein Konto schützt | dein Vorname | ein Spielname | ein Lied | Mit dem Passwort beweist du, dass du es bist.
+Welches Passwort ist am sichersten? | Ba!um7Rot#Hund | 123456 | passwort | dein Vorname | Gute Passwörter sind lang und mischen Buchstaben, Zahlen und Zeichen.
+Wem darfst du dein Passwort verraten? | nur deinen Eltern | deinem besten Freund | allen in der Klasse | jemandem im Chat | Selbst gute Freunde sollen dein Passwort nicht kennen.
+Was sind persönliche Daten? | Name, Adresse, Telefonnummer und Fotos von dir | die Farbe des Himmels | das Wetter | eine Matheaufgabe | Persönliche Daten verraten, wer du bist und wo man dich findet.
+Darfst du im Internet deine Adresse an Fremde schicken? | Nein, niemals. | Ja, wenn sie nett sind. | Ja, wenn sie fragen. | Ja, im Spiel immer. | Fremde im Internet können lügen. Deine Adresse bleibt geheim.
+Was ist ein guter Spielname im Internet? | ein Fantasiename wie „Sternenfuchs7“ | dein voller Name | dein Name und dein Alter | dein Name und deine Schule | Ein Fantasiename verrät nichts über dich.
+Was ist ein Computervirus? | ein schädliches Programm | eine Erkältung | ein Spiel | ein Lied | Ein Virus kann Daten kaputtmachen oder ausspionieren.
+Wie kann ein Virus auf ein Gerät kommen? | über unbekannte Downloads oder Anhänge | durch Niesen | durch Regen | durch Musik hören im Radio | Öffne nichts von Fremden und lade nur mit Erlaubnis herunter.
+Was ist ein Update? | eine neue, verbesserte Version eines Programms | ein Virus | ein Spiel | eine Werbung | Updates schließen oft Sicherheitslücken.
+Was solltest du tun, wenn ein Fremder im Spiel-Chat nach Fotos von dir fragt? | nichts schicken, blockieren und Eltern Bescheid sagen | ein Foto schicken | die Adresse schicken | geheim halten | Das ist ein Warnzeichen. Erwachsene helfen dir dabei.
+Ein Freund will, dass ihr ein Geheimnis vor euren Eltern habt, weil jemand online das gesagt hat. Was ist richtig? | Mit den Eltern darüber reden | Schweigen | Das Geheimnis weitererzählen an Fremde | Mehr Fotos schicken | Gute Geheimnisse machen Freude. Schlechte Geheimnisse machen Bauchweh – die darf man immer erzählen.
+Was bedeutet „abmelden“ oder „ausloggen“? | Man verlässt sein Konto, damit niemand anderes es benutzt. | Man löscht das Gerät. | Man bestellt etwas. | Man macht ein Foto. | Besonders an fremden Geräten solltest du dich immer abmelden.
+Was ist ein Fake-Profil? | ein Konto mit falschem Namen oder Foto | ein echtes Profil | ein Passwort | ein Spielstand | Im Internet kann sich jemand als Kind ausgeben, obwohl er erwachsen ist.
+Darfst du Fotos von anderen Kindern einfach ins Internet stellen? | Nein, nur wenn sie und ihre Eltern einverstanden sind. | Ja, immer. | Ja, wenn das Foto lustig ist. | Ja, wenn man es heimlich macht. | Jeder darf selbst bestimmen, wo Fotos von ihm landen.
+Was machst du, wenn dich jemand im Internet beleidigt? | nicht zurückschimpfen, Bildschirmfoto machen und Erwachsenen Bescheid sagen | zurück beleidigen | weinen und niemandem etwas sagen | das Gerät kaputt machen | Beweise sichern und Hilfe holen ist der beste Weg.
+
+## programmieren | Algorithmen und Programmieren
+Was ist ein Algorithmus? | eine genaue Schritt-für-Schritt-Anleitung | ein Tier | ein Computerspiel | ein Kabel | Ein Kochrezept ist auch eine Art Algorithmus.
+Was ist Programmieren? | dem Computer genaue Befehle geben | den Computer putzen | den Computer tragen | Musik hören | Ein Programm ist eine Liste von Befehlen, die der Computer ausführt.
+Ein Roboter steht auf Feld 1 und soll zu Feld 4. Welcher Befehl passt? | 3 Schritte vorwärts | 4 Schritte rückwärts | 1 Schritt vorwärts | stehen bleiben | Von 1 bis 4 sind es 3 Schritte.
+Was ist eine Schleife in einem Programm? | Ein Befehl wird mehrmals wiederholt. | Das Programm hört auf. | Ein Schuh wird gebunden. | Der Computer geht aus. | Statt 5-mal „Schritt“ schreibt man: Wiederhole 5-mal „Schritt“.
+Was macht der Befehl „Wiederhole 4-mal: Gehe 1 Schritt, drehe dich nach rechts“? | Der Roboter läuft ein Quadrat. | Der Roboter läuft gerade aus. | Der Roboter bleibt stehen. | Der Roboter springt. | Vier gleiche Seiten mit vier Rechtsdrehungen ergeben ein Quadrat.
+Was bedeutet „Wenn es regnet, dann nimm einen Schirm“? | Eine Bedingung: Etwas passiert nur, wenn etwas zutrifft. | Eine Schleife | Ein Fehler | Ein Passwort | Wenn-dann-Befehle lassen Programme Entscheidungen treffen.
+Warum müssen Befehle für Computer ganz genau sein? | Weil der Computer nur genau das tut, was dasteht. | Weil Computer gerne raten. | Weil Computer müde werden. | Das müssen sie nicht. | Ein Computer denkt nicht mit. Ein falscher Befehl führt zu einem falschen Ergebnis.
+Was ist ein Fehler im Programm auch genannt? | ein Bug | ein Bus | ein Ball | ein Baum | Bug heißt Käfer. Früher krabbelte sogar ein echter Käfer in einen Rechner.
+Was ist Scratch? | eine Programmiersprache mit bunten Bausteinen für Kinder | eine Suchmaschine | ein Drucker | ein Virus | Bei Scratch steckt man Befehle wie Puzzleteile zusammen.
+Welche Reihenfolge ist richtig beim Zähneputzen? | Zahnpasta drauf, putzen, ausspülen | ausspülen, putzen, Zahnpasta drauf | putzen, Zahnpasta drauf, ausspülen | Zahnpasta drauf, ausspülen, putzen | Bei Anleitungen ist die Reihenfolge wichtig, genau wie bei Programmen.
+Ein Programm sagt: „Gehe 2 Schritte, gehe 3 Schritte.“ Wie viele Schritte geht die Figur? | 5 | 6 | 3 | 2 | Die Befehle werden nacheinander ausgeführt: 2 + 3 = 5.
+„Wiederhole 3-mal: Klatsche 2-mal.“ Wie oft wird geklatscht? | 6-mal | 3-mal | 2-mal | 5-mal | 3 mal 2 ist 6.
+Wofür steht das Zeichen für einen Pfeil nach links in einem Robotersteuer-Spiel meist? | drehe nach links | drehe nach rechts | springe | stoppe | Pfeile sind einfache Befehle, die man kombinieren kann.
+Was ist ein Roboter? | eine Maschine, die nach einem Programm arbeitet | ein Mensch | ein Tier | ein Baum | Roboter bauen zum Beispiel Autos oder saugen Staub.
+Was macht ein Saugroboter? | Er saugt nach einem Programm selbst die Wohnung. | Er kocht Essen. | Er macht Hausaufgaben. | Er spielt Gitarre. | Sensoren helfen ihm, Hindernisse zu erkennen.
+Was ist ein Sensor? | ein Bauteil, das etwas misst oder fühlt | ein Lautsprecher | ein Bildschirm | eine Taste | Sensoren messen zum Beispiel Licht, Wärme oder Abstand.
+Was ist eine Binärzahl? | eine Zahl nur aus 0 und 1 | eine Zahl mit zwei Stellen | eine sehr große Zahl | ein Rechenfehler | Computer rechnen intern nur mit 0 und 1 – Strom aus oder an.
+Wie geht ein Geheimcode, bei dem A = 1, B = 2, C = 3 ist? Was heißt 2-1-12-12? | BALL | BAUM | KALB | BELL | B=2, A=1, L=12, L=12.
+
+## medien | Medien, Apps und Bildschirmzeit
+Was ist Bildschirmzeit? | die Zeit, die man vor Handy, Tablet, Fernseher oder Computer verbringt | die Uhrzeit | die Schulzeit | die Schlafenszeit | Zu viel Bildschirmzeit kann müde und unruhig machen.
+Was hilft gegen zu viel Bildschirmzeit? | feste Zeiten und Pausen mit Bewegung | immer weiterspielen | das Handy mit ins Bett nehmen | nachts spielen | Draußen spielen, Freunde treffen und Schlafen sind wichtig.
+Warum soll das Handy nachts nicht im Bett liegen? | Das Licht und die Nachrichten stören den Schlaf. | Es wird sonst kalt. | Weil es Angst hat. | Weil es sonst schneller lädt. | Guter Schlaf hilft beim Lernen.
+Was ist ein Videospiel mit Altersangabe „USK 12“? | ein Spiel, das erst ab 12 Jahren freigegeben ist | ein Spiel für Babys | ein Spiel mit 12 Levels | ein Spiel, das 12 Euro kostet | Die USK prüft Spiele und gibt Altersstufen an.
+Was ist ein In-App-Kauf? | etwas, das man in einer App mit echtem Geld kauft | ein kostenloses Geschenk | ein Update | ein Virus | Frag immer deine Eltern, bevor du in einer App etwas kaufst.
+Was ist künstliche Intelligenz (KI)? | Computerprogramme, die Aufgaben lösen, für die man sonst Nachdenken braucht | ein Roboter aus Pappe | ein Tier | ein Buch | Sprachassistenten oder Übersetzer nutzen KI.
+Kann eine KI Fehler machen? | Ja, auch KI kann falsche Antworten geben. | Nein, nie. | Nur montags. | Nur bei Mathe. | Prüfe wichtige Antworten immer nach.
+Kann man Fotos im Computer verändern? | Ja, Fotos können bearbeitet oder sogar erfunden sein. | Nein, nie. | Nur mit Schere. | Nur Fernsehbilder. | Nicht jedes Foto zeigt, was wirklich passiert ist.
+Was ist ein Sprachassistent, zum Beispiel auf dem Handy? | ein Programm, das auf gesprochene Befehle hört | ein Lehrer | ein Lautsprecher ohne Strom | ein Spielzeug ohne Batterie | Man fragt zum Beispiel: Wie wird das Wetter morgen?
+Was machst du, wenn ein Spiel dich wütend macht? | eine Pause machen | das Gerät werfen | jemanden anschreien | die ganze Nacht spielen | Eine Pause hilft, wieder ruhig zu werden.
+Was ist ein Kettenbrief? | eine Nachricht, die man angeblich an viele weiterschicken muss | ein Brief mit einer Kette | ein Liebesbrief | eine Rechnung | Kettenbriefe machen Angst. Nichts passiert, wenn du sie nicht weiterschickst. Lösch sie.
+Ein Kettenbrief droht: „Wenn du das nicht weiterschickst, passiert dir etwas.“ Was stimmt? | Das ist gelogen. Löschen und Eltern zeigen. | Das stimmt. | Man muss es an 20 Leute schicken. | Man muss es geheim halten. | Kettenbriefe wollen nur Angst machen.
+Wofür kann man ein Tablet in der Schule gut nutzen? | zum Lernen, Recherchieren und Präsentieren | zum Schummeln | zum Ärgern anderer | gar nicht | Medien sind Werkzeuge. Es kommt darauf an, wie man sie nutzt.
+Was ist eine Smartwatch? | eine Uhr, die auch kleine Computer-Aufgaben kann | eine Sanduhr | eine Kuckucksuhr | ein Wecker ohne Strom | Sie zeigt zum Beispiel Nachrichten oder Schritte an.
+Was solltest du tun, bevor du ein Foto von jemandem machst? | fragen, ob es in Ordnung ist | einfach knipsen | heimlich fotografieren | das Foto sofort teilen | Jeder hat das Recht am eigenen Bild.
+Wo sollte ein Computer für Kinder zu Hause am besten stehen? | in einem Raum, in dem auch Erwachsene sind | im dunklen Keller | im Bett | im Badezimmer | So können Eltern helfen, wenn etwas komisch ist.
+Was kann helfen, wenn du nicht weißt, ob ein Video echt ist? | einen Erwachsenen fragen und andere Quellen prüfen | es sofort weiterschicken | es einfach glauben | es kommentieren | Gemeinsam prüfen ist schlauer als allein raten.
+Ein Spiel will Zugriff auf deinen Standort. Was machst du? | Eltern fragen und meistens ablehnen | immer erlauben | dein Zuhause eintippen | das Spiel löschen | Viele Spiele brauchen den Standort gar nicht.
+Was bedeutet das Symbol mit dem Schloss neben einer Internetadresse? | Die Verbindung ist verschlüsselt. | Die Seite ist verboten. | Die Seite ist kaputt. | Die Seite kostet Geld. | Das Schloss zeigt eine verschlüsselte Verbindung. Ob eine Seite gut ist, sagt es aber nicht.
+Wer kann dir helfen, wenn du online etwas Blödes erlebt hast? | Eltern, Lehrer oder die Nummer gegen Kummer 116 111 | niemand | nur Fremde im Chat | nur der Computer | Die Nummer gegen Kummer ist kostenlos und anonym.
+Was ist ein Emoji? | ein kleines Bild in Nachrichten, das Gefühle zeigt | ein Virus | ein Computerteil | ein Passwort | Emojis wie ein lachendes Gesicht zeigen, wie etwas gemeint ist.
+Kann man in Nachrichten immer erkennen, wie etwas gemeint ist? | Nein, ohne Stimme und Gesicht versteht man vieles falsch. | Ja, immer. | Nur bei langen Texten. | Nur bei Großbuchstaben. | Lieber nachfragen, bevor man sich ärgert.
+Was bedeutet es, wenn jemand in Nachrichten nur GROSS schreibt? | Das wirkt wie Schreien. | Das ist besonders höflich. | Das ist ein Passwort. | Das bedeutet Flüstern. | Großbuchstaben wirken laut und unfreundlich.
+Was ist ein USB-Stick? | ein kleiner Speicher, auf dem man Dateien mitnehmen kann | ein Ladekabel | eine Maus | ein Spiel | Stecke keine fremden USB-Sticks ein – sie könnten Viren haben.
+Was ist eine Webcam? | eine kleine Kamera am Computer | ein Drucker | ein Lautsprecher | ein Mikroskop | Mit der Webcam kann man Videoanrufe machen.
+Was solltest du tun, wenn die Webcam ungefragt angeht? | Gerät zuklappen und Eltern Bescheid sagen | weiterspielen | lächeln | nichts | Eine Abdeckung für die Kamera schützt die Privatsphäre.
+Was ist ein Videoanruf? | ein Telefonat, bei dem man sich auch sieht | ein Brief | ein Spiel | ein Foto | Videoanrufe nur mit Menschen, die du wirklich kennst.
+Was ist die Cloud? | ein Speicher im Internet | eine echte Wolke | ein Kabel | ein Drucker | Daten in der Cloud liegen auf fremden Computern im Internet.

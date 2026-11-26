@@ -1,0 +1,229 @@
+# Zusaetzliche Mathe-Fragen, erzeugt von quellen/werkzeuge/mathe_plus.py
+
+## zahlenraum | Zahlenraum bis 1000
+Wie geht es weiter? 20, 40, 60, 80, … | 100 | 120 | 80 | 99 | Die Zahlen werden immer um 20 größer: 80 + 20 = 100.
+Runde 256 auf Zehner. | 260 | 270 | 250 | 300 | Die Einerziffer entscheidet: 0–4 abrunden, 5–9 aufrunden. 256 ≈ 260.
+Wie geht es weiter? 70, 80, 90, 100, … | 110 | 120 | 100 | 109 | Die Zahlen werden immer um 10 größer: 100 + 10 = 110.
+Runde 397 auf Zehner. | 400 | 410 | 390 | 397 | Die Einerziffer entscheidet: 0–4 abrunden, 5–9 aufrunden. 397 ≈ 400.
+Welches Zeichen passt? 563 __ 564 | < | > | = | + | 563 ist kleiner als 564. Die Spitze zeigt immer zur kleineren Zahl.
+Runde 426 auf Zehner. | 430 | 440 | 420 | 400 | Die Einerziffer entscheidet: 0–4 abrunden, 5–9 aufrunden. 426 ≈ 430.
+Runde 759 auf Zehner. | 760 | 770 | 750 | 800 | Die Einerziffer entscheidet: 0–4 abrunden, 5–9 aufrunden. 759 ≈ 760.
+Welches Zeichen passt? 604 __ 603 | > | < | = | + | 604 ist größer als 603. Die Spitze zeigt immer zur kleineren Zahl.
+Welches Zeichen passt? 222 __ 221 | > | < | = | + | 222 ist größer als 221. Die Spitze zeigt immer zur kleineren Zahl.
+Welches Zeichen passt? 417 __ 427 | < | > | = | + | 417 ist kleiner als 427. Die Spitze zeigt immer zur kleineren Zahl.
+Welche Zahl liegt genau in der Mitte zwischen 728 und 748? | 738 | 733 | 743 | 748 | Von 728 sind es 10 Schritte bis 738 und von dort 10 Schritte bis 748.
+Welches Zeichen passt? 979 __ 1079 | < | > | = | + | 979 ist kleiner als 1079. Die Spitze zeigt immer zur kleineren Zahl.
+Wie viele Zehner sind 590 zusammen? | 59 | 590 | 5 | 60 | 590 : 10 = 59. Also 59 Zehner.
+Wie geht es weiter? 26, 28, 30, 32, … | 34 | 36 | 32 | 33 | Die Zahlen werden immer um 2 größer: 32 + 2 = 34.
+Welches ist die größte Zahl aus den Ziffern 9, 1 und 4 (jede Ziffer einmal)? | 941 | 149 | 914 | 491 | Die größte Ziffer kommt nach vorne zu den Hundertern, die kleinste nach hinten zu den Einern.
+Welche Zahl liegt genau in der Mitte zwischen 699 und 719? | 709 | 704 | 714 | 719 | Von 699 sind es 10 Schritte bis 709 und von dort 10 Schritte bis 719.
+Runde 275 auf Zehner. | 280 | 290 | 270 | 300 | Die Einerziffer entscheidet: 0–4 abrunden, 5–9 aufrunden. 275 ≈ 280.
+Welches ist die größte Zahl aus den Ziffern 8, 2 und 4 (jede Ziffer einmal)? | 842 | 248 | 824 | 482 | Die größte Ziffer kommt nach vorne zu den Hundertern, die kleinste nach hinten zu den Einern.
+Runde 255 auf Zehner. | 260 | 270 | 250 | 300 | Die Einerziffer entscheidet: 0–4 abrunden, 5–9 aufrunden. 255 ≈ 260.
+Welches Zeichen passt? 442 __ 542 | < | > | = | + | 442 ist kleiner als 542. Die Spitze zeigt immer zur kleineren Zahl.
+Runde 346 auf Zehner. | 350 | 360 | 340 | 300 | Die Einerziffer entscheidet: 0–4 abrunden, 5–9 aufrunden. 346 ≈ 350.
+Welche Zahl liegt genau in der Mitte zwischen 658 und 678? | 668 | 663 | 673 | 678 | Von 658 sind es 10 Schritte bis 668 und von dort 10 Schritte bis 678.
+Runde 947 auf Zehner. | 950 | 960 | 940 | 900 | Die Einerziffer entscheidet: 0–4 abrunden, 5–9 aufrunden. 947 ≈ 950.
+Welches Zeichen passt? 257 __ 267 | < | > | = | + | 257 ist kleiner als 267. Die Spitze zeigt immer zur kleineren Zahl.
+Wie geht es weiter? 130, 140, 150, 160, … | 170 | 180 | 160 | 169 | Die Zahlen werden immer um 10 größer: 160 + 10 = 170.
+Wie viele Zehner sind 720 zusammen? | 72 | 720 | 7 | 73 | 720 : 10 = 72. Also 72 Zehner.
+Welches ist die größte Zahl aus den Ziffern 7, 5 und 6 (jede Ziffer einmal)? | 765 | 567 | 756 | 675 | Die größte Ziffer kommt nach vorne zu den Hundertern, die kleinste nach hinten zu den Einern.
+Wie viele Hunderter hat die Zahl 169? | 1 | 6 | 9 | 2 | 169 = 1 Hunderter, 6 Zehner, 9 Einer. Die Hunderterziffer ist 1.
+Wie viele Zehner sind 800 zusammen? | 80 | 800 | 8 | 81 | 800 : 10 = 80. Also 80 Zehner.
+Wie viele Hunderter hat die Zahl 952? | 9 | 5 | 2 | 10 | 952 = 9 Hunderter, 5 Zehner, 2 Einer. Die Hunderterziffer ist 9.
+Wie viele Zehner sind 520 zusammen? | 52 | 520 | 5 | 53 | 520 : 10 = 52. Also 52 Zehner.
+Wie viele Hunderter hat die Zahl 224? | 2 | 4 | 3 | 22 | 224 = 2 Hunderter, 2 Zehner, 4 Einer. Die Hunderterziffer ist 2.
+Wie viele Zehner sind 760 zusammen? | 76 | 760 | 7 | 77 | 760 : 10 = 76. Also 76 Zehner.
+Wie viele Hunderter hat die Zahl 109? | 1 | 0 | 9 | 2 | 109 = 1 Hunderter, 0 Zehner, 9 Einer. Die Hunderterziffer ist 1.
+Wie geht es weiter? 0, 100, 200, 300, … | 400 | 500 | 300 | 399 | Die Zahlen werden immer um 100 größer: 300 + 100 = 400.
+Runde 135 auf Zehner. | 140 | 150 | 130 | 100 | Die Einerziffer entscheidet: 0–4 abrunden, 5–9 aufrunden. 135 ≈ 140.
+Welche Zahl liegt genau in der Mitte zwischen 733 und 753? | 743 | 738 | 748 | 753 | Von 733 sind es 10 Schritte bis 743 und von dort 10 Schritte bis 753.
+Welches ist die größte Zahl aus den Ziffern 9, 4 und 5 (jede Ziffer einmal)? | 954 | 459 | 945 | 594 | Die größte Ziffer kommt nach vorne zu den Hundertern, die kleinste nach hinten zu den Einern.
+Welche Zahl liegt genau in der Mitte zwischen 159 und 179? | 169 | 164 | 174 | 179 | Von 159 sind es 10 Schritte bis 169 und von dort 10 Schritte bis 179.
+Wie geht es weiter? 160, 180, 200, 220, … | 240 | 260 | 220 | 239 | Die Zahlen werden immer um 20 größer: 220 + 20 = 240.
+Welches Zeichen passt? 607 __ 608 | < | > | = | + | 607 ist kleiner als 608. Die Spitze zeigt immer zur kleineren Zahl.
+Welches Zeichen passt? 602 __ 592 | > | < | = | + | 602 ist größer als 592. Die Spitze zeigt immer zur kleineren Zahl.
+
+## plus-minus | Plus und Minus bis 1000
+Welche Zahl fehlt? 59 + __ = 110 | 51 | 52 | 50 | 110 | Rechne 110 − 59 = 51.
+Rechne: 60 + 14 − 30 = ? | 44 | 104 | 54 | 43 | Von links nach rechts: 60 + 14 = 74, dann 74 − 30 = 44.
+Wie viel fehlt von 230 bis 1000? | 770 | 780 | 760 | 870 | 230 + 770 = 1000.
+Wie viel fehlt von 610 bis 1000? | 390 | 400 | 380 | 490 | 610 + 390 = 1000.
+Welche Zahl fehlt? 35 + __ = 63 | 28 | 29 | 27 | 63 | Rechne 63 − 35 = 28.
+Wie viel fehlt von 210 bis 1000? | 790 | 800 | 780 | 890 | 210 + 790 = 1000.
+Welche Zahl fehlt? 79 + __ = 118 | 39 | 40 | 38 | 118 | Rechne 118 − 79 = 39.
+Wie viel fehlt von 790 bis 1000? | 210 | 220 | 200 | 310 | 790 + 210 = 1000.
+Rechne: 353 + 192 = ? | 545 | 555 | 535 | 645 | Erst die Hunderter, dann die Zehner, dann die Einer addieren: 353 + 192 = 545.
+Rechne: 58 + 51 − 22 = ? | 87 | 131 | 97 | 86 | Von links nach rechts: 58 + 51 = 109, dann 109 − 22 = 87.
+Ergebnis überschlagen: 824 + 83 ist ungefähr … | 900 | 1000 | 800 | 824 | Runde auf Hunderter: 824 + 83 = 907, gerundet etwa 900.
+Welche Zahl fehlt? 53 + __ = 138 | 85 | 86 | 84 | 138 | Rechne 138 − 53 = 85.
+Rechne: 970 − 175 = ? | 795 | 805 | 785 | 895 | 970 − 175 = 795. Probe: 795 + 175 = 970.
+Wie viel fehlt von 600 bis 1000? | 400 | 410 | 390 | 500 | 600 + 400 = 1000.
+Rechne: 39 + 27 − 11 = ? | 55 | 77 | 65 | 54 | Von links nach rechts: 39 + 27 = 66, dann 66 − 11 = 55.
+Ergebnis überschlagen: 734 + 55 ist ungefähr … | 800 | 900 | 700 | 734 | Runde auf Hunderter: 734 + 55 = 789, gerundet etwa 800.
+Rechne: 619 − 378 = ? | 241 | 251 | 231 | 341 | 619 − 378 = 241. Probe: 241 + 378 = 619.
+Wie viel fehlt von 670 bis 1000? | 330 | 340 | 320 | 430 | 670 + 330 = 1000.
+Welche Zahl fehlt? 34 + __ = 89 | 55 | 56 | 54 | 89 | Rechne 89 − 34 = 55.
+Ergebnis überschlagen: 574 + 41 ist ungefähr … | 600 | 700 | 500 | 574 | Runde auf Hunderter: 574 + 41 = 615, gerundet etwa 600.
+Wie viel fehlt von 530 bis 1000? | 470 | 480 | 460 | 570 | 530 + 470 = 1000.
+Welche Zahl fehlt? 57 + __ = 93 | 36 | 37 | 35 | 93 | Rechne 93 − 57 = 36.
+Welche Zahl fehlt? 35 + __ = 56 | 21 | 22 | 20 | 56 | Rechne 56 − 35 = 21.
+Rechne: 448 + 333 = ? | 781 | 791 | 771 | 881 | Erst die Hunderter, dann die Zehner, dann die Einer addieren: 448 + 333 = 781.
+Rechne: 12 + 53 − 27 = ? | 38 | 92 | 48 | 37 | Von links nach rechts: 12 + 53 = 65, dann 65 − 27 = 38.
+Rechne: 461 + 355 = ? | 816 | 826 | 806 | 916 | Erst die Hunderter, dann die Zehner, dann die Einer addieren: 461 + 355 = 816.
+Rechne: 20 + 52 − 28 = ? | 44 | 100 | 54 | 43 | Von links nach rechts: 20 + 52 = 72, dann 72 − 28 = 44.
+Ergebnis überschlagen: 382 + 58 ist ungefähr … | 400 | 500 | 300 | 382 | Runde auf Hunderter: 382 + 58 = 440, gerundet etwa 400.
+Welche Zahl fehlt? 70 + __ = 105 | 35 | 36 | 34 | 105 | Rechne 105 − 70 = 35.
+Rechne: 52 + 21 − 25 = ? | 48 | 98 | 58 | 47 | Von links nach rechts: 52 + 21 = 73, dann 73 − 25 = 48.
+Rechne: 555 + 154 = ? | 709 | 719 | 699 | 809 | Erst die Hunderter, dann die Zehner, dann die Einer addieren: 555 + 154 = 709.
+Rechne: 19 + 53 − 22 = ? | 50 | 94 | 60 | 49 | Von links nach rechts: 19 + 53 = 72, dann 72 − 22 = 50.
+Welche Zahl fehlt? 39 + __ = 55 | 16 | 17 | 15 | 55 | Rechne 55 − 39 = 16.
+Rechne: 60 + 46 − 20 = ? | 86 | 126 | 96 | 85 | Von links nach rechts: 60 + 46 = 106, dann 106 − 20 = 86.
+Rechne: 57 + 14 − 30 = ? | 41 | 101 | 51 | 40 | Von links nach rechts: 57 + 14 = 71, dann 71 − 30 = 41.
+Wie viel fehlt von 850 bis 1000? | 150 | 160 | 140 | 250 | 850 + 150 = 1000.
+Ergebnis überschlagen: 937 + 89 ist ungefähr … | 1000 | 1100 | 900 | 937 | Runde auf Hunderter: 937 + 89 = 1026, gerundet etwa 1000.
+Welche Zahl fehlt? 71 + __ = 131 | 60 | 61 | 59 | 131 | Rechne 131 − 71 = 60.
+Welche Zahl fehlt? 20 + __ = 49 | 29 | 30 | 28 | 49 | Rechne 49 − 20 = 29.
+Rechne: 59 + 22 − 11 = ? | 70 | 92 | 80 | 69 | Von links nach rechts: 59 + 22 = 81, dann 81 − 11 = 70.
+
+## mal-geteilt | Einmaleins, Geteilt und Rest
+Rechne mit Rest: 29 : 9 = ? | 3 Rest 2 | 3 Rest 3 | 4 Rest 2 | 2 Rest 2 | 9 · 3 = 27. Bis 29 fehlen noch 2. Der Rest muss kleiner als 9 sein.
+Rechne: 12 : 2 = ? | 6 | 7 | 5 | 2 | Umkehraufgabe: 6 · 2 = 12. Also 12 : 2 = 6.
+Wie viel ist 9 · 7? | 63 | 72 | 56 | 16 | 9 · 7 = 63. Das sind 9 Päckchen mit je 7.
+Rechne mit Rest: 52 : 8 = ? | 6 Rest 4 | 6 Rest 5 | 7 Rest 4 | 5 Rest 4 | 8 · 6 = 48. Bis 52 fehlen noch 4. Der Rest muss kleiner als 8 sein.
+Rechne: 2 · 50 = ? | 100 | 10 | 1000 | 110 | Erst 2 · 5 = 10, dann mal 10: 100.
+Rechne mit Rest: 27 : 8 = ? | 3 Rest 3 | 3 Rest 4 | 4 Rest 3 | 2 Rest 3 | 8 · 3 = 24. Bis 27 fehlen noch 3. Der Rest muss kleiner als 8 sein.
+Wie viel ist 3 · 6? | 18 | 21 | 12 | 9 | 3 · 6 = 18. Das sind 3 Päckchen mit je 6.
+Rechne: 9 · 100 = ? | 900 | 90 | 9000 | 910 | Erst 9 · 10 = 90, dann mal 10: 900.
+7 Kinder bekommen je 3 Bonbons. Wie viele Bonbons sind das? | 21 | 10 | 22 | 14 | 7 mal 3: 7 · 3 = 21.
+Rechne: 5 · 20 = ? | 100 | 10 | 1000 | 110 | Erst 5 · 2 = 10, dann mal 10: 100.
+Rechne: 9 · 50 = ? | 450 | 45 | 4500 | 460 | Erst 9 · 5 = 45, dann mal 10: 450.
+Wie viel ist 3 · 9? | 27 | 30 | 18 | 12 | 3 · 9 = 27. Das sind 3 Päckchen mit je 9.
+Rechne: 7 · 20 = ? | 140 | 14 | 1400 | 150 | Erst 7 · 2 = 14, dann mal 10: 140.
+Rechne mit Rest: 76 : 10 = ? | 7 Rest 6 | 7 Rest 7 | 8 Rest 6 | 6 Rest 6 | 10 · 7 = 70. Bis 76 fehlen noch 6. Der Rest muss kleiner als 10 sein.
+Rechne: 9 · 90 = ? | 810 | 81 | 8100 | 820 | Erst 9 · 9 = 81, dann mal 10: 810.
+Rechne: 18 : 9 = ? | 2 | 3 | 1 | 9 | Umkehraufgabe: 2 · 9 = 18. Also 18 : 9 = 2.
+Rechne: 24 : 8 = ? | 3 | 4 | 2 | 8 | Umkehraufgabe: 3 · 8 = 24. Also 24 : 8 = 3.
+Rechne mit Rest: 77 : 10 = ? | 7 Rest 7 | 7 Rest 8 | 8 Rest 7 | 6 Rest 7 | 10 · 7 = 70. Bis 77 fehlen noch 7. Der Rest muss kleiner als 10 sein.
+Rechne mit Rest: 68 : 9 = ? | 7 Rest 5 | 7 Rest 6 | 8 Rest 5 | 6 Rest 5 | 9 · 7 = 63. Bis 68 fehlen noch 5. Der Rest muss kleiner als 9 sein.
+6 Kinder bekommen je 3 Bonbons. Wie viele Bonbons sind das? | 18 | 9 | 19 | 12 | 6 mal 3: 6 · 3 = 18.
+Wie viel ist 10 · 3? | 30 | 40 | 27 | 13 | 10 · 3 = 30. Das sind 10 Päckchen mit je 3.
+Rechne: 10 : 5 = ? | 2 | 3 | 1 | 5 | Umkehraufgabe: 2 · 5 = 10. Also 10 : 5 = 2.
+Rechne mit Rest: 53 : 9 = ? | 5 Rest 8 | 5 Rest 9 | 6 Rest 8 | 4 Rest 8 | 9 · 5 = 45. Bis 53 fehlen noch 8. Der Rest muss kleiner als 9 sein.
+8 Kinder bekommen je 3 Bonbons. Wie viele Bonbons sind das? | 24 | 11 | 25 | 16 | 8 mal 3: 8 · 3 = 24.
+5 Kinder bekommen je 2 Bonbons. Wie viele Bonbons sind das? | 10 | 7 | 11 | 5 | 5 mal 2: 5 · 2 = 10.
+Wie viel ist 6 · 9? | 54 | 60 | 45 | 15 | 6 · 9 = 54. Das sind 6 Päckchen mit je 9.
+Rechne: 7 · 30 = ? | 210 | 21 | 2100 | 220 | Erst 7 · 3 = 21, dann mal 10: 210.
+27 Stifte werden in Becher mit je 9 Stiften verteilt. Wie viele Becher braucht man? | 3 | 9 | 4 | 18 | 27 : 9 = 3.
+Rechne: 6 · 50 = ? | 300 | 30 | 3000 | 310 | Erst 6 · 5 = 30, dann mal 10: 300.
+Rechne: 7 · 100 = ? | 700 | 70 | 7000 | 710 | Erst 7 · 10 = 70, dann mal 10: 700.
+Rechne mit Rest: 30 : 9 = ? | 3 Rest 3 | 3 Rest 4 | 4 Rest 3 | 2 Rest 3 | 9 · 3 = 27. Bis 30 fehlen noch 3. Der Rest muss kleiner als 9 sein.
+6 Kinder bekommen je 4 Bonbons. Wie viele Bonbons sind das? | 24 | 10 | 25 | 18 | 6 mal 4: 6 · 4 = 24.
+Wie viel ist 9 · 4? | 36 | 45 | 32 | 13 | 9 · 4 = 36. Das sind 9 Päckchen mit je 4.
+Rechne mit Rest: 53 : 10 = ? | 5 Rest 3 | 5 Rest 4 | 6 Rest 3 | 4 Rest 3 | 10 · 5 = 50. Bis 53 fehlen noch 3. Der Rest muss kleiner als 10 sein.
+7 Kinder bekommen je 10 Bonbons. Wie viele Bonbons sind das? | 70 | 17 | 71 | 63 | 7 mal 10: 7 · 10 = 70.
+Wie viel ist 8 · 3? | 24 | 32 | 21 | 11 | 8 · 3 = 24. Das sind 8 Päckchen mit je 3.
+21 Stifte werden in Becher mit je 3 Stiften verteilt. Wie viele Becher braucht man? | 7 | 3 | 8 | 18 | 21 : 3 = 7.
+Wie viel ist 10 · 8? | 80 | 90 | 72 | 18 | 10 · 8 = 80. Das sind 10 Päckchen mit je 8.
+10 Kinder bekommen je 10 Bonbons. Wie viele Bonbons sind das? | 100 | 20 | 101 | 90 | 10 mal 10: 10 · 10 = 100.
+Wie viel ist 2 · 5? | 10 | 12 | 5 | 7 | 2 · 5 = 10. Das sind 2 Päckchen mit je 5.
+Rechne mit Rest: 50 : 9 = ? | 5 Rest 5 | 5 Rest 6 | 6 Rest 5 | 4 Rest 5 | 9 · 5 = 45. Bis 50 fehlen noch 5. Der Rest muss kleiner als 9 sein.
+Rechne: 5 · 100 = ? | 500 | 50 | 5000 | 510 | Erst 5 · 10 = 50, dann mal 10: 500.
+
+## geometrie | Formen, Körper und Umfang
+Ein Quadrat hat einen Umfang von 28 cm. Wie lang ist eine Seite? | 7 cm | 14 cm | 8 cm | 28 cm | Vier gleiche Seiten: 28 : 4 = 7 cm.
+Ein Rechteck ist 11 cm lang und 5 cm breit. Wie lang ist der Umfang? | 32 cm | 16 cm | 55 cm | 34 cm | Umfang = alle Seiten zusammen: 11 + 5 + 11 + 5 = 32 cm.
+Ein Quadrat hat die Seitenlänge 15 cm. Wie lang ist der Umfang? | 60 cm | 30 cm | 225 cm | 64 cm | Vier gleich lange Seiten: 4 · 15 cm = 60 cm.
+Ein Quadrat hat die Seitenlänge 11 cm. Wie lang ist der Umfang? | 44 cm | 22 cm | 121 cm | 48 cm | Vier gleich lange Seiten: 4 · 11 cm = 44 cm.
+Ein Rechteck ist 9 cm lang und 6 cm breit. Wie lang ist der Umfang? | 30 cm | 15 cm | 54 cm | 32 cm | Umfang = alle Seiten zusammen: 9 + 6 + 9 + 6 = 30 cm.
+Ein Quadrat hat einen Umfang von 16 cm. Wie lang ist eine Seite? | 4 cm | 8 cm | 5 cm | 16 cm | Vier gleiche Seiten: 16 : 4 = 4 cm.
+Ein Quadrat hat die Seitenlänge 20 cm. Wie lang ist der Umfang? | 80 cm | 40 cm | 400 cm | 84 cm | Vier gleich lange Seiten: 4 · 20 cm = 80 cm.
+Ein Rechteck aus Kästchen ist 7 Kästchen lang und 6 Kästchen breit. Wie viele Kästchen sind es? | 42 | 13 | 26 | 49 | 6 Reihen mit je 7 Kästchen: 7 · 6 = 42.
+Ein Rechteck aus Kästchen ist 3 Kästchen lang und 2 Kästchen breit. Wie viele Kästchen sind es? | 6 | 5 | 10 | 9 | 2 Reihen mit je 3 Kästchen: 3 · 2 = 6.
+Ein Quadrat hat die Seitenlänge 9 cm. Wie lang ist der Umfang? | 36 cm | 18 cm | 81 cm | 40 cm | Vier gleich lange Seiten: 4 · 9 cm = 36 cm.
+Ein Rechteck ist 2 cm lang und 4 cm breit. Wie lang ist der Umfang? | 12 cm | 6 cm | 8 cm | 14 cm | Umfang = alle Seiten zusammen: 2 + 4 + 2 + 4 = 12 cm.
+Ein Quadrat hat die Seitenlänge 3 cm. Wie lang ist der Umfang? | 12 cm | 6 cm | 9 cm | 16 cm | Vier gleich lange Seiten: 4 · 3 cm = 12 cm.
+Ein Quadrat hat einen Umfang von 12 cm. Wie lang ist eine Seite? | 3 cm | 6 cm | 4 cm | 12 cm | Vier gleiche Seiten: 12 : 4 = 3 cm.
+Ein Rechteck aus Kästchen ist 2 Kästchen lang und 6 Kästchen breit. Wie viele Kästchen sind es? | 12 | 8 | 16 | 14 | 6 Reihen mit je 2 Kästchen: 2 · 6 = 12.
+Ein Quadrat hat die Seitenlänge 23 cm. Wie lang ist der Umfang? | 92 cm | 46 cm | 529 cm | 96 cm | Vier gleich lange Seiten: 4 · 23 cm = 92 cm.
+Ein Quadrat hat die Seitenlänge 19 cm. Wie lang ist der Umfang? | 76 cm | 38 cm | 361 cm | 80 cm | Vier gleich lange Seiten: 4 · 19 cm = 76 cm.
+Ein Rechteck aus Kästchen ist 5 Kästchen lang und 4 Kästchen breit. Wie viele Kästchen sind es? | 20 | 9 | 18 | 25 | 4 Reihen mit je 5 Kästchen: 5 · 4 = 20.
+Ein Rechteck ist 9 cm lang und 7 cm breit. Wie lang ist der Umfang? | 32 cm | 16 cm | 63 cm | 34 cm | Umfang = alle Seiten zusammen: 9 + 7 + 9 + 7 = 32 cm.
+Ein Rechteck aus Kästchen ist 9 Kästchen lang und 5 Kästchen breit. Wie viele Kästchen sind es? | 45 | 14 | 28 | 54 | 5 Reihen mit je 9 Kästchen: 9 · 5 = 45.
+Ein Quadrat hat einen Umfang von 32 cm. Wie lang ist eine Seite? | 8 cm | 16 cm | 9 cm | 32 cm | Vier gleiche Seiten: 32 : 4 = 8 cm.
+Ein Quadrat hat einen Umfang von 24 cm. Wie lang ist eine Seite? | 6 cm | 12 cm | 7 cm | 24 cm | Vier gleiche Seiten: 24 : 4 = 6 cm.
+Ein Quadrat hat die Seitenlänge 25 cm. Wie lang ist der Umfang? | 100 cm | 50 cm | 625 cm | 104 cm | Vier gleich lange Seiten: 4 · 25 cm = 100 cm.
+
+## sachaufgaben | Sachaufgaben: Geld, Längen, Zeit, Gewicht
+Ein Apfelsack wiegt 800 g. Wie viel wiegen 4 solche Säcke? | 3200 g | 804 g | 3300 g | 4000 g | 4 · 800 g = 3200 g.
+Wie viele Tage sind 2 Wochen? | 14 | 10 | 15 | 20 | Eine Woche hat 7 Tage: 2 · 7 = 14.
+Wie viele Zentimeter sind 8 m? | 800 cm | 80 cm | 8000 cm | 810 cm | 1 m = 100 cm, also 8 m = 800 cm.
+Ein Heft kostet 2,50 € und ein Stift 3,00 €. Wie viel kostet beides zusammen? | 5,50 € | 6,50 € | 5,00 € | 5,60 € | 2,50 € + 3,00 € = 5,50 €.
+Ein Heft kostet 3,00 € und ein Stift 1,00 €. Wie viel kostet beides zusammen? | 4,00 € | 5,00 € | 3,50 € | 4,10 € | 3,00 € + 1,00 € = 4,00 €.
+Wie viele Zentimeter sind 6 m? | 600 cm | 60 cm | 6000 cm | 610 cm | 1 m = 100 cm, also 6 m = 600 cm.
+Ein Heft kostet 2,50 € und ein Stift 2,00 €. Wie viel kostet beides zusammen? | 4,50 € | 5,50 € | 4,00 € | 4,60 € | 2,50 € + 2,00 € = 4,50 €.
+Ein Heft kostet 2,00 € und ein Stift 0,50 €. Wie viel kostet beides zusammen? | 2,50 € | 3,50 € | 2,00 € | 2,60 € | 2,00 € + 0,50 € = 2,50 €.
+Du bezahlst 3,75 € mit einem 5-Euro-Schein. Wie viel Rückgeld bekommst du? | 1,25 € | 1,75 € | 1,00 € | 3,75 € | 5,00 € − 3,75 € = 1,25 €.
+Wie viele Tage sind 3 Wochen? | 21 | 15 | 22 | 30 | Eine Woche hat 7 Tage: 3 · 7 = 21.
+Ein Apfelsack wiegt 600 g. Wie viel wiegen 5 solche Säcke? | 3000 g | 605 g | 3100 g | 3600 g | 5 · 600 g = 3000 g = 3 kg.
+Wie viele Zentimeter sind 7 m? | 700 cm | 70 cm | 7000 cm | 710 cm | 1 m = 100 cm, also 7 m = 700 cm.
+Wie viele Meter sind 5 km? | 5000 m | 500 m | 50 m | 50000 m | 1 km = 1000 m, also 5 km = 5000 m.
+Wie viele Tage sind 5 Wochen? | 35 | 25 | 36 | 50 | Eine Woche hat 7 Tage: 5 · 7 = 35.
+Wie viele Meter sind 6 km? | 6000 m | 600 m | 60 m | 60000 m | 1 km = 1000 m, also 6 km = 6000 m.
+Ein Apfelsack wiegt 300 g. Wie viel wiegen 3 solche Säcke? | 900 g | 303 g | 1000 g | 1200 g | 3 · 300 g = 900 g.
+Ein Apfelsack wiegt 800 g. Wie viel wiegen 3 solche Säcke? | 2400 g | 803 g | 2500 g | 3200 g | 3 · 800 g = 2400 g.
+Ein Heft kostet 0,50 € und ein Stift 3,00 €. Wie viel kostet beides zusammen? | 3,50 € | 4,50 € | 3,00 € | 3,60 € | 0,50 € + 3,00 € = 3,50 €.
+In der Klasse sind 12 Kinder. 14 davon sind Mädchen. Wie viele Jungen sind es? | -2 | 26 | -1 | 14 | 12 − 14 = -2.
+Wie viele Meter sind 4 km? | 4000 m | 400 m | 40 m | 40000 m | 1 km = 1000 m, also 4 km = 4000 m.
+Wie viele Zentimeter sind 9 m? | 900 cm | 90 cm | 9000 cm | 910 cm | 1 m = 100 cm, also 9 m = 900 cm.
+Ein Heft kostet 4,50 € und ein Stift 1,00 €. Wie viel kostet beides zusammen? | 5,50 € | 6,50 € | 5,00 € | 5,60 € | 4,50 € + 1,00 € = 5,50 €.
+Ein Apfelsack wiegt 500 g. Wie viel wiegen 2 solche Säcke? | 1000 g | 502 g | 1100 g | 1500 g | 2 · 500 g = 1000 g = 1 kg.
+Wie viele Meter sind 3 km? | 3000 m | 300 m | 30 m | 30000 m | 1 km = 1000 m, also 3 km = 3000 m.
+Wie viele Tage sind 6 Wochen? | 42 | 30 | 43 | 60 | Eine Woche hat 7 Tage: 6 · 7 = 42.
+Du bezahlst 4,00 € mit einem 5-Euro-Schein. Wie viel Rückgeld bekommst du? | 1,00 € | 1,50 € | 0,75 € | 4,00 € | 5,00 € − 4,00 € = 1,00 €.
+Wie viele Meter sind 2 km? | 2000 m | 200 m | 20 m | 20000 m | 1 km = 1000 m, also 2 km = 2000 m.
+Ein Heft kostet 3,00 € und ein Stift 2,25 €. Wie viel kostet beides zusammen? | 5,25 € | 6,25 € | 4,75 € | 5,35 € | 3,00 € + 2,25 € = 5,25 €.
+Der Film beginnt um 15:45 Uhr und dauert 15 Minuten. Wann ist er zu Ende? | 16:00 Uhr | 16:15 Uhr | 15:45 Uhr | 16:45 Uhr | 15:45 Uhr plus 15 Minuten ergibt 16:00 Uhr.
+Du bezahlst 0,25 € mit einem 5-Euro-Schein. Wie viel Rückgeld bekommst du? | 4,75 € | 5,25 € | 4,50 € | 0,25 € | 5,00 € − 0,25 € = 4,75 €.
+Ein Heft kostet 3,00 € und ein Stift 4,25 €. Wie viel kostet beides zusammen? | 7,25 € | 8,25 € | 6,75 € | 7,35 € | 3,00 € + 4,25 € = 7,25 €.
+In der Klasse sind 35 Kinder. 14 davon sind Mädchen. Wie viele Jungen sind es? | 21 | 49 | 22 | 14 | 35 − 14 = 21.
+Wie viele Tage sind 4 Wochen? | 28 | 20 | 29 | 40 | Eine Woche hat 7 Tage: 4 · 7 = 28.
+Der Film beginnt um 17:15 Uhr und dauert 15 Minuten. Wann ist er zu Ende? | 17:30 Uhr | 17:45 Uhr | 17:15 Uhr | 18:15 Uhr | 17:15 Uhr plus 15 Minuten ergibt 17:30 Uhr.
+In der Klasse sind 21 Kinder. 17 davon sind Mädchen. Wie viele Jungen sind es? | 4 | 38 | 5 | 17 | 21 − 17 = 4.
+In der Klasse sind 23 Kinder. 6 davon sind Mädchen. Wie viele Jungen sind es? | 17 | 29 | 18 | 6 | 23 − 6 = 17.
+Der Film beginnt um 9:15 Uhr und dauert 15 Minuten. Wann ist er zu Ende? | 9:30 Uhr | 9:45 Uhr | 9:15 Uhr | 10:15 Uhr | 9:15 Uhr plus 15 Minuten ergibt 9:30 Uhr.
+Wie viele Zentimeter sind 2 m? | 200 cm | 20 cm | 2000 cm | 210 cm | 1 m = 100 cm, also 2 m = 200 cm.
+Der Film beginnt um 8:45 Uhr und dauert 60 Minuten. Wann ist er zu Ende? | 9:45 Uhr | 10:00 Uhr | 9:30 Uhr | 10:45 Uhr | 8:45 Uhr plus 60 Minuten ergibt 9:45 Uhr.
+Ein Heft kostet 0,50 € und ein Stift 0,50 €. Wie viel kostet beides zusammen? | 1,00 € | 2,00 € | 0,50 € | 1,10 € | 0,50 € + 0,50 € = 1,00 €.
+
+## knobeln | Knobeln und Rückwärtsrechnen
+Ich denke mir eine Zahl. Wenn ich 19 dazuzähle, erhalte ich 57. Welche Zahl ist es? | 38 | 57 | 19 | 76 | Rückwärts rechnen: 57 − 19 = 38.
+Ich denke mir eine Zahl und nehme sie mal 2. Das Ergebnis ist 30. Welche Zahl ist es? | 15 | 60 | 17 | 28 | Rückwärts: 30 : 2 = 15.
+Ich denke mir eine Zahl und nehme sie mal 2. Das Ergebnis ist 50. Welche Zahl ist es? | 25 | 100 | 27 | 48 | Rückwärts: 50 : 2 = 25.
+Ich denke mir eine Zahl. Wenn ich 5 dazuzähle, erhalte ich 15. Welche Zahl ist es? | 10 | 15 | 5 | 20 | Rückwärts rechnen: 15 − 5 = 10.
+Ich denke mir eine Zahl. Wenn ich 17 dazuzähle, erhalte ich 51. Welche Zahl ist es? | 34 | 51 | 17 | 68 | Rückwärts rechnen: 51 − 17 = 34.
+Auf einem Hof sind 3 Hühner. Wie viele Beine haben sie zusammen? | 6 | 12 | 3 | 8 | Jedes Huhn hat 2 Beine: 3 · 2 = 6.
+Auf einem Hof sind 7 Hühner. Wie viele Beine haben sie zusammen? | 14 | 28 | 7 | 16 | Jedes Huhn hat 2 Beine: 7 · 2 = 14.
+Ich denke mir eine Zahl und nehme sie mal 2. Das Ergebnis ist 40. Welche Zahl ist es? | 20 | 80 | 22 | 38 | Rückwärts: 40 : 2 = 20.
+Im Stall stehen 3 Pferde. Wie viele Beine sind das? | 12 | 6 | 16 | 7 | Jedes Pferd hat 4 Beine: 3 · 4 = 12.
+Im Stall stehen 5 Pferde. Wie viele Beine sind das? | 20 | 10 | 24 | 9 | Jedes Pferd hat 4 Beine: 5 · 4 = 20.
+Auf einem Hof sind 4 Hühner. Wie viele Beine haben sie zusammen? | 8 | 16 | 4 | 10 | Jedes Huhn hat 2 Beine: 4 · 2 = 8.
+Tom ist 3 Jahre alt. Seine Schwester ist doppelt so alt. Wie alt sind beide zusammen? | 9 | 6 | 12 | 5 | Schwester: 3 · 2 = 6. Zusammen: 3 + 6 = 9.
+Tom ist 6 Jahre alt. Seine Schwester ist doppelt so alt. Wie alt sind beide zusammen? | 18 | 12 | 24 | 8 | Schwester: 6 · 2 = 12. Zusammen: 6 + 12 = 18.
+Ich denke mir eine Zahl. Wenn ich 12 dazuzähle, erhalte ich 36. Welche Zahl ist es? | 24 | 36 | 12 | 48 | Rückwärts rechnen: 36 − 12 = 24.
+Tom ist 5 Jahre alt. Seine Schwester ist doppelt so alt. Wie alt sind beide zusammen? | 15 | 10 | 20 | 7 | Schwester: 5 · 2 = 10. Zusammen: 5 + 10 = 15.
+Im Stall stehen 7 Pferde. Wie viele Beine sind das? | 28 | 14 | 32 | 11 | Jedes Pferd hat 4 Beine: 7 · 4 = 28.
+Ich denke mir eine Zahl und nehme sie mal 2. Das Ergebnis ist 80. Welche Zahl ist es? | 40 | 160 | 42 | 78 | Rückwärts: 80 : 2 = 40.
+Ich denke mir eine Zahl. Wenn ich 20 dazuzähle, erhalte ich 60. Welche Zahl ist es? | 40 | 60 | 20 | 80 | Rückwärts rechnen: 60 − 20 = 40.
+Ich denke mir eine Zahl und nehme sie mal 2. Das Ergebnis ist 70. Welche Zahl ist es? | 35 | 140 | 37 | 68 | Rückwärts: 70 : 2 = 35.
+Ich denke mir eine Zahl und nehme sie mal 2. Das Ergebnis ist 60. Welche Zahl ist es? | 30 | 120 | 32 | 58 | Rückwärts: 60 : 2 = 30.
+Tom ist 8 Jahre alt. Seine Schwester ist doppelt so alt. Wie alt sind beide zusammen? | 24 | 16 | 32 | 10 | Schwester: 8 · 2 = 16. Zusammen: 8 + 16 = 24.
+Auf einem Hof sind 8 Hühner. Wie viele Beine haben sie zusammen? | 16 | 32 | 8 | 18 | Jedes Huhn hat 2 Beine: 8 · 2 = 16.
+Tom ist 7 Jahre alt. Seine Schwester ist doppelt so alt. Wie alt sind beide zusammen? | 21 | 14 | 28 | 9 | Schwester: 7 · 2 = 14. Zusammen: 7 + 14 = 21.
+Im Stall stehen 6 Pferde. Wie viele Beine sind das? | 24 | 12 | 28 | 10 | Jedes Pferd hat 4 Beine: 6 · 4 = 24.
+Ich denke mir eine Zahl und nehme sie mal 2. Das Ergebnis ist 90. Welche Zahl ist es? | 45 | 180 | 47 | 88 | Rückwärts: 90 : 2 = 45.
+Im Stall stehen 8 Pferde. Wie viele Beine sind das? | 32 | 16 | 36 | 12 | Jedes Pferd hat 4 Beine: 8 · 4 = 32.
+Ich denke mir eine Zahl. Wenn ich 4 dazuzähle, erhalte ich 12. Welche Zahl ist es? | 8 | 12 | 4 | 16 | Rückwärts rechnen: 12 − 4 = 8.
+Ich denke mir eine Zahl. Wenn ich 8 dazuzähle, erhalte ich 24. Welche Zahl ist es? | 16 | 24 | 8 | 32 | Rückwärts rechnen: 24 − 8 = 16.
+Ich denke mir eine Zahl. Wenn ich 9 dazuzähle, erhalte ich 27. Welche Zahl ist es? | 18 | 27 | 9 | 36 | Rückwärts rechnen: 27 − 9 = 18.
+Tom ist 4 Jahre alt. Seine Schwester ist doppelt so alt. Wie alt sind beide zusammen? | 12 | 8 | 16 | 6 | Schwester: 4 · 2 = 8. Zusammen: 4 + 8 = 12.

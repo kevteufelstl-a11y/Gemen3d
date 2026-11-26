@@ -6,20 +6,11 @@
 # Nach jeder Aenderung an den Fragen neu erzeugen und in Supabase einspielen.
 import json, os, hashlib
 D = os.path.dirname(os.path.abspath(__file__)) + '/..'
-s = open(D + '/part_head.html', encoding='utf8').read()
-i = s.find('window.MILO_Q=') + len('window.MILO_Q='); j = s.find(';</script>', i)
-Q = json.loads(s[i:j])
-def conv(fach, name, k=None):
-    o = {'f': name, 'b': [{'n': kat['name'], 'q': [[q['frage'], q['optionen'], q['richtig'], q['erklaerung']] for q in kat['fragen']]} for kat in fach['kategorien']]}
-    if k: o['k'] = k
-    return o
-k3 = json.load(open(D + '/../fragen_klasse3.json', encoding='utf8')); k5 = json.load(open(D + '/../fragen_klasse5.json', encoding='utf8'))
-for f in k3['faecher']:
-    if f['name'] == 'Psychologie' and not any(x['f'] == 'Psychologie' for x in Q): Q.append(conv(f, 'Psychologie'))
-for f in k5['faecher']:
-    n = f['name'] + ' · Klasse 5'
-    if not any(x['f'] == n for x in Q): Q.append(conv(f, n, 5))
-K3 = {'Mathematik', 'Deutsch', 'Englisch', 'Sachkunde', 'Psychologie'}
+import sys
+sys.path.insert(0, D + '/werkzeuge')
+import milo_q
+Q = milo_q.apply(milo_q.base_q(D), *milo_q.extras(D))
+K3 = {'Mathematik', 'Deutsch', 'Englisch', 'Sachkunde', 'Psychologie'}  # plus Faecher mit k = 3
 rows = []
 for fi, f in enumerate(Q):
     kl = f.get('k') or (3 if f['f'] in K3 else None)

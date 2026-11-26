@@ -1,0 +1,263 @@
+# Deutsch Klasse 3 – erzeugt von werkzeuge/deutsch3_plus.py
+
+## wortarten | Wortarten und Wortschatz
+Welcher Begleiter passt zu „Boot“? | das | der | die | ein | Es heißt: das Boot. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Tisch“? | der | die | das | ein | Es heißt: der Tisch. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Kopf“? | der | die | das | ein | Es heißt: der Kopf. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Ei“? | das | der | die | ein | Es heißt: das Ei. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Haus“? | das | der | die | ein | Es heißt: das Haus. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Bus“? | der | die | das | ein | Es heißt: der Bus. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Mond“? | der | die | das | ein | Es heißt: der Mond. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Fisch“? | der | die | das | ein | Es heißt: der Fisch. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Zelt“? | das | der | die | ein | Es heißt: das Zelt. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Bild“? | das | der | die | ein | Es heißt: das Bild. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Zug“? | der | die | das | ein | Es heißt: der Zug. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Feuer“? | das | der | die | ein | Es heißt: das Feuer. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Tür“? | die | der | das | ein | Es heißt: die Tür. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Heft“? | das | der | die | ein | Es heißt: das Heft. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Herz“? | das | der | die | ein | Es heißt: das Herz. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Woche“? | die | der | das | ein | Es heißt: die Woche. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Brief“? | der | die | das | ein | Es heißt: der Brief. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Zitrone“? | die | der | das | ein | Es heißt: die Zitrone. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Tasche“? | die | der | das | ein | Es heißt: die Tasche. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Nase“? | die | der | das | ein | Es heißt: die Nase. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Bleistift“? | der | die | das | ein | Es heißt: der Bleistift. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Garten“? | der | die | das | ein | Es heißt: der Garten. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Lampe“? | die | der | das | ein | Es heißt: die Lampe. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Schule“? | die | der | das | ein | Es heißt: die Schule. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Hand“? | die | der | das | ein | Es heißt: die Hand. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Flugzeug“? | das | der | die | ein | Es heißt: das Flugzeug. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Gabel“? | die | der | das | ein | Es heißt: die Gabel. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Winter“? | der | die | das | ein | Es heißt: der Winter. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Buch“? | das | der | die | ein | Es heißt: das Buch. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Lied“? | das | der | die | ein | Es heißt: das Lied. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Licht“? | das | der | die | ein | Es heißt: das Licht. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Gras“? | das | der | die | ein | Es heißt: das Gras. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Baum“? | der | die | das | ein | Es heißt: der Baum. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Spiel“? | das | der | die | ein | Es heißt: das Spiel. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Schwein“? | das | der | die | ein | Es heißt: das Schwein. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Wiese“? | die | der | das | ein | Es heißt: die Wiese. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Wald“? | der | die | das | ein | Es heißt: der Wald. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Auto“? | das | der | die | ein | Es heißt: das Auto. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Fenster“? | das | der | die | ein | Es heißt: das Fenster. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Morgen“? | der | die | das | ein | Es heißt: der Morgen. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Bein“? | das | der | die | ein | Es heißt: das Bein. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Hund“? | der | die | das | ein | Es heißt: der Hund. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Sommer“? | der | die | das | ein | Es heißt: der Sommer. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Pferd“? | das | der | die | ein | Es heißt: das Pferd. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Welcher Begleiter passt zu „Kind“? | das | der | die | ein | Es heißt: das Kind. Den Begleiter (Artikel) muss man bei jedem Nomen mitlernen.
+Wie heißt die Mehrzahl von „der Baum“? | die Bäume | die Baums | die Baumen | die Baume | Einzahl: der Baum. Mehrzahl: die Bäume. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „das Haus“? | die Häuser | die Hauss | die Hausen | die Hause | Einzahl: das Haus. Mehrzahl: die Häuser. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „die Maus“? | die Mäuse | die Mauss | die Mausen | die Mause | Einzahl: die Maus. Mehrzahl: die Mäuse. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Apfel“? | die Äpfel | die Apfels | die Apfelen | die Apfele | Einzahl: der Apfel. Mehrzahl: die Äpfel. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „das Kind“? | die Kinder | die Kinds | die Kinden | die Kinde | Einzahl: das Kind. Mehrzahl: die Kinder. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „die Blume“? | die Blumen | die Blumes | die Blumeen | die Blumeer | Einzahl: die Blume. Mehrzahl: die Blumen. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Hund“? | die Hunde | die Hunds | die Hunden | die Hunder | Einzahl: der Hund. Mehrzahl: die Hunde. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „das Buch“? | die Bücher | die Buchs | die Buchen | die Buche | Einzahl: das Buch. Mehrzahl: die Bücher. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Vogel“? | die Vögel | die Vogels | die Vogelen | die Vogele | Einzahl: der Vogel. Mehrzahl: die Vögel. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „die Hand“? | die Hände | die Hands | die Handen | die Hande | Einzahl: die Hand. Mehrzahl: die Hände. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Fuß“? | die Füße | die Fußs | die Fußen | die Fuße | Einzahl: der Fuß. Mehrzahl: die Füße. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „das Glas“? | die Gläser | die Glass | die Glasen | die Glase | Einzahl: das Glas. Mehrzahl: die Gläser. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „die Stadt“? | die Städte | die Stadts | die Stadten | die Stadte | Einzahl: die Stadt. Mehrzahl: die Städte. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Zahn“? | die Zähne | die Zahns | die Zahnen | die Zahne | Einzahl: der Zahn. Mehrzahl: die Zähne. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „das Auto“? | die Autos | die Autoen | die Autoe | die Autoer | Einzahl: das Auto. Mehrzahl: die Autos. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Tisch“? | die Tische | die Tischs | die Tischen | die Tischer | Einzahl: der Tisch. Mehrzahl: die Tische. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „die Nuss“? | die Nüsse | die Nusss | die Nussen | die Nusse | Einzahl: die Nuss. Mehrzahl: die Nüsse. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Ball“? | die Bälle | die Balls | die Ballen | die Balle | Einzahl: der Ball. Mehrzahl: die Bälle. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „das Ei“? | die Eier | die Eis | die Eien | die Eie | Einzahl: das Ei. Mehrzahl: die Eier. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „die Kuh“? | die Kühe | die Kuhs | die Kuhen | die Kuhe | Einzahl: die Kuh. Mehrzahl: die Kühe. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Bruder“? | die Brüder | die Bruders | die Bruderen | die Brudere | Einzahl: der Bruder. Mehrzahl: die Brüder. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „die Mutter“? | die Mütter | die Mutters | die Mutteren | die Muttere | Einzahl: die Mutter. Mehrzahl: die Mütter. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „das Rad“? | die Räder | die Rads | die Raden | die Rade | Einzahl: das Rad. Mehrzahl: die Räder. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Wald“? | die Wälder | die Walds | die Walden | die Walde | Einzahl: der Wald. Mehrzahl: die Wälder. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „das Dach“? | die Dächer | die Dachs | die Dachen | die Dache | Einzahl: das Dach. Mehrzahl: die Dächer. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „die Bank“? | die Bänke | die Banks | die Banken | die Banke | Einzahl: die Bank. Mehrzahl: die Bänke. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Stuhl“? | die Stühle | die Stuhls | die Stuhlen | die Stuhle | Einzahl: der Stuhl. Mehrzahl: die Stühle. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „das Huhn“? | die Hühner | die Huhns | die Huhnen | die Huhne | Einzahl: das Huhn. Mehrzahl: die Hühner. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Koffer“? | die Koffer | die Koffers | die Kofferen | die Koffere | Einzahl: der Koffer. Mehrzahl: die Koffer. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „die Gans“? | die Gänse | die Ganss | die Gansen | die Ganse | Einzahl: die Gans. Mehrzahl: die Gänse. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „das Pferd“? | die Pferde | die Pferds | die Pferden | die Pferder | Einzahl: das Pferd. Mehrzahl: die Pferde. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Turm“? | die Türme | die Turms | die Turmen | die Turme | Einzahl: der Turm. Mehrzahl: die Türme. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „die Wand“? | die Wände | die Wands | die Wanden | die Wande | Einzahl: die Wand. Mehrzahl: die Wände. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „der Zug“? | die Züge | die Zugs | die Zugen | die Zuge | Einzahl: der Zug. Mehrzahl: die Züge. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Wie heißt die Mehrzahl von „das Schloss“? | die Schlösser | die Schlosss | die Schlossen | die Schlosse | Einzahl: das Schloss. Mehrzahl: die Schlösser. Viele Wörter bekommen in der Mehrzahl einen Umlaut (ä, ö, ü).
+Welche Wortart ist „Katze“? | Nomen | Verb | Adjektiv | Artikel | Nomen sind Namen für Menschen, Tiere, Pflanzen und Dinge. Man schreibt sie groß.
+Welche Wortart ist „Freund“? | Nomen | Verb | Adjektiv | Artikel | Nomen sind Namen für Menschen, Tiere, Pflanzen und Dinge. Man schreibt sie groß.
+Welche Wortart ist „Schule“? | Nomen | Verb | Adjektiv | Artikel | Nomen sind Namen für Menschen, Tiere, Pflanzen und Dinge. Man schreibt sie groß.
+Welche Wortart ist „Spiel“? | Nomen | Verb | Adjektiv | Artikel | Nomen sind Namen für Menschen, Tiere, Pflanzen und Dinge. Man schreibt sie groß.
+Welche Wortart ist „Regen“? | Nomen | Verb | Adjektiv | Artikel | Nomen sind Namen für Menschen, Tiere, Pflanzen und Dinge. Man schreibt sie groß.
+Welche Wortart ist „Fahrrad“? | Nomen | Verb | Adjektiv | Artikel | Nomen sind Namen für Menschen, Tiere, Pflanzen und Dinge. Man schreibt sie groß.
+Welche Wortart ist „Lehrerin“? | Nomen | Verb | Adjektiv | Artikel | Nomen sind Namen für Menschen, Tiere, Pflanzen und Dinge. Man schreibt sie groß.
+Welche Wortart ist „Zimmer“? | Nomen | Verb | Adjektiv | Artikel | Nomen sind Namen für Menschen, Tiere, Pflanzen und Dinge. Man schreibt sie groß.
+Welche Wortart ist „Garten“? | Nomen | Verb | Adjektiv | Artikel | Nomen sind Namen für Menschen, Tiere, Pflanzen und Dinge. Man schreibt sie groß.
+Welche Wortart ist „Geschenk“? | Nomen | Verb | Adjektiv | Artikel | Nomen sind Namen für Menschen, Tiere, Pflanzen und Dinge. Man schreibt sie groß.
+Welche Wortart ist „laufen“? | Verb | Nomen | Adjektiv | Artikel | Verben sagen, was jemand tut. Man kann sie beugen: ich laufe, du läufst …
+Welche Wortart ist „schreiben“? | Verb | Nomen | Adjektiv | Artikel | Verben sagen, was jemand tut. Man kann sie beugen: ich laufe, du läufst …
+Welche Wortart ist „lachen“? | Verb | Nomen | Adjektiv | Artikel | Verben sagen, was jemand tut. Man kann sie beugen: ich laufe, du läufst …
+Welche Wortart ist „springen“? | Verb | Nomen | Adjektiv | Artikel | Verben sagen, was jemand tut. Man kann sie beugen: ich laufe, du läufst …
+Welche Wortart ist „essen“? | Verb | Nomen | Adjektiv | Artikel | Verben sagen, was jemand tut. Man kann sie beugen: ich laufe, du läufst …
+Welche Wortart ist „malen“? | Verb | Nomen | Adjektiv | Artikel | Verben sagen, was jemand tut. Man kann sie beugen: ich laufe, du läufst …
+Welche Wortart ist „schwimmen“? | Verb | Nomen | Adjektiv | Artikel | Verben sagen, was jemand tut. Man kann sie beugen: ich laufe, du läufst …
+Welche Wortart ist „lesen“? | Verb | Nomen | Adjektiv | Artikel | Verben sagen, was jemand tut. Man kann sie beugen: ich laufe, du läufst …
+Welche Wortart ist „singen“? | Verb | Nomen | Adjektiv | Artikel | Verben sagen, was jemand tut. Man kann sie beugen: ich laufe, du läufst …
+Welche Wortart ist „denken“? | Verb | Nomen | Adjektiv | Artikel | Verben sagen, was jemand tut. Man kann sie beugen: ich laufe, du läufst …
+Welche Wortart ist „schnell“? | Adjektiv | Nomen | Verb | Artikel | Adjektive sagen, wie etwas ist. Man kann sie steigern: groß, größer, am größten.
+Welche Wortart ist „groß“? | Adjektiv | Nomen | Verb | Artikel | Adjektive sagen, wie etwas ist. Man kann sie steigern: groß, größer, am größten.
+Welche Wortart ist „klein“? | Adjektiv | Nomen | Verb | Artikel | Adjektive sagen, wie etwas ist. Man kann sie steigern: groß, größer, am größten.
+Welche Wortart ist „laut“? | Adjektiv | Nomen | Verb | Artikel | Adjektive sagen, wie etwas ist. Man kann sie steigern: groß, größer, am größten.
+Welche Wortart ist „leise“? | Adjektiv | Nomen | Verb | Artikel | Adjektive sagen, wie etwas ist. Man kann sie steigern: groß, größer, am größten.
+Welche Wortart ist „bunt“? | Adjektiv | Nomen | Verb | Artikel | Adjektive sagen, wie etwas ist. Man kann sie steigern: groß, größer, am größten.
+Welche Wortart ist „müde“? | Adjektiv | Nomen | Verb | Artikel | Adjektive sagen, wie etwas ist. Man kann sie steigern: groß, größer, am größten.
+Welche Wortart ist „lustig“? | Adjektiv | Nomen | Verb | Artikel | Adjektive sagen, wie etwas ist. Man kann sie steigern: groß, größer, am größten.
+Welche Wortart ist „kalt“? | Adjektiv | Nomen | Verb | Artikel | Adjektive sagen, wie etwas ist. Man kann sie steigern: groß, größer, am größten.
+Welche Wortart ist „freundlich“? | Adjektiv | Nomen | Verb | Artikel | Adjektive sagen, wie etwas ist. Man kann sie steigern: groß, größer, am größten.
+Wie heißt die erste Steigerungsstufe von „groß“? | größer | großer | am größten | mehr groß | groß – größer – am größten.
+Wie heißt die erste Steigerungsstufe von „klein“? | kleiner | kleinner | am kleinsten | mehr klein | klein – kleiner – am kleinsten.
+Wie heißt die erste Steigerungsstufe von „alt“? | älter | alter | am ältesten | mehr alt | alt – älter – am ältesten.
+Wie heißt die erste Steigerungsstufe von „jung“? | jünger | junger | am jüngsten | mehr jung | jung – jünger – am jüngsten.
+Wie heißt die erste Steigerungsstufe von „gut“? | besser | guter | am besten | mehr gut | gut – besser – am besten.
+Wie heißt die erste Steigerungsstufe von „viel“? | mehr | vieler | am meisten | mehr viel | viel – mehr – am meisten.
+Wie heißt die erste Steigerungsstufe von „warm“? | wärmer | warmer | am wärmsten | mehr warm | warm – wärmer – am wärmsten.
+Wie heißt die erste Steigerungsstufe von „lang“? | länger | langer | am längsten | mehr lang | lang – länger – am längsten.
+Wie heißt die erste Steigerungsstufe von „hoch“? | höher | hocher | am höchsten | mehr hoch | hoch – höher – am höchsten.
+Wie heißt die erste Steigerungsstufe von „schnell“? | schneller | schnellner | am schnellsten | mehr schnell | schnell – schneller – am schnellsten.
+Wie heißt die erste Steigerungsstufe von „kurz“? | kürzer | kurzer | am kürzesten | mehr kurz | kurz – kürzer – am kürzesten.
+Wie heißt die erste Steigerungsstufe von „gern“? | lieber | gerner | am liebsten | mehr gern | gern – lieber – am liebsten.
+
+## wortschatz | Gegenteile und Wortfamilien
+Was ist das Gegenteil von „hell“? | dunkel | ängstlich | arm | leise | hell ↔ dunkel.
+Was ist das Gegenteil von „laut“? | leise | ängstlich | geschlossen | leicht | laut ↔ leise.
+Was ist das Gegenteil von „nass“? | trocken | schwach | spät | hart | nass ↔ trocken.
+Was ist das Gegenteil von „voll“? | leer | leise | ängstlich | dünn | voll ↔ leer.
+Was ist das Gegenteil von „dick“? | dünn | unten | falsch | trocken | dick ↔ dünn.
+Was ist das Gegenteil von „weich“? | hart | neu | außen | leicht | weich ↔ hart.
+Was ist das Gegenteil von „früh“? | spät | faul | falsch | sauer | früh ↔ spät.
+Was ist das Gegenteil von „alt“? | neu | sauer | geschlossen | unten | alt ↔ neu.
+Was ist das Gegenteil von „schwer“? | leicht | falsch | leise | spät | schwer ↔ leicht.
+Was ist das Gegenteil von „sauber“? | schmutzig | außen | leer | unten | sauber ↔ schmutzig.
+Was ist das Gegenteil von „mutig“? | ängstlich | schwach | dunkel | unten | mutig ↔ ängstlich.
+Was ist das Gegenteil von „fleißig“? | faul | kalt | schwach | falsch | fleißig ↔ faul.
+Was ist das Gegenteil von „süß“? | sauer | schwach | leicht | neu | süß ↔ sauer.
+Was ist das Gegenteil von „oben“? | unten | arm | hart | schwach | oben ↔ unten.
+Was ist das Gegenteil von „innen“? | außen | dünn | schmutzig | arm | innen ↔ außen.
+Was ist das Gegenteil von „warm“? | kalt | ängstlich | schmutzig | leer | warm ↔ kalt.
+Was ist das Gegenteil von „reich“? | arm | neu | hart | dunkel | reich ↔ arm.
+Was ist das Gegenteil von „stark“? | schwach | leise | spät | außen | stark ↔ schwach.
+Was ist das Gegenteil von „offen“? | geschlossen | dünn | schmutzig | leer | offen ↔ geschlossen.
+Was ist das Gegenteil von „richtig“? | falsch | schwach | dunkel | leer | richtig ↔ falsch.
+Welches Wort gehört zur Wortfamilie von „fahren“? | Fahrer | Farbe | Fahne | Feder | „Fahrer“ hat denselben Wortstamm wie „fahren“.
+Welches Wort gehört zur Wortfamilie von „spielen“? | Spielplatz | Spiegel | Spinne | Speise | „Spielplatz“ hat denselben Wortstamm wie „spielen“.
+Welches Wort gehört zur Wortfamilie von „backen“? | Bäckerei | Bach | Backe | Becken | „Bäckerei“ hat denselben Wortstamm wie „backen“.
+Welches Wort gehört zur Wortfamilie von „schreiben“? | Schreibtisch | Schraube | Schrei | Scheibe | „Schreibtisch“ hat denselben Wortstamm wie „schreiben“.
+Welches Wort gehört zur Wortfamilie von „lesen“? | Lesebuch | Leim | Leder | Leiter | „Lesebuch“ hat denselben Wortstamm wie „lesen“.
+Welches Wort gehört zur Wortfamilie von „malen“? | Malkasten | Mahlzeit | Mantel | Mehl | „Malkasten“ hat denselben Wortstamm wie „malen“.
+Welches Wort gehört zur Wortfamilie von „wohnen“? | Wohnung | Wohl | Wolle | Wonne | „Wohnung“ hat denselben Wortstamm wie „wohnen“.
+Welches Wort gehört zur Wortfamilie von „schwimmen“? | Schwimmbad | Schwamm | Schwan | Schwanz | „Schwimmbad“ hat denselben Wortstamm wie „schwimmen“.
+Welches Wort gehört zur Wortfamilie von „lachen“? | lächeln | Lack | lackieren | Lager | „lächeln“ hat denselben Wortstamm wie „lachen“.
+
+## zeitformen | Gestern, heute, morgen (Zeitformen)
+Wie heißt „ich laufe“ in der 1. Vergangenheit (Präteritum)? | ich lief | ich laufe | ich bin gelaufen | ich laufte | Gegenwart: ich laufe. Präteritum: ich lief. Perfekt: ich bin gelaufen.
+Wie heißt „ich gehe“ in der 1. Vergangenheit (Präteritum)? | ich ging | ich gehe | ich bin gegangen | ich gehte | Gegenwart: ich gehe. Präteritum: ich ging. Perfekt: ich bin gegangen.
+Wie heißt „ich singe“ in der 1. Vergangenheit (Präteritum)? | ich sang | ich singe | ich habe gesungen | ich singte | Gegenwart: ich singe. Präteritum: ich sang. Perfekt: ich habe gesungen.
+Wie heißt „ich esse“ in der 1. Vergangenheit (Präteritum)? | ich aß | ich esse | ich habe gegessen | ich esste | Gegenwart: ich esse. Präteritum: ich aß. Perfekt: ich habe gegessen.
+Wie heißt „ich trinke“ in der 1. Vergangenheit (Präteritum)? | ich trank | ich trinke | ich habe getrunken | ich trinkte | Gegenwart: ich trinke. Präteritum: ich trank. Perfekt: ich habe getrunken.
+Wie heißt „ich schreibe“ in der 1. Vergangenheit (Präteritum)? | ich schrieb | ich schreibe | ich habe geschrieben | ich schreibte | Gegenwart: ich schreibe. Präteritum: ich schrieb. Perfekt: ich habe geschrieben.
+Wie heißt „ich lese“ in der 1. Vergangenheit (Präteritum)? | ich las | ich lese | ich habe gelesen | ich leste | Gegenwart: ich lese. Präteritum: ich las. Perfekt: ich habe gelesen.
+Wie heißt „ich sehe“ in der 1. Vergangenheit (Präteritum)? | ich sah | ich sehe | ich habe gesehen | ich sehte | Gegenwart: ich sehe. Präteritum: ich sah. Perfekt: ich habe gesehen.
+Wie heißt „ich komme“ in der 1. Vergangenheit (Präteritum)? | ich kam | ich komme | ich bin gekommen | ich kommte | Gegenwart: ich komme. Präteritum: ich kam. Perfekt: ich bin gekommen.
+Wie heißt „ich fahre“ in der 1. Vergangenheit (Präteritum)? | ich fuhr | ich fahre | ich bin gefahren | ich fahrte | Gegenwart: ich fahre. Präteritum: ich fuhr. Perfekt: ich bin gefahren.
+Wie heißt „ich springe“ in der 1. Vergangenheit (Präteritum)? | ich sprang | ich springe | ich bin gesprungen | ich springte | Gegenwart: ich springe. Präteritum: ich sprang. Perfekt: ich bin gesprungen.
+Wie heißt „ich schwimme“ in der 1. Vergangenheit (Präteritum)? | ich schwamm | ich schwimme | ich bin geschwommen | ich schwimmte | Gegenwart: ich schwimme. Präteritum: ich schwamm. Perfekt: ich bin geschwommen.
+Wie heißt „ich finde“ in der 1. Vergangenheit (Präteritum)? | ich fand | ich finde | ich habe gefunden | ich findte | Gegenwart: ich finde. Präteritum: ich fand. Perfekt: ich habe gefunden.
+Wie heißt „ich nehme“ in der 1. Vergangenheit (Präteritum)? | ich nahm | ich nehme | ich habe genommen | ich nehmte | Gegenwart: ich nehme. Präteritum: ich nahm. Perfekt: ich habe genommen.
+Wie heißt „ich gebe“ in der 1. Vergangenheit (Präteritum)? | ich gab | ich gebe | ich habe gegeben | ich gebte | Gegenwart: ich gebe. Präteritum: ich gab. Perfekt: ich habe gegeben.
+Wie heißt „ich spiele“ in der 1. Vergangenheit (Präteritum)? | ich spielte | ich spiele | ich habe gespielt | ich hatte gespielt | Gegenwart: ich spiele. Präteritum: ich spielte. Perfekt: ich habe gespielt.
+Wie heißt „ich male“ in der 1. Vergangenheit (Präteritum)? | ich malte | ich male | ich habe gemalt | ich hatte gemalt | Gegenwart: ich male. Präteritum: ich malte. Perfekt: ich habe gemalt.
+Wie heißt „ich lache“ in der 1. Vergangenheit (Präteritum)? | ich lachte | ich lache | ich habe gelacht | ich hatte gelacht | Gegenwart: ich lache. Präteritum: ich lachte. Perfekt: ich habe gelacht.
+Wie heißt „ich baue“ in der 1. Vergangenheit (Präteritum)? | ich baute | ich baue | ich habe gebaut | ich hatte gebaut | Gegenwart: ich baue. Präteritum: ich baute. Perfekt: ich habe gebaut.
+Wie heißt „ich schlafe“ in der 1. Vergangenheit (Präteritum)? | ich schlief | ich schlafe | ich habe geschlafen | ich schlafte | Gegenwart: ich schlafe. Präteritum: ich schlief. Perfekt: ich habe geschlafen.
+Wie heißt „ich rufe“ in der 1. Vergangenheit (Präteritum)? | ich rief | ich rufe | ich habe gerufen | ich rufte | Gegenwart: ich rufe. Präteritum: ich rief. Perfekt: ich habe gerufen.
+Wie heißt „ich fliege“ in der 1. Vergangenheit (Präteritum)? | ich flog | ich fliege | ich bin geflogen | ich fliegte | Gegenwart: ich fliege. Präteritum: ich flog. Perfekt: ich bin geflogen.
+Wie heißt „ich helfe“ in der 1. Vergangenheit (Präteritum)? | ich half | ich helfe | ich habe geholfen | ich helfte | Gegenwart: ich helfe. Präteritum: ich half. Perfekt: ich habe geholfen.
+Wie heißt „ich denke“ in der 1. Vergangenheit (Präteritum)? | ich dachte | ich denke | ich habe gedacht | ich denkte | Gegenwart: ich denke. Präteritum: ich dachte. Perfekt: ich habe gedacht.
+Wie heißt „ich bringe“ in der 1. Vergangenheit (Präteritum)? | ich brachte | ich bringe | ich habe gebracht | ich bringte | Gegenwart: ich bringe. Präteritum: ich brachte. Perfekt: ich habe gebracht.
+Wie heißt „ich weiß“ in der 1. Vergangenheit (Präteritum)? | ich wusste | ich weiß | ich habe gewusst | ich weißte | Gegenwart: ich weiß. Präteritum: ich wusste. Perfekt: ich habe gewusst.
+Wie heißt „ich bin“ in der 1. Vergangenheit (Präteritum)? | ich war | ich bin | ich bin gewesen | ich binte | Gegenwart: ich bin. Präteritum: ich war. Perfekt: ich bin gewesen.
+Wie heißt „ich habe“ in der 1. Vergangenheit (Präteritum)? | ich hatte | ich habe | ich habe gehabt | ich habte | Gegenwart: ich habe. Präteritum: ich hatte. Perfekt: ich habe gehabt.
+Wie heißt „ich sitze“ in der 1. Vergangenheit (Präteritum)? | ich saß | ich sitze | ich habe gesessen | ich sitzte | Gegenwart: ich sitze. Präteritum: ich saß. Perfekt: ich habe gesessen.
+Wie heißt „ich stehe“ in der 1. Vergangenheit (Präteritum)? | ich stand | ich stehe | ich habe gestanden | ich stehte | Gegenwart: ich stehe. Präteritum: ich stand. Perfekt: ich habe gestanden.
+Wie heißt „ich laufe“ im Perfekt? | ich bin gelaufen | ich lief | ich laufe | ich habe gelaufen | Das Perfekt bildet man mit „haben“ oder „sein“: ich bin gelaufen. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich gehe“ im Perfekt? | ich bin gegangen | ich ging | ich gehe | ich habe gegangen | Das Perfekt bildet man mit „haben“ oder „sein“: ich bin gegangen. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich singe“ im Perfekt? | ich habe gesungen | ich sang | ich singe | ich bin gesungen | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe gesungen. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich esse“ im Perfekt? | ich habe gegessen | ich aß | ich esse | ich bin gegessen | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe gegessen. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich trinke“ im Perfekt? | ich habe getrunken | ich trank | ich trinke | ich bin getrunken | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe getrunken. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich schreibe“ im Perfekt? | ich habe geschrieben | ich schrieb | ich schreibe | ich bin geschrieben | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe geschrieben. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich lese“ im Perfekt? | ich habe gelesen | ich las | ich lese | ich bin gelesen | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe gelesen. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich sehe“ im Perfekt? | ich habe gesehen | ich sah | ich sehe | ich bin gesehen | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe gesehen. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich komme“ im Perfekt? | ich bin gekommen | ich kam | ich komme | ich habe gekommen | Das Perfekt bildet man mit „haben“ oder „sein“: ich bin gekommen. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich fahre“ im Perfekt? | ich bin gefahren | ich fuhr | ich fahre | ich habe gefahren | Das Perfekt bildet man mit „haben“ oder „sein“: ich bin gefahren. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich springe“ im Perfekt? | ich bin gesprungen | ich sprang | ich springe | ich habe gesprungen | Das Perfekt bildet man mit „haben“ oder „sein“: ich bin gesprungen. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich schwimme“ im Perfekt? | ich bin geschwommen | ich schwamm | ich schwimme | ich habe geschwommen | Das Perfekt bildet man mit „haben“ oder „sein“: ich bin geschwommen. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich finde“ im Perfekt? | ich habe gefunden | ich fand | ich finde | ich bin gefunden | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe gefunden. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich nehme“ im Perfekt? | ich habe genommen | ich nahm | ich nehme | ich bin genommen | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe genommen. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich gebe“ im Perfekt? | ich habe gegeben | ich gab | ich gebe | ich bin gegeben | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe gegeben. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich spiele“ im Perfekt? | ich habe gespielt | ich spielte | ich spiele | ich bin gespielt | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe gespielt. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich male“ im Perfekt? | ich habe gemalt | ich malte | ich male | ich bin gemalt | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe gemalt. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich lache“ im Perfekt? | ich habe gelacht | ich lachte | ich lache | ich bin gelacht | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe gelacht. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich baue“ im Perfekt? | ich habe gebaut | ich baute | ich baue | ich bin gebaut | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe gebaut. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Wie heißt „ich schlafe“ im Perfekt? | ich habe geschlafen | ich schlief | ich schlafe | ich bin geschlafen | Das Perfekt bildet man mit „haben“ oder „sein“: ich habe geschlafen. Bewegungen wie gehen und fahren brauchen meistens „sein“.
+Welcher Satz mit „spielen“ steht in der Zukunft (Futur)? | Ich werde morgen spielen. | Ich spiele heute. | Ich habe gestern gespielt. | Ich spielte früher. | Die Zukunft bildet man mit „werden“ und der Grundform des Verbs.
+Welcher Satz mit „lernen“ steht in der Zukunft (Futur)? | Ich werde morgen lernen. | Ich lerne heute. | Ich habe gestern gelernt. | Ich lernte früher. | Die Zukunft bildet man mit „werden“ und der Grundform des Verbs.
+Welcher Satz mit „malen“ steht in der Zukunft (Futur)? | Ich werde morgen malen. | Ich male heute. | Ich habe gestern gemalt. | Ich malte früher. | Die Zukunft bildet man mit „werden“ und der Grundform des Verbs.
+Welcher Satz mit „tanzen“ steht in der Zukunft (Futur)? | Ich werde morgen tanzen. | Ich tanze heute. | Ich habe gestern getanzt. | Ich tanzte früher. | Die Zukunft bildet man mit „werden“ und der Grundform des Verbs.
+Welcher Satz mit „kochen“ steht in der Zukunft (Futur)? | Ich werde morgen kochen. | Ich koche heute. | Ich habe gestern gekocht. | Ich kochte früher. | Die Zukunft bildet man mit „werden“ und der Grundform des Verbs.
+Welcher Satz mit „reisen“ steht in der Zukunft (Futur)? | Ich werde morgen reisen. | Ich reise heute. | Ich habe gestern gereist. | Ich reiste früher. | Die Zukunft bildet man mit „werden“ und der Grundform des Verbs.
+Welcher Satz mit „schwimmen“ steht in der Zukunft (Futur)? | Ich werde morgen schwimmen. | Ich schwimme heute. | Ich habe gestern geschwommen. | Ich schwimmte früher. | Die Zukunft bildet man mit „werden“ und der Grundform des Verbs.
+Welcher Satz mit „lesen“ steht in der Zukunft (Futur)? | Ich werde morgen lesen. | Ich lese heute. | Ich habe gestern gelesen. | Ich leste früher. | Die Zukunft bildet man mit „werden“ und der Grundform des Verbs.
+
+## rechtschreibung | Rechtschreibung
+Welche Schreibweise ist richtig? (hat zwei Räder und Pedale) | Fahrrad | Farrad | Fahrad | Fahrrat | Richtig ist: Fahrrad. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (bunter Falter) | Schmetterling | Schmeterling | Schmetterlink | Schmetaling | Richtig ist: Schmetterling. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (macht Tee süß) | Zucker | Zuker | Zukker | Zucka | Richtig ist: Zucker. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (miaut) | Katze | Kaze | Katse | Kazze | Richtig ist: Katze. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (führt über einen Fluss) | Brücke | Brüke | Brükke | Brucke | Richtig ist: Brücke. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (grüne Fläche mit Gras) | Wiese | Wise | Wiesse | Wieße | Richtig ist: Wiese. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (fährt auf dem Meer) | Schiff | Schif | Shiff | Schiv | Richtig ist: Schiff. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (gibt man mit den Lippen) | Kuss | Kus | Kuß | Kusss | Richtig ist: Kuss. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (darin siehst du dich) | Spiegel | Spigel | Schpiegel | Spiegl | Richtig ist: Spiegel. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (darauf fahren Autos) | Straße | Strasse | Strase | Schtraße | Richtig ist: Straße. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (hat Federn und fliegt) | Vogel | Fogel | Voggel | Vogl | Richtig ist: Vogel. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (Glas in der Wand) | Fenster | Fennster | Venster | Fensta | Richtig ist: Fenster. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (fliegt im Märchen auf dem Besen) | Hexe | Hekse | Hechse | Hecse | Richtig ist: Hexe. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (rotes Waldtier) | Fuchs | Fuks | Fux | Fucks | Richtig ist: Fuchs. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (kein Junge) | Mädchen | Medchen | Mätchen | Mädschen | Richtig ist: Mädchen. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (backt Brötchen) | Bäcker | Becker | Bäker | Bäckker | Richtig ist: Bäcker. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (scheint am Himmel) | Sonne | Sone | Sohne | Sonnne | Richtig ist: Sonne. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (bellt) | Hund | Hunt | Hundt | Hunnd | Richtig ist: Hund. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (wiehert) | Pferd | Pfert | Ferd | Pferdt | Richtig ist: Pferd. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (Tag mit Kuchen und Kerzen) | Geburtstag | Geburtstak | Geburztag | Geburtsdag | Richtig ist: Geburtstag. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (putzt man morgens und abends) | Zahn | Zan | Zaan | Tsahn | Richtig ist: Zahn. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (zeigt die Zeit) | Uhr | Ur | Uhrr | Uhhr | Richtig ist: Uhr. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (darin backt man Pizza) | Ofen | Ohfen | Offen | Oven | Richtig ist: Ofen. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (Instrument mit Tasten) | Klavier | Klawier | Klafier | Klavir | Richtig ist: Klavier. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (Sport mit Toren) | Fußball | Fusball | Fußbal | Fussbal | Richtig ist: Fußball. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (gestreifte Raubkatze) | Tiger | Tieger | Tigger | Tigga | Richtig ist: Tiger. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (Eltern und Kinder) | Familie | Famillie | Familje | Fammilie | Richtig ist: Familie. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (süß und braun) | Schokolade | Schockolade | Schokolate | Schokkolade | Richtig ist: Schokolade. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (Knolle für Pommes) | Kartoffel | Kartofel | Kartoffl | Kardoffel | Richtig ist: Kartoffel. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Welche Schreibweise ist richtig? (darin schläfst du) | Bett | Bet | Bed | Bätt | Richtig ist: Bett. Tipp: Wort deutlich in Silben sprechen oder verlängern (z. B. Hund – Hunde).
+Wie viele Silben hat das Wort „Banane“? | 3 | 4 | 5 | 2 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 3 Silben.
+Wie viele Silben hat das Wort „Elefant“? | 3 | 4 | 5 | 2 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 3 Silben.
+Wie viele Silben hat das Wort „Schule“? | 2 | 3 | 4 | 1 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 2 Silben.
+Wie viele Silben hat das Wort „Krokodil“? | 3 | 4 | 5 | 2 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 3 Silben.
+Wie viele Silben hat das Wort „Tisch“? | 1 | 2 | 3 | 4 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 1 Silbe.
+Wie viele Silben hat das Wort „Schmetterling“? | 3 | 4 | 5 | 2 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 3 Silben.
+Wie viele Silben hat das Wort „Federmäppchen“? | 4 | 5 | 6 | 3 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 4 Silben.
+Wie viele Silben hat das Wort „Sonne“? | 2 | 3 | 4 | 1 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 2 Silben.
+Wie viele Silben hat das Wort „Hund“? | 1 | 2 | 3 | 4 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 1 Silbe.
+Wie viele Silben hat das Wort „Gitarre“? | 3 | 4 | 5 | 2 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 3 Silben.
+Wie viele Silben hat das Wort „Karussell“? | 3 | 4 | 5 | 2 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 3 Silben.
+Wie viele Silben hat das Wort „Telefon“? | 3 | 4 | 5 | 2 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 3 Silben.
+Wie viele Silben hat das Wort „Apfelsaft“? | 3 | 4 | 5 | 2 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 3 Silben.
+Wie viele Silben hat das Wort „Radiergummi“? | 4 | 5 | 6 | 3 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 4 Silben.
+Wie viele Silben hat das Wort „Baum“? | 1 | 2 | 3 | 4 | Klatsche beim Sprechen mit: jede Silbe ein Klatscher. 1 Silbe.
