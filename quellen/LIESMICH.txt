@@ -84,7 +84,9 @@ ABSCHLUSSPRUEFUNG (26.11.2026, pruefung.js, patch_pruefung.py, server/12_abschlu
   Unterbrechung mitten in einer Frage -> Server tauscht die Frage (gleiches Fach). Nicht bestanden -> falsche Fragen
   wieder ins Training, neuer Versuch nach 3 Tagen oder frueher, wenn die Eltern es erlauben.
 - Praxisteil: pro Fach eine Papieraufgabe mit 5 Teilaufgaben (pruefung.js PR_tasks), Kontrollkriterien und Loesungen nur fuer die Eltern.
-- Admin: Tor antippen -> "Vorschau: Fenster wie beim Kind" (Beispielwerte, startet nichts).
+- Admin: Tor antippen -> "Pruefung testen (Probelauf)" jederzeit: echte Fragen, Countdown, Auswertung, Praxis mit
+  Kontrollkriterien zum Selbst-Bestaetigen, Urkunde. Server: exams.test, keine 70 %, keine Wartezeit, kein Tor,
+  kein Lernstand (server/13_pruefung_probelauf.sql). Ausserdem "Vorschau: Fenster wie beim Kind".
   Eltern bestaetigen im Elternbereich (Kind-Ansicht, Abschnitt "ABSCHLUSSPRUEFUNG – ELTERNKONTROLLE").
 - Tor: Erst wenn Theorie ab Note 3 + alle Praxisaufgaben bestanden -> Server traegt zone_unlocks (via = 'exam') ein.
   Die App fragt jede Minute nach, laesst das Tor leuchten, oeffnet es und zeigt die Abschlussurkunde (PDF).

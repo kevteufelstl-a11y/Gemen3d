@@ -61,7 +61,8 @@
     }
   }
   async function PR_call(action, body) {
-    const r = await KO_call(action, body || {});
+    // Admin: alles laeuft als Probelauf (Server: keine Voraussetzungen, kein Tor, kein Lernstand)
+    const r = await KO_call(action, Object.assign({}, body || {}, Ae && Ae.admin ? { test: true } : {}));
     return r && r.j ? r.j : { error: "offline" };
   }
   const PR_child = () => !!(Ae && !Ae.admin && !Ae.offline && Ae.token);
@@ -171,15 +172,16 @@
   // ---------- Tor: Infofenster ----------
   async function PR_gate(g) {
     const kl = Math.min(g.von, g.nach), next = Math.max(g.von, g.nach);
-    if (Ae && Ae.admin) return PR_preview(g);
-    if (!PR_child()) return KL_dialog("\u{1F310} Internet nötig", "Für die Abschlussprüfung musst du mit deinem Spielernamen angemeldet und online sein.", [["OK", null, true]]);
+    if (!(Ae && Ae.admin && Ae.token) && !PR_child()) return KL_dialog("\u{1F310} Internet nötig", "Für die Abschlussprüfung musst du mit deinem Spielernamen angemeldet und online sein.", [["OK", null, true]]);
     if (PR.busy) return;
     PR.busy = true;
     const S = await PR_call("examStatus", { klasse: kl });
     PR.busy = false;
     if (!S.ok) return Zs("Die Prüfung ist gerade nicht erreichbar. Versuch es gleich noch einmal.");
     PR_info(S, kl, next);
+    Ae && Ae.admin && PR.wrap && PR.wrap.firstChild.prepend(K("div", { class: "pr-card", style: "background:#ffb02033;border-color:#ffb020;text-align:center;font-weight:800" }, "\u{1F9EA} Admin-Probelauf: Du kannst die Prüfung jederzeit testen. Die 70 % und die Wartezeit gelten hier nicht, es öffnet sich kein Tor und kein Lernstand wird verändert."));
   }
+  window.__prTest = (g) => PR_gate(g);
   // Admin: so sieht das Kind das Fenster am Tor (Beispielwerte, startet nichts)
   function PR_preview(g) {
     const kl = Math.min(g.von, g.nach), next = Math.max(g.von, g.nach), fis = PR_subjects(kl).map((x) => x.subj), total = Xn.filter((q) => fis.includes(q.fi)).length;
@@ -218,11 +220,16 @@
   function PR_actions(S, kl, next) {
     const ex = S.exam, d = K("div", { style: "display:flex;flex-direction:column;gap:10px" });
     if (S.canStart) d.append(K("p", { style: "text-align:center;font-weight:900;font-size:22px;color:#6fd68a" }, "DEINE ABSCHLUSSPRÜFUNG IST FREIGESCHALTET!"), K("button", { class: "pr-btn go", onclick: () => PR_prepare(S, kl) }, "\u{1F393} ABSCHLUSSPRÜFUNG STARTEN"));
-    else if (S.reason === "laeuft") d.append(K("button", { class: "pr-btn go", onclick: () => PR_run(ex) }, "▶ Prüfung fortsetzen (" + ex.answered + " von " + ex.n + ")"));
+    else if (S.reason === "laeuft") d.append(K("button", { class: "pr-btn go", onclick: () => PR_run(ex) }, "▶ Prüfung fortsetzen (" + ex.answered + " von " + ex.n + ")"), Ae && Ae.admin ? K("button", { class: "pr-btn", onclick: async () => {
+      const N = await PR_call("examStatus", { klasse: kl, neu: true });
+      N.ok ? PR_prepare(N, kl) : Zs("Neustart nicht möglich.");
+    } }, "\u{1F504} Probelauf neu starten") : null);
     else if (S.reason === "praxis_offen") d.append(K("button", { class: "pr-btn go", onclick: () => PR_practical(ex) }, "✍️ Praktische Aufgaben ansehen"));
     else if (S.reason === "warten") d.append(K("div", { class: "pr-card" }, K("p", {}, "Deine letzte Prüfung hat noch nicht gereicht. Übe jetzt die Fragen, die falsch waren – sie sind wieder in deinen Lernstationen."), K("p", { style: "margin-top:8px;font-weight:800" }, "Neuer Versuch ab " + PR_date(ex.retryAfter) + ". Deine Eltern können ihn auch früher erlauben.")));
     else if (S.reason === "zu_wenig") d.append(K("div", { class: "pr-card" }, K("p", {}, "Lerne weiter an den Stationen! Bei 70 % öffnet sich deine Abschlussprüfung. Dir fehlen noch " + Math.max(0, Math.ceil(S.progress.total * 0.7) - S.progress.right) + " richtige Fragen.")));
     else if (S.reason === "keine_fragen") d.append(K("div", { class: "pr-card" }, K("p", {}, "Für Klasse " + kl + " gibt es noch keine Prüfungsfragen. Sie kommen bald.")));
+    Ae && Ae.admin && ex && ex.status === "theorie_bestanden" && d.append(K("button", { class: "pr-btn", onclick: () => PR_practical(ex) }, "✍️ Praktische Aufgaben des letzten Probelaufs"));
+    Ae && Ae.admin && ex && ex.status === "bestanden" && d.append(K("button", { class: "pr-btn", onclick: () => PR_cert(ex) }, "\u{1F4DC} Urkunde des letzten Probelaufs"));
     return d;
   }
   // Tor ist offen (Pruefung bestanden)
@@ -340,10 +347,25 @@
     const b = PR_open(), P = ex.practical || [], ic = { bestanden: "✅", nicht_bestanden: "\u{1F501}", offen: "⏳" };
     b.append(K("h1", {}, "✍️ PRAKTISCHE AUFGABEN"), K("div", { class: "pr-card pr-gold" }, K("p", {}, "Löse diese Aufgaben auf Papier. Zeig deine Blätter danach deinen Eltern – sie kontrollieren alles im Elternbereich. Wenn alles bestanden ist, öffnet sich das Tor.")),
       ...P.map((t, i) => K("div", { class: "pr-card" + (t.status === "nicht_bestanden" ? " pr-gold" : "") }, K("h2", {}, (ic[t.status] || "⏳") + " " + (i + 1) + ". " + t.fach + ": " + t.titel), K("p", { style: "white-space:pre-line" }, t.text),
-        t.status === "nicht_bestanden" ? K("p", { style: "margin-top:8px;color:#ffd75e;font-weight:800" }, "Das sollst du verbessern: " + (t.note || "")) : null)),
+        t.status === "nicht_bestanden" ? K("p", { style: "margin-top:8px;color:#ffd75e;font-weight:800" }, "Das sollst du verbessern: " + (t.note || "")) : null,
+        ex.test && Ae && Ae.admin ? K("div", { style: "margin-top:10px" }, K("p", { style: "font-size:15px;opacity:.85" }, "Kontrollkriterien (sehen sonst nur die Eltern):"), K("ol", { style: "font-size:15px;margin:4px 0 10px" }, (t.kriterien || []).map((x) => K("li", {}, x))),
+          K("div", { style: "display:flex;gap:10px" }, K("button", { class: "pr-btn go", onclick: () => PR_testSet(ex, t, true) }, "✅ Bestanden"), K("button", { class: "pr-btn", onclick: () => PR_testSet(ex, t, false) }, "❌ Nicht bestanden"))) : null)),
       K("button", { class: "pr-btn", onclick: () => PR_close() }, "Schließen"));
   }
 
+  async function PR_testSet(ex, t, ok) {
+    let note = "";
+    if (!ok && (note = prompt("Was soll verbessert werden?", "") || "").trim().length < 3) return Zs("Bitte kurz aufschreiben, was verbessert werden soll.");
+    const x = await KO_call("examPractical", { examId: ex.id, taskId: t.id, passed: ok, note }, "a");
+    if (!x.j || !x.j.ok) return Zs(KO_msg(x));
+    const E = Object.assign({}, ex, x.j.exam);
+    if (x.j.unlocked) {
+      const b = PR_open();
+      return b.append(K("h1", {}, "\u{1F389} PROBELAUF BESTANDEN!"), K("div", { class: "pr-card pr-gold" }, K("p", {}, "Theorie und alle praktischen Aufgaben sind bestanden. Bei einem Kind würde sich jetzt das Tor zu Klasse " + (ex.klasse + 1) + " öffnen – das Tor leuchtet, die Flügel gehen auf und die Abschlussurkunde erscheint.")),
+        K("button", { class: "pr-btn go", onclick: () => PR_cert(E) }, "\u{1F4DC} Urkunde ansehen"), K("button", { class: "pr-btn", onclick: () => PR_close() }, "Schließen"));
+    }
+    PR_practical(E);
+  }
   // ---------- Abschlussurkunde ----------
   function PR_certCanvas(ex) {
     const c = document.createElement("canvas"), W = 1240, H = 1754, x = c.getContext("2d");
