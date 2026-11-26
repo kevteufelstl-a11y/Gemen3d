@@ -286,11 +286,31 @@
     // Torfluegel (drehen sich beim Oeffnen)
     const doors = [], dm = new ae({ vertexColors: true, roughness: 0.8 });
     for (const s of [-1, 1]) {
-      const piv = new pe(), D = new Ot(), dw = w / 2, dh = H - 1.6;
-      D.box(-s * dw / 2, dh / 2, 0, dw - 0.05, dh, 0.28, 0, [0.46, 0.29, 0.15]);
-      for (const y of [0.7, dh / 2, dh - 0.7]) D.box(-s * dw / 2, y, 0, dw - 0.1, 0.16, 0.34, 0, [0.18, 0.17, 0.17]);
+      // Gitterfluegel: man sieht durch das geschlossene Tor schon die naechste Welt
+      const piv = new pe(), D = new Ot(), dw = w / 2, dh = H - 1.6, ir = [0.16, 0.15, 0.15], gd = [0.72, 0.56, 0.2];
+      for (let x = 0.15; x < dw - 0.05; x += 0.42) D.box(-s * x, dh / 2, 0, 0.09, dh, 0.09, 0, ir), D.box(-s * x, dh + 0.12, 0, 0.16, 0.3, 0.16, 0, gd);
+      for (const y of [0.45, dh * 0.5, dh - 0.25]) D.box(-s * dw / 2, y, 0, dw - 0.05, 0.14, 0.16, 0, ir);
+      D.box(-s * (dw - 0.08), dh / 2, 0, 0.16, dh, 0.2, 0, ir);
       piv.add(new zt(D.toGeometry(), dm)), piv.position.set(s * w / 2, 0, 0), grp.add(piv), doors.push({ piv, s });
     }
+    // magischer Lichtschleier im geschlossenen Tor
+    const cv = document.createElement("canvas");
+    cv.width = 64, cv.height = 128;
+    const cx = cv.getContext("2d"), gr = cx.createLinearGradient(0, 128, 0, 0);
+    gr.addColorStop(0, "rgba(255,215,94,0.55)"), gr.addColorStop(0.6, "rgba(150,200,255,0.25)"), gr.addColorStop(1, "rgba(150,200,255,0)"), cx.fillStyle = gr, cx.fillRect(0, 0, 64, 128);
+    for (let i = 0; i < 40; i++) cx.fillStyle = "rgba(255,255,255," + (0.2 + Math.random() * 0.5) + ")", cx.fillRect(Math.random() * 64, Math.random() * 128, 1.5, 1.5);
+    const ctex = new wn(cv);
+    ctex.wrapS = ctex.wrapT = 1e3;
+    const CG = new Ot(), hw2 = w / 2 - 0.1, ch = H - 1.7;
+    for (const z of [-0.35, 0.35]) CG.quad([-hw2, 0, z], [hw2, 0, z], [hw2, ch, z], [-hw2, ch, z], [0, 0], [2, 0], [2, 1], [0, 1], [1, 1, 1], [0, 0, z > 0 ? 1 : -1]);
+    const cm = new se({ map: ctex, transparent: true, depthWrite: false, side: Ue, blending: Ee, opacity: 0.55 }), curtain = new zt(CG.toGeometry(), cm);
+    curtain.renderOrder = 7, grp.add(curtain), grp.userData.curtain = curtain, grp.userData.ctex = ctex;
+    // Leuchten beim Oeffnen
+    const GG = new Ot();
+    GG.quad([-w, 0, 0], [w, 0, 0], [w, H + 3, 0], [-w, H + 3, 0], [0, 0], [1, 0], [1, 1], [0, 1], [1, 1, 1], [0, 0, 1]);
+    const gm = new se({ map: ctex, transparent: true, depthWrite: false, side: Ue, blending: Ee, opacity: 0, color: 16767839 });
+    const halo = new zt(GG.toGeometry(), gm);
+    halo.renderOrder = 8, grp.add(halo), grp.userData.halo = halo, grp.userData.gm = gm;
     // Schilder auf beiden Seiten: wohin fuehrt das Tor?
     const nA = KL_side(g.c, g.t, g.bridge ? g.side : g.von), front = [g.von, g.nach];
     for (const s of [1, -1]) {
@@ -315,8 +335,16 @@
   function KL_doors(g, dt) {
     if (!g.mesh) return;
     const want = g.open ? 1.55 : 0, u = g.mesh.userData;
-    u.ang += Math.max(-dt * 1.4, Math.min(dt * 1.4, want - u.ang));
+    u.ang += Math.max(-dt * (u.glowT > 0 ? 0.5 : 1.4), Math.min(dt * (u.glowT > 0 ? 0.5 : 1.4), want - u.ang));
     for (const d of u.doors) d.piv.rotation.y = d.s * u.ang;
+    const t = performance.now() / 1e3;
+    u.curtain && (u.curtain.visible = u.ang < 0.2, u.ctex.offset.set(Math.sin(t * 0.3) * 0.2, -t * 0.12));
+    if (u.glowT > 0) u.glowT -= dt, u.gm.opacity = Math.min(1, u.glowT / 2) * (0.6 + 0.4 * Math.sin(t * 6));
+    else u.gm && u.gm.opacity && (u.gm.opacity = 0);
+  }
+  // Tor zur Klasse k leuchtet und oeffnet sich langsam (nach bestandener Pruefung)
+  function KL_glow(k) {
+    for (const g of KL.gates) if (Math.max(g.von, g.nach) === k && g.mesh) g.mesh.userData.glowT = 10;
   }
   function KL_build() {
     KL.built = true;

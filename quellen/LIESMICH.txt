@@ -74,3 +74,23 @@ KLASSEN-ZONEN (26.11.2026, klassen.js, patch_klassen.py, zonen/registry.json -> 
   es werden nur die Faecher dieser Klasse angeboten (Klasse 4/6: noch keine eigenen Fragen -> alle Faecher).
 - Test im Browser: window.__klassen.info(), __klasseAt(x, z), __klassen.bridge("t45"),
   window.__klTestAlle = true (alle Klassen frei, nur zum Testen).
+
+ABSCHLUSSPRUEFUNG (26.11.2026, pruefung.js, patch_pruefung.py, server/12_abschlusspruefung.sql, 12b_exam_keys.sql)
+- Zulassung: 70 % der Fragen des Lerngebiets mindestens einmal richtig (Klasse 3 = Mathematik, Deutsch, Englisch,
+  Sachkunde, Psychologie; Sexualkunde zaehlt nicht). Der Server zaehlt aus learning_progress.
+- Theorie: mind. 60 Fragen, gleich viele pro Fach, hoechstens 70 % frueher falsche Fragen (zuerst mehrfach falsch),
+  Auswahl auf dem Server. Zeit = (Durchschnitt beim Lernen - 1 s) x Anzahl, ohne Messwerte 39 s pro Frage.
+  Bewertung auf dem Server mit Loesungsschluessel exam_keys. Antwort nicht aenderbar. Bestanden ab Note 3.
+  Unterbrechung mitten in einer Frage -> Server tauscht die Frage (gleiches Fach). Nicht bestanden -> falsche Fragen
+  wieder ins Training, neuer Versuch nach 3 Tagen oder frueher, wenn die Eltern es erlauben.
+- Praxisteil: pro Fach eine Papieraufgabe (pruefung.js PR_tasks) mit Kontrollkriterien und Loesungen fuer die Eltern.
+  Eltern bestaetigen im Elternbereich (Kind-Ansicht, Abschnitt "ABSCHLUSSPRUEFUNG – ELTERNKONTROLLE").
+- Tor: Erst wenn Theorie ab Note 3 + alle Praxisaufgaben bestanden -> Server traegt zone_unlocks (via = 'exam') ein.
+  Die App fragt jede Minute nach, laesst das Tor leuchten, oeffnet es und zeigt die Abschlussurkunde (PDF).
+- Zeitmessung beim Lernen: Lernstationen schicken die Antwortzeit mit (Feld ms), Server zaehlt in learning_progress.
+- Belohnungen je Klasse: settings.rewardListsK (Eltern-Einstellungen "Bessere Belohnungen in den naechsten Klassen"),
+  sonst Standardlisten PR_RW. Gilt ab der Klasse, die das Kind per Pruefung erreicht hat. Vorschau am Tor = diese Listen.
+- WICHTIG: Aendern sich Fragen, muss der Loesungsschluessel neu erzeugt und eingespielt werden:
+  python3 quellen/werkzeuge/exam_keys.py  ->  server/12b_exam_keys.sql in Supabase ausfuehren.
+- Servertest: server/test_abschlusspruefung.sql (Szenarien A-H, legt ein Test-Kind "Pruefungstest" an; danach loeschen).
+- Browser-Test: window.__pr (info, run, result, practical, cert, tasks, subjects, parent, level, rw).
