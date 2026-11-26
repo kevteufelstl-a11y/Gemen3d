@@ -35,3 +35,34 @@ rep('K("h3", {}, (c.off ? "⛔ " : "\\u{1F4CD} ") + (c.name || s.name))',
 
 # Keine Freischaltung von Hand (26.11.): Neue Klassen gibt es nur ueber die Abschlusspruefung am Tor.
 # Bis die Pruefungen fertig sind, kommt kein Kind in Klasse 4, 5 oder 6. Nur der Admin darf ueberall hin.
+
+# ---- Klasse 5 (27.11.): Fach-Stationen stehen schon in Neumuehle (Klasse-5-Gebiet). Sichtbar, aber erst nach der
+# Abschlusspruefung 4 erreichbar. Der Admin kann sie wie jede eigene Station verschieben, umbenennen oder loeschen.
+# Sie werden nur einmal in die Spielinhalte eingefuegt (Merker k5init), danach gilt, was der Admin speichert.
+_K5_POS = [[-780.7, -518.0], [-840.7, -512.0], [-798.7, -458.0], [-804.7, -578.0], [-744.7, -566.0], [-726.7, -488.0], [-858.7, -452.0], [-870.7, -566.0], [-900.7, -506.0]]
+_K5_ST = [('\U0001F4D0 Mathe', 'Rechnen, Brüche und Geometrie (Klasse 5)', '#4dd0ff'),
+          ('\U0001F4D6 Deutsch', 'Grammatik, Rechtschreibung und Texte (Klasse 5)', '#ffd34d'),
+          ('\U0001F1EC\U0001F1E7 Englisch', 'Wörter, Grammatik und Alltag (Klasse 5)', '#ff6b6b'),
+          ('\U0001F30D Gesellschaftslehre', 'Erdkunde, Geschichte und Politik (Klasse 5)', '#c79a5b'),
+          ('\U0001F52C Naturwissenschaften', 'Biologie und Physik (Klasse 5)', '#6dff8a'),
+          ('\U0001F4BB Informatik', 'Computer, Internet und Programmieren (Klasse 5)', '#7aa8ff'),
+          ('\U0001F3B5 Musik', 'Noten, Instrumente und Musikrichtungen (Klasse 5)', '#ff8ae0'),
+          ('\U0001F3A8 Kunst', 'Farben, Künstler und Gestalten (Klasse 5)', '#ffa040'),
+          ('\U0001F9E0 Psychologie', 'Gefühle, Familie, Freunde und Internet (Klasse 5)', '#c08bff')]
+_ph = open(D + '/part_head.html', encoding='utf8').read()
+_ph = _ph[_ph.index('window.MILO_Q=') + 14:]
+_nbase = len(json.JSONDecoder().raw_decode(_ph)[0])
+_k5names = [f['name'] for f in _k5['faecher']]
+_k5first = _nbase + 1  # danach kommt Psychologie Klasse 3, dann die Klasse-5-Faecher
+_k5def = []
+for _i, (_nm, _ds, _col) in enumerate(_K5_ST):
+    _fach = _nm.split(' ', 1)[1]
+    _fi = _k5first + _k5names.index(_fach)
+    _x, _z = _K5_POS[_i]
+    _k5def.append({'id': 501 + _i, 'name': _nm, 'short': _fach[:12], 'desc': _ds, 'x': _x, 'z': _z, 'wx': _x, 'wz': _z,
+                   'subj': [_fi], 'exam': False, 'need': 0, 'color': _col, 'klasse': 5})
+_K5J = json.dumps(_k5def, ensure_ascii=False, separators=(',', ':'))
+rep('Ne = { st: {}, extra: [], qs: [], rewards: [], monthGoal: 20, grades: null, school: "" }',
+    'Ne = { st: {}, extra: ' + _K5J + ', k5init: true, qs: [], rewards: [], monthGoal: 20, grades: null, school: "" }', 'K5-Stationen-Start')
+rep('    Ne = Object.assign({ st: {}, extra: [], qs: [], rewards: [], monthGoal: 20, grades: null, school: "" }, i || {}), ',
+    '    Ne = Object.assign({ st: {}, extra: [], qs: [], rewards: [], monthGoal: 20, grades: null, school: "" }, i || {}), Ne.k5init || (Ne.extra = (Ne.extra || []).concat(' + _K5J + '.filter((d) => !(Ne.extra || []).some((x) => x.id === d.id))), Ne.k5init = true), ', 'K5-Stationen-Config')

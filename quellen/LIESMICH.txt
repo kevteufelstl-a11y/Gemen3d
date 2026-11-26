@@ -100,3 +100,4 @@ ABSCHLUSSPRUEFUNG (26.11.2026, pruefung.js, patch_pruefung.py, server/12_abschlu
 
 - Updates: Die App prueft bei jedem Start selbst (nur die ersten 4 KB, spart Daten), ob es eine neuere Version gibt, und fragt "Jetzt aktualisieren / Spaeter". Waehrend einer Abschlusspruefung wird erst danach gefragt. Der Knopf im Menue bleibt.
 - Tore (26.11.): groesser (10 m breit, 11 m hoch), Tuerme mit Spitzdach in Klassenfarbe, Fackeln, schwebendes Klassen-Wappen, Lichtsaeule bis in den Himmel (Klassenfarbe = zu, gold = offen), Leuchtkreis am Boden. Torplatz wird automatisch so gewaehlt, dass er von der grossen Laufflaeche der Klasse erreichbar ist (nicht in Flussschleifen). Tor 4->5 dadurch ca. 70 m verschoben.
+- Klasse 5 (26.11. abends): 9 Fach-Stationen (IDs 501-509) stehen in Neumuehle. Sie kommen als Standard in die Spielinhalte (Merker k5init) und koennen vom Admin verschoben/umbenannt/geloescht werden. Erreichbar erst nach der Abschlusspruefung Klasse 4.
