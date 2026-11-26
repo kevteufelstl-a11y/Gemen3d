@@ -1,0 +1,89 @@
+# Kunst Klasse 5 – zusätzliche Fragen (26.11.2026)
+
+## farbe | Farbenlehre und Farbwirkung
+Was sind Primärfarben im Farbkreis nach Itten? | Gelb, Rot (Magenta) und Blau (Cyan) | Grün, Orange, Violett | Schwarz und Weiß | Braun und Grau | Aus ihnen lassen sich alle anderen Farben mischen.
+Was sind Sekundärfarben? | Mischfarben aus zwei Primärfarben: Grün, Orange, Violett | Grundfarben | Schwarz und Weiß | Pastellfarben | Sie liegen im Farbkreis zwischen den Primärfarben.
+Was sind Tertiärfarben? | Mischungen aus einer Primär- und einer Sekundärfarbe, z. B. Gelbgrün | reine Grundfarben | Schwarz und Weiß | Neonfarben | Der zwölfteilige Farbkreis nach Itten enthält sie.
+Was ist ein Komplementärkontrast? | Gegenfarben nebeneinander lassen sich gegenseitig stark leuchten | zwei ähnliche Farben | Schwarz neben Schwarz | nur Grautöne | Beispiel: Rot neben Grün.
+Was ist ein Hell-Dunkel-Kontrast? | starker Unterschied zwischen hellen und dunklen Farben | zwei gleiche Farben | warme neben kalten Farben | bunte neben unbunten Farben | Er wirkt besonders dramatisch.
+Was ist ein Kalt-Warm-Kontrast? | warme Farben wie Orange stehen neben kalten wie Blau | nur Rottöne | hell neben dunkel | groß neben klein | Warme Farben scheinen nach vorne zu kommen, kalte zurückzuweichen.
+Was sind unbunte Farben? | Schwarz, Weiß und Grau | Rot, Gelb, Blau | Grün und Orange | Pastelltöne | Sie haben keinen Farbton.
+Was ist ein Pastellton? | eine stark mit Weiß aufgehellte Farbe | eine sehr dunkle Farbe | eine Neonfarbe | reines Schwarz | Pastelltöne wirken zart und weich.
+Was ist eine Abtönung oder Trübung einer Farbe? | Man mischt Grau oder die Gegenfarbe hinzu, die Farbe wird stumpfer | Man macht sie leuchtender | Man trocknet sie | Man verdünnt sie mit Wasser | So entstehen erdige, gedämpfte Töne.
+Was bedeutet „deckend“ bei Farben? | Die Farbe lässt den Untergrund nicht durchscheinen. | Die Farbe ist durchsichtig. | Die Farbe ist trocken. | Die Farbe glänzt. | Aquarellfarbe ist lasierend, also durchscheinend.
+Was bedeutet „lasierend“ malen? | dünne, durchscheinende Farbschichten übereinanderlegen | dick und deckend malen | nur mit Bleistift | nur mit Schwarz | So entstehen leuchtende Farbtiefen.
+Wofür steht die Farbe Rot in vielen Bildern und Zeichen oft? | Liebe, Gefahr oder Energie | Ruhe und Kälte | Trauer | Natur | Farben haben Bedeutungen, die je nach Kultur unterschiedlich sein können.
+Wofür steht die Farbe Blau oft? | Ruhe, Ferne und Kühle | Wut und Hitze | Gefahr | Feuer | Blau wirkt oft beruhigend.
+Was bedeutet Lokalfarbe? | die eigentliche Farbe eines Gegenstands bei neutralem Licht | eine Farbe aus dem Laden um die Ecke | eine Neonfarbe | eine Mischfarbe aus allen Farben | Eine Tomate hat die Lokalfarbe Rot.
+Wie entstehen Farben am Bildschirm? | durch Mischen von Licht in Rot, Grün und Blau (RGB) | durch Wasserfarben | durch Kreide | durch Stoff | Rot, Grün und Blau zusammen ergeben am Bildschirm Weiß.
+Welche Farben nutzt ein Drucker meist? | Cyan, Magenta, Gelb und Schwarz (CMYK) | Rot, Grün, Blau | nur Schwarz | Gold und Silber | Beim Drucken mischt man Farben auf Papier.
+
+## raum | Zeichnen, Perspektive und Bildgestaltung
+Was ist die Zentralperspektive? | Alle Linien in die Tiefe laufen auf einen Fluchtpunkt am Horizont zu | Alles ist gleich groß | Man malt nur von oben | Es gibt keinen Horizont | So wirkt ein Bild räumlich, z. B. eine Straße.
+Was ist ein Fluchtpunkt? | der Punkt, in dem Tiefenlinien zusammenlaufen | der Rand des Bildes | ein Fehler im Bild | ein Farbklecks | Er liegt auf der Horizontlinie.
+Was ist die Horizontlinie in einer Zeichnung? | die Augenhöhe des Betrachters | der Bildrand unten | eine Wolke | der Fluchtweg | Liegt sie tief, sieht man mehr Himmel.
+Was ist Überschneidung als Mittel der Raumdarstellung? | Was vorne ist, verdeckt teilweise, was dahinter liegt | Alles liegt nebeneinander | Alles ist durchsichtig | Alles ist gleich groß | So erkennt man, was näher ist.
+Was ist Luftperspektive? | Entfernte Dinge werden heller, blasser und bläulicher gemalt | Alles wird dunkler | Man malt die Luft blau | Man malt von oben | So wirkt eine Landschaft tief.
+Was ist eine Vogelperspektive? | Man sieht etwas von oben | Man sieht etwas von unten | Man sieht von vorne auf Augenhöhe | Man sieht durch eine Lupe | Sie lässt Dinge klein wirken.
+Was ist eine Froschperspektive? | Man sieht etwas von unten | von oben | von der Seite | von hinten | Sie lässt Dinge groß und mächtig wirken.
+Was ist der Goldene Schnitt? | ein harmonisches Teilungsverhältnis von etwa 3 : 5 | eine Schnittechnik mit Goldschere | ein Rahmen aus Gold | ein Filmtrick | Viele Künstler und Fotografen nutzen ihn für die Bildaufteilung.
+Was ist die Drittel-Regel in der Fotografie? | Das Hauptmotiv wird an einer Linie oder einem Schnittpunkt eines 3×3-Rasters platziert | Das Motiv steht immer genau in der Mitte | Man fotografiert drei Mal | Ein Drittel des Bildes bleibt schwarz | Das wirkt oft spannender als die Mitte.
+Was ist eine Bildkomposition? | die Anordnung aller Elemente in einem Bild | die Farbe des Rahmens | der Preis eines Bildes | das Material | Sie lenkt den Blick des Betrachters.
+Was bedeutet Hochformat? | Das Bild ist höher als breit. | Das Bild ist breiter als hoch. | Das Bild ist rund. | Das Bild ist quadratisch. | Porträts sind oft im Hochformat.
+Was ist eine Proportion beim Zeichnen von Menschen? | das Größenverhältnis der Körperteile zueinander | die Farbe der Haut | die Kleidung | der Hintergrund | Der Kopf passt etwa siebenmal in die Körperhöhe eines Erwachsenen.
+Wo liegen die Augen bei einem Gesicht ungefähr? | etwa in der Mitte zwischen Scheitel und Kinn | ganz oben an der Stirn | direkt über dem Mund | am Kinn | Anfänger zeichnen die Augen oft zu hoch.
+Was ist eine Schraffur mit Kreuzschraffur? | Linien in zwei Richtungen übereinander für dunklere Schatten | ein Muster aus Kreisen | eine Farbe | ein Rahmen | Je dichter die Linien, desto dunkler die Fläche.
+Was ist ein Schlagschatten? | der Schatten, den ein Gegenstand auf den Untergrund wirft | der Schatten auf dem Gegenstand selbst | ein Lichtfleck | ein Spiegelbild | Der Schatten auf dem Gegenstand heißt Eigenschatten.
+Was ist ein Eigenschatten? | die dunkle Seite eines Gegenstands, die vom Licht abgewandt ist | der Schatten auf dem Boden | ein Spiegelbild | ein Reflex | Er macht Körper plastisch.
+
+## techniken | Techniken, Materialien und neue Medien
+Was ist ein Hochdruck? | Druckverfahren, bei dem die erhabenen Stellen Farbe annehmen, z. B. Linoldruck | Siebdruck | Fotokopie | Tintenstrahldruck | Was man wegschneidet, bleibt weiß.
+Warum muss man beim Linoldruck spiegelverkehrt schneiden? | weil der Druck das Motiv seitenverkehrt wiedergibt | weil es schöner aussieht | weil das Linol es so will | muss man nicht | Besonders bei Schrift wichtig!
+Was ist Acrylfarbe? | eine wasserlösliche Farbe, die schnell trocknet und dann wasserfest ist | Wasserfarbe, die nie trocknet | Ölfarbe | Kreide | Pinsel sofort auswaschen!
+Was ist Ölmalerei? | Malen mit Farben, deren Bindemittel Öl ist; sie trocknen langsam | Malen mit Speiseöl | Malen mit Wasser | Malen mit Kohle | Viele berühmte Gemälde sind Ölbilder auf Leinwand.
+Was ist eine Plastik im Unterschied zur Skulptur? | Eine Plastik wird aufgebaut (z. B. aus Ton), eine Skulptur aus Material herausgehauen | Es gibt keinen Unterschied | Plastik ist immer aus Kunststoff | Skulpturen sind flach | Umgangssprachlich verwendet man beide Wörter oft gleich.
+Was ist eine Installation in der Kunst? | ein Kunstwerk, das einen ganzen Raum gestaltet | eine Software | ein Rahmen | ein Pinsel | Betrachter können oft hindurchgehen.
+Was ist Streetart? | Kunst im öffentlichen Raum, z. B. Wandbilder, Sticker, Schablonen | Kunst nur im Museum | Malen nach Zahlen | Kunst aus Lebensmitteln | Mit Erlaubnis entstehen oft große Murals.
+Was ist ein Mural? | ein großes Wandbild | ein kleines Foto | eine Skulptur | ein Comic | Viele Städte laden Künstler ein, Hauswände zu gestalten.
+Welcher anonyme Streetart-Künstler ist für Schablonenbilder bekannt? | Banksy | Picasso | Dürer | Monet | Seine Identität ist offiziell nicht bekannt.
+Was ist digitale Malerei? | Malen am Tablet oder Computer mit Programmen und Stiften | Malen mit Fingerfarben | Malen auf Holz | Fotografieren | Ebenen erlauben, Teile getrennt zu bearbeiten.
+Was ist eine Ebene in einem Grafikprogramm? | eine durchsichtige Folie, auf der man getrennt arbeiten kann | ein Farbton | ein Pinsel | ein Speicherort | Man kann Ebenen ein- und ausblenden.
+Was ist Pixelart? | Bilder aus deutlich sichtbaren Bildpunkten im Stil alter Videospiele | Ölmalerei | Bildhauerei | Kalligrafie | Jeder Pixel wird bewusst gesetzt.
+Was ist 3D-Modellierung? | Am Computer werden dreidimensionale Körper gebaut | Malen mit drei Farben | Zeichnen auf drei Blättern | Basteln mit Pappe | So entstehen Figuren für Spiele und Filme.
+Was ist ein 3D-Drucker? | ein Gerät, das Objekte Schicht für Schicht aus Kunststoff aufbaut | ein Fotokopierer | ein Laserdrucker für Papier | ein Scanner | Vorlage ist ein 3D-Modell vom Computer.
+Was ist ein Storyboard? | eine Bildfolge, die den Ablauf eines Films oder Comics plant | ein Brett für Geschichten | ein Bilderrahmen | eine Leinwand | Jede Szene wird skizziert.
+Was ist ein Panel im Comic? | ein einzelnes Bildfeld | eine Sprechblase | der Titel | eine Farbe | Die Abstände zwischen Panels heißen Rinnstein.
+Was ist eine Onomatopoesie im Comic? | ein Lautwort wie „BOOM!“ oder „Klirr!“ | eine Figur | ein Panel | eine Farbe | Lautwörter machen Geräusche sichtbar.
+Welche Leserichtung haben japanische Mangas meistens? | von rechts nach links | von links nach rechts | von unten nach oben | beliebig | Mangas werden oft schwarz-weiß gedruckt.
+Was ist Kalligrafie? | die Kunst des schönen Schreibens | ein Malkasten | eine Skulptur | eine Fotografie | Man arbeitet mit Feder, Pinsel und Tusche.
+Was ist ein Fotogramm? | ein Bild, das ohne Kamera entsteht, indem Gegenstände auf Fotopapier belichtet werden | ein Instagram-Foto | ein Comic | ein Video | Man Ray experimentierte damit.
+
+## kuenstler | Kunstgeschichte und Künstler
+Welcher Künstler malte die Decke der Sixtinischen Kapelle in Rom? | Michelangelo | Leonardo da Vinci | Picasso | Van Gogh | Er war auch Bildhauer, z. B. des „David“.
+In welcher Epoche lebten Leonardo da Vinci und Michelangelo? | Renaissance | Barock | Expressionismus | Pop-Art | Renaissance heißt Wiedergeburt – der Antike.
+Welcher deutsche Künstler schuf um 1500 berühmte Holzschnitte und Kupferstiche? | Albrecht Dürer | Andy Warhol | Claude Monet | Frida Kahlo | Von ihm stammt auch der „Feldhase“.
+Was ist Impressionismus? | eine Malweise, die flüchtige Lichteindrücke mit sichtbaren Pinselstrichen festhält | eine Malweise mit exakten Linien | Kunst aus Müll | Graffiti | Der Name kommt von Monets Bild „Impression, soleil levant“.
+Welcher Maler schnitt sich der Überlieferung nach einen Teil des Ohrs ab? | Vincent van Gogh | Picasso | Monet | Dürer | Van Gogh malte über 800 Gemälde.
+Was ist Kubismus? | Gegenstände werden in geometrische Formen zerlegt und von mehreren Seiten gleichzeitig gezeigt | Malen nur mit Würfeln | Fotografie | Pointillismus | Picasso und Braque entwickelten ihn.
+Was ist Pointillismus? | Malen mit vielen kleinen Farbpunkten, die sich im Auge mischen | Malen mit Linien | Kunst aus Steinen | Bildhauerei | Georges Seurat ist ein bekannter Vertreter.
+Was ist Pop-Art? | Kunst, die Motive aus Werbung, Comics und Alltag aufgreift | mittelalterliche Kirchenkunst | Höhlenmalerei | Landschaftsmalerei | Andy Warhol malte z. B. Suppendosen.
+Was ist Expressionismus? | Kunst, die Gefühle mit kräftigen, oft unnatürlichen Farben ausdrückt | exakte Naturwiedergabe | Fotografie | Architektur | Franz Marc malte z. B. blaue Pferde.
+Welcher Künstler malte das Bild „Der Schrei“? | Edvard Munch | Picasso | Monet | Michelangelo | Munch kam aus Norwegen.
+Wer war Frida Kahlo? | eine mexikanische Malerin, bekannt für ausdrucksstarke Selbstporträts | eine Bildhauerin aus Rom | eine Graffiti-Sprayerin | eine Architektin | Sie malte oft ihre Gefühle und Schmerzen.
+Was ist abstrakte Kunst? | Kunst, die keine Gegenstände abbildet, sondern mit Formen und Farben arbeitet | Kunst, die nur Menschen zeigt | Fotografie | Comics | Wassily Kandinsky gilt als einer der ersten abstrakten Maler.
+Was ist Surrealismus? | Kunst, die traumartige, unwirkliche Szenen zeigt | Kunst nur mit Punkten | Werbung | Landschaften ohne Fantasie | Salvador Dalí malte schmelzende Uhren.
+Was ist die documenta? | eine große Ausstellung für Gegenwartskunst in Kassel, alle fünf Jahre | ein Museum in Paris | ein Malkasten | ein Kunstpreis für Kinder | Sie findet seit 1955 statt.
+Was ist ein Kurator oder eine Kuratorin? | jemand, der Ausstellungen plant und Kunstwerke auswählt | ein Restaurator | ein Bildhauer | ein Kunstkäufer | Restauratoren reparieren und erhalten Kunstwerke.
+Was ist eine Kunstbetrachtung in vier Schritten? | beschreiben, analysieren, deuten, bewerten | malen, kleben, schneiden, rahmen | kaufen, verkaufen, sammeln, ausstellen | anschauen, vergessen, lachen, gehen | Erst genau hinschauen, dann deuten.
+Welche Höhlenmalereien gehören zu den ältesten Kunstwerken der Menschheit? | Malereien in Höhlen wie Lascaux oder Chauvet in Frankreich | Graffiti in Berlin | Gemälde im Louvre | Comics aus Japan | Sie sind etwa 17.000 bis über 30.000 Jahre alt.
+Was sind Bauhaus-Gestaltungsideen? | klare Formen, Funktion vor Schmuck, Verbindung von Kunst und Handwerk | verschnörkelte Ornamente | nur Ölgemälde | Kunst aus der Steinzeit | Das Bauhaus wurde 1919 in Weimar gegründet.
+Was ist typisch für Kirchen der Gotik? | hohe Kirchen mit Spitzbögen und großen bunten Fenstern | flache Dächer und Beton | runde Kuppeln aus Glas | Holzhütten | Der Kölner Dom ist ein berühmtes Beispiel.
+Was bedeutet „Kunstfreiheit“ im Grundgesetz? | Künstler dürfen frei gestalten, solange sie nicht die Rechte anderer verletzen | Kunst ist kostenlos | Jeder darf überall malen | Kunst ist verboten | Artikel 5 schützt die Freiheit der Kunst.
+Was ist ein Selbstbildnis? | ein Porträt, das Künstler von sich selbst anfertigen | ein Bild von der Familie | eine Landschaft | ein Stillleben | Rembrandt malte sich sehr oft selbst.
+Was ist Land Art? | Kunst in der Natur aus Steinen, Ästen, Blättern oder Erde | Kunst nur im Museum | Malerei mit Ölfarbe | Fotografie im Studio | Die Werke verändern sich mit Wind und Wetter.
+Was ist eine Vanitas-Darstellung im Stillleben? | Gegenstände wie Kerzen oder Totenköpfe erinnern an die Vergänglichkeit | eine fröhliche Party | eine Landkarte | ein Porträt | Vanitas heißt Vergänglichkeit.
+Was macht ein Restaurator? | Er erhält und repariert alte Kunstwerke | Er malt neue Bilder | Er verkauft Bilder | Er baut Museen | Dabei wird möglichst wenig am Original verändert.
+Was ist ein Moodboard? | eine Collage aus Bildern, Farben und Materialien zur Ideensammlung | ein Skateboard | eine Leinwand | ein Malkasten | Designer nutzen es am Anfang eines Projekts.
+Was ist ein Logo? | ein Zeichen, das eine Firma oder Marke erkennbar macht | ein Gemälde | eine Skulptur | ein Comic | Gute Logos sind einfach und einprägsam.
+Was ist Grafikdesign? | Gestaltung von Plakaten, Logos, Büchern und Webseiten mit Schrift und Bild | Bildhauerei | Architektur | Malerei mit Öl | Typografie ist die Gestaltung mit Schrift.
+Was ist eine Typografie? | die Gestaltung mit Schrift und Schriftarten | eine Druckmaschine | ein Farbkreis | eine Skizze | Serifenschriften haben kleine Füßchen an den Buchstaben.

@@ -1,0 +1,91 @@
+# Informatik Klasse 5 – zusätzliche Fragen (26.11.2026)
+
+## hardware | Hardware, Software und Betriebssysteme
+Was ist der Prozessor (CPU)? | das Rechenwerk, das die Befehle eines Computers ausführt | der Bildschirm | die Tastatur | das Netzteil | CPU heißt Central Processing Unit.
+Was ist der Arbeitsspeicher (RAM)? | ein schneller Speicher, in dem laufende Programme arbeiten; beim Ausschalten wird er gelöscht | ein dauerhafter Speicher für Fotos | eine Festplatte | ein USB-Stick | Mehr RAM bedeutet, dass mehr Programme gleichzeitig flüssig laufen.
+Was ist eine SSD oder Festplatte? | ein dauerhafter Speicher für Programme und Dateien | ein Prozessor | ein Bildschirm | ein Netzwerkkabel | Die Daten bleiben auch ohne Strom erhalten.
+Was ist ein Betriebssystem? | die Grundsoftware, die Hardware und Programme verwaltet | ein Spiel | ein Virus | eine Tastatur | Beispiele: Windows, macOS, Linux, Android, iOS.
+Welches ist ein Betriebssystem für Smartphones? | Android | Excel | Chrome | WhatsApp | Auch iOS von Apple ist ein Handy-Betriebssystem.
+Was ist der Unterschied zwischen Hardware und Software? | Hardware kann man anfassen, Software sind Programme | Es gibt keinen | Software kann man anfassen | Hardware sind Apps | Ohne Software kann Hardware nichts tun.
+Was bedeutet das EVA-Prinzip am Beispiel Taschenrechner? | Eingabe der Zahlen, Verarbeitung der Rechnung, Ausgabe des Ergebnisses | Erst Ausgabe, dann Eingabe | Nur Verarbeitung | Nur Ausgabe | EVA = Eingabe, Verarbeitung, Ausgabe.
+Wie viele Byte sind ungefähr ein Kilobyte? | 1.000 | 10 | 100 | 1.000.000 | Genauer sind es 1.024 Byte im Binärsystem.
+Was ist größer: ein Gigabyte oder ein Megabyte? | ein Gigabyte | ein Megabyte | beide gleich | das kann man nicht vergleichen | 1 GB ≈ 1.000 MB.
+Wie viele verschiedene Zustände kann ein Bit haben? | 2 | 1 | 8 | 10 | 0 oder 1 – aus oder an.
+Wie viele verschiedene Werte kann man mit 8 Bit (1 Byte) darstellen? | 256 | 8 | 16 | 100 | 2 hoch 8 = 256.
+Welche Dezimalzahl ist die Binärzahl 1010? | 10 | 8 | 12 | 1010 | 8 + 0 + 2 + 0 = 10.
+Welche Dezimalzahl ist die Binärzahl 1111? | 15 | 4 | 16 | 1111 | 8 + 4 + 2 + 1 = 15.
+Wie schreibt man die Zahl 6 im Binärsystem? | 110 | 101 | 111 | 011 | 6 = 4 + 2 → 110.
+Was ist ein Treiber in der Informatik? | ein kleines Programm, damit das Betriebssystem ein Gerät ansteuern kann | ein Mensch, der Computer fährt | ein Virus | eine Maus | Drucker brauchen zum Beispiel Treiber.
+Was ist Open-Source-Software? | Software, deren Quellcode offen ist und die oft frei genutzt werden darf | geheime Software | nur Spiele | Software, die viel kostet | Beispiele: Firefox, LibreOffice, Linux.
+Was ist eine Cloud? | Speicher und Programme auf Servern im Internet | eine Wolke am Himmel | ein USB-Stick | eine Festplatte im eigenen PC | Daten in der Cloud liegen auf fremden Rechnern – das hat Vor- und Nachteile.
+Was ist ein Backup? | eine Sicherheitskopie wichtiger Daten | ein Virus | ein neues Programm | ein Passwort | Wer regelmäßig sichert, verliert bei einem Defekt nicht alles.
+Was ist eine Dateiendung wie .mp3? | ein Hinweis auf das Dateiformat, hier Musik | eine Internetadresse | ein Ordnername | ein Passwort | .jpg = Bild, .mp4 = Video, .pdf = Dokument.
+
+## netz | Internet, Suchen und Daten
+Was ist eine IP-Adresse? | eine Nummer, mit der Geräte im Internet erkannt werden | ein Passwort | eine E-Mail-Adresse | eine Hausnummer | Ohne Adresse wüssten Datenpakete nicht, wohin.
+Was ist ein Router? | ein Gerät, das das Heimnetz mit dem Internet verbindet | ein Drucker | ein Lautsprecher | eine Festplatte | Er verteilt auch das WLAN in der Wohnung.
+Was bedeutet „https“ am Anfang einer Adresse? | Die Verbindung ist verschlüsselt. | Die Seite ist garantiert seriös. | Die Seite ist kostenlos. | Die Seite ist für Kinder. | Auch Betrugsseiten können https haben.
+Was ist ein Cookie im Internet? | eine kleine Datei, die Webseiten speichern, um dich wiederzuerkennen | ein Keks | ein Virus | ein Passwort | Cookies werden oft für Werbung genutzt.
+Wie findest du mit einer Suchmaschine bessere Ergebnisse? | genaue Suchbegriffe wählen und mehrere Quellen vergleichen | nur ein Wort eingeben und das erste Ergebnis glauben | ganze Romane eintippen | nur Bilder anklicken | Anführungszeichen suchen nach genau dieser Wortfolge.
+Warum stehen bei Suchergebnissen oft „Anzeigen“ ganz oben? | Firmen bezahlen dafür – das ist Werbung | Sie sind immer die besten | Sie sind zufällig | Sie sind von der Schule | Anzeigen sind gekennzeichnet.
+Woran erkennst du eine vertrauenswürdige Quelle? | Impressum, Autor, Datum, Belege und sachliche Sprache | viele Ausrufezeichen | reißerische Überschriften | keine Angaben zum Autor | Im Zweifel mehrere Quellen vergleichen.
+Was ist ein Impressum? | Pflichtangaben, wer für eine Webseite verantwortlich ist | ein Werbebanner | ein Passwort | ein Spiel | Fehlt es, ist Vorsicht angebracht.
+Was ist Datenschutz? | der Schutz persönlicher Daten vor Missbrauch | das Löschen aller Daten | ein Virenscanner | eine Firewall | In der EU regelt das die Datenschutz-Grundverordnung (DSGVO).
+Ab welchem Alter dürfen Kinder in Deutschland bei vielen Online-Diensten selbst in die Datenverarbeitung einwilligen? | ab 16 Jahren, vorher müssen die Eltern zustimmen | ab 6 Jahren | ab 10 Jahren | ab 21 Jahren | So regelt es die DSGVO in Deutschland.
+Was sind Metadaten bei einem Foto? | versteckte Zusatzinfos wie Aufnahmezeit, Gerät und oft der Ort | die Farben | der Bildtitel im Album | die Pixelanzahl auf dem Bildschirm | GPS-Daten im Foto können verraten, wo du wohnst.
+Was ist ein digitaler Fußabdruck? | alle Spuren, die man im Internet hinterlässt | ein Schuhabdruck im Schnee | ein Foto vom Fuß | ein Spielstand | Das Internet vergisst kaum etwas.
+Was ist das Urheberrecht? | Es schützt Werke wie Texte, Bilder und Musik; der Urheber bestimmt, wer sie nutzen darf | Jeder darf alles kopieren | Nur für Bücher | Nur für Erwachsene | Bei Referaten Quellen angeben!
+Was bedeutet die Lizenz „CC BY“ bei einem Bild? | Man darf es nutzen, muss aber den Urheber nennen | Man darf es nie nutzen | Man muss dafür bezahlen | Man darf den Urheber verschweigen | Creative-Commons-Lizenzen erlauben Nutzung unter Bedingungen.
+Was ist Streaming? | Musik oder Videos werden direkt aus dem Internet abgespielt, ohne sie dauerhaft zu speichern | ein Download auf DVD | ein Fluss | ein Spiel | Streaming verbraucht viel Datenvolumen.
+Was ist Datenvolumen beim Handyvertrag? | die Menge an Daten, die man mobil pro Monat nutzen darf | die Größe des Handys | die Lautstärke | die Akkulaufzeit | Im WLAN wird es meist nicht verbraucht.
+
+## sicherheit | Cybersecurity: Passwörter, Phishing und Schadsoftware
+Was ist ein starkes Passwort? | lang, mit Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen, ohne echte Wörter aus dem Wörterbuch | dein Geburtsdatum | 123456 | der Name deines Haustiers | Eine Passwort-Satzmethode hilft: Ich esse 2 Äpfel am Tag! → Ie2ÄaT!
+Warum soll man für jedes Konto ein anderes Passwort nutzen? | Wird eins geklaut, sind nicht alle Konten in Gefahr. | Weil es Pflicht ist. | Damit man sie vergisst. | Das ist egal. | Ein Passwortmanager kann helfen.
+Was ist Zwei-Faktor-Authentifizierung? | Anmeldung mit Passwort und zusätzlich z. B. einem Code aufs Handy | zwei Passwörter auf einem Zettel | zwei Benutzer gleichzeitig | ein doppelter Bildschirm | Selbst mit gestohlenem Passwort kommt ein Angreifer so schwer rein.
+Woran erkennst du oft eine Phishing-Nachricht? | Zeitdruck, Drohungen, falsche Absenderadresse, Link zu einer fremden Seite | persönliche Anrede durch Freunde | keine Links | korrekte Rechtschreibung immer | Banken fragen nie per Mail nach deinem Passwort.
+Ein Spiel verspricht kostenlose Spielwährung, wenn du deine Zugangsdaten eingibst. Was ist das? | ein Betrugsversuch, um dein Konto zu stehlen | ein echtes Geschenk | ein Update | ein Turnier | Gib Zugangsdaten nur auf der echten Seite ein.
+Was ist Malware? | Oberbegriff für Schadsoftware wie Viren, Trojaner, Spyware | ein Malprogramm | ein Betriebssystem | ein Router | Malware schadet dem Gerät oder stiehlt Daten.
+Was ist ein Trojaner? | ein Programm, das nützlich wirkt, aber heimlich Schaden anrichtet | ein Antivirenprogramm | ein Pferd im Stall | ein Browser | Benannt nach dem Trojanischen Pferd aus der griechischen Sage.
+Was ist Ransomware? | Schadsoftware, die Daten verschlüsselt und Lösegeld fordert | ein Spiel | ein Backup | eine Suchmaschine | Gegen Ransomware helfen vor allem Backups.
+Was ist eine Firewall? | ein Schutz, der unerwünschte Verbindungen ins Netz oder vom Netz blockiert | eine Brandschutztür | ein Virus | ein Drucker | Sie ist wie ein Türsteher für Daten.
+Warum sind Updates wichtig für die Sicherheit? | Sie schließen bekannte Sicherheitslücken. | Sie machen Geräte langsamer. | Sie sind nur Werbung. | Sie löschen alle Daten. | Veraltete Software ist ein beliebtes Ziel für Angreifer.
+Was solltest du in einem öffentlichen WLAN vermeiden? | Online-Banking und Eingabe sensibler Passwörter ohne Schutz | Wetter nachsehen | eine Uhrzeit prüfen | Musik hören | Andere im selben Netz könnten mitlesen.
+Was ist Social Engineering? | Betrüger tricksen Menschen aus, damit sie Daten oder Zugänge verraten | ein Schulfach | eine App | ein soziales Netzwerk | Oft geben sich Täter als Freunde, Support oder Lehrer aus.
+Was ist ein Fake-Gewinnspiel in sozialen Netzwerken? | ein Betrug, der Daten oder Geld abgreifen will | ein echtes Gewinnspiel von Freunden | ein Spiel in der Schule | eine Wette | Echte Gewinne verlangen keine Gebühr oder Passwörter.
+Was tun, wenn dein Konto gehackt wurde? | Passwort ändern, Eltern informieren, Plattform melden und Freunde warnen | nichts | neues Handy kaufen | weiter so nutzen | Auch gespeicherte Zahlungsdaten prüfen.
+
+## programmieren | Algorithmen und Programmieren
+Was ist eine Variable in einem Programm? | ein Speicherplatz mit Namen, dessen Wert sich ändern kann | ein fester Befehl | ein Fehler | ein Kabel | Zum Beispiel: punkte = 0, später punkte = punkte + 1.
+Was macht diese Anweisung: „wiederhole 10-mal: punkte = punkte + 2“, wenn punkte vorher 0 ist? | punkte ist danach 20 | punkte ist 10 | punkte ist 12 | punkte ist 2 | 10-mal 2 dazu = 20.
+Was ist eine Bedingung (if) in einem Programm? | Ein Teil wird nur ausgeführt, wenn etwas zutrifft. | Das Programm wiederholt sich endlos. | Das Programm stoppt immer. | Eine Variable wird gelöscht. | wenn Punkte > 10, dann zeige „Gewonnen“.
+Was ist eine Endlosschleife? | eine Schleife, die nie aufhört | eine sehr kurze Schleife | ein Programmende | ein Virus | Manchmal ist sie gewollt, z. B. in Spielen. Oft ist sie ein Fehler.
+Was ist Debugging? | Fehler in einem Programm suchen und beheben | ein Programm löschen | einen Käfer fangen | ein Spiel spielen | Schritt für Schritt testen hilft dabei.
+Was ist eine Programmiersprache? | eine Sprache mit festen Regeln, um Befehle für Computer zu schreiben | Englisch | Morsealphabet | Gebärdensprache | Beispiele: Python, JavaScript, Scratch.
+Was ist ein Struktogramm oder Flussdiagramm? | eine Zeichnung, die den Ablauf eines Algorithmus zeigt | ein Foto | ein Stundenplan | eine Landkarte | Rauten stehen oft für Entscheidungen.
+Was bedeutet „Sortieren“ für einen Algorithmus? | Daten in eine Reihenfolge bringen, z. B. von klein nach groß | Daten löschen | Daten verstecken | Daten verschlüsseln | Es gibt verschiedene Sortieralgorithmen, manche sind schneller.
+Wie findet man in einer sortierten Liste schnell eine Zahl? | in der Mitte anfangen und jedes Mal die Hälfte ausschließen (binäre Suche) | jede Zahl von vorne durchgehen | raten | gar nicht | Bei 1.000 Zahlen reichen so etwa 10 Schritte.
+Was ist ein Roboter-Sensor wie ein Ultraschallsensor? | Er misst den Abstand zu Hindernissen. | Er misst die Farbe. | Er macht Musik. | Er lädt den Akku. | Damit kann ein Roboter Hindernissen ausweichen.
+Was ist ein Mikrocontroller wie der Calliope mini? | ein kleiner Computer auf einer Platine, den Schulkinder programmieren können | ein Taschenrechner | ein Fernseher | ein Lautsprecher | Er hat Sensoren, LEDs und Knöpfe.
+
+## ki | Künstliche Intelligenz und verantwortungsvoller Umgang
+Was ist künstliche Intelligenz (KI)? | Computerprogramme, die aus Daten lernen und Aufgaben wie Erkennen, Übersetzen oder Antworten lösen | ein denkender Mensch im Computer | ein Roboter mit Gefühlen | ein Taschenrechner | KI erkennt Muster in sehr vielen Daten.
+Wie lernt eine KI zum Beispiel, Katzenbilder zu erkennen? | mit sehr vielen Beispielbildern, auf denen Katzen markiert sind | durch Streicheln von Katzen | durch Zufall | gar nicht | Das nennt man maschinelles Lernen.
+Warum kann eine KI falsche Antworten geben? | Sie berechnet wahrscheinliche Antworten und kann sich irren oder Dinge erfinden. | Weil sie lügt, um zu ärgern. | KI irrt nie. | Weil der Strom ausfällt. | Wichtige Infos immer mit verlässlichen Quellen prüfen.
+Was ist ein Deepfake? | ein mit KI gefälschtes Video, Bild oder eine Stimme, das echt wirkt | ein tiefes Schwimmbecken | ein Virus | ein Computerspiel | Deepfakes können Menschen Dinge sagen lassen, die sie nie gesagt haben.
+Woran kannst du KI-Bilder manchmal erkennen? | seltsame Hände, verzerrte Schrift, unlogische Details | immer an einem Stempel | gar nicht | an der Farbe Blau | Am sichersten: Quelle prüfen und nachfragen.
+Darf man mit KI ein Bild einer Mitschülerin verändern und verbreiten? | Nein, das verletzt ihre Rechte und kann strafbar sein. | Ja, wenn es lustig ist. | Ja, wenn es niemand merkt. | Ja, immer. | Das Recht am eigenen Bild gilt auch bei KI-Bildern.
+Ist es okay, eine Hausaufgabe komplett von einer KI schreiben zu lassen und als eigene abzugeben? | Nein, das ist unehrlich und man lernt nichts. | Ja, immer. | Ja, wenn sie gut ist. | Ja, wenn der Lehrer es nicht merkt. | KI kann beim Lernen helfen, z. B. beim Erklären – aber die Leistung muss deine sein.
+Was ist ein Algorithmus in sozialen Medien? | ein Programm, das entscheidet, welche Beiträge du als Nächstes siehst | ein Freund | ein Filter für Fotos | ein Passwort | Er zeigt dir mehr von dem, was dich lange am Bildschirm hält.
+Was ist eine „Filterblase“? | Man sieht im Netz fast nur noch Inhalte, die zur eigenen Meinung passen | ein Seifenblasen-Filter | ein Kamerafilter | ein Datenschutzgesetz | Bewusst auch andere Quellen lesen hilft.
+Warum ist es gut, Bildschirmzeit bewusst zu planen? | Damit genug Zeit für Schlaf, Bewegung, Freunde und Schule bleibt | Weil Bildschirme explodieren | Weil Apps sonst teurer werden | Gar nicht nötig | Viele Handys haben Einstellungen für Bildschirmzeit.
+
+## netz | Internet, Suchen und Daten
+Was ist ein Server? | ein Computer, der anderen Geräten im Netz Dienste und Daten bereitstellt | ein Kellner | ein Bildschirm | eine App | Webseiten liegen auf Servern.
+Was ist eine Domain, z. B. „wikipedia.org“? | der Name einer Internetseite, der leichter zu merken ist als eine IP-Adresse | ein Passwort | ein Virus | ein Router | Das DNS übersetzt Namen in IP-Adressen.
+Was ist ein Chatbot? | ein Programm, das automatisch in Textform antwortet | ein echter Mensch | ein Spiel | ein Virus | Manche Chatbots nutzen KI.
+Was ist ein QR-Code? | ein quadratischer Code, den das Handy scannt, um z. B. eine Webseite zu öffnen | ein Strichcode nur für Bücher | ein Passwort | ein Virus | Vorsicht: Auch QR-Codes können zu Betrugsseiten führen.
+Was ist Barrierefreiheit im Internet? | Webseiten so gestalten, dass auch Menschen mit Behinderung sie nutzen können | eine Seite ohne Werbung | eine Seite ohne Passwort | eine schnelle Seite | Zum Beispiel Vorlesefunktionen und Bildbeschreibungen.
+Was ist der Unterschied zwischen Internet und World Wide Web? | Das Internet ist das weltweite Netz, das Web ist ein Dienst darin mit verlinkten Seiten | Es gibt keinen | Das Web ist älter | Das Internet ist nur E-Mail | E-Mail und Online-Spiele nutzen das Internet, aber nicht unbedingt das Web.
+Was bedeutet „verschlüsseln“? | Daten so umwandeln, dass nur Berechtigte sie lesen können | Daten löschen | Daten drucken | Daten verkaufen | Schon die Römer nutzten einfache Verschlüsselungen wie die Cäsar-Verschiebung.
+Was ist die Cäsar-Verschlüsselung mit Verschiebung 1? | Jeder Buchstabe wird durch den nächsten ersetzt: HALLO wird IBMMP | Die Buchstaben werden umgedreht | Alle Vokale werden gelöscht | Jeder Buchstabe wird verdoppelt | Mit Verschiebung 3 hat angeblich Julius Cäsar Botschaften verschlüsselt.

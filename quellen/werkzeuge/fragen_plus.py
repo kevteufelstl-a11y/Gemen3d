@@ -42,6 +42,43 @@ def lies(path):
     return kats, fehler
 
 
+STOP = set('der die das ein eine einen einem einer und oder ist sind was wie wo wer wann warum welche welcher welches man du dich dir mit von zu im in am an auf für bei aus nach vor nicht kein keine sich es sie er wir ihr den dem des als auch so oft nur noch sehr'.split())
+
+
+def worte(t):
+    return {w for w in re.findall(r'[a-zäöüß]{4,}', t.lower()) if w not in STOP}
+
+
+def ausgleich(base, kl):
+    """Neue Fragen: Ist die richtige Antwort deutlich die laengste, wird die kuerzeste falsche Antwort durch eine
+    aehnlich lange Antwort aus einer ANDEREN Frage desselben Fachs ersetzt (die zu dieser Frage nicht passt).
+    So kann man die richtige Antwort nicht einfach an ihrer Laenge erkennen. Psychologie und Mathe bleiben unberuehrt."""
+    for f in base['faecher']:
+        if f['name'] in ('Mathe', 'Psychologie', 'Englisch'): continue
+        pool = [(q['antwort'], worte(q['frage'] + ' ' + q['antwort']), k['id']) for k in f['kategorien'] for q in k['fragen']]
+        for k in f['kategorien']:
+            for q in k['fragen']:
+                if not q.get('_neu'): continue
+                ok = q['optionen'][q['richtig']]
+                falsch = [o for i, o in enumerate(q['optionen']) if i != q['richtig']]
+                if len(ok) <= max(len(o) for o in falsch) * 1.15 or len(ok.split()) < 3 or len(ok) < 18: continue
+                qw = worte(q['frage'] + ' ' + ok)
+                r = random.Random(q['id'])
+                erstes = ok.split()[0].lower()
+                kand = [(a, kid) for a, w, kid in pool if a not in q['optionen'] and 0.75 * len(ok) <= len(a) <= 1.3 * len(ok)
+                        and a[:1].isupper() == ok[:1].isupper() and not (w & qw) and a.endswith('.') == ok.endswith('.')]
+                if not kand: continue
+                # bevorzugt: gleiches erstes Wort (z. B. „ein …“), gleicher Bereich, aehnliche Laenge
+                kand.sort(key=lambda t: (t[0].split()[0].lower() != erstes, t[1] != k['id'], abs(len(t[0]) - len(ok)), t[0]))
+                beste = [a for a, _ in kand[:4]]
+                if kand[0][0].split()[0].lower() != erstes and len(erstes) <= 5 and erstes in ('ein', 'eine', 'der', 'die', 'das', 'sie', 'er', 'es', 'man', 'mit', 'im', 'in', 'zum', 'durch'):
+                    continue
+                neu = r.choice(beste)
+                kurz = min(range(4), key=lambda i: (i == q['richtig'], len(q['optionen'][i])))
+                q['optionen'][kurz] = neu
+                q['ausgleich'] = True
+
+
 def baue(kl):
     base = json.load(open(f'{FP}/basis/fragen_klasse{kl}.json', encoding='utf-8'))
     faecher = {f['name']: f for f in base['faecher']}
@@ -52,6 +89,14 @@ def baue(kl):
         paths = sorted(glob.glob(f'{FP}/k{kl}/{fn}.txt') + glob.glob(f'{FP}/k{kl}/{fn}_*.txt'))
         if not paths:
             continue
+        dis = {}
+        for dp in glob.glob(f'{FP}/k{kl}/{fn}.distraktoren'):
+            for line in open(dp, encoding='utf-8'):
+                if '||' not in line or line.startswith('#'): continue
+                a, b = line.split('||', 1)
+                ff = [x.strip() for x in b.split(' | ')]
+                if len(ff) == 3: dis[a.strip()] = ff
+                else: alle_fehler.append(f'{os.path.basename(dp)}: braucht 3 Antworten: {a[:60]}')
         kats, fehler = [], []
         for path in paths:
             k_, f_ = lies(path)
@@ -72,17 +117,25 @@ def baue(kl):
                     alle_fehler.append(f'k{kl}/{fn}: doppelte Frage: {frage[:70]}')
                     continue
                 gesehen.add(frage.lower())
+                treffer = [k2 for k2 in dis if frage.startswith(k2)]
+                if treffer:
+                    f1, f2, f3 = dis.pop(max(treffer, key=len))
                 opts = [ok, f1, f2, f3]
                 r = random.Random(int(hashlib.md5(frage.encode()).hexdigest()[:8], 16))
                 r.shuffle(opts)
                 nr += 1
                 ziel['fragen'].append({'id': f'{slug(fn)}-{ziel["id"]}-{nr:03d}', 'frage': frage, 'optionen': opts,
-                                       'richtig': opts.index(ok), 'antwort': ok, 'erklaerung': erk})
+                                       'richtig': opts.index(ok), 'antwort': ok, 'erklaerung': erk, '_neu': True})
                 neu += 1
             ziel['anzahl'] = len(ziel['fragen'])
+        for k2 in dis: alle_fehler.append(f'k{kl}/{fn}.distraktoren: Frage nicht gefunden: {k2[:60]}')
+    ausgleich(base, kl)
     # Reihenfolge: vorhandene Faecher wie bisher, neue Faecher in der ORDER-Reihenfolge dahinter
     alt = [f['name'] for f in json.load(open(f'{FP}/basis/fragen_klasse{kl}.json', encoding='utf-8'))['faecher']]
     base['faecher'] = [faecher[n] for n in alt] + [faecher[n] for n in ORDER[kl] if n in faecher and n not in alt]
+    for f in base['faecher']:
+        for k in f['kategorien']:
+            for q in k['fragen']: q.pop('_neu', None)
     base['anzahl'] = sum(len(k['fragen']) for f in base['faecher'] for k in f['kategorien'])
     base['erweitert'] = '2026-11-26'
     json.dump(base, open(f'{D}/../fragen_klasse{kl}.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

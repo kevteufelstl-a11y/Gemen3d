@@ -1,0 +1,84 @@
+# Musik Klasse 5 – zusätzliche Fragen (26.11.2026)
+
+## noten | Noten, Takt und Tonhöhe
+Was bedeutet die Angabe 4/4 am Anfang eines Musikstücks? | Jeder Takt hat vier Viertelschläge. | Das Stück dauert 4 Minuten. | Es spielen 4 Instrumente. | Es gibt 4 Strophen. | Die obere Zahl sagt, wie viele Schläge, die untere, welcher Notenwert.
+Wie viele Achtelnoten passen in einen 3/4-Takt? | 6 | 3 | 8 | 4 | 3 Viertel = 6 Achtel.
+Wie viele Schläge dauert eine punktierte halbe Note? | 3 | 2 | 4 | 1,5 | Der Punkt verlängert um die Hälfte: 2 + 1 = 3.
+Wie viele Schläge dauert eine punktierte Viertelnote? | 1,5 | 1 | 2 | 3 | 1 + 0,5 = 1,5.
+Was ist eine Triole? | drei Noten, die in der Zeit von zwei gleichen Noten gespielt werden | drei Instrumente | ein Dreiklang | eine Pause | Sie wird mit einer kleinen 3 gekennzeichnet.
+Was ist ein Auftakt? | ein unvollständiger Takt vor dem ersten vollen Takt | das Ende eines Liedes | ein Applaus | eine Pause | Viele Lieder beginnen mit einem Auftakt.
+Was ist der Bassschlüssel? | ein Notenschlüssel für tiefe Töne, auch F-Schlüssel | ein Schlüssel für hohe Töne | ein Schlüssel für Trommeln | ein Instrument | Die beiden Punkte umschließen die F-Linie.
+Was bewirkt ein Kreuz (♯) vor einer Note? | Der Ton wird um einen Halbton erhöht. | Der Ton wird erniedrigt. | Der Ton wird lauter. | Der Ton entfällt. | Aus c wird cis.
+Was bewirkt ein b (♭) vor einer Note? | Der Ton wird um einen Halbton erniedrigt. | Der Ton wird erhöht. | Der Ton wird länger. | Der Ton wird leiser. | Aus e wird es, aus h wird b.
+Was hebt ein Auflösungszeichen (♮) auf? | ein vorheriges Kreuz oder b | den Takt | die Lautstärke | die Wiederholung | Der Ton klingt dann wieder normal.
+Was ist ein Halbton? | der kleinste Tonabstand in unserer Musik, z. B. von e nach f | ein halb so lauter Ton | ein halber Takt | eine Pause | Auf dem Klavier: von einer Taste zur direkt benachbarten.
+Zwischen welchen Tönen der C-Dur-Tonleiter liegen Halbtonschritte? | e–f und h–c | c–d und d–e | f–g und g–a | a–h und c–d | Alle anderen Schritte sind Ganztöne.
+Was ist ein Dreiklang? | drei Töne, die im Terzabstand übereinanderliegen, z. B. c–e–g | drei gleiche Töne | drei Takte | drei Instrumente | C-Dur-Dreiklang: c, e, g.
+Wie klingt Dur meist im Vergleich zu Moll? | eher fröhlich und hell | eher traurig | immer leiser | immer schneller | Moll wirkt oft traurig oder ernst. Ausnahmen gibt es aber.
+Was ist eine Oktave? | der Abstand von einem Ton zum nächsten Ton mit gleichem Namen, z. B. c1 zu c2 | ein Instrument mit acht Saiten | acht Takte | ein Notenschlüssel | Oktave kommt von „acht“: acht Stammtöne weiter.
+Was ist ein Wiederholungszeichen? | ein Zeichen, dass ein Abschnitt noch einmal gespielt wird | ein Zeichen für eine Pause | das Ende | ein Tempo | Es besteht aus Doppelstrich und zwei Punkten.
+Was bedeutet „Fermate“? | Der Ton wird länger ausgehalten als notiert. | Der Ton wird kurz gespielt. | Es folgt eine Pause. | Das Stück endet sofort. | Das Zeichen sieht aus wie ein Auge über der Note.
+Was bedeutet „staccato“? | kurz und abgesetzt spielen | gebunden spielen | sehr laut spielen | langsam spielen | Man schreibt dafür einen Punkt über oder unter die Note.
+Was bedeutet „legato“? | gebunden, ohne Pausen zwischen den Tönen spielen | kurz und abgehackt | sehr leise | sehr schnell | Ein Bogen über den Noten zeigt Legato.
+Was bedeutet „Andante“? | gehend, ruhiges Tempo | sehr schnell | sehr langsam und traurig | laut | Allegro = schnell, Adagio = langsam.
+Was bedeutet „fortissimo“ (ff)? | sehr laut | sehr leise | mittellaut | schneller werden | pianissimo (pp) heißt sehr leise.
+Was bedeutet „mezzoforte“ (mf)? | mittellaut | sehr laut | sehr leise | langsam | mezzo heißt halb.
+Was ist BPM bei einem Musikstück? | Beats per Minute, die Anzahl der Schläge pro Minute | die Lautstärke | die Länge | die Tonart | Viele Popsongs liegen bei 100 bis 130 BPM.
+
+## instrumente | Instrumente und Ensembles
+Wie heißen die vier Streichinstrumente des Orchesters von hoch nach tief? | Violine, Bratsche, Violoncello, Kontrabass | Gitarre, Harfe, Bass, Cello | Trompete, Horn, Posaune, Tuba | Flöte, Oboe, Klarinette, Fagott | Sie werden alle mit dem Bogen gestrichen.
+Welche Instrumente gehören zu den Holzblasinstrumenten? | Flöte, Oboe, Klarinette, Fagott | Trompete und Posaune | Geige und Cello | Pauke und Becken | Die Querflöte zählt dazu, obwohl sie meist aus Metall ist.
+Warum gehört das Saxophon zu den Holzblasinstrumenten? | Der Ton entsteht wie bei der Klarinette durch ein Rohrblatt. | Weil es aus Holz ist. | Weil es klein ist. | Weil es leise ist. | Das Saxophon ist aus Metall, aber das Rohrblatt entscheidet.
+Welche Instrumente sind Blechblasinstrumente? | Trompete, Horn, Posaune, Tuba | Flöte, Oboe | Geige, Bratsche | Klavier, Orgel | Der Ton entsteht durch die schwingenden Lippen am Kesselmundstück.
+Wie ändert man bei der Posaune die Tonhöhe? | mit einem Zug, der die Röhre verlängert | mit Tasten | mit Saiten | mit einem Bogen | Längere Röhre = tieferer Ton.
+Was ist eine Orgel? | ein großes Tasteninstrument mit vielen Pfeifen, oft in Kirchen | ein Schlaginstrument | ein Saiteninstrument | ein Blechblasinstrument | Orgeln haben auch eine Pedal-Tastatur für die Füße.
+Was ist eine Band-Besetzung in der Popmusik oft? | Gesang, Gitarre, Bass, Schlagzeug, Keyboard | Geige, Bratsche, Cello | Flöte, Oboe, Fagott | Pauke allein | Der Bass spielt die tiefe Grundlage.
+Was macht die Rhythmusgruppe in einer Band? | Schlagzeug und Bass geben Takt und Grundlage | Sie singt die Melodie | Sie verkauft Tickets | Sie stimmt Instrumente | Darauf bauen Gitarre und Gesang auf.
+Was ist ein Synthesizer? | ein elektronisches Instrument, das Klänge künstlich erzeugt | eine Trommel aus Holz | eine Flöte | ein Notenständer | Synthesizer prägen Pop und elektronische Musik.
+Was ist eine Big Band? | eine große Jazzband mit vielen Bläsern | ein Sinfonieorchester | ein Chor | ein Duo | Big Bands spielten besonders zur Swing-Zeit.
+Wie viele Musikerinnen und Musiker hat ein großes Sinfonieorchester ungefähr? | etwa 60 bis 100 | 3 | 10 | 1.000 | Die größte Gruppe sind die Streicher.
+Was ist ein Streichquartett? | zwei Violinen, eine Bratsche und ein Cello | vier Trompeten | vier Sänger | vier Schlagzeuger | Quartett = vier.
+
+## stile | Musikrichtungen und Geschichte
+In welchem Land entstand der Jazz um 1900? | in den USA, vor allem in New Orleans | in Deutschland | in Japan | in Brasilien | Afroamerikanische Musiker verbanden Blues, Gospel und Marschmusik.
+Was ist typisch für Jazz? | Improvisation und ein swingender Rhythmus | nur Chorgesang | nur elektronische Klänge | keine Instrumente | Improvisation heißt spontanes Erfinden beim Spielen.
+Was ist Swing? | ein mitreißender Jazz-Stil der 1930er und 40er Jahre zum Tanzen | ein Kinderlied | eine Oper | ein Volkslied | Big Bands wie die von Glenn Miller spielten Swing.
+Was ist Blues? | eine Musik aus den USA mit oft traurigen Texten und typischen Akkordfolgen | eine Farbe | ein Walzer | ein Marsch | Blues ist eine Wurzel von Jazz und Rock.
+Wer wurde als „King of Rock’n’Roll“ bezeichnet? | Elvis Presley | Mozart | Michael Jackson | Bob Marley | Elvis wurde in den 1950er-Jahren weltberühmt.
+Wer wurde als „King of Pop“ bezeichnet? | Michael Jackson | Elvis Presley | Ludwig van Beethoven | Johann Sebastian Bach | Sein Album „Thriller“ gehört zu den meistverkauften der Welt.
+Welche Band aus Liverpool wurde in den 1960er-Jahren weltberühmt? | The Beatles | ABBA | Queen | Metallica | Die Beatles prägten die Popmusik stark.
+Aus welchem Land kommt die Gruppe ABBA? | Schweden | England | Deutschland | USA | ABBA gewann 1974 den Eurovision Song Contest.
+Was ist Hip-Hop ursprünglich? | eine Jugendkultur aus New York mit Rap, DJing, Breakdance und Graffiti | ein Volkstanz | eine Opernform | ein Kirchenlied | Sie entstand in den 1970er-Jahren in der Bronx.
+Was macht ein DJ beim Mixen? | Er passt das Tempo zweier Lieder an und blendet sie ineinander über | Er singt die Strophen | Er spielt Geige | Er schreibt Noten | Das nennt man Beatmatching.
+Was ist ein Sample? | ein kurzer Ausschnitt aus einer Aufnahme, der in einem neuen Stück verwendet wird | ein Kuchen | ein Instrument | eine Pause | Für fremde Samples braucht man meist eine Erlaubnis.
+Was ist Techno? | elektronische Tanzmusik mit gleichmäßigem Bass-Beat | Volksmusik | Klassik | Jazz-Ballade | Techno hat eine große Szene in Berlin und Detroit.
+Was ist Reggae? | eine Musik aus Jamaika mit betonten Nachschlägen | ein Marsch aus Preußen | ein Walzer | eine Oper | Bob Marley ist der bekannteste Reggae-Musiker.
+In welcher Epoche lebte Johann Sebastian Bach? | im Barock | in der Romantik | im 20. Jahrhundert | im Mittelalter | Bach lebte von 1685 bis 1750.
+In welcher Epoche komponierten Haydn, Mozart und Beethoven vor allem? | in der Wiener Klassik | im Barock | in der Romantik | im Jazz-Zeitalter | Wien war damals das Zentrum der Musik.
+Wer komponierte die „Ode an die Freude“, heute Hymne der Europäischen Union? | Ludwig van Beethoven | Mozart | Bach | Vivaldi | Sie stammt aus seiner 9. Sinfonie.
+Was ist eine Sinfonie? | ein großes Werk für Orchester, meist in mehreren Sätzen | ein Lied für eine Stimme | ein Tanz | ein Jazzstück | Beethoven schrieb neun Sinfonien.
+Was ist ein Musical? | eine Bühnenshow, die Schauspiel, Gesang und Tanz verbindet | eine Sinfonie | eine Oper ohne Musik | ein Konzert für Orgel | „Starlight Express“ läuft in Bochum seit 1988.
+Welcher Komponist schrieb das Musikmärchen „Peter und der Wolf“? | Sergei Prokofjew | Mozart | Bach | Beethoven | Jede Figur wird von einem Instrument dargestellt.
+Was ist Volksmusik? | traditionelle Musik eines Volkes oder einer Region, oft mündlich überliefert | Musik nur von berühmten Stars | elektronische Musik | Werbemusik | Volkslieder werden oft von Generation zu Generation weitergegeben.
+
+## produktion | Musik machen und produzieren
+Was ist ein Tonstudio? | ein Raum, in dem Musik aufgenommen und bearbeitet wird | ein Musikladen | eine Schule | ein Konzertsaal | Dort gibt es Mikrofone, Mischpult und Computer.
+Was macht ein Mischpult? | Es regelt Lautstärke und Klang verschiedener Spuren und mischt sie | Es stimmt Gitarren | Es schreibt Noten | Es kühlt Instrumente | Am Ende entsteht der fertige Mix.
+Was ist eine DAW wie GarageBand? | ein Computerprogramm zum Aufnehmen und Produzieren von Musik | ein Instrument aus Holz | ein Kopfhörer | ein Lautsprecher | DAW = Digital Audio Workstation.
+Was ist ein Loop? | ein kurzer Musikabschnitt, der sich immer wiederholt | ein Fehler im Lied | eine Pause | ein Mikrofon | Viele Beats bestehen aus Loops.
+Was bedeutet „Spur“ in der Musikproduktion? | eine einzelne Aufnahme, z. B. nur Gesang oder nur Schlagzeug | ein Fußabdruck | ein Kabel | ein Notenblatt | Viele Spuren übereinander ergeben das Lied.
+Was ist Autotune? | ein Effekt, der die Tonhöhe der Stimme automatisch korrigiert oder verfremdet | ein Instrument | ein Mikrofon | eine Lautstärke | In Pop und Rap wird er oft als Stilmittel genutzt.
+Was ist ein Songtext? | der Text eines Liedes mit Strophen und Refrain | die Noten | ein Musikvideo | ein Konzertticket | Liedtexte sind urheberrechtlich geschützt.
+Was ist der Aufbau vieler Popsongs? | Intro, Strophe, Refrain, Strophe, Refrain, Bridge, Refrain | nur ein einziger Ton | nur Refrain | Ouvertüre und Finale | Die Bridge bringt Abwechslung vor dem letzten Refrain.
+Was ist eine Hook in einem Song? | eine besonders eingängige Stelle, die im Ohr bleibt | ein Haken am Mikrofon | ein Instrument | das Intro | Oft ist die Hook ein Teil des Refrains.
+Wie kann man ein Lied legal online veröffentlichen? | über einen Vertrieb, der es zu Spotify und anderen Diensten bringt, mit eigenen Rechten | fremde Lieder hochladen | ohne Erlaubnis Samples nutzen | gar nicht | Wer selbst komponiert und textet, hat das Urheberrecht.
+Was ist die GEMA in Deutschland? | eine Gesellschaft, die für Musikschaffende Geld für die Nutzung ihrer Werke einnimmt | ein Musikinstrument | ein Radiosender | eine Musikschule | So verdienen Komponisten und Texter an Aufführungen.
+Was hilft, um beim Singen die Stimme zu schützen? | aufwärmen, genug trinken, nicht schreien | heiser weitersingen | kalte Getränke beim Singen | flüstern statt sprechen | Die Stimmbänder sind empfindlich.
+Was ist ein Mikrofon mit Popschutz? | ein Mikrofon mit Netz davor, das Zischlaute und Plopp-Geräusche dämpft | ein kaputtes Mikrofon | ein Kopfhörer | ein Lautsprecher | Besonders bei „p“ und „b“ hilft der Schutz.
+Wie laut ist Musik bei Konzerten oft und was hilft? | oft über 100 Dezibel – Gehörschutz verwenden | 10 Dezibel, also leise | genau wie Flüstern | gar nicht laut | Dauerhafte Lautstärke über 85 dB kann das Gehör schädigen.
+Was ist Lampenfieber? | Aufregung vor einem Auftritt | eine Krankheit durch Licht | Fieber durch Lampen | ein Lied | Atemübungen und gute Vorbereitung helfen.
+Was ist eine Tonleiter? | eine Folge von Tönen in einer festen Reihenfolge von Ganz- und Halbtonschritten | eine Leiter im Tonstudio | ein Instrument | ein Notenständer | Dur- und Molltonleitern unterscheiden sich in der Lage der Halbtöne.
+Was ist ein Intervall in der Musik? | der Abstand zwischen zwei Tönen | eine Pause | ein Instrument | ein Taktwechsel | Beispiele: Terz, Quinte, Oktave.
+Was ist eine Quinte? | ein Intervall über fünf Stammtöne, z. B. c–g | ein Instrument | ein Takt | eine Strophe | Quinten klingen sehr offen und stabil.
+Was ist Rap-Flow? | wie Rhythmus, Betonung und Tempo der Sprache zum Beat passen | die Lautstärke | ein Mikrofon | ein Tanzschritt | Ein guter Flow macht einen Rap mitreißend.
+Was ist ein Kanon in der Klassik, z. B. der Pachelbel-Kanon? | ein Stück, in dem Stimmen dieselbe Melodie zeitversetzt spielen | ein Kriegsgerät | ein Marsch | eine Oper | Johann Pachelbel lebte im Barock.

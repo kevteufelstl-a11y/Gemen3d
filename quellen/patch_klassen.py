@@ -53,8 +53,17 @@ for _i, (_nm, _ds, _col) in enumerate(_K5_ST):
     _x, _z = _K5_POS[_i]
     _k5def.append({'id': 501 + _i, 'name': _nm, 'short': _fach[:12], 'desc': _ds, 'x': _x, 'z': _z, 'wx': _x, 'wz': _z,
                    'subj': [_fi], 'exam': False, 'need': 0, 'color': _col, 'klasse': 5})
+# Klasse 3 (26.11. abends): eigene Stationen fuer Psychologie und die neuen Faecher Informatik, Musik, Kunst
+_names_all = [f['f'] for f in _mq.apply(_mq.base_q(D), *_mq.extras(D))]
+_K3_ST = [('\U0001F9E0 Gefühle & Familie', 'Psychologie', 'Gefühle, Familie, Freunde und sicher im Internet', '#c08bff', [57.5, -62.7]),
+          ('\U0001F4BB Computer-Ecke', 'Informatik', 'Computer, Internet und Programmieren', '#7aa8ff', [81.5, 9.3]),
+          ('\U0001F3B5 Musikschule', 'Musik', 'Instrumente, Noten und Lieder', '#ff8ae0', [-50.5, -158.7]),
+          ('\U0001F3A8 Malatelier', 'Kunst', 'Farben, Bilder und Künstler', '#ffa040', [149.5, -22.7])]
+for _i, (_nm, _fach, _ds, _col, (_x, _z)) in enumerate(_K3_ST):
+    _k5def.append({'id': 511 + _i, 'name': _nm, 'short': _fach[:12], 'desc': _ds, 'x': _x, 'z': _z, 'wx': _x, 'wz': _z,
+                   'subj': [_names_all.index(_fach)], 'exam': False, 'need': 0, 'color': _col, 'klasse': 3})
 _K5J = json.dumps(_k5def, ensure_ascii=False, separators=(',', ':'))
 rep('Ne = { st: {}, extra: [], qs: [], rewards: [], monthGoal: 20, grades: null, school: "" }',
-    'Ne = { st: {}, extra: ' + _K5J + ', k5init: true, qs: [], rewards: [], monthGoal: 20, grades: null, school: "" }', 'K5-Stationen-Start')
+    'Ne = { st: {}, extra: ' + _K5J + ', k5init: true, k3init: true, qs: [], rewards: [], monthGoal: 20, grades: null, school: "" }', 'K5-Stationen-Start')
 rep('    Ne = Object.assign({ st: {}, extra: [], qs: [], rewards: [], monthGoal: 20, grades: null, school: "" }, i || {}), ',
-    '    Ne = Object.assign({ st: {}, extra: [], qs: [], rewards: [], monthGoal: 20, grades: null, school: "" }, i || {}), Ne.k5init || (Ne.extra = (Ne.extra || []).concat(' + _K5J + '.filter((d) => !(Ne.extra || []).some((x) => x.id === d.id))), Ne.k5init = true), ', 'K5-Stationen-Config')
+    '    Ne = Object.assign({ st: {}, extra: [], qs: [], rewards: [], monthGoal: 20, grades: null, school: "" }, i || {}), Ne.k3init || (Ne.extra = (Ne.extra || []).concat(' + _K5J + '.filter((d) => !(Ne.extra || []).some((x) => x.id === d.id))), Ne.k5init = Ne.k3init = true), ', 'K5-Stationen-Config')
