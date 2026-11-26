@@ -179,13 +179,13 @@
     PR.busy = false;
     if (!S.ok) return Zs("Die Prüfung ist gerade nicht erreichbar. Versuch es gleich noch einmal.");
     PR_info(S, kl, next);
-    Ae && Ae.admin && PR.wrap && PR.wrap.firstChild.prepend(K("div", { class: "pr-card", style: "background:#ffb02033;border-color:#ffb020;text-align:center;font-weight:800" }, "\u{1F9EA} Admin-Probelauf: Du kannst die Prüfung jederzeit testen. Die 70 % und die Wartezeit gelten hier nicht, es öffnet sich kein Tor und kein Lernstand wird verändert."));
+    Ae && Ae.admin && PR.wrap && PR.wrap.firstChild.prepend(K("div", { class: "pr-card", style: "background:#ffb02033;border-color:#ffb020;text-align:center;font-weight:800" }, "\u{1F9EA} Admin-Probelauf: Du kannst die Prüfung jederzeit testen. Das Nachlernen nach einer nicht bestandenen Prüfung gilt hier nicht, es öffnet sich kein Tor und kein Lernstand wird verändert."));
   }
   window.__prTest = (g) => PR_gate(g);
   // Admin: so sieht das Kind das Fenster am Tor (Beispielwerte, startet nichts)
   function PR_preview(g) {
     const kl = Math.min(g.von, g.nach), next = Math.max(g.von, g.nach), fis = PR_subjects(kl).map((x) => x.subj), total = Xn.filter((q) => fis.includes(q.fi)).length;
-    PR_info({ ok: true, klasse: kl, progress: { pct: 0, right: 0, total }, reason: total ? "zu_wenig" : "keine_fragen", canStart: false, exam: null, gateOpen: false }, kl, next);
+    PR_info({ ok: true, klasse: kl, progress: { pct: 0, right: 0, total }, reason: total ? "vorschau" : "keine_fragen", canStart: false, exam: null, gateOpen: false }, kl, next);
     PR.wrap && PR.wrap.firstChild.prepend(K("div", { class: "pr-card", style: "background:#ffb02033;border-color:#ffb020;text-align:center;font-weight:800" }, "\u{1F6E1} Admin-Vorschau mit Beispielwerten – so sieht ein Kind dieses Fenster. Für dich selbst ist das Tor offen."));
   }
   window.__prPreview = (g) => PR_preview(g);
@@ -206,10 +206,9 @@
       K("div", { class: "pr-card pr-gold" }, K("p", {}, "Du bist schon weit gekommen! Aber hinter diesem Tor wartet noch etwas ganz Besonderes auf dich."), K("h2", { style: "margin-top:10px" }, "In Klasse " + next + " erwarten dich:"), K("ul", { class: "pr-list" }, [["\u{1F5FA}", "Ein neues Gebiet: " + ({ 4: "Gemen-Süd", 5: "die Neumühle", 6: "die Aa-Wiesen" }[next] || "eine neue Welt") + " zum Entdecken"], ["\u{1F4DA}", "Neue und spannendere Lernaufgaben"], ["\u{1F381}", "Bessere tägliche Belohnungen"], ["\u{1F3C6}", "Wertvollere Wochen- und Monatsbelohnungen"], ["⚔", "Größere Herausforderungen"]].map(([i, t]) => K("li", {}, K("span", {}, i), K("span", {}, t)))), K("p", { style: "margin-top:10px;font-weight:800;color:#ffd75e" }, "Je weiter du kommst, desto besser werden deine Belohnungen!")),
       K("div", { class: "pr-card" }, K("h2", {}, "\u{1F381} Deine Belohnungen in Klasse " + next), K("div", { class: "pr-rew" }, rew)),
       K("div", { class: "pr-card" }, K("h2", {}, "\u{1F9ED} Was dir noch fehlt"),
-        K("p", {}, "Lernfortschritt: " + pg.pct + " % von 70 % (" + pg.right + " von " + pg.total + " Fragen schon richtig)"),
-        K("div", { class: "pr-bar", style: "margin:8px 0 12px" }, K("i", { style: "width:" + Math.min(100, pg.pct) + "%" }), K("s", { style: "left:70%" })),
+        K("p", {}, "Du kannst die Prüfung jederzeit machen. Sie dauert mindestens 40 Minuten, die Fragen sind aus allen Fächern gemischt."),
         K("ul", { class: "pr-list" }, [
-          [st(pg.pct >= 70), "Abschlussprüfung: " + (S.reason === "keine_fragen" ? "für diese Klasse gibt es noch keine Prüfung" : pg.pct >= 70 ? "freigeschaltet" : "ab 70 % Lernfortschritt")],
+          [st(S.reason !== "keine_fragen"), "Abschlussprüfung: " + (S.reason === "keine_fragen" ? "für diese Klasse gibt es noch keine Prüfung" : "jederzeit möglich")],
           [st(ex && ex.grade <= 3 && ex.status !== "laeuft" && ex.status !== "nicht_bestanden", ex && ex.status === "laeuft"), "Theoretische Prüfung: " + theo],
           [st(pr.length && prOk === pr.length, pr.length > 0), "Praktische Aufgaben: " + (pr.length ? prOk + " von " + pr.length + " bestanden" : "noch offen")],
           [st(false, pr.length > 0), "Elternbestätigung: " + (pr.length ? "wartet auf deine Eltern" : "noch offen")],
@@ -225,8 +224,12 @@
       N.ok ? PR_prepare(N, kl) : Zs("Neustart nicht möglich.");
     } }, "\u{1F504} Probelauf neu starten") : null);
     else if (S.reason === "praxis_offen") d.append(K("button", { class: "pr-btn go", onclick: () => PR_practical(ex) }, "✍️ Praktische Aufgaben ansehen"));
-    else if (S.reason === "warten") d.append(K("div", { class: "pr-card" }, K("p", {}, "Deine letzte Prüfung hat noch nicht gereicht. Übe jetzt die Fragen, die falsch waren – sie sind wieder in deinen Lernstationen."), K("p", { style: "margin-top:8px;font-weight:800" }, "Neuer Versuch ab " + PR_date(ex.retryAfter) + ". Deine Eltern können ihn auch früher erlauben.")));
-    else if (S.reason === "zu_wenig") d.append(K("div", { class: "pr-card" }, K("p", {}, "Lerne weiter an den Stationen! Bei 70 % öffnet sich deine Abschlussprüfung. Dir fehlen noch " + Math.max(0, Math.ceil(S.progress.total * 0.7) - S.progress.right) + " richtige Fragen.")));
+    else if (S.reason === "nachlernen") {
+      const R = ex && ex.remedial ? ex.remedial.subjects : [];
+      d.append(K("div", { class: "pr-card" }, K("p", {}, "Deine letzte Prüfung war noch nicht Note 3. Das ist kein Grund aufzugeben! Übe in jedem Fach 20 Fragen an den Lernstationen. Danach bekommst du eine neue Prüfung mit anderen, zufälligen Fragen."),
+        K("ul", { class: "pr-list", style: "margin-top:8px" }, R.map((x) => K("li", {}, K("span", {}, x.done >= x.need ? "✅" : "\u{1F4DA}"), K("span", {}, x.name + ": " + x.done + " von " + x.need + " Fragen")))),
+        K("p", { style: "margin-top:8px;font-weight:800" }, "Deine Eltern können das Nachlernen auch erlassen.")));
+    }
     else if (S.reason === "keine_fragen") d.append(K("div", { class: "pr-card" }, K("p", {}, "Für Klasse " + kl + " gibt es noch keine Prüfungsfragen. Sie kommen bald.")));
     Ae && Ae.admin && ex && ex.status === "theorie_bestanden" && d.append(K("button", { class: "pr-btn", onclick: () => PR_practical(ex) }, "✍️ Praktische Aufgaben des letzten Probelaufs"));
     Ae && Ae.admin && ex && ex.status === "bestanden" && d.append(K("button", { class: "pr-btn", onclick: () => PR_cert(ex) }, "\u{1F4DC} Urkunde des letzten Probelaufs"));
@@ -252,8 +255,8 @@
   function PR_rules(S, kl, T) {
     const b = PR_open(), min = Math.round(S.totalSec / 60);
     b.append(K("h1", {}, "\u{1F4DC} ABSCHLUSSPRÜFUNG KLASSE " + kl), K("div", { class: "pr-card pr-gold" }, K("ul", { class: "pr-list" }, [
-      ["\u{1F4DD}", S.nQuestions + " Fragen aus " + S.subjects + " Fächern (" + S.perSubject + " pro Fach)"],
-      ["⏱", "Deine Zeit: " + S.secPerQ + " Sekunden pro Frage, zusammen " + min + " Minuten" + (S.avgN >= 20 ? " (dein Durchschnitt beim Lernen: " + S.avgSec + " s, minus 1 Sekunde)" : "")],
+      ["\u{1F4DD}", S.nQuestions + " Fragen, bunt gemischt aus " + S.subjects + " Fächern (" + S.perSubject + " pro Fach)"],
+      ["⏱", "Deine Zeit: zusammen " + min + " Minuten (mindestens 40), etwa " + S.secPerQ + " Sekunden pro Frage."],
       ["\u{1F512}", "Eine Antwort zählt sofort und kann nicht mehr geändert werden."],
       ["⏸", "Die Uhr läuft nur, solange eine Frage zu sehen ist."],
       ["\u{1F3C5}", "Bestanden ab Note 3 – das sind " + Math.ceil(S.nQuestions * 0.65) + " richtige Antworten."],
@@ -339,7 +342,7 @@
         const p = Math.round(s.right / s.n * 100);
         return K("tr", {}, K("td", {}, (p >= 80 ? "\u{1F4AA} " : p < 65 ? "\u{1F4DA} " : "\u{1F44D} ") + s.name), K("td", {}, s.right + " von " + s.n + " (" + p + " %)"));
       })), best.length > 1 ? K("p", { style: "margin-top:8px" }, "Stärke: " + best[0].name + ". Hier noch üben: " + best[best.length - 1].name + ".") : null),
-      ok ? K("div", { class: "pr-card pr-gold" }, K("p", {}, "Super gemacht! Jetzt fehlt nur noch der praktische Teil auf Papier. Deine Eltern kontrollieren ihn – danach öffnet sich das Tor.")) : K("div", { class: "pr-card" }, K("p", {}, "Für Note 3 brauchst du mindestens 65 %. Du hattest " + ex.pct + " %. Das ist kein Grund aufzugeben!"), K("p", { style: "margin-top:8px" }, "Die " + wrong + " Fragen, die nicht richtig waren, sind jetzt wieder in deinen Lernstationen. Übe sie in Ruhe."), K("p", { style: "margin-top:8px;font-weight:800" }, "Neuer Versuch ab " + PR_date(ex.retryAfter) + ".")),
+      ok ? K("div", { class: "pr-card pr-gold" }, K("p", {}, "Super gemacht! Jetzt fehlt nur noch der praktische Teil auf Papier. Deine Eltern kontrollieren ihn – danach öffnet sich das Tor.")) : K("div", { class: "pr-card" }, K("p", {}, "Für Note 3 brauchst du mindestens 65 %. Du hattest " + ex.pct + " %. Das ist kein Grund aufzugeben!"), K("p", { style: "margin-top:8px" }, "Die " + wrong + " Fragen, die nicht richtig waren, sind jetzt wieder in deinen Lernstationen."), K("p", { style: "margin-top:8px;font-weight:800" }, "So geht es weiter: Mach in jedem Fach 20 Fragen an den Lernstationen. Dann bekommst du eine neue Prüfung mit zufälligen Fragen.")),
       ok ? K("button", { class: "pr-btn go", onclick: () => PR_practical(ex) }, "✍️ Zu den praktischen Aufgaben") : null,
       K("button", { class: "pr-btn", onclick: () => PR_close() }, "Schließen"));
   }
@@ -440,7 +443,6 @@
       const E = D.exams.filter((e) => e.klasse === k.klasse), ex = E[0], pr = ex ? ex.practical : [], prOk = pr.filter((t) => t.status === "bestanden").length, theoOk = ex && ex.grade <= 3 && ex.status !== "laeuft";
       kids.push(K("p", { class: "qmsg" }, "Klasse " + k.klasse + " → Tor zu Klasse " + (k.klasse + 1)),
         row("Lernfortschritt", k.progress.pct + " % (" + k.progress.right + " von " + k.progress.total + ")"),
-        row("Abschlussprüfung freigeschaltet", yn(k.progress.pct >= 70)),
         row("Theoretische Prüfung abgeschlossen", yn(ex && ex.status !== "laeuft")),
         ex && ex.status !== "laeuft" ? row("Theoretisches Ergebnis", ex.right + " von " + ex.n + " richtig (" + ex.pct + " %) · Note " + ex.grade) : null,
         row("Praktischer Teil abgeschlossen", yn(pr.length > 0 && pr.every((t) => t.status !== "offen"))),
@@ -456,11 +458,11 @@
           t.at ? K("p", { class: "ko-small" }, "Zuletzt bewertet: " + PR_date(t.at) + (t.note ? " · Hinweis: " + t.note : "")) : null,
           K("div", { class: "qrow" }, K("button", { class: "qbtn go", onclick: () => PR_set(main, c, ex, t, true) }, "✅ Bestanden"), K("button", { class: "qbtn boss", onclick: () => PR_set(main, c, ex, t, false) }, "❌ Nicht bestanden"))));
       }
-      if (ex && ex.status === "nicht_bestanden" && ex.retryAfter && new Date(ex.retryAfter) > new Date()) kids.push(K("p", { class: "ko-small" }, "Neuer Versuch ab " + PR_date(ex.retryAfter) + "."), K("button", { class: "qbtn", onclick: async () => {
-        if (!confirm("Neuen Prüfungsversuch schon jetzt erlauben? Am besten erst, wenn die falschen Fragen geübt wurden.")) return;
+      if (ex && ex.status === "nicht_bestanden" && ex.remedial && !ex.remedial.ok && !ex.remedial.parentOk) kids.push(K("p", { class: "ko-small" }, "Nachlernen vor dem neuen Versuch: " + ex.remedial.subjects.map((x) => x.name + " " + x.done + "/" + x.need).join(" · ")), K("button", { class: "qbtn", onclick: async () => {
+        if (!confirm("Das Nachlernen (20 Fragen pro Fach) erlassen und einen neuen Prüfungsversuch sofort erlauben?")) return;
         const x = await KO_call("examRetry", { examId: ex.id }, "p");
         Zs(x.j && x.j.ok ? "Neuer Versuch ist erlaubt." : KO_msg(x)), KO_kidView(main, c);
-      } }, "\u{1F501} Wiederholung jetzt erlauben"));
+      } }, "\u{1F501} Nachlernen erlassen, neuen Versuch erlauben"));
       if (ex && ex.status === "bestanden") kids.push(K("button", { class: "qbtn", onclick: () => PR_cert(ex) }, "\u{1F4DC} Abschlussurkunde ansehen"));
       E.length && kids.push(K("details", {}, K("summary", { class: "ko-small" }, "Prüfungsverlauf (" + E.length + ")"), E.map((e) => row(PR_date(e.startedAt), ({ laeuft: "läuft", theorie_bestanden: "Theorie bestanden", nicht_bestanden: "nicht bestanden", bestanden: "bestanden ✅" }[e.status] || e.status) + (e.grade ? " · Note " + e.grade + " (" + e.pct + " %)" : "")))));
     }
