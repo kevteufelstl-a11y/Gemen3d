@@ -83,7 +83,8 @@ ABSCHLUSSPRUEFUNG (26.11.2026, pruefung.js, patch_pruefung.py, server/12_abschlu
   Bewertung auf dem Server mit Loesungsschluessel exam_keys. Antwort nicht aenderbar. Bestanden ab Note 3.
   Unterbrechung mitten in einer Frage -> Server tauscht die Frage (gleiches Fach). Nicht bestanden -> falsche Fragen
   wieder ins Training, neuer Versuch nach 3 Tagen oder frueher, wenn die Eltern es erlauben.
-- Praxisteil: pro Fach eine Papieraufgabe (pruefung.js PR_tasks) mit Kontrollkriterien und Loesungen fuer die Eltern.
+- Praxisteil: pro Fach eine Papieraufgabe mit 5 Teilaufgaben (pruefung.js PR_tasks), Kontrollkriterien und Loesungen nur fuer die Eltern.
+- Admin: Tor antippen -> "Vorschau: Fenster wie beim Kind" (Beispielwerte, startet nichts).
   Eltern bestaetigen im Elternbereich (Kind-Ansicht, Abschnitt "ABSCHLUSSPRUEFUNG – ELTERNKONTROLLE").
 - Tor: Erst wenn Theorie ab Note 3 + alle Praxisaufgaben bestanden -> Server traegt zone_unlocks (via = 'exam') ein.
   Die App fragt jede Minute nach, laesst das Tor leuchten, oeffnet es und zeigt die Abschlussurkunde (PDF).

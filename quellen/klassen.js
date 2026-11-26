@@ -389,6 +389,7 @@
   }
   function KL_tap(g) {
     if (KL.bridge) return;
+    if (Ae && Ae.admin && window.__prPreview) return KL_dialog("\u{1F6E1} Admin", "Das Tor ist für dich offen. Du kannst dir auch ansehen, was ein Kind hier sieht.", [[g.bridge ? "\u{1F309} Brücke benutzen" : "OK", g.bridge ? () => KL_bridgeStart(g) : null, !g.bridge], ["\u{1F440} Vorschau: Fenster wie beim Kind", () => window.__prPreview(g), true]]);
     const cur = KL_at(window.__api.player.x, window.__api.player.z), target = g.bridge ? (g.side === g.von ? g.nach : g.von) : cur === g.von ? g.nach : g.von;
     if (g.bridge) {
       if (KL_ok(g.von) && KL_ok(g.nach)) return KL_bridgeStart(g);
