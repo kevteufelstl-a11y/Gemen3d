@@ -116,6 +116,7 @@ exec(open(D + '/patch_haus.py', encoding='utf8').read())
 exec(open(D + '/patch_ui.py', encoding='utf8').read())
 exec(open(D + '/patch_klassen.py', encoding='utf8').read())
 exec(open(D + '/patch_pruefung.py', encoding='utf8').read())
+exec(open(D + '/patch_admintool.py', encoding='utf8').read())
 open(D + '/game_mp.js', 'w', encoding='utf8').write(s)
 
 # ---------------- HTML zusammensetzen ----------------

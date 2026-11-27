@@ -107,3 +107,18 @@ Hintergrundmusik (26.11.2026): quellen/musik.js, eingebunden ueber patch_zones.p
 (Hip-Hop-Beats, Akustikgitarre per Karplus-Strong, Rock-Melodie), keine Dateien, keine KI. Knopf oben rechts unter dem
 Vollbild-Knopf; Auswahl + Lautstaerke in localStorage "milo3d_musik". In der Abschlusspruefung (.pr-opt sichtbar) stumm.
 Testzugang: window.__musik.setMode("hiphop"|"gitarre"|"rock"|"aus").
+
+ADMIN-WERKZEUG IM SPIEL (27.11.2026, admintool.js, patch_admintool.py)
+- Knopf 🛠 oben neben ⚙, nur sichtbar, wenn der Admin angemeldet ist (am Tablet mit Tastatur auch Taste ´ oder ^).
+- Schwebendes Fenster unten rechts, das Spiel läuft dahinter weiter (kein Pause-Fenster). "▾ Klein" klappt es zusammen.
+  Vorbilder: Terraria-Power-Menü (Schalter), Fortnite-Creative-Handy (Platzieren/Versetzen), Minecraft (Teleport,
+  Wegpunkte, Tag/Nacht), Roblox-Admin-Panels (eine Taste, Reiter).
+- Reiter: Kräfte (unverwundbar, durch Wände laufen, Tempo 1/2/4/8x, Monster normal/friedlich/Stopp/weg, Menge,
+  Tag/Nacht, alle Waffen, Leben voll, Monster wegscheuchen) · Reisen (Tippen = Hinbeamen, Start, Klassen 3-6, Tore,
+  eigene gemerkte Orte, Stationen mit Suche) · Bauen (Station hier/per Tippen, nahe Stationen an/aus, umbenennen,
+  an meinen Platz, per Tippen versetzen, löschen; speichert für alle über setConfig) · Testen (Lernzeit +5/voll,
+  Tagesprüfung starten/zurücksetzen, Abschlussprüfung je Tor, Kind-Fenster, "Wie ein Kind" = Klassen-Sperren gelten
+  auch für den Admin, Infozeile mit Position/Klasse/FPS/Monster, Position kopieren, Musik) · Menü (alle großen Bereiche).
+- Kräfte gelten nur für den Admin auf diesem Gerät und werden beim Abmelden zurückgesetzt (auch die ⚙-Werte).
+- Haken im Spiel: window.__admGod, __admGhost (nur eigene Figur), __admFreeze, __admKid, __admTap/__admTapOn
+  (Tippen auf den Boden, Vorrang vor dem grünen Haus), window.__setm = Spiel-Einstellungen (⚙). Test: window.__admTool.
